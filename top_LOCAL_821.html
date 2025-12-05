@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>佐藤医院 | TOP ワイヤーフレーム</title>
+  <title>佐藤クリニック | ホーム</title>
   <style>
     :root {
-<<<<<<< HEAD
       /* 仮置きカラー: メインのグリーン系とアクセントを暫定で設定 */
       --green: #1fa388;
       --green-strong: #0f8a6f;
@@ -17,16 +16,6 @@
       --muted: #5c6c6a;
       --card: #ffffff;
       --shadow: 0 10px 28px rgba(17, 115, 97, 0.12);
-=======
-      --surface: #f7f9f8;
-      --line: #d7e6dd;
-      --accent: #1eb89f;
-      --accent-2: #88d8c6;
-      --accent-3: #f0cde4;
-      --accent-4: #cfe8e0;
-      --accent-5: #f6efe4;
-      --text: #2b3a33;
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
     }
 
     * { box-sizing: border-box; }
@@ -34,30 +23,22 @@
     body {
       margin: 0;
       width: 100%;
-<<<<<<< HEAD
       font-family: "Hiragino Sans", "Noto Sans JP", system-ui, -apple-system, sans-serif;
-=======
-      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
-      background: var(--surface);
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
       color: var(--text);
+      background: #f6f8f7;
+      line-height: 1.6;
     }
 
     a { color: inherit; text-decoration: none; }
 
     header {
       width: 100%;
-<<<<<<< HEAD
       position: sticky;
       top: 0;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.96);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
       backdrop-filter: blur(6px);
-=======
-      background: #ffffff;
-      border-bottom: 1px solid var(--line);
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
     }
 
     .main-container {
@@ -73,28 +54,20 @@
     }
 
     .header-inner {
-<<<<<<< HEAD
       height: 88px;
-=======
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
       display: grid;
-      grid-template-columns: 180px 1fr 200px;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-<<<<<<< HEAD
       gap: 24px;
-=======
-      gap: 16px;
-      min-height: 80px;
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
     }
 
-    .logo-area, .nav-area, .header-actions {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      min-width: 220px;
     }
 
-<<<<<<< HEAD
     .brand img {
       width: 56px;
       height: 56px;
@@ -165,69 +138,10 @@
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 24px;
-=======
-    .logo-placeholder {
-      width: 160px;
-      height: 48px;
-      border: 2px solid var(--accent);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      background: #fff;
-    }
-
-    .nav-area {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-chip {
-      min-width: 120px;
-      padding: 12px 14px;
-      border: 1px dashed var(--line);
-      border-radius: 12px;
-      background: #fff;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .header-actions { justify-content: flex-end; }
-
-    .btn-ghost {
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--accent);
-      background: #fff;
-      font-weight: 700;
-      min-width: 120px;
-      text-align: center;
-    }
-
-    .btn-solid {
-      padding: 12px 16px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 800;
-      min-width: 140px;
-      text-align: center;
-    }
-
-    main { width: 100%; }
-
-    section { padding: 40px 0; }
-
-    .hero-block {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: 2fr 1fr;
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
       align-items: stretch;
     }
 
     .hero-left {
-<<<<<<< HEAD
       position: relative;
       background: radial-gradient(circle at 20% 20%, rgba(31, 163, 136, 0.18), transparent 32%),
                   linear-gradient(135deg, rgba(31, 163, 136, 0.12), rgba(31, 163, 136, 0.24));
@@ -285,41 +199,10 @@
     }
 
     .hero-right {
-=======
-      background: #c9e6e0;
-      border-radius: 12px;
-      min-height: 260px;
-      display: grid;
-      grid-template-rows: 1fr 100px;
-      gap: 12px;
-      padding: 16px;
-    }
-
-    .hero-banner {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #ffffff;
-      display: grid;
-      place-items: center;
-      min-height: 200px;
-    }
-
-    .hero-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-    }
-
-    .hero-right {
-      background: #e5f6f1;
-      border-radius: 12px;
-      padding: 16px;
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
       display: grid;
       gap: 12px;
     }
 
-<<<<<<< HEAD
     .panel {
       background: #ffffff;
       border: 1px solid #d8ece5;
@@ -475,97 +358,12 @@
       .highlight-panel { grid-template-columns: 1fr; }
       .wide-panel { grid-template-columns: 1fr; }
       .map-panel { grid-template-columns: 1fr; }
-=======
-    .info-panel {
-      background: #d7efe8;
-      border-radius: 10px;
-      padding: 12px;
-      min-height: 120px;
-      border: 1px dashed var(--accent);
-      display: grid;
-      place-items: center;
-    }
-
-    .pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .pill { background: #fff; border: 1px dashed var(--line); border-radius: 12px; height: 40px; }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      min-width: 160px;
-      padding: 10px 16px;
-      border-left: 6px solid var(--accent);
-      background: #fff;
-      border-radius: 8px;
-      font-weight: 800;
-    }
-
-    .cards { display: flex; flex-wrap: wrap; gap: 12px; }
-    .card {
-      flex: 1 1 260px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #fff;
-      min-height: 120px;
-      padding: 12px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .card-image { background: #dcefe8; border-radius: 8px; height: 120px; border: 1px dashed var(--accent-2); }
-    .card-body { background: #f2f6f4; border-radius: 8px; height: 60px; border: 1px dashed var(--line); }
-
-    .banner-wide {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #ffffff;
-      min-height: 160px;
-      padding: 12px;
-      display: grid;
-      place-items: center;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 12px;
-    }
-
-    .feature-panel { border: 1px solid var(--line); border-radius: 10px; background: #f8fffc; min-height: 180px; padding: 12px; }
-    .feature-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; min-height: 140px; padding: 12px; }
-
-    .column-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
-    .column { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: #fff; min-height: 160px; }
-
-    .pale-block { background: #dff5ed; border: 1px solid var(--line); border-radius: 10px; min-height: 120px; padding: 10px; }
-    .pale-block.pink { background: #f4dde9; }
-    .pale-block.yellow { background: #f8f0df; }
-
-    .map-area { border: 1px solid var(--line); border-radius: 10px; background: #fff; min-height: 280px; padding: 10px; }
-
-    .footer { background: #0e9c82; color: #fff; padding: 30px 0; width: 100%; }
-    .footer-inner { display: grid; gap: 14px; }
-    .footer-line { height: 28px; border: 1px dashed rgba(255,255,255,0.4); border-radius: 8px; }
-
-    @media (max-width: 960px) {
-      .header-inner { grid-template-columns: 1fr; justify-items: center; }
-      .hero-block { grid-template-columns: 1fr; }
-      .feature-grid, .column-grid { grid-template-columns: 1fr; }
-      .pill-row { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
     }
   </style>
 </head>
 <body>
   <header>
     <div class="main-container header-inner">
-<<<<<<< HEAD
       <div class="brand">
         <img src="image/Logo/Logo.png" alt="クリニックロゴ">
         <div class="name">佐藤クリニック<br><span style="font-weight:600; color: var(--muted); font-size: 13px;">医療法人 佐藤クリニック</span></div>
@@ -582,26 +380,11 @@
       <div class="header-actions">
         <button class="btn primary">お問い合わせ</button>
         <button class="btn secondary">初診の方へ</button>
-=======
-      <div class="logo-area">
-        <div class="logo-placeholder">ロゴ</div>
-      </div>
-      <div class="nav-area">
-        <div class="nav-chip">ここにメニュー</div>
-        <div class="nav-chip">ここにメニュー</div>
-        <div class="nav-chip">ここにメニュー</div>
-        <div class="nav-chip">ここにメニュー</div>
-      </div>
-      <div class="header-actions">
-        <div class="btn-ghost">ここにボタン</div>
-        <div class="btn-solid">ここにボタン</div>
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
       </div>
     </div>
   </header>
 
   <main>
-<<<<<<< HEAD
     <section class="hero" id="top">
       <div class="main-container hero-inner">
         <div class="hero-left">
@@ -672,32 +455,11 @@
             <div class="label">タイトル／本文</div>
             <div class="card">タイトル／本文</div>
             <div class="card">タイトル／本文</div>
-=======
-    <section>
-      <div class="main-container hero-block">
-        <div class="hero-left">
-          <div class="hero-banner">ここに画像</div>
-          <div class="hero-buttons">
-            <div class="nav-chip">ここにボタン</div>
-            <div class="nav-chip">ここにボタン</div>
-            <div class="nav-chip">ここにボタン</div>
-            <div class="nav-chip">ここにボタン</div>
-          </div>
-        </div>
-        <div class="hero-right">
-          <div class="info-panel">ここに本文</div>
-          <div class="info-panel">ここに本文</div>
-          <div class="pill-row">
-            <div class="pill"></div>
-            <div class="pill"></div>
-            <div class="pill"></div>
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
           </div>
         </div>
       </div>
     </section>
 
-<<<<<<< HEAD
     <section class="section" id="services">
       <div class="main-container">
         <div class="section-heading">
@@ -832,35 +594,11 @@
               <div class="card" style="box-shadow:none;">タイトル／本文</div>
               <div class="card" style="box-shadow:none;">タイトル／本文</div>
             </div>
-=======
-    <section>
-      <div class="main-container">
-        <div class="section-header">
-          <div class="section-title">ここにセクション名</div>
-        </div>
-        <div class="cards">
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
           </div>
         </div>
       </div>
     </section>
 
-<<<<<<< HEAD
     <section class="section" id="access">
       <div class="main-container">
         <div class="section-heading">
@@ -882,190 +620,11 @@
               <div class="card" style="box-shadow:none;">タイトル／本文</div>
             </div>
           </div>
-=======
-    <section>
-      <div class="main-container">
-        <div class="banner-wide">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
         </div>
-        <div class="column">
-          <div class="banner-wide">ここに画像</div>
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="feature-grid">
-          <div class="feature-card">ここに本文</div>
-          <div class="feature-card">ここに本文</div>
-          <div class="feature-card">ここに本文</div>
-          <div class="feature-card">ここに本文</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="feature-panel">ここに画像</div>
-        <div class="cards">
-          <div class="card">
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-body">ここに本文</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
-          <div class="pale-block">ここに本文</div>
-        </div>
-        <div class="column">
-          <div class="feature-panel">ここに本文</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="feature-grid">
-          <div class="feature-panel">ここに本文</div>
-          <div class="feature-panel">ここに本文</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="pale-block">ここに本文</div>
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="banner-wide">ここに画像</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに画像</div>
-        <div class="feature-panel">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
-          <div class="pale-block">ここに本文</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="feature-panel">ここに本文</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="feature-panel">ここに画像</div>
-        <div class="map-area">ここに地図</div>
       </div>
     </section>
   </main>
 
-<<<<<<< HEAD
   <footer>
     <div class="main-container footer-inner">
       <div class="footer-brand">
@@ -1078,13 +637,6 @@
         <a href="#staff">スタッフ紹介</a>
         <a href="#access">お問い合わせ</a>
       </div>
-=======
-  <footer class="footer">
-    <div class="main-container footer-inner">
-      <div class="footer-line">ここにフッター情報</div>
-      <div class="footer-line">ここにフッター情報</div>
-      <div class="footer-line">ここにフッター情報</div>
->>>>>>> origin/codex/create-html-and-css-template-for-top-page
     </div>
   </footer>
 </body>
