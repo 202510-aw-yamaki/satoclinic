@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +75,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .logo {
@@ -91,19 +92,21 @@
 
     .contact-box {
       display: flex;
+      flex-direction: row;
+      /* 念押しで横方向を指定 */
       align-items: center;
       gap: 16px;
+      flex-wrap: nowrap;
+      /* ここで折り返さないようにする */
     }
 
     .contact-phone {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 14px;
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      background: var(--color-gray-100);
-      font-weight: 700;
+      /* 幅を親の中でうまく縮められるように */
+      flex: 0 1 auto;
+      min-width: 0;
     }
 
     .contact-info small {
@@ -125,7 +128,7 @@
 
     nav {
       display: flex;
-      flex-wrap: wrap;
+      flex: 1 1 auto;
       gap: 8px;
       border: 1px solid var(--color-border);
       border-radius: 14px;
@@ -422,8 +425,17 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
-    .legend .tag1 { background: #b7e4e0; color: #1f252a; border-color: #b7e4e0; }
-    .legend .tag2 { background: #fff; color: #1f252a; border-color: #fff; }
+    .legend .tag1 {
+      background: #b7e4e0;
+      color: #1f252a;
+      border-color: #b7e4e0;
+    }
+
+    .legend .tag2 {
+      background: #fff;
+      color: #1f252a;
+      border-color: #fff;
+    }
 
     .feature-grid {
       display: grid;
@@ -558,28 +570,18 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page page-header">
     <header>
-        <div class="header-shell">
-          <div class="header-top">
-            <div class="header-top-bar">
-              <div class="logo">ロゴ</div>
-              <div class="contact-box">
-                <div class="contact-phone">
-                  <div>Tel.</div>
-                  <div class="contact-info">
-                    <div>00-0000-0000</div>
-                    <small>平日 9:00-17:30</small>
-                  </div>
-                </div>
-                <div class="cta">WEB受付</div>
-              </div>
-            </div>
+      <div class="header-shell">
+        <div class="header-top">
+          <div class="header-top-bar">
+            <div class="logo">ロゴ</div>
             <nav aria-label="メインメニュー">
               <div class="nav-item">トップページ</div> <!-- （メニュー①） -->
-              <div class="nav-item">お知らせ</div>  <!-- （メニュー②） -->
-              <div class="nav-item">診療時間</div>  <!-- （メニュー③） -->
+              <div class="nav-item">お知らせ</div> <!-- （メニュー②） -->
+              <div class="nav-item">診療時間</div> <!-- （メニュー③） -->
               <div class="nav-item">診療内容</div> <!-- （メニュー④） -->
               <div class="nav-item">院長挨拶</div> <!-- （メニュー⑤） -->
               <div class="nav-item">当院について</div> <!-- （メニュー⑥） -->
@@ -588,8 +590,19 @@
               <div class="nav-item">ご予約・お問合せ</div><!-- （メニュー⑨） -->
               <div class="nav-item">よくあるご質問</div><!-- （メニュー⑩） -->
             </nav>
+            <div class="contact-box">
+              <div class="contact-phone">
+                <div>Tel.</div>
+                <div class="contact-info">
+                  <div>00-0000-0000</div>
+                  <small>平日 9:00-17:30</small>
+                </div>
+              </div>
+              <div class="cta">WEB受付</div>
+            </div>
           </div>
         </div>
+      </div>
     </header>
   </div>
 
@@ -655,7 +668,13 @@
       <h2>診療時間（メニュー②）</h2>
       <div class="schedule-table">
         <div class="header">
-          <div>月</div><div>火</div><div>水</div><div>木</div><div>金</div><div>土</div><div>日</div>
+          <div>月</div>
+          <div>火</div>
+          <div>水</div>
+          <div>木</div>
+          <div>金</div>
+          <div>土</div>
+          <div>日</div>
         </div>
         <div class="schedule-row">
           <div class="schedule-cell">●</div>
@@ -803,4 +822,5 @@
     </div>
   </div>
 </body>
+
 </html>
