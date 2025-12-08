@@ -32,7 +32,9 @@
       width: 100%;
       background: #ffffff;
       border-bottom: 1px solid var(--line);
+
       padding-block: 24px;
+ main
     }
 
     .main-container {
@@ -49,7 +51,10 @@
 
     .header-inner {
       display: grid;
+
       grid-template-columns: 200px 1fr 220px;
+      grid-template-columns: 180px 1fr 200px;
+      main
       align-items: center;
       gap: 16px;
       min-height: 80px;
@@ -61,15 +66,28 @@
       gap: 10px;
     }
 
+
     .logo-image {
       height: 48px;
       width: auto;
       object-fit: contain;
       display: block;
+
+    .logo-placeholder {
+      width: 160px;
+      height: 48px;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      background: #fff;
+main
     }
 
     .nav-area {
       justify-content: center;
+
       flex-wrap: nowrap;
       gap: 10px;
       overflow-x: auto;
@@ -81,12 +99,22 @@
       justify-content: center;
       height: 58px;
       padding-inline: 16px;
+
+      flex-wrap: wrap;
+    }
+
+    .nav-chip {
+      min-width: 120px;
+      padding: 12px 14px;
+main
       border: 1px dashed var(--line);
       border-radius: 12px;
       background: #fff;
       text-align: center;
       font-weight: 700;
+
       white-space: nowrap;
+ main
     }
 
     .header-actions { justify-content: flex-end; }
@@ -250,9 +278,18 @@
   <header>
     <div class="main-container header-inner">
       <div class="logo-area">
+
         <img src="image/Logo/Logo.png" alt="佐藤医院のロゴ" class="logo-image">
       </div>
       <div class="nav-area">
+        <div class="nav-chip">ここにメニュー</div>
+        <div class="nav-chip">ここにメニュー</div>
+        <div class="nav-chip">ここにメニュー</div>
+        <div class="nav-chip">ここにメニュー</div>
+      </div>
+      <div class="header-actions">
+        <div class="btn-ghost">ここにボタン</div>
+        <div class="btn-solid">ここにボタン</div>
         <div class="nav-chip"><!-- ナビゲーションメニュー01 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー02 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー03 --></div>
@@ -263,6 +300,7 @@
         <div class="nav-chip"><!-- ナビゲーションメニュー08 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー09 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー10 --></div>
+
       </div>
       <div class="header-actions">
         <div class="btn-ghost"><!-- ヘッダー補助ボタン --></div>
@@ -275,6 +313,17 @@
     <section>
       <div class="main-container hero-block">
         <div class="hero-left">
+          <div class="hero-banner">ここに画像</div>
+          <div class="hero-buttons">
+            <div class="nav-chip">ここにボタン</div>
+            <div class="nav-chip">ここにボタン</div>
+            <div class="nav-chip">ここにボタン</div>
+            <div class="nav-chip">ここにボタン</div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="info-panel">ここに本文</div>
+          <div class="info-panel">ここに本文</div>
           <div class="hero-banner"><!-- ヒーロー画像・ビジュアル --></div>
           <div class="hero-buttons">
             <div class="nav-chip"><!-- ヒーロー導線ボタン01 --></div>
@@ -323,12 +372,14 @@
 
     <section>
       <div class="main-container">
-        <div class="banner-wide"><!-- ワイド告知・リード文 --></div>
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
+
+        <div class="feature-panel">ここに本文</div>
+        <div class="feature-panel">ここに本文</div>
         <div class="feature-panel"><!-- 特色紹介ブロック01 --></div>
         <div class="feature-panel"><!-- 特色紹介ブロック02 --></div>
       </div>
@@ -339,6 +390,13 @@
         <div class="column">
           <div class="cards">
             <div class="card">
+              <div class="card-body">ここに本文</div>
+            </div>
+            <div class="card">
+              <div class="card-body">ここに本文</div>
+            </div>
+            <div class="card">
+              <div class="card-body">ここに本文</div>
               <div class="card-body"><!-- 診療カード01 --></div>
             </div>
             <div class="card">
@@ -350,7 +408,6 @@
           </div>
         </div>
         <div class="column">
-          <div class="banner-wide"><!-- 右カラムビジュアル --></div>
         </div>
       </div>
     </section>
@@ -358,6 +415,10 @@
     <section>
       <div class="main-container">
         <div class="feature-grid">
+          <div class="feature-card">ここに本文</div>
+          <div class="feature-card">ここに本文</div>
+          <div class="feature-card">ここに本文</div>
+          <div class="feature-card">ここに本文</div>
           <div class="feature-card"><!-- ポイントカード01 --></div>
           <div class="feature-card"><!-- ポイントカード02 --></div>
           <div class="feature-card"><!-- ポイントカード03 --></div>
@@ -368,6 +429,13 @@
 
     <section>
       <div class="main-container column-grid">
+        <div class="feature-panel">ここに画像</div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-body">ここに本文</div>
+          </div>
+          <div class="card">
+            <div class="card-body">ここに本文</div>
         <div class="feature-panel"><!-- 大きめビジュアル枠 --></div>
         <div class="cards">
           <div class="card">
@@ -418,8 +486,6 @@
 
     <section>
       <div class="main-container feature-grid">
-        <div class="feature-panel"><!-- 2カラム紹介01 --></div>
-        <div class="feature-panel"><!-- 2カラム紹介02 --></div>
       </div>
     </section>
 
@@ -440,15 +506,12 @@
           </div>
         </div>
         <div class="column">
-          <div class="banner-wide"><!-- イメージ画像 --></div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
-        <div class="feature-panel"><!-- ダブルカラムブロック01 --></div>
-        <div class="feature-panel"><!-- ダブルカラムブロック02 --></div>
       </div>
     </section>
 
@@ -482,7 +545,6 @@
           </div>
         </div>
         <div class="column">
-          <div class="feature-panel"><!-- カラム説明ブロック --></div>
         </div>
       </div>
     </section>
@@ -491,13 +553,15 @@
       <div class="main-container feature-grid">
         <div class="feature-panel"><!-- 2カラム紹介03 --></div>
         <div class="feature-panel"><!-- 2カラム紹介04 --></div>
+        <div class="feature-panel">ここに本文</div>
+        <div class="feature-panel">ここに本文</div>
+        <div class="feature-panel"><!-- 2カラム紹介03 --></div>
+        <div class="feature-panel"><!-- 2カラム紹介04 --></div>
       </div>
     </section>
 
     <section>
       <div class="main-container column-grid">
-        <div class="feature-panel"><!-- アクセス画像枠 --></div>
-        <div class="map-area"><!-- 地図埋め込みエリア --></div>
       </div>
     </section>
   </main>
@@ -507,6 +571,13 @@
       <div class="footer-line"><!-- フッター情報01 --></div>
       <div class="footer-line"><!-- フッター情報02 --></div>
       <div class="footer-line"><!-- フッター情報03 --></div>
+
+      <div class="footer-line">ここにフッター情報</div>
+      <div class="footer-line">ここにフッター情報</div>
+      <div class="footer-line">ここにフッター情報</div>
+
+      <div class="footer-line"><!-- フッター情報01 --></div>
+      <div class="footer-line"><!-- フッター情報02 --></div>
     </div>
   </footer>
 </body>
