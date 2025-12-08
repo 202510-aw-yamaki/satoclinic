@@ -113,10 +113,24 @@
       border-radius: 30px;
       border: 1px solid #000;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 1.05fr;
       gap: 24px;
       padding: 32px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      align-items: stretch;
+    }
+
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-CL-Gray-300);
+      border: 2px dashed #000;
+      border-radius: 24px;
+      min-height: 360px;
+      font-weight: 700;
+      padding: 16px;
+      text-align: center;
     }
 
     .placeholder-box {
@@ -142,12 +156,13 @@
     .hero-highlight {
       background: var(--color-CL-Accent);
       color: #fff;
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
       border: 1px solid #000;
+      box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.2);
     }
 
     .tag-list {
@@ -167,15 +182,103 @@
       text-align: center;
     }
 
-    .contact-card {
+    .mini-schedule {
       background: #fff;
       border-radius: 18px;
       border: 1px solid #000;
-      padding: 14px;
-      min-height: 100px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
       gap: 12px;
+    }
+
+    .mini-schedule-header {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: stretch;
+      background: var(--color-CL-Accent);
+      color: #fff;
+      border-bottom: 1px solid #000;
+    }
+
+    .mini-schedule-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      border-right: 1px solid #000;
+      padding: 12px;
+    }
+
+    .mini-schedule-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-weight: 700;
+      border-left: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 12px;
+      gap: 4px;
+    }
+
+    .mini-schedule-table {
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      gap: 8px;
+      padding: 10px 12px 0;
+    }
+
+    .mini-schedule-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mini-time {
+      background: var(--color-CL-Gray-100);
+      border: 1px solid #000;
+      border-radius: 14px;
+      padding: 8px 10px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .mini-slots {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .mini-dot {
+      display: inline-flex;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .mini-dot.filled {
+      background: #000;
+      color: #000;
+    }
+
+    .mini-dot.half {
+      position: relative;
+      background: linear-gradient(180deg, #000 50%, transparent 50%);
+      overflow: hidden;
+    }
+
+    .mini-note {
+      margin: 0;
+      padding: 0 12px 12px;
+      font-size: 12px;
+      color: var(--color-CL-Gray-600);
     }
 
     section {
@@ -395,7 +498,7 @@
     </header>
 
     <section class="hero" aria-label="トップビジュアルと予約導線">
-      <div class="placeholder-box">画像（外観やメインビジュアル）</div>
+      <div class="hero-visual">画像（外観やメインビジュアル）</div>
       <div class="hero-info">
         <div class="hero-highlight">
           <div>メインキャッチコピー</div>
@@ -405,11 +508,40 @@
             <div class="tag">タグ③</div>
           </div>
         </div>
-        <div class="contact-card">
-          <div class="placeholder-box">メニュー① 予約カード</div>
-          <div class="placeholder-box">メニュー② 予約カード</div>
-          <div class="placeholder-box">メニュー③ 予約カード</div>
-          <div class="placeholder-box">メニュー④ 予約カード</div>
+        <div class="mini-schedule" aria-label="診療時間ミニカード">
+          <div class="mini-schedule-header">
+            <div class="mini-schedule-title">診療時間</div>
+            <div class="mini-schedule-days">
+              <span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span>
+            </div>
+          </div>
+          <div class="mini-schedule-table">
+            <div class="mini-schedule-row">
+              <div class="mini-time">9時〜12時</div>
+              <div class="mini-slots">
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot"></span>
+              </div>
+            </div>
+            <div class="mini-schedule-row">
+              <div class="mini-time">14時〜19時</div>
+              <div class="mini-slots">
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot filled"></span>
+                <span class="mini-dot half"></span>
+                <span class="mini-dot"></span>
+              </div>
+            </div>
+          </div>
+          <p class="mini-note">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</p>
         </div>
       </div>
     </section>
