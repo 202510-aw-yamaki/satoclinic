@@ -1,368 +1,613 @@
-<div style="width: 1440px; height: 5789px; position: relative; background: #FAFAFA">
-  <div style="width: 1440px; height: 60px; left: 0px; top: 0px; position: absolute; background: var(--color-CL-Gray-300, #E0E0E0); overflow: hidden; outline: 1px black solid; outline-offset: -1px">
-    <div style="width: 120px; height: 80px; padding: 10px; left: 0px; top: -10px; position: absolute; background: var(--color-CL-White-100, white); border-radius: 30px"></div>
-    <div style="width: 990px; height: 58px; padding-left: 10px; padding-right: 10px; padding-top: 24px; padding-bottom: 24px; left: 120px; top: 1px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-      <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 160px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      <div style="width: 112px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-    </div>
-    <div style="padding-left: 10px; padding-right: 10px; left: 1110px; top: 10px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-      <div style="width: 120px; height: 28px; border: 1px black solid"></div>
-      <div style="width: 180px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 100px; height: 34px; border: 1px black solid"></div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>佐藤医院ワイヤーフレーム</title>
+  <style>
+    :root {
+      --color-CL-Brand-Primary: #3BA7C9;
+      --color-CL-Brand-Secondary: #79C4B8;
+      --color-CL-Disabled-Bg: #EEEEEE;
+      --color-CL-Gray-100: #FAFAFA;
+      --color-CL-Gray-300: #E0E0E0;
+      --color-CL-Gray-600: #757575;
+      --color-CL-Gray-900: #2F2F2F;
+      --color-CL-White-100: #ffffff;
+      --color-CL-Accent: #19C677;
+      --color-CL-Accent-2: #C97A2A;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--color-CL-Gray-100);
+      color: var(--color-CL-Gray-900);
+    }
+
+    .page {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    header {
+      background: var(--color-CL-Gray-300);
+      border: 1px solid #000;
+      border-radius: 12px;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 140px;
+      height: 64px;
+      background: var(--color-CL-White-100);
+      border-radius: 20px;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    nav {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(10, minmax(64px, 1fr));
+      gap: 8px;
+    }
+
+    .nav-item {
+      border: 1px solid #000;
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 12px;
+      background: var(--color-CL-White-100);
+    }
+
+    .nav-item strong {
+      display: block;
+      font-size: 11px;
+      color: var(--color-CL-Gray-600);
+      margin-top: 4px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switch,
+    .cta {
+      border: 1px solid #000;
+      border-radius: 999px;
+      padding: 8px 16px;
+      min-width: 120px;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .cta {
+      background: var(--color-CL-Brand-Primary);
+      color: #fff;
+      border: 1px solid #000;
+    }
+
+    .hero {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 30px;
+      border: 1px solid #000;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 32px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .placeholder-box {
+      border: 2px dashed #000;
+      border-radius: 20px;
+      background: var(--color-CL-Gray-300);
+      padding: 16px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .hero-info {
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid #000;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .hero-highlight {
+      background: var(--color-CL-Accent);
+      color: #fff;
+      border-radius: 20px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid #000;
+    }
+
+    .tag-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--color-CL-Accent);
+      color: #fff;
+      border-radius: 999px;
+      border: 2px solid var(--color-CL-Disabled-Bg);
+      padding: 8px 14px;
+      font-weight: 700;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #000;
+      padding: 14px;
+      min-height: 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    section {
+      margin-top: 28px;
+      background: #fff;
+      border-radius: 30px;
+      border: 1px solid #000;
+      padding: 24px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 22px;
+      border-bottom: 2px solid var(--color-CL-Gray-300);
+      padding-bottom: 8px;
+    }
+
+    .notice-list,
+    .info-grid,
+    .feature-grid,
+    .cards-row {
+      display: grid;
+      gap: 16px;
+    }
+
+    .notice-list {
+      grid-template-columns: 1fr;
+    }
+
+    .notice-item {
+      background: var(--color-CL-Gray-300);
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .notice-meta {
+      display: flex;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .badge {
+      background: var(--color-CL-Brand-Secondary);
+      border-radius: 14px;
+      padding: 4px 10px;
+      border: 1px solid #000;
+      font-size: 12px;
+    }
+
+    .schedule-table {
+      background: #79C4B8;
+      border-radius: 30px;
+      padding: 20px;
+      color: #fff;
+      border: 1px solid #000;
+    }
+
+    .schedule-table .header,
+    .schedule-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .schedule-cell {
+      background: #fff;
+      color: #000;
+      border-radius: 16px;
+      padding: 10px;
+      border: 1px solid #000;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 16px;
+      border: 1px solid #000;
+      background: #fff;
+      color: #000;
+      font-size: 12px;
+    }
+
+    .legend .tag1 { background: var(--color-CL-Brand-Secondary); }
+    .legend .tag2 { background: var(--color-CL-Accent); color: #fff; }
+
+    .feature-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .feature-card {
+      background: var(--color-CL-Gray-100);
+      border-radius: 16px;
+      border: 1px solid var(--color-CL-Gray-300);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 240px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-card .placeholder-box {
+      background: #fff;
+      border-style: solid;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .cta-pill {
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: 1px solid #000;
+      background: var(--color-CL-Accent-2);
+      color: #fff;
+      font-weight: 700;
+      min-width: 180px;
+      text-align: center;
+    }
+
+    .cards-row {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid #000;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+      min-height: 260px;
+    }
+
+    .footer {
+      margin-top: 28px;
+      background: #79C4B8;
+      border-radius: 24px;
+      border: 1px solid #000;
+      padding: 20px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .footer .card {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-color: #fff;
+      box-shadow: none;
+    }
+
+    .map {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #000;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .footer-meta {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">ロゴ</div>
+      <nav aria-label="メインメニュー">
+        <div class="nav-item">メニュー①<strong>お知らせ</strong></div>
+        <div class="nav-item">メニュー②<strong>診療時間</strong></div>
+        <div class="nav-item">メニュー③<strong>特徴</strong></div>
+        <div class="nav-item">メニュー④<strong>診療科目</strong></div>
+        <div class="nav-item">メニュー⑤<strong>院長挨拶</strong></div>
+        <div class="nav-item">メニュー⑥<strong>当院について</strong></div>
+        <div class="nav-item">メニュー⑦<strong>スタッフ</strong></div>
+        <div class="nav-item">メニュー⑧<strong>アクセス</strong></div>
+        <div class="nav-item">メニュー⑨<strong>採用</strong></div>
+        <div class="nav-item">メニュー⑩<strong>問い合わせ</strong></div>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">言語切替</div>
+        <div class="cta">WEB受付</div>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="トップビジュアルと予約導線">
+      <div class="placeholder-box">画像（外観やメインビジュアル）</div>
+      <div class="hero-info">
+        <div class="hero-highlight">
+          <div>メインキャッチコピー</div>
+          <div class="tag-list">
+            <div class="tag">タグ①</div>
+            <div class="tag">タグ②</div>
+            <div class="tag">タグ③</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="placeholder-box">メニュー① 予約カード</div>
+          <div class="placeholder-box">メニュー② 予約カード</div>
+          <div class="placeholder-box">メニュー③ 予約カード</div>
+          <div class="placeholder-box">メニュー④ 予約カード</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="お知らせ">
+      <h2>おしらせ（メニュー①）</h2>
+      <div class="notice-list">
+        <div class="notice-item">
+          <span>お知らせ① 本文ダミー</span>
+          <span class="badge">NEW</span>
+        </div>
+        <div class="notice-item">
+          <span>お知らせ② 本文ダミー</span>
+          <span class="badge">重要</span>
+        </div>
+        <div class="notice-item">
+          <span>お知らせ③ 本文ダミー</span>
+          <span class="badge">更新</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="schedule" aria-label="診療時間">
+      <h2>診療時間（メニュー②）</h2>
+      <div class="schedule-table">
+        <div class="header">
+          <div class="schedule-cell">月</div>
+          <div class="schedule-cell">火</div>
+          <div class="schedule-cell">水</div>
+          <div class="schedule-cell">木</div>
+          <div class="schedule-cell">金</div>
+          <div class="schedule-cell">土</div>
+          <div class="schedule-cell">日・祝</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-cell">午前（例）</div>
+          <div class="schedule-cell">午前（例）</div>
+          <div class="schedule-cell">午前（例）</div>
+          <div class="schedule-cell">午前（例）</div>
+          <div class="schedule-cell">午前（例）</div>
+          <div class="schedule-cell">午前（例）</div>
+          <div class="schedule-cell">ー</div>
+        </div>
+        <div class="schedule-row">
+          <div class="schedule-cell">午後（例）</div>
+          <div class="schedule-cell">午後（例）</div>
+          <div class="schedule-cell">午後（例）</div>
+          <div class="schedule-cell">午後（例）</div>
+          <div class="schedule-cell">午後（例）</div>
+          <div class="schedule-cell">午後（例）</div>
+          <div class="schedule-cell">ー</div>
+        </div>
+        <div class="legend">
+          <span class="tag1">診察① 曜日別の注記</span>
+          <span class="tag2">診察② 午後のみ 等</span>
+          <span>休診日 例：日曜・祝日</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="診療の特徴">
+      <h2>特徴（メニュー③）</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="placeholder-box">画像枠（特徴①）</div>
+          <div>特徴①の説明テキストを配置</div>
+        </div>
+        <div class="feature-card">
+          <div class="placeholder-box">画像枠（特徴②）</div>
+          <div>特徴②の説明テキストを配置</div>
+        </div>
+        <div class="feature-card">
+          <div class="placeholder-box">画像枠（特徴③）</div>
+          <div>特徴③の説明テキストを配置</div>
+        </div>
+        <div class="feature-card">
+          <div class="placeholder-box">画像枠（特徴④）</div>
+          <div>特徴④の説明テキストを配置</div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <div class="cta-pill">初診の方（メニュー④）</div>
+        <div class="cta-pill">再診の方（メニュー⑤）</div>
+      </div>
+    </section>
+
+    <section aria-label="診療科目">
+      <h2>診療科目（メニュー④）</h2>
+      <div class="cards-row">
+        <div class="card">
+          <div class="placeholder-box">画像枠（科目①）</div>
+          <div>診療科目①の案内文</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（科目②）</div>
+          <div>診療科目②の案内文</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（科目③）</div>
+          <div>診療科目③の案内文</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（科目④）</div>
+          <div>診療科目④の案内文</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="院長挨拶">
+      <h2>院長挨拶（メニュー⑤）</h2>
+      <div class="cards-row">
+        <div class="card">
+          <div class="placeholder-box">画像枠（院長写真）</div>
+          <div>挨拶文のダミーテキストが入ります。</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（院長写真）</div>
+          <div>診療方針や理念などの説明を記載します。</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="当院について">
+      <h2>当院について（メニュー⑥）</h2>
+      <div class="cards-row">
+        <div class="card">
+          <div class="placeholder-box">画像枠（施設紹介①）</div>
+          <div>設備説明テキスト</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（施設紹介②）</div>
+          <div>診療内容の概要テキスト</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（設備写真）</div>
+          <div>設備や強みを箇条書きできます。</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="スタッフ紹介">
+      <h2>スタッフ紹介（メニュー⑦）</h2>
+      <div class="cards-row">
+        <div class="card">
+          <div class="placeholder-box">画像枠（スタッフ①）</div>
+          <div>スタッフ①の紹介文</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（スタッフ②）</div>
+          <div>スタッフ②の紹介文</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（スタッフ③）</div>
+          <div>スタッフ③の紹介文</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（スタッフ④）</div>
+          <div>スタッフ④の紹介文</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="アクセス">
+      <h2>アクセス（メニュー⑧）</h2>
+      <div class="cards-row">
+        <div class="card">
+          <div class="map">地図挿入予定</div>
+          <div>電車・バス・車でのアクセス情報を記載</div>
+        </div>
+        <div class="card">
+          <div class="placeholder-box">画像枠（外観写真）</div>
+          <div>最寄駅からのルートなどの説明</div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div class="placeholder-box">駐車場や目印の補足</div>
+        <div class="placeholder-box">周辺スポット案内</div>
+      </div>
+    </section>
+
+    <div class="footer" aria-label="フッター情報">
+      <div class="card">
+        <div>フッター① 医院名・住所・連絡先</div>
+        <div class="placeholder-box">ロゴ再掲</div>
+      </div>
+      <div class="card">
+        <div>フッター② SNSやリンク</div>
+        <div class="placeholder-box">各アイコン配置</div>
+      </div>
+      <div class="card">
+        <div>フッター③ 受付時間</div>
+        <div class="placeholder-box">テキスト配置</div>
+      </div>
+      <div class="card">
+        <div>フッター④ 二次情報</div>
+        <div class="placeholder-box">地図・バナーなど</div>
       </div>
     </div>
   </div>
-  <div style="width: 1200px; height: 575px; left: 120px; top: 90px; position: absolute; background: white; overflow: hidden; border-radius: 30px; outline: 1px black solid; outline-offset: -1px">
-    <div style="width: 624px; height: 475px; left: 35px; top: 20px; position: absolute; background: #E0E0E0; border-radius: 30px; border: 1px black solid"></div>
-    <div style="width: 486px; height: 483px; left: 679px; top: 20px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 30px; display: inline-flex">
-      <div style="align-self: stretch; height: 349px; padding-bottom: 35px; background: #19C677; border-radius: 30px; flex-direction: column; justify-content: center; align-items: center; gap: 35px; display: flex">
-        <div style="align-self: stretch; height: 64px; padding: 10px; background: #19C677; border: 1px black solid"></div>
-        <div style="outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 35px; display: flex">
-          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 4px var(--color-CL-Disabled-Bg, #EEEEEE) solid; outline-offset: -4px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
-          </div>
-          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 4px var(--color-CL-Disabled-Bg, #EEEEEE) solid; outline-offset: -4px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
-          </div>
-          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 4px var(--color-CL-Disabled-Bg, #EEEEEE) solid; outline-offset: -4px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; height: 135px; position: relative; background: white; border-radius: 30px; border: 1px black solid"></div>
-    </div>
-    <div style="width: 1220px; left: -10px; top: 523px; position: absolute; overflow: hidden; outline: 1px black solid; flex-direction: column; justify-content: flex-end; align-items: flex-end; display: inline-flex">
-      <div style="width: 664px; height: 26px; position: relative; background: white; border: 1px black solid"></div>
-      <div style="width: 664px; height: 26px; position: relative; background: white; border: 1px black solid"></div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 608px; left: 120px; top: 695px; position: absolute; background: #79C4B8; overflow: hidden; border-radius: 30px">
-    <div style="width: 1200px; height: 64px; padding: 10px; left: 0px; top: 32px; position: absolute; border: 1px black solid"></div>
-    <div style="width: 554px; height: 450px; left: 27.50px; top: 126px; position: absolute; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 30px; display: inline-flex">
-      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
-            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
-            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
-            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
-            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
-            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="width: 561px; left: 611.50px; top: 126px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex">
-      <div style="align-self: stretch; height: 354px; padding: 10px; background: #E0E0E0; border-radius: 30px; border: 1px black solid"></div>
-      <div style="align-self: stretch; height: 66px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 40px; display: inline-flex">
-        <div style="width: 210px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 120px; height: 34px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 210px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 100px; height: 34px; border: 1px black solid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 255px; left: 120px; top: 1333px; position: absolute; background: white; overflow: hidden; border-radius: 30px">
-    <div style="width: 1200px; height: 73px; left: 0px; top: 0px; position: absolute; border: 1px black solid"></div>
-    <div style="width: 1200px; padding-left: 50px; padding-right: 50px; left: 0px; top: 73px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-      <div style="align-self: stretch; height: 124px; background: #E0E0E0; border-radius: 30px"></div>
-      <div style="align-self: stretch; height: 29px; border: 1px black solid"></div>
-      <div style="align-self: stretch; height: 29px; padding: 10px; border: 1px black solid"></div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 773px; left: 120px; top: 1618px; position: absolute; background: #E0F5EA; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
-    <div style="width: 1200px; height: 44px; padding-left: 160px; padding-right: 160px; left: 0px; top: 30px; position: absolute; border: 1px black solid"></div>
-    <div style="width: 1144px; height: 82px; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; left: 28px; top: 104px; position: absolute; background: white; border: 1px black solid"></div>
-    <div style="width: 1200px; height: 372px; padding-left: 10px; padding-right: 10px; left: 0px; top: 216px; position: absolute; justify-content: center; align-items: flex-start; gap: 24px; display: inline-flex">
-      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
-        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
-        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
-        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
-        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
-        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
-        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
-        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
-        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
-      </div>
-    </div>
-    <div style="width: 1180px; height: 40px; left: 10px; top: 618px; position: absolute; justify-content: center; align-items: center; gap: 78px; display: inline-flex">
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
-      </div>
-    </div>
-    <div style="width: 1180px; left: 10px; top: 688px; position: absolute; background: #E0F5EA; justify-content: center; align-items: center; gap: 78px; display: inline-flex">
-      <div style="width: 220px; height: 22px; border: 1px black solid"></div>
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-      </div>
-      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-        <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 644px; left: 120px; top: 2421px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
-    <div style="width: 1200px; height: 52px; padding-left: 160px; padding-right: 160px; left: 0px; top: 20px; position: absolute; border: 1px black solid"></div>
-    <div style="padding-left: 22px; padding-right: 22px; padding-top: 13px; padding-bottom: 13px; left: 8.50px; top: 92px; position: absolute; justify-content: flex-start; align-items: center; gap: 15px; display: inline-flex">
-      <div style="width: 450px; height: 450px; padding: 10px; border-radius: 30px; border: 1px black solid"></div>
-      <div style="width: 674px; height: 506px; padding-left: 40px; padding-right: 40px; border: 1px black solid"></div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 560px; left: 120px; top: 3095px; position: absolute; background: #E0F5EA; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
-    <div style="width: 594px; height: 500px; left: 40px; top: 30px; position: absolute; overflow: hidden; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
-      <div style="width: 603px; height: 81px; padding-left: 120px; padding-right: 120px"></div>
-      <div style="width: 594px; height: 168px; border: 1px black solid"></div>
-      <div style="width: 589px; height: 214px; padding: 50px; justify-content: center; align-items: center; gap: 55px; display: inline-flex; flex-wrap: wrap; align-content: center">
-        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
-        </div>
-      </div>
-    </div>
-    <div style="width: 480px; height: 480px; padding: 12.64px; left: 680px; top: 50px; position: absolute; border-radius: 37.91px; border: 1.26px black solid"></div>
-  </div>
-  <div style="width: 1200px; height: 575px; left: 120px; top: 3685px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
-    <div style="width: 1170px; height: 53px; padding-left: 160px; padding-right: 160px; left: 10px; top: 10px; position: absolute; border: 1px black solid"></div>
-    <div style="width: 1180px; left: 10px; top: 83px; position: absolute; outline: 1px black solid; outline-offset: -1px; justify-content: flex-start; align-items: flex-start; gap: 20px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
-      <div style="width: 580px; min-height: 220px; padding: 10px; background: #EDFFF5; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
-        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
-        </div>
-      </div>
-      <div style="width: 580px; min-height: 220px; padding: 10px; background: #FFEEF9; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
-        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
-        </div>
-      </div>
-      <div style="width: 580px; min-height: 220px; padding: 10px; background: #FFEEF9; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
-        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
-        </div>
-      </div>
-      <div style="width: 580px; min-height: 220px; padding: 10px; background: #FFEEF9; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
-        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
-          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 792px; left: 120px; top: 4290px; position: absolute; background: #E0F5EA; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
-    <div style="width: 613px; left: 50px; top: 36px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 57px; display: inline-flex">
-      <div style="align-self: stretch; height: 44px; padding-left: 110px; padding-right: 110px; border: 1px black solid"></div>
-      <div style="align-self: stretch; height: 619px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 26.90px; display: flex">
-        <div style="width: 618.68px; height: 618.68px; position: relative; border-radius: 30px; border: 1.08px var(--color-CL-Gray-700, #616161) solid"></div>
-      </div>
-    </div>
-    <div style="width: 435px; height: 720px; left: 711px; top: 36px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex">
-      <div style="align-self: stretch; height: 87px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 60px; display: inline-flex">
-        <div style="width: 96px; height: 96px; position: relative; overflow: hidden">
-          <div style="width: 56px; height: 80px; left: 20px; top: 8px; position: absolute; background: black"></div>
-        </div>
-        <div style="width: 96px; height: 96px; position: relative; overflow: hidden">
-          <div style="width: 88px; height: 80px; left: 8px; top: 12px; position: absolute; background: black"></div>
-        </div>
-      </div>
-      <div style="width: 435px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; background: white; box-shadow: 0px 4.9438934326171875px 4.9438934326171875px rgba(0, 0, 0, 0.25); border-radius: 14.83px; outline: 1.24px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1.24px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 31px; display: flex">
-        <div style="align-self: stretch; height: 112px; border: 1px black solid"></div>
-        <div style="align-self: stretch; height: 168px; border: 1px black solid"></div>
-        <div style="align-self: stretch; height: 140px; border: 1px black solid"></div>
-      </div>
-      <div style="align-self: stretch; justify-content: center; align-items: center; gap: 60px; display: inline-flex">
-        <div style="width: 160px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 67px; height: 22px; border: 1px black solid"></div>
-        </div>
-        <div style="width: 160px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 112px; height: 22px; border: 1px black solid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 1200px; height: 511px; left: 120px; top: 5112px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
-    <div style="width: 1180px; padding: 20px; left: 10px; top: 10px; position: absolute; background: var(--佐藤医院, #19C677); overflow: hidden; border-radius: 30px; justify-content: space-between; align-items: center; display: inline-flex">
-      <div style="width: 600px; height: 450px; padding-top: 20px; padding-bottom: 20px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 20px; display: inline-flex">
-        <div style="align-self: stretch; padding-left: 20px; padding-right: 20px; padding-top: 1px; padding-bottom: 1px; overflow: hidden; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
-          <div style="width: 540px; height: 44px; border: 1px black solid"></div>
-          <div style="width: 540px; height: 84px; border: 1px black solid"></div>
-        </div>
-        <div style="align-self: stretch; padding-top: 30px; padding-bottom: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 4px; display: flex">
-          <div style="width: 600px; height: 108px; border: 1px black solid"></div>
-          <div style="align-self: stretch; height: 23px; padding: 10px; border: 1px black solid"></div>
-          <div style="align-self: stretch; height: 23px; border: 1px black solid"></div>
-        </div>
-        <div style="align-self: stretch; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 40px; display: inline-flex">
-          <div style="align-self: stretch; padding-left: 30px; padding-right: 30px; background: #C97A2A; border-top-left-radius: 20px; border-top-right-radius: 80px; border-bottom-right-radius: 20px; border-bottom-left-radius: 80px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 167px; height: 28px; border: 1px black solid"></div>
-          </div>
-          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
-          </div>
-        </div>
-      </div>
-      <div style="width: 568px; height: 451px; padding: 40px; overflow: hidden; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
-        <div style="width: 488px; height: 370px; background: var(--佐藤医院, #19C677); overflow: hidden; border-radius: 30px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 20px; display: flex">
-          <div style="width: 560px; flex: 1 1 0; background: #EFEFEF; border: 1px black solid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 1440px; height: 136px; left: 0px; top: 5653px; position: absolute; background: #EFEFEF; border-radius: 30px">
-    <div style="width: 200px; height: 136px; left: 75px; top: 0px; position: absolute; background: #EFEFEF; border-radius: 30px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 110px; flex: 1 1 0; border: 1px black solid"></div>
-      <div style="width: 160px; height: 26px; border: 1px black solid"></div>
-    </div>
-    <div style="left: 375px; top: 0px; position: absolute; flex-direction: column; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-      <div style="align-self: stretch; height: 58px; padding-left: 10px; padding-right: 10px; padding-top: 24px; padding-bottom: 24px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-        <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 64px; height: 42px; border: 1px black solid"></div>
-        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 160px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 112px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-      </div>
-      <div style="align-self: stretch; padding-left: 24px; padding-right: 24px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 24px; display: inline-flex">
-        <div style="width: 221px; height: 68px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 196px; height: 68px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 246px; height: 35px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
-        <div style="width: 200px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #3BA7C9; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
-          <div style="width: 152px; height: 16px; border: 1px black solid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</body>
+</html>
