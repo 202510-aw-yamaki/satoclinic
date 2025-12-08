@@ -117,19 +117,19 @@
 
     .hero-block {
       display: grid;
-      gap: 14px;
-      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+      grid-template-columns: 1.8fr 1fr;
       align-items: stretch;
     }
 
     .hero-left {
       background: #c9e6e0;
       border-radius: 12px;
-      min-height: 260px;
+      min-height: 320px;
       display: grid;
-      grid-template-rows: 1fr 100px;
-      gap: 12px;
-      padding: 16px;
+      grid-template-rows: 1fr auto;
+      gap: 14px;
+      padding: 18px;
     }
 
     .hero-banner {
@@ -138,35 +138,90 @@
       background: #ffffff;
       display: grid;
       place-items: center;
-      min-height: 200px;
+      min-height: 240px;
     }
 
     .hero-buttons {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-    }
-
-    .hero-right {
-      background: #e5f6f1;
-      border-radius: 12px;
-      padding: 16px;
-      display: grid;
       gap: 12px;
     }
 
-    .info-panel {
-      background: #d7efe8;
+    .hero-right {
+      background: #e8f9f2;
+      border-radius: 12px;
+      padding: 16px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 14px;
+      border: 1px solid var(--line);
+    }
+
+    .hero-subcopy {
+      background: #d8f2ea;
       border-radius: 10px;
       padding: 12px;
-      min-height: 120px;
+      min-height: 64px;
       border: 1px dashed var(--accent);
       display: grid;
       place-items: center;
     }
 
-    .pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .pill { background: #fff; border: 1px dashed var(--line); border-radius: 12px; height: 40px; }
+    .schedule-card {
+      background: #1eb89f;
+      color: #fff;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 6px 14px rgba(30, 184, 159, 0.18);
+      display: grid;
+      gap: 10px;
+    }
+
+    .schedule-header {
+      display: grid;
+      grid-template-columns: 110px repeat(7, 1fr);
+      align-items: center;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.16);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .schedule-days { text-align: center; font-weight: 700; }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 110px repeat(7, 1fr);
+      align-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 10px 12px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .time-label { font-weight: 800; font-size: 15px; }
+    .day-mark { text-align: center; font-weight: 900; }
+    .day-mark.off { opacity: 0.5; }
+
+    .schedule-note {
+      background: #ffffff;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      border: 1px solid var(--line);
+    }
+
+    .hero-note {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      min-height: 70px;
+      border: 1px dashed var(--line);
+    }
 
     .section-header {
       display: flex;
@@ -284,13 +339,41 @@
           </div>
         </div>
         <div class="hero-right">
-          <div class="info-panel"><!-- お知らせエリア01 --></div>
-          <div class="info-panel"><!-- お知らせエリア02 --></div>
-          <div class="pill-row">
-            <div class="pill"></div>
-            <div class="pill"></div>
-            <div class="pill"></div>
+          <div class="hero-subcopy"><!-- メインキャッチコピーサブ --></div>
+          <div class="schedule-card">
+            <div class="schedule-header">
+              <span>診療時間</span>
+              <span class="schedule-days">月</span>
+              <span class="schedule-days">火</span>
+              <span class="schedule-days">水</span>
+              <span class="schedule-days">木</span>
+              <span class="schedule-days">金</span>
+              <span class="schedule-days">土</span>
+              <span class="schedule-days">日</span>
+            </div>
+            <div class="schedule-row">
+              <span class="time-label">9時〜12時</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark off">―</span>
+            </div>
+            <div class="schedule-row">
+              <span class="time-label">14時〜19時</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark">●</span>
+              <span class="day-mark off">―</span>
+            </div>
+            <p class="schedule-note">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</p>
           </div>
+          <div class="hero-note"><!-- ヒーロー補足エリア --></div>
         </div>
       </div>
     </section>
