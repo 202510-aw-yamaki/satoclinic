@@ -61,13 +61,20 @@
     }
 
     .header-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      gap: 10px;
       border: 1px solid var(--color-border);
       border-radius: 14px;
       padding: 12px 16px;
       background: #fff;
+    }
+
+    .header-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -554,33 +561,35 @@
 <body>
   <div class="page page-header">
     <header>
-      <div class="header-shell">
-        <div class="header-top">
-          <div class="logo">ロゴ</div>
-          <div class="contact-box">
-            <div class="contact-phone">
-              <div>Tel.</div>
-              <div class="contact-info">
-                <div>00-0000-0000</div>
-                <small>平日 9:00-17:30</small>
+        <div class="header-shell">
+          <div class="header-top">
+            <div class="header-top-bar">
+              <div class="logo">ロゴ</div>
+              <div class="contact-box">
+                <div class="contact-phone">
+                  <div>Tel.</div>
+                  <div class="contact-info">
+                    <div>00-0000-0000</div>
+                    <small>平日 9:00-17:30</small>
+                  </div>
+                </div>
+                <div class="cta">WEB受付</div>
               </div>
             </div>
-            <div class="cta">WEB受付</div>
+            <nav aria-label="メインメニュー">
+              <div class="nav-item">トップページ</div> <!-- （メニュー①） -->
+              <div class="nav-item">お知らせ</div>  <!-- （メニュー②） -->
+              <div class="nav-item">診療時間</div>  <!-- （メニュー③） -->
+              <div class="nav-item">診療内容</div> <!-- （メニュー④） -->
+              <div class="nav-item">院長挨拶</div> <!-- （メニュー⑤） -->
+              <div class="nav-item">当院について</div> <!-- （メニュー⑥） -->
+              <div class="nav-item">スタッフ紹介</div> <!-- （メニュー⑦） -->
+              <div class="nav-item">アクセス</div> <!-- （メニュー⑧） -->
+              <div class="nav-item">ご予約・お問合せ</div><!-- （メニュー⑨） -->
+              <div class="nav-item">よくあるご質問</div><!-- （メニュー⑩） -->
+            </nav>
           </div>
         </div>
-        <nav aria-label="メインメニュー">
-          <div class="nav-item">トップページ</div> <!-- （メニュー①） -->
-          <div class="nav-item">お知らせ</div>  <!-- （メニュー②） -->
-          <div class="nav-item">診療時間</div>  <!-- （メニュー③） -->
-          <div class="nav-item">診療内容</div> <!-- （メニュー④） -->
-          <div class="nav-item">院長挨拶</div> <!-- （メニュー⑤） -->
-          <div class="nav-item">当院について</div> <!-- （メニュー⑥） -->
-          <div class="nav-item">スタッフ紹介</div> <!-- （メニュー⑦） -->
-          <div class="nav-item">アクセス</div> <!-- （メニュー⑧） -->
-          <div class="nav-item">ご予約・お問合せ</div><!-- （メニュー⑨） -->
-          <div class="nav-item">よくあるご質問</div><!-- （メニュー⑩） -->
-        </nav>
-      </div>
     </header>
   </div>
 
