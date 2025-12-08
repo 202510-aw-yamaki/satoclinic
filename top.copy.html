@@ -256,25 +256,17 @@
 
     .schedule-mini {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1fr;
       margin-top: 10px;
     }
 
-    .schedule-mini .slot {
-      border: 1px solid var(--color-border);
+    .schedule-mini img {
+      width: 100%;
+      height: auto;
+      display: block;
       border-radius: 12px;
-      padding: 10px;
-      background: #fff;
-      display: grid;
-      gap: 6px;
-      font-weight: 700;
+      border: 1px solid var(--color-border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-
-    .schedule-mini .slot small {
-      color: var(--color-gray-500);
-      font-weight: 500;
     }
 
     .hero-description {
@@ -638,7 +630,7 @@
           </div>
           <div class="schedule-card">
             <div class="schedule-mini" aria-label="診療時間のミニボックス">
-
+              <img src="mini_schedule.png" alt="診療時間表">
             </div>
           </div>
         </div>
