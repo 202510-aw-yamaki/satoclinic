@@ -125,16 +125,105 @@
       border: 1px solid var(--color-border);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       margin-bottom: 20px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 16px;
     }
 
     .hero-visual {
-      background: var(--color-gray-300);
-      border: 1px dashed #a0a7ad;
-      min-height: 440px;
+      background: #e0e0e0;
+      border: 1px solid var(--color-gray-300);
+      border-radius: 24px;
+      min-height: 460px;
+    }
+
+    .hero-panel {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--color-border);
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .callout {
+      background: #19c677;
+      border-radius: 20px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
+      border: 1px solid #17b26c;
+    }
+
+    .callout-bar {
+      height: 6px;
+      border-bottom: 1px solid #12a45f;
+      border-radius: 20px 20px 0 0;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .callout-body {
+      padding: 16px 20px 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .catch-copy {
       font-weight: 700;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-pill {
+      border-radius: 999px;
+      padding: 12px 24px;
+      border: 4px solid #eeeeee;
+      background: #19c677;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    .schedule-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      min-height: 130px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      padding: 16px;
+    }
+
+    .schedule-placeholder {
+      border-radius: 14px;
+      border: 1px dashed var(--color-border);
+      background: #f8f9fa;
+      height: 100%;
+    }
+
+    .hero-description {
+      grid-column: 1 / -1;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: #fff;
+      margin-top: 4px;
+      display: grid;
+      gap: 8px;
     }
 
     .info-board {
@@ -429,7 +518,29 @@
     </header>
 
     <div class="hero" aria-label="トップビジュアル">
-      <div class="hero-visual">メイン画像</div>
+      <div class="hero-content">
+        <div class="hero-visual"></div>
+        <div class="hero-panel">
+          <div class="callout">
+            <div class="callout-bar"></div>
+            <div class="callout-body">
+              <div class="catch-copy">キャッチコピー＆リードテキスト</div>
+              <div class="hero-actions">
+                <div class="hero-pill">ボタン①</div>
+                <div class="hero-pill">ボタン②</div>
+                <div class="hero-pill">ボタン③</div>
+              </div>
+            </div>
+          </div>
+          <div class="schedule-card">
+            <div class="schedule-placeholder"></div>
+          </div>
+        </div>
+        <div class="hero-description">
+          <div>説明文のタイトルや導入が入ります。</div>
+          <div>説明文の本文が入ります。説明文の本文が入ります。説明文の本文が入ります。説明文の本文が入ります。</div>
+        </div>
+      </div>
     </div>
 
     <div class="info-board" aria-label="お知らせと予約導線">
