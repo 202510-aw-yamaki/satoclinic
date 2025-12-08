@@ -1,535 +1,368 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>佐藤医院 | TOP ワイヤーフレーム（コピー）</title>
-  <style>
-    :root {
-      --surface: #f7f9f8;
-      --line: #d7e6dd;
-      --accent: #1eb89f;
-      --accent-2: #88d8c6;
-      --accent-3: #f0cde4;
-      --accent-4: #cfe8e0;
-      --accent-5: #f6efe4;
-      --text: #2b3a33;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      width: 100%;
-      font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    header {
-      width: 100%;
-      background: #ffffff;
-      border-bottom: 1px solid var(--line);
-      padding-block: 24px;
-    }
-
-    .main-container {
-      width: 100%;
-      margin: 0 auto;
-      padding-inline: 11.11vw;
-    }
-
-    @media (min-width: 1080px) {
-      .main-container {
-        padding-inline: 120px;
-      }
-    }
-
-    .header-inner {
-      display: grid;
-      grid-template-columns: 200px 1fr 220px;
-      align-items: center;
-      gap: 16px;
-      min-height: 80px;
-    }
-
-    .logo-area, .nav-area, .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-image {
-      height: 48px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .nav-area {
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 10px;
-      overflow-x: auto;
-    }
-
-    .nav-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 58px;
-      padding-inline: 16px;
-      border: 1px dashed var(--line);
-      border-radius: 12px;
-      background: #fff;
-      text-align: center;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .header-actions { justify-content: flex-end; }
-
-    .btn-ghost {
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--accent);
-      background: #fff;
-      font-weight: 700;
-      min-width: 120px;
-      text-align: center;
-    }
-
-    .btn-solid {
-      padding: 12px 16px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 800;
-      min-width: 140px;
-      text-align: center;
-    }
-
-    main { width: 100%; }
-
-    section { padding: 40px 0; }
-
-    .hero-block {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: 2fr 1fr;
-      align-items: stretch;
-    }
-
-    .hero-left {
-      background: #c9e6e0;
-      border-radius: 12px;
-      min-height: 260px;
-      display: grid;
-      grid-template-rows: 1fr 100px;
-      gap: 12px;
-      padding: 16px;
-    }
-
-    .hero-banner {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #ffffff;
-      display: grid;
-      place-items: center;
-      min-height: 200px;
-    }
-
-    .hero-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-    }
-
-    .hero-right {
-      background: #e5f6f1;
-      border-radius: 12px;
-      padding: 16px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .info-panel {
-      background: #d7efe8;
-      border-radius: 10px;
-      padding: 12px;
-      min-height: 120px;
-      border: 1px dashed var(--accent);
-      display: grid;
-      place-items: center;
-    }
-
-    .pill-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .pill { background: #fff; border: 1px dashed var(--line); border-radius: 12px; height: 40px; }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      min-width: 160px;
-      padding: 10px 16px;
-      border-left: 6px solid var(--accent);
-      background: #fff;
-      border-radius: 8px;
-      font-weight: 800;
-    }
-
-    .cards { display: flex; flex-wrap: wrap; gap: 12px; }
-    .card {
-      flex: 1 1 260px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #fff;
-      min-height: 120px;
-      padding: 12px;
-      display: grid;
-      gap: 10px;
-    }
-
-    .card-image { background: #dcefe8; border-radius: 8px; height: 120px; border: 1px dashed var(--accent-2); }
-    .card-body { background: #f2f6f4; border-radius: 8px; height: 60px; border: 1px dashed var(--line); }
-
-    .banner-wide {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #ffffff;
-      min-height: 160px;
-      padding: 12px;
-      display: grid;
-      place-items: center;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 12px;
-    }
-
-    .feature-panel {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #f8fffc;
-      min-height: 180px;
-      padding: 12px;
-    }
-    .feature-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; min-height: 140px; padding: 12px; }
-
-    .column-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; }
-    .column { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: #fff; min-height: 160px; }
-
-    .pale-block { background: #dff5ed; border: 1px solid var(--line); border-radius: 10px; min-height: 120px; padding: 10px; }
-    .pale-block.pink { background: #f4dde9; }
-    .pale-block.yellow { background: #f8f0df; }
-
-    .map-area { border: 1px solid var(--line); border-radius: 10px; background: #fff; min-height: 280px; padding: 10px; }
-
-    .footer { background: #0e9c82; color: #fff; padding: 30px 0; width: 100%; }
-    .footer-inner { display: grid; gap: 14px; }
-    .footer-line { height: 28px; border: 1px dashed rgba(255,255,255,0.4); border-radius: 8px; }
-
-    @media (max-width: 960px) {
-      .header-inner { grid-template-columns: 1fr; justify-items: center; }
-      .hero-block { grid-template-columns: 1fr; }
-      .feature-grid, .column-grid { grid-template-columns: 1fr; }
-      .pill-row { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="main-container header-inner">
-      <div class="logo-area">
-        <img src="image/Logo/Logo.png" alt="佐藤医院のロゴ" class="logo-image">
-      </div>
-      <div class="nav-area">
-        <div class="nav-chip">メニュー（ホーム）</div>
-        <div class="nav-chip">メニュー（診療内容）</div>
-        <div class="nav-chip">メニュー（担当医紹介）</div>
-        <div class="nav-chip">メニュー（予約案内）</div>
-        <div class="nav-chip">メニュー（アクセス）</div>
-        <div class="nav-chip">メニュー（お知らせ）</div>
-        <div class="nav-chip">メニュー（ブログ）</div>
-        <div class="nav-chip">メニュー（FAQ）</div>
-        <div class="nav-chip">メニュー（初めての方へ）</div>
-        <div class="nav-chip">メニュー（お問い合わせ）</div>
-        <div class="nav-chip">メニュー（採用情報）</div>
-        <div class="nav-chip">メニュー（オンライン診療）</div>
-        <div class="nav-chip">メニュー（人間ドック）</div>
-        <div class="nav-chip">メニュー（予防接種）</div>
-      </div>
-      <div class="header-actions">
-        <div class="btn-ghost">資料請求・各種案内</div>
-        <div class="btn-solid">WEB予約・お問い合わせ</div>
+<div style="width: 1440px; height: 5789px; position: relative; background: #FAFAFA">
+  <div style="width: 1440px; height: 60px; left: 0px; top: 0px; position: absolute; background: var(--color-CL-Gray-300, #E0E0E0); overflow: hidden; outline: 1px black solid; outline-offset: -1px">
+    <div style="width: 120px; height: 80px; padding: 10px; left: 0px; top: -10px; position: absolute; background: var(--color-CL-White-100, white); border-radius: 30px"></div>
+    <div style="width: 990px; height: 58px; padding-left: 10px; padding-right: 10px; padding-top: 24px; padding-bottom: 24px; left: 120px; top: 1px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+      <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 160px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      <div style="width: 112px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+    </div>
+    <div style="padding-left: 10px; padding-right: 10px; left: 1110px; top: 10px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+      <div style="width: 120px; height: 28px; border: 1px black solid"></div>
+      <div style="width: 180px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 100px; height: 34px; border: 1px black solid"></div>
       </div>
     </div>
-  </header>
-
-  <main>
-    <section>
-      <div class="main-container hero-block">
-        <div class="hero-left">
-          <div class="hero-banner">トップのメイン画像枠（外観写真などを配置）</div>
-          <div class="hero-buttons">
-            <div class="nav-chip">来院予約</div>
-            <div class="nav-chip">診療時間</div>
-            <div class="nav-chip">医師紹介</div>
-            <div class="nav-chip">アクセス案内</div>
+  </div>
+  <div style="width: 1200px; height: 575px; left: 120px; top: 90px; position: absolute; background: white; overflow: hidden; border-radius: 30px; outline: 1px black solid; outline-offset: -1px">
+    <div style="width: 624px; height: 475px; left: 35px; top: 20px; position: absolute; background: #E0E0E0; border-radius: 30px; border: 1px black solid"></div>
+    <div style="width: 486px; height: 483px; left: 679px; top: 20px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: center; gap: 30px; display: inline-flex">
+      <div style="align-self: stretch; height: 349px; padding-bottom: 35px; background: #19C677; border-radius: 30px; flex-direction: column; justify-content: center; align-items: center; gap: 35px; display: flex">
+        <div style="align-self: stretch; height: 64px; padding: 10px; background: #19C677; border: 1px black solid"></div>
+        <div style="outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 35px; display: flex">
+          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 4px var(--color-CL-Disabled-Bg, #EEEEEE) solid; outline-offset: -4px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
           </div>
-        </div>
-        <div class="hero-right">
-          <div class="info-panel">最新のお知らせを掲載します。例：インフルエンザ予防接種の予約を開始しました。</div>
-          <div class="info-panel">診療方針や医院の特色を短く紹介する枠です。例：内科・小児科の総合的な診療を行っています。</div>
-          <div class="hero-banner">院内やスタッフ紹介などのメインビジュアルを配置する枠</div>
-          <div class="hero-buttons">
-            <div class="nav-chip">問診票ダウンロード</div>
-            <div class="nav-chip">オンライン診療入口</div>
-            <div class="nav-chip">各種健診のご案内</div>
-            <div class="nav-chip">医師勤務カレンダー</div>
+          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 4px var(--color-CL-Disabled-Bg, #EEEEEE) solid; outline-offset: -4px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
           </div>
-          <div class="info-panel">お知らせエリア01：休診日やイベント告知などを掲載</div>
-          <div class="info-panel">お知らせエリア02：ワクチンや健診の最新情報を掲載</div>
-          <div class="pill-row">
-            <div class="pill">発熱外来</div>
-            <div class="pill">小児ワクチン</div>
-            <div class="pill">健康診断</div>
+          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 4px var(--color-CL-Disabled-Bg, #EEEEEE) solid; outline-offset: -4px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
           </div>
         </div>
       </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="section-header">
-          <div class="section-title">診療科目のご案内</div>
-        </div>
-        <div class="cards">
-          <div class="card">
-            <div class="card-image">外観・設備イメージ</div>
-            <div class="card-body">内科：生活習慣病から風邪まで幅広く対応</div>
-          </div>
-          <div class="card">
-            <div class="card-image">診療風景イメージ</div>
-            <div class="card-body">小児科：お子さまの体調相談や予防接種</div>
-          </div>
-          <div class="card">
-            <div class="card-image">検査機器イメージ</div>
-            <div class="card-body">健診：健康診断や各種検査のご案内</div>
-          </div>
-          <div class="card">
-            <div class="card-image">リハビリ設備イメージ</div>
-            <div class="card-body">リハビリ：理学療法士によるサポート</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="banner-wide">特集コンテンツ枠：季節の健康情報やキャンペーンを大きく紹介</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">当院の特徴01：予約から受診までの流れを簡潔に説明</div>
-        <div class="feature-panel">当院の特徴02：感染症対策や院内設備の安全性を紹介</div>
-        <div class="feature-panel">特色紹介ブロック01：専門外来や得意分野の説明</div>
-        <div class="feature-panel">特色紹介ブロック02：地域連携や訪問診療の取り組み</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">診療予約の手順：WEB・電話・窓口の利用方法</div>
-            </div>
-            <div class="card">
-              <div class="card-body">初診の流れ：受付から会計までのステップを記載</div>
-            </div>
-            <div class="card">
-              <div class="card-body">診療カード01：各診療科ごとの詳しい説明を配置</div>
-            </div>
-          </div>
-        </div>
-        <div class="column">追加情報欄：検査予約や持ち物、保険証についての注意点を整理</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="feature-grid">
-          <div class="feature-card">コラム01：季節の体調管理ポイント</div>
-          <div class="feature-card">コラム02：生活習慣の改善アドバイス</div>
-          <div class="feature-card">コラム03：お子さまの発育チェックの目安</div>
-          <div class="feature-card">コラム04：予防接種スケジュールの解説</div>
-          <div class="feature-card">ポイントカード01：スタッフ紹介や院内の雰囲気を伝える</div>
-          <div class="feature-card">ポイントカード02：よくある質問と回答のまとめ</div>
-          <div class="feature-card">ポイントカード03：各種ダウンロード資料へのリンク</div>
-          <div class="feature-card">ポイントカード04：地域イベントへの参加予定</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="feature-panel">併設施設の写真枠：リハビリ室や待合室の画像を配置</div>
-        <div class="cards">
-          <div class="card">
-            <div class="card-body">併設サービス01：フィジカルケアの詳細説明</div>
-          </div>
-          <div class="card">
-            <div class="card-body">併設サービス02：カウンセリングや栄養指導の案内</div>
-          </div>
-          <div class="card">
-            <div class="card-body">併設カード01：連携する外部施設の紹介</div>
-          </div>
-          <div class="card">
-            <div class="card-body">併設カード02：追加サービスへのリンクや問い合わせ</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="cards">
-          <div class="card">
-              <div class="card-body">連続カード01：定期的な検査結果の共有方法</div>
-          </div>
-          <div class="card">
-              <div class="card-body">連続カード02：定期的に実施する検査メニューの案内</div>
-          </div>
-        </div>
-          <div class="pale-block">補足テキストブロック：診療に関する注意事項やお願いをまとめる</div>
-        </div>
-        <div class="column">
-          <div class="feature-panel">サイド説明ブロック：診療時間、担当医スケジュールなどを一覧化</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="feature-grid">
-          <div class="feature-panel">セクション分割ブロック01：自費診療メニューの紹介</div>
-          <div class="feature-panel">セクション分割ブロック02：保険診療で対応できる内容</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">3カラム紹介01：院内設備の強み</div>
-        <div class="feature-panel">3カラム紹介02：専門スタッフの資格や経験</div>
-        <div class="feature-panel">3カラム紹介03：地域医療連携の取り組み</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">2カラム紹介01：院長からのメッセージ</div>
-        <div class="feature-panel">2カラム紹介02：スタッフからのメッセージ</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="pale-block">セクション導入テキスト：この先の詳細情報の目的を説明</div>
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">詳細カード01：検査の流れを段階的に解説</div>
-            </div>
-            <div class="card">
-              <div class="card-body">詳細カード02：料金や所要時間の目安</div>
-            </div>
-            <div class="card">
-              <div class="card-body">詳細カード03：持参いただく書類・準備</div>
-            </div>
-          </div>
-        </div>
-        <div class="column">サブカラム：関連するよくある質問や注意事項を整理</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ダブルカラムブロック01：診療設備の写真と解説</div>
-        <div class="feature-panel">ダブルカラムブロック02：患者さまの声や事例紹介</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">左ビジュアル：院内写真やスタッフ集合写真を配置</div>
-        <div class="feature-panel">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">二段カード01：診療ポリシーの要約</div>
-            </div>
-            <div class="card">
-              <div class="card-body">二段カード02：地域貢献活動の紹介</div>
-            </div>
-          </div>
-          <div class="pale-block">補足テキスト：診療に関する補足説明や注意書き</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="column">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">カードセット01：スタッフ紹介一覧</div>
-            </div>
-            <div class="card">
-              <div class="card-body">カードセット02：保険証・公費についての案内</div>
-            </div>
-          </div>
-        </div>
-        <div class="column">補足カラム：関連資料ダウンロードや外部リンクを配置</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">2カラム紹介03：診療時間と担当医表</div>
-        <div class="feature-panel">2カラム紹介04：料金表や支払い方法</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container column-grid">
-        <div class="feature-panel">アクセス画像枠：外観写真や最寄り駅からのルート図</div>
-        <div class="map-area">地図埋め込みエリア：Googleマップや駐車場案内を表示</div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="main-container footer-inner">
-      <div class="footer-line">フッター情報01：住所・電話番号などの基本情報</div>
-      <div class="footer-line">フッター情報02：診療時間と休診日</div>
-      <div class="footer-line">フッター情報03：予約・問い合わせリンク</div>
-      <div class="footer-line">フッター情報04：個人情報保護方針へのリンク</div>
-      <div class="footer-line">フッター情報05：サイトマップへの案内</div>
-      <div class="footer-line">フッター情報06：SNSや公式ブログへのリンク</div>
+      <div style="align-self: stretch; height: 135px; position: relative; background: white; border-radius: 30px; border: 1px black solid"></div>
     </div>
-  </footer>
-</body>
-</html>
+    <div style="width: 1220px; left: -10px; top: 523px; position: absolute; overflow: hidden; outline: 1px black solid; flex-direction: column; justify-content: flex-end; align-items: flex-end; display: inline-flex">
+      <div style="width: 664px; height: 26px; position: relative; background: white; border: 1px black solid"></div>
+      <div style="width: 664px; height: 26px; position: relative; background: white; border: 1px black solid"></div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 608px; left: 120px; top: 695px; position: absolute; background: #79C4B8; overflow: hidden; border-radius: 30px">
+    <div style="width: 1200px; height: 64px; padding: 10px; left: 0px; top: 32px; position: absolute; border: 1px black solid"></div>
+    <div style="width: 554px; height: 450px; left: 27.50px; top: 126px; position: absolute; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 30px; display: inline-flex">
+      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
+        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
+          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
+            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
+            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+      </div>
+      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
+        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
+          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
+            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
+            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+      </div>
+      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
+        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
+          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
+            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
+            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+      </div>
+      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
+        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
+          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
+            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
+            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+      </div>
+      <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
+        <div style="width: 554px; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
+          <div style="width: 24px; height: 24px; border-radius: 999px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
+            <div style="width: 112px; height: 26px; border: 1px black solid"></div>
+            <div style="width: 210px; height: 22px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+        <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
+          <div style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 36px; height: 18px; border: 1px black solid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 561px; left: 611.50px; top: 126px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex">
+      <div style="align-self: stretch; height: 354px; padding: 10px; background: #E0E0E0; border-radius: 30px; border: 1px black solid"></div>
+      <div style="align-self: stretch; height: 66px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 40px; display: inline-flex">
+        <div style="width: 210px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 120px; height: 34px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 210px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 100px; height: 34px; border: 1px black solid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 255px; left: 120px; top: 1333px; position: absolute; background: white; overflow: hidden; border-radius: 30px">
+    <div style="width: 1200px; height: 73px; left: 0px; top: 0px; position: absolute; border: 1px black solid"></div>
+    <div style="width: 1200px; padding-left: 50px; padding-right: 50px; left: 0px; top: 73px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+      <div style="align-self: stretch; height: 124px; background: #E0E0E0; border-radius: 30px"></div>
+      <div style="align-self: stretch; height: 29px; border: 1px black solid"></div>
+      <div style="align-self: stretch; height: 29px; padding: 10px; border: 1px black solid"></div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 773px; left: 120px; top: 1618px; position: absolute; background: #E0F5EA; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
+    <div style="width: 1200px; height: 44px; padding-left: 160px; padding-right: 160px; left: 0px; top: 30px; position: absolute; border: 1px black solid"></div>
+    <div style="width: 1144px; height: 82px; padding-left: 24px; padding-right: 24px; padding-top: 10px; padding-bottom: 10px; left: 28px; top: 104px; position: absolute; background: white; border: 1px black solid"></div>
+    <div style="width: 1200px; height: 372px; padding-left: 10px; padding-right: 10px; left: 0px; top: 216px; position: absolute; justify-content: center; align-items: flex-start; gap: 24px; display: inline-flex">
+      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
+        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
+        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
+        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
+        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
+        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
+        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 268px; min-height: 220px; padding-left: 5px; padding-right: 5px; padding-top: 24px; padding-bottom: 24px; background: var(--color-CL-White-100, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
+        <div style="align-self: stretch; height: 28px; border: 1px black solid"></div>
+        <div style="width: 232px; height: 280px; border: 1px black solid"></div>
+      </div>
+    </div>
+    <div style="width: 1180px; height: 40px; left: 10px; top: 618px; position: absolute; justify-content: center; align-items: center; gap: 78px; display: inline-flex">
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 112px; height: 22px; border: 1px black solid"></div>
+      </div>
+    </div>
+    <div style="width: 1180px; left: 10px; top: 688px; position: absolute; background: #E0F5EA; justify-content: center; align-items: center; gap: 78px; display: inline-flex">
+      <div style="width: 220px; height: 22px; border: 1px black solid"></div>
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+      </div>
+      <div style="width: 220px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--color-CL-Brand-Primary, #3BA7C9); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+        <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 644px; left: 120px; top: 2421px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
+    <div style="width: 1200px; height: 52px; padding-left: 160px; padding-right: 160px; left: 0px; top: 20px; position: absolute; border: 1px black solid"></div>
+    <div style="padding-left: 22px; padding-right: 22px; padding-top: 13px; padding-bottom: 13px; left: 8.50px; top: 92px; position: absolute; justify-content: flex-start; align-items: center; gap: 15px; display: inline-flex">
+      <div style="width: 450px; height: 450px; padding: 10px; border-radius: 30px; border: 1px black solid"></div>
+      <div style="width: 674px; height: 506px; padding-left: 40px; padding-right: 40px; border: 1px black solid"></div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 560px; left: 120px; top: 3095px; position: absolute; background: #E0F5EA; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
+    <div style="width: 594px; height: 500px; left: 40px; top: 30px; position: absolute; overflow: hidden; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
+      <div style="width: 603px; height: 81px; padding-left: 120px; padding-right: 120px"></div>
+      <div style="width: 594px; height: 168px; border: 1px black solid"></div>
+      <div style="width: 589px; height: 214px; padding: 50px; justify-content: center; align-items: center; gap: 55px; display: inline-flex; flex-wrap: wrap; align-content: center">
+        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: var(--佐藤医院, #19C677); border-radius: 999px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 144px; height: 22px; border: 1px black solid"></div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 480px; height: 480px; padding: 12.64px; left: 680px; top: 50px; position: absolute; border-radius: 37.91px; border: 1.26px black solid"></div>
+  </div>
+  <div style="width: 1200px; height: 575px; left: 120px; top: 3685px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
+    <div style="width: 1170px; height: 53px; padding-left: 160px; padding-right: 160px; left: 10px; top: 10px; position: absolute; border: 1px black solid"></div>
+    <div style="width: 1180px; left: 10px; top: 83px; position: absolute; outline: 1px black solid; outline-offset: -1px; justify-content: flex-start; align-items: flex-start; gap: 20px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+      <div style="width: 580px; min-height: 220px; padding: 10px; background: #EDFFF5; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
+        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
+        </div>
+      </div>
+      <div style="width: 580px; min-height: 220px; padding: 10px; background: #FFEEF9; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
+        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
+        </div>
+      </div>
+      <div style="width: 580px; min-height: 220px; padding: 10px; background: #FFEEF9; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
+        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
+        </div>
+      </div>
+      <div style="width: 580px; min-height: 220px; padding: 10px; background: #FFEEF9; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 12px; outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+        <div style="align-self: stretch; height: 48px; padding-left: 30px; padding-right: 30px; padding-top: 10px; padding-bottom: 10px; border: 1px black solid"></div>
+        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+          <div style="width: 120px; height: 150px; border-radius: 30px; border: 1px black solid"></div>
+          <div style="flex: 1 1 0; height: 160px; border: 1px black solid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 792px; left: 120px; top: 4290px; position: absolute; background: #E0F5EA; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
+    <div style="width: 613px; left: 50px; top: 36px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 57px; display: inline-flex">
+      <div style="align-self: stretch; height: 44px; padding-left: 110px; padding-right: 110px; border: 1px black solid"></div>
+      <div style="align-self: stretch; height: 619px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 26.90px; display: flex">
+        <div style="width: 618.68px; height: 618.68px; position: relative; border-radius: 30px; border: 1.08px var(--color-CL-Gray-700, #616161) solid"></div>
+      </div>
+    </div>
+    <div style="width: 435px; height: 720px; left: 711px; top: 36px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex">
+      <div style="align-self: stretch; height: 87px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 60px; display: inline-flex">
+        <div style="width: 96px; height: 96px; position: relative; overflow: hidden">
+          <div style="width: 56px; height: 80px; left: 20px; top: 8px; position: absolute; background: black"></div>
+        </div>
+        <div style="width: 96px; height: 96px; position: relative; overflow: hidden">
+          <div style="width: 88px; height: 80px; left: 8px; top: 12px; position: absolute; background: black"></div>
+        </div>
+      </div>
+      <div style="width: 435px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; background: white; box-shadow: 0px 4.9438934326171875px 4.9438934326171875px rgba(0, 0, 0, 0.25); border-radius: 14.83px; outline: 1.24px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -1.24px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 31px; display: flex">
+        <div style="align-self: stretch; height: 112px; border: 1px black solid"></div>
+        <div style="align-self: stretch; height: 168px; border: 1px black solid"></div>
+        <div style="align-self: stretch; height: 140px; border: 1px black solid"></div>
+      </div>
+      <div style="align-self: stretch; justify-content: center; align-items: center; gap: 60px; display: inline-flex">
+        <div style="width: 160px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 67px; height: 22px; border: 1px black solid"></div>
+        </div>
+        <div style="width: 160px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 112px; height: 22px; border: 1px black solid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 1200px; height: 511px; left: 120px; top: 5112px; position: absolute; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px">
+    <div style="width: 1180px; padding: 20px; left: 10px; top: 10px; position: absolute; background: var(--佐藤医院, #19C677); overflow: hidden; border-radius: 30px; justify-content: space-between; align-items: center; display: inline-flex">
+      <div style="width: 600px; height: 450px; padding-top: 20px; padding-bottom: 20px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 20px; display: inline-flex">
+        <div style="align-self: stretch; padding-left: 20px; padding-right: 20px; padding-top: 1px; padding-bottom: 1px; overflow: hidden; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex">
+          <div style="width: 540px; height: 44px; border: 1px black solid"></div>
+          <div style="width: 540px; height: 84px; border: 1px black solid"></div>
+        </div>
+        <div style="align-self: stretch; padding-top: 30px; padding-bottom: 4px; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 4px; display: flex">
+          <div style="width: 600px; height: 108px; border: 1px black solid"></div>
+          <div style="align-self: stretch; height: 23px; padding: 10px; border: 1px black solid"></div>
+          <div style="align-self: stretch; height: 23px; border: 1px black solid"></div>
+        </div>
+        <div style="align-self: stretch; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 40px; display: inline-flex">
+          <div style="align-self: stretch; padding-left: 30px; padding-right: 30px; background: #C97A2A; border-top-left-radius: 20px; border-top-right-radius: 80px; border-bottom-right-radius: 20px; border-bottom-left-radius: 80px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 167px; height: 28px; border: 1px black solid"></div>
+          </div>
+          <div style="width: 200px; height: 40px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #C97A2A; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+            <div style="width: 67px; height: 22px; border: 1px black solid"></div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 568px; height: 451px; padding: 40px; overflow: hidden; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
+        <div style="width: 488px; height: 370px; background: var(--佐藤医院, #19C677); overflow: hidden; border-radius: 30px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; gap: 20px; display: flex">
+          <div style="width: 560px; flex: 1 1 0; background: #EFEFEF; border: 1px black solid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 1440px; height: 136px; left: 0px; top: 5653px; position: absolute; background: #EFEFEF; border-radius: 30px">
+    <div style="width: 200px; height: 136px; left: 75px; top: 0px; position: absolute; background: #EFEFEF; border-radius: 30px; outline: 1px black solid; outline-offset: -1px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+      <div style="width: 110px; flex: 1 1 0; border: 1px black solid"></div>
+      <div style="width: 160px; height: 26px; border: 1px black solid"></div>
+    </div>
+    <div style="left: 375px; top: 0px; position: absolute; flex-direction: column; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+      <div style="align-self: stretch; height: 58px; padding-left: 10px; padding-right: 10px; padding-top: 24px; padding-bottom: 24px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+        <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 64px; height: 42px; border: 1px black solid"></div>
+        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 96px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 64px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 160px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 112px; height: 42px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+      </div>
+      <div style="align-self: stretch; padding-left: 24px; padding-right: 24px; outline: 1px black solid; outline-offset: -1px; justify-content: center; align-items: center; gap: 24px; display: inline-flex">
+        <div style="width: 221px; height: 68px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 196px; height: 68px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 246px; height: 35px; padding-top: 8px; padding-bottom: 8px; border: 1px black solid"></div>
+        <div style="width: 200px; padding-left: 24px; padding-right: 24px; padding-top: 12px; padding-bottom: 12px; background: #3BA7C9; border-radius: 999px; justify-content: center; align-items: center; gap: 10px; display: flex">
+          <div style="width: 152px; height: 16px; border: 1px black solid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
