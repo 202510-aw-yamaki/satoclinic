@@ -41,15 +41,24 @@
       margin-bottom: 20px;
     }
 
+    .header-shell {
+      display: grid;
+      gap: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 18px;
+      padding: 12px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
     .header-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border: 1px solid var(--color-border);
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 12px 16px;
       background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
 
     .logo {
@@ -105,8 +114,8 @@
       border: 1px solid var(--color-border);
       border-radius: 14px;
       padding: 10px;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      background: #f7fbfc;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
 
     .nav-item {
@@ -215,6 +224,29 @@
       height: 100%;
     }
 
+    .schedule-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .schedule-mini .slot {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 10px;
+      background: #fff;
+      display: grid;
+      gap: 6px;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .schedule-mini .slot small {
+      color: var(--color-gray-500);
+      font-weight: 500;
+    }
+
     .hero-description {
       grid-column: 1 / -1;
       border: 1px solid var(--color-border);
@@ -248,6 +280,14 @@
       color: #1f252a;
       border-color: var(--color-primary);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .info-card.secondary .info-image {
+      border: 1px dashed var(--color-border);
+      border-radius: 12px;
+      background: #f7fbfc;
+      height: 120px;
+      margin: 6px 0 12px;
     }
 
     .info-card h2 {
@@ -412,6 +452,19 @@
       text-align: center;
     }
 
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .cta-pill.dummy {
+      border-style: dashed;
+      color: var(--color-gray-500);
+      background: #fff;
+    }
+
     .cards-row {
       display: grid;
       gap: 14px;
@@ -491,30 +544,32 @@
 <body>
   <div class="page">
     <header>
-      <div class="header-top">
-        <div class="logo">ロゴ</div>
-        <div class="contact-box">
-          <div class="contact-phone">
-            <div>Tel.</div>
-            <div class="contact-info">
-              <div>0942-54-8500</div>
-              <small>月火水金 9:00-13:00 14:00-17:30 / 木土 9:00-13:00</small>
+      <div class="header-shell">
+        <div class="header-top">
+          <div class="logo">ロゴ</div>
+          <div class="contact-box">
+            <div class="contact-phone">
+              <div>Tel.</div>
+              <div class="contact-info">
+                <div>0942-54-8500</div>
+                <small>月火水金 9:00-13:00 14:00-17:30 / 木土 9:00-13:00</small>
+              </div>
             </div>
+            <div class="cta">WEB受付</div>
           </div>
-          <div class="cta">WEB受付</div>
         </div>
+        <nav aria-label="メインメニュー">
+          <div class="nav-item">お知らせ（メニュー①）</div>
+          <div class="nav-item">診療時間（メニュー②）</div>
+          <div class="nav-item">当院の特徴（メニュー③）</div>
+          <div class="nav-item">診療科目（メニュー④）</div>
+          <div class="nav-item">院長挨拶（メニュー⑤）</div>
+          <div class="nav-item">当院について（メニュー⑥）</div>
+          <div class="nav-item">スタッフ紹介（メニュー⑦）</div>
+          <div class="nav-item">アクセス（メニュー⑧）</div>
+          <div class="nav-item">問い合わせ（メニュー⑩）</div>
+        </nav>
       </div>
-      <nav aria-label="メインメニュー">
-        <div class="nav-item">お知らせ（メニュー①）</div>
-        <div class="nav-item">診療時間（メニュー②）</div>
-        <div class="nav-item">当院の特徴（メニュー③）</div>
-        <div class="nav-item">診療科目（メニュー④）</div>
-        <div class="nav-item">院長挨拶（メニュー⑤）</div>
-        <div class="nav-item">当院について（メニュー⑥）</div>
-        <div class="nav-item">スタッフ紹介（メニュー⑦）</div>
-        <div class="nav-item">アクセス（メニュー⑧）</div>
-        <div class="nav-item">問い合わせ（メニュー⑩）</div>
-      </nav>
     </header>
 
     <div class="hero" aria-label="トップビジュアル">
@@ -534,6 +589,16 @@
           </div>
           <div class="schedule-card">
             <div class="schedule-placeholder"></div>
+            <div class="schedule-mini" aria-label="診療時間のミニボックス">
+              <div class="slot">
+                <div>平日</div>
+                <small>9:00-13:00 / 14:00-17:30</small>
+              </div>
+              <div class="slot">
+                <div>木・土</div>
+                <small>9:00-13:00</small>
+              </div>
+            </div>
           </div>
         </div>
         <div class="hero-description">
@@ -551,15 +616,16 @@
           <li class="notice-item"><span class="badge">お知らせ</span><span>当院からのお知らせ（テキストが入ります）</span></li>
           <li class="notice-item"><span class="badge">当院について</span><span>当院について（テキストが入ります）</span></li>
           <li class="notice-item"><span class="badge">特徴</span><span>当院の特徴（テキストが入ります）</span></li>
+          <li class="notice-item"><span class="badge">お知らせ</span><span>最新情報を5行目まで表示します。</span></li>
         </ul>
       </div>
       <div class="info-card secondary">
         <h2>診療予約・診療時間（メニュー②）</h2>
+        <div class="info-image"></div>
         <div class="info-actions">
           <div class="pill-button">初めての方（メニュー④）</div>
           <div class="pill-button">再診の方（メニュー⑤）</div>
         </div>
-        <div class="placeholder-box">TEL: 000-000-00000<br>診療時間 : 00:00〜00:00 / 00:00〜00:00</div>
       </div>
     </div>
 
@@ -597,8 +663,12 @@
       </div>
     </section>
 
-    <section aria-label="当院の特徴">
-      <h2>当院の特徴（メニュー③）</h2>
+    <section aria-label="当院の特徴と診療科目">
+      <h2>当院の特徴・診療科目（メニュー③・④）</h2>
+      <div class="hero-description" style="margin-bottom: 12px;">
+        <div>地域に根ざした診療と幅広い診療科目で、患者さまに寄り添う医療を提供します。</div>
+        <div>当院の特徴と診療科目をひとつのボックスにまとめています。必要な情報へすぐにアクセスしてください。</div>
+      </div>
       <div class="feature-grid">
         <div class="feature-card">
           <div class="placeholder-box">画像枠（特徴①）</div>
@@ -621,35 +691,14 @@
           <div>佐藤院長はこれまで大学病院の救急医療に従事しており、その経験を活かして診療しています。</div>
         </div>
       </div>
-      <div class="cta-row">
+      <div class="cta-grid">
+        <div class="cta-pill">内科</div>
+        <div class="cta-pill">外科</div>
+        <div class="cta-pill">小児科</div>
+        <div class="cta-pill">形成外科</div>
+        <div class="cta-pill dummy">ダミーカード</div>
         <div class="cta-pill">診療予約 WEB（メニュー②）</div>
         <div class="cta-pill">初診 新患（メニュー⑤）</div>
-      </div>
-    </section>
-
-    <section aria-label="診療科目">
-      <h2>診療科目（メニュー④）</h2>
-      <div class="cards-row">
-        <div class="card">
-          <div class="placeholder-box">画像枠（科目①）</div>
-          <div>内科</div>
-          <div>診療科目①の案内文</div>
-        </div>
-        <div class="card">
-          <div class="placeholder-box">画像枠（科目②）</div>
-          <div>外科</div>
-          <div>診療科目②の案内文</div>
-        </div>
-        <div class="card">
-          <div class="placeholder-box">画像枠（科目③）</div>
-          <div>小児科</div>
-          <div>診療科目③の案内文</div>
-        </div>
-        <div class="card">
-          <div class="placeholder-box">画像枠（科目④）</div>
-          <div>形成外科</div>
-          <div>診療科目④の案内文</div>
-        </div>
       </div>
     </section>
 
