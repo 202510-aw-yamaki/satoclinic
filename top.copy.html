@@ -32,6 +32,9 @@
       width: 100%;
       background: #ffffff;
       border-bottom: 1px solid var(--line);
+
+      padding-block: 24px;
+ main
     }
 
     .main-container {
@@ -48,7 +51,10 @@
 
     .header-inner {
       display: grid;
+
+      grid-template-columns: 200px 1fr 220px;
       grid-template-columns: 180px 1fr 200px;
+      main
       align-items: center;
       gap: 16px;
       min-height: 80px;
@@ -60,6 +66,13 @@
       gap: 10px;
     }
 
+
+    .logo-image {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+
     .logo-placeholder {
       width: 160px;
       height: 48px;
@@ -69,21 +82,39 @@
       place-items: center;
       font-weight: 700;
       background: #fff;
+main
     }
 
     .nav-area {
       justify-content: center;
+
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .nav-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 58px;
+      padding-inline: 16px;
+
       flex-wrap: wrap;
     }
 
     .nav-chip {
       min-width: 120px;
       padding: 12px 14px;
+main
       border: 1px dashed var(--line);
       border-radius: 12px;
       background: #fff;
       text-align: center;
       font-weight: 700;
+
+      white-space: nowrap;
+ main
     }
 
     .header-actions { justify-content: flex-end; }
@@ -247,10 +278,10 @@
   <header>
     <div class="main-container header-inner">
       <div class="logo-area">
-        <div class="logo-placeholder">ロゴ</div>
+
+        <img src="image/Logo/Logo.png" alt="佐藤医院のロゴ" class="logo-image">
       </div>
       <div class="nav-area">
-<<<<<<< HEAD
         <div class="nav-chip">ここにメニュー</div>
         <div class="nav-chip">ここにメニュー</div>
         <div class="nav-chip">ここにメニュー</div>
@@ -259,16 +290,21 @@
       <div class="header-actions">
         <div class="btn-ghost">ここにボタン</div>
         <div class="btn-solid">ここにボタン</div>
-=======
         <div class="nav-chip"><!-- ナビゲーションメニュー01 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー02 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー03 --></div>
         <div class="nav-chip"><!-- ナビゲーションメニュー04 --></div>
+        <div class="nav-chip"><!-- ナビゲーションメニュー05 --></div>
+        <div class="nav-chip"><!-- ナビゲーションメニュー06 --></div>
+        <div class="nav-chip"><!-- ナビゲーションメニュー07 --></div>
+        <div class="nav-chip"><!-- ナビゲーションメニュー08 --></div>
+        <div class="nav-chip"><!-- ナビゲーションメニュー09 --></div>
+        <div class="nav-chip"><!-- ナビゲーションメニュー10 --></div>
+
       </div>
       <div class="header-actions">
         <div class="btn-ghost"><!-- ヘッダー補助ボタン --></div>
         <div class="btn-solid"><!-- ヘッダーメインCTAボタン --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </div>
   </header>
@@ -277,7 +313,6 @@
     <section>
       <div class="main-container hero-block">
         <div class="hero-left">
-<<<<<<< HEAD
           <div class="hero-banner">ここに画像</div>
           <div class="hero-buttons">
             <div class="nav-chip">ここにボタン</div>
@@ -289,7 +324,6 @@
         <div class="hero-right">
           <div class="info-panel">ここに本文</div>
           <div class="info-panel">ここに本文</div>
-=======
           <div class="hero-banner"><!-- ヒーロー画像・ビジュアル --></div>
           <div class="hero-buttons">
             <div class="nav-chip"><!-- ヒーロー導線ボタン01 --></div>
@@ -301,7 +335,6 @@
         <div class="hero-right">
           <div class="info-panel"><!-- お知らせエリア01 --></div>
           <div class="info-panel"><!-- お知らせエリア02 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
           <div class="pill-row">
             <div class="pill"></div>
             <div class="pill"></div>
@@ -314,26 +347,6 @@
     <section>
       <div class="main-container">
         <div class="section-header">
-<<<<<<< HEAD
-          <div class="section-title">ここにセクション名</div>
-        </div>
-        <div class="cards">
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-          </div>
-          <div class="card">
-            <div class="card-image">ここに画像</div>
-            <div class="card-body">ここに本文</div>
-=======
           <div class="section-title"><!-- セクションタイトル --></div>
         </div>
         <div class="cards">
@@ -352,7 +365,6 @@
           <div class="card">
             <div class="card-image"><!-- カード画像04 --></div>
             <div class="card-body"><!-- カード本文04 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
           </div>
         </div>
       </div>
@@ -360,23 +372,16 @@
 
     <section>
       <div class="main-container">
-<<<<<<< HEAD
-        <div class="banner-wide">ここに本文</div>
-=======
-        <div class="banner-wide"><!-- ワイド告知・リード文 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
-<<<<<<< HEAD
+
         <div class="feature-panel">ここに本文</div>
         <div class="feature-panel">ここに本文</div>
-=======
         <div class="feature-panel"><!-- 特色紹介ブロック01 --></div>
         <div class="feature-panel"><!-- 特色紹介ブロック02 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </section>
 
@@ -385,7 +390,6 @@
         <div class="column">
           <div class="cards">
             <div class="card">
-<<<<<<< HEAD
               <div class="card-body">ここに本文</div>
             </div>
             <div class="card">
@@ -393,7 +397,6 @@
             </div>
             <div class="card">
               <div class="card-body">ここに本文</div>
-=======
               <div class="card-body"><!-- 診療カード01 --></div>
             </div>
             <div class="card">
@@ -401,16 +404,10 @@
             </div>
             <div class="card">
               <div class="card-body"><!-- 診療カード03 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
             </div>
           </div>
         </div>
         <div class="column">
-<<<<<<< HEAD
-          <div class="banner-wide">ここに画像</div>
-=======
-          <div class="banner-wide"><!-- 右カラムビジュアル --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
         </div>
       </div>
     </section>
@@ -418,24 +415,20 @@
     <section>
       <div class="main-container">
         <div class="feature-grid">
-<<<<<<< HEAD
           <div class="feature-card">ここに本文</div>
           <div class="feature-card">ここに本文</div>
           <div class="feature-card">ここに本文</div>
           <div class="feature-card">ここに本文</div>
-=======
           <div class="feature-card"><!-- ポイントカード01 --></div>
           <div class="feature-card"><!-- ポイントカード02 --></div>
           <div class="feature-card"><!-- ポイントカード03 --></div>
           <div class="feature-card"><!-- ポイントカード04 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
         </div>
       </div>
     </section>
 
     <section>
       <div class="main-container column-grid">
-<<<<<<< HEAD
         <div class="feature-panel">ここに画像</div>
         <div class="cards">
           <div class="card">
@@ -443,7 +436,6 @@
           </div>
           <div class="card">
             <div class="card-body">ここに本文</div>
-=======
         <div class="feature-panel"><!-- 大きめビジュアル枠 --></div>
         <div class="cards">
           <div class="card">
@@ -451,7 +443,6 @@
           </div>
           <div class="card">
             <div class="card-body"><!-- 併設カード02 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
           </div>
         </div>
       </div>
@@ -462,28 +453,6 @@
         <div class="column">
           <div class="cards">
             <div class="card">
-<<<<<<< HEAD
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
-          <div class="pale-block">ここに本文</div>
-        </div>
-        <div class="column">
-          <div class="feature-panel">ここに本文</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container">
-        <div class="feature-grid">
-          <div class="feature-panel">ここに本文</div>
-          <div class="feature-panel">ここに本文</div>
-        </div>
-=======
               <div class="card-body"><!-- 連続カード01 --></div>
             </div>
           <div class="card">
@@ -512,45 +481,17 @@
         <div class="feature-panel"><!-- 3カラム紹介01 --></div>
         <div class="feature-panel"><!-- 3カラム紹介02 --></div>
         <div class="feature-panel"><!-- 3カラム紹介03 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
-<<<<<<< HEAD
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="main-container feature-grid">
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-=======
-        <div class="feature-panel"><!-- 2カラム紹介01 --></div>
-        <div class="feature-panel"><!-- 2カラム紹介02 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </section>
 
     <section>
       <div class="main-container column-grid">
         <div class="column">
-<<<<<<< HEAD
-          <div class="pale-block">ここに本文</div>
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-=======
           <div class="pale-block"><!-- セクション導入テキスト --></div>
           <div class="cards">
             <div class="card">
@@ -561,47 +502,21 @@
             </div>
             <div class="card">
               <div class="card-body"><!-- 詳細カード03 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
             </div>
           </div>
         </div>
         <div class="column">
-<<<<<<< HEAD
-          <div class="banner-wide">ここに画像</div>
-=======
-          <div class="banner-wide"><!-- イメージ画像 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
         </div>
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
-<<<<<<< HEAD
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-=======
-        <div class="feature-panel"><!-- ダブルカラムブロック01 --></div>
-        <div class="feature-panel"><!-- ダブルカラムブロック02 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
-<<<<<<< HEAD
-        <div class="feature-panel">ここに画像</div>
-        <div class="feature-panel">
-          <div class="cards">
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-            </div>
-          </div>
-          <div class="pale-block">ここに本文</div>
-=======
         <div class="feature-panel"><!-- 左ビジュアル --></div>
         <div class="feature-panel">
           <div class="cards">
@@ -613,7 +528,6 @@
             </div>
           </div>
           <div class="pale-block"><!-- 補足テキスト --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
         </div>
       </div>
     </section>
@@ -623,66 +537,47 @@
         <div class="column">
           <div class="cards">
             <div class="card">
-<<<<<<< HEAD
-              <div class="card-body">ここに本文</div>
-            </div>
-            <div class="card">
-              <div class="card-body">ここに本文</div>
-=======
               <div class="card-body"><!-- カードセット01 --></div>
             </div>
             <div class="card">
               <div class="card-body"><!-- カードセット02 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
             </div>
           </div>
         </div>
         <div class="column">
-<<<<<<< HEAD
-          <div class="feature-panel">ここに本文</div>
-=======
-          <div class="feature-panel"><!-- カラム説明ブロック --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
         </div>
       </div>
     </section>
 
     <section>
       <div class="main-container feature-grid">
-<<<<<<< HEAD
-        <div class="feature-panel">ここに本文</div>
-        <div class="feature-panel">ここに本文</div>
-=======
         <div class="feature-panel"><!-- 2カラム紹介03 --></div>
         <div class="feature-panel"><!-- 2カラム紹介04 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
+        <div class="feature-panel">ここに本文</div>
+        <div class="feature-panel">ここに本文</div>
+        <div class="feature-panel"><!-- 2カラム紹介03 --></div>
+        <div class="feature-panel"><!-- 2カラム紹介04 --></div>
       </div>
     </section>
 
     <section>
       <div class="main-container column-grid">
-<<<<<<< HEAD
-        <div class="feature-panel">ここに画像</div>
-        <div class="map-area">ここに地図</div>
-=======
-        <div class="feature-panel"><!-- アクセス画像枠 --></div>
-        <div class="map-area"><!-- 地図埋め込みエリア --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="main-container footer-inner">
-<<<<<<< HEAD
-      <div class="footer-line">ここにフッター情報</div>
-      <div class="footer-line">ここにフッター情報</div>
-      <div class="footer-line">ここにフッター情報</div>
-=======
       <div class="footer-line"><!-- フッター情報01 --></div>
       <div class="footer-line"><!-- フッター情報02 --></div>
       <div class="footer-line"><!-- フッター情報03 --></div>
->>>>>>> origin/codex/understand-structure-of-top.copy.html-ohwxdg
+
+      <div class="footer-line">ここにフッター情報</div>
+      <div class="footer-line">ここにフッター情報</div>
+      <div class="footer-line">ここにフッター情報</div>
+
+      <div class="footer-line"><!-- フッター情報01 --></div>
+      <div class="footer-line"><!-- フッター情報02 --></div>
     </div>
   </footer>
 </body>
