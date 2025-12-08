@@ -117,8 +117,8 @@
     }
 
     nav {
-      display: grid;
-      grid-template-columns: repeat(9, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
       border: 1px solid var(--color-border);
       border-radius: 14px;
@@ -130,11 +130,12 @@
     .nav-item {
       border: 1px solid var(--color-border);
       border-radius: 10px;
-      padding: 10px 6px;
+      padding: 10px 1px;
       text-align: center;
       font-size: 12px;
       background: var(--color-gray-100);
       line-height: 1.4;
+      width: fit-content;
     }
 
     .hero {
