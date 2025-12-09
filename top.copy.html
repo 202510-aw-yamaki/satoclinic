@@ -578,6 +578,81 @@
       gap: 14px;
     }
 
+    .director-greeting {
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--color-border);
+      padding: 32px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .director-greeting__header {
+      text-align: center;
+    }
+
+    .director-greeting__title {
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      margin: 0;
+      color: #1f252a;
+    }
+
+    .director-greeting__body {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .director-greeting__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .director-greeting__image img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 24px;
+      padding: 12px;
+      border: 1px solid #000;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .director-greeting__text {
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 700;
+      color: #1f252a;
+      display: grid;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .director-greeting__body {
+        grid-template-columns: 1fr;
+      }
+
+      .director-greeting {
+        padding: 24px 20px;
+      }
+
+      .director-greeting__image img {
+        max-width: 100%;
+      }
+
+      .director-greeting__title {
+        font-size: 32px;
+      }
+    }
+
     .staff-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -832,15 +907,19 @@
     </section>
 
     <section aria-label="院長挨拶">
-      <h2>院長挨拶（メニュー⑤）</h2>
-      <div class="doctor-intro">
-        <div class="card">
-          <div class="placeholder-box">画像枠（院長写真）</div>
-          <div>挨拶文のダミーテキストが入ります。</div>
+      <div class="director-greeting">
+        <div class="director-greeting__header">
+          <h2 class="director-greeting__title">院長挨拶</h2>
         </div>
-        <div class="card">
-          <div class="placeholder-box">画像枠（院長写真）</div>
-          <div>診療方針や理念などの説明を記載します。</div>
+        <div class="director-greeting__body">
+          <div class="director-greeting__image">
+            <img src="image/Doctor_Image/院長：佐藤太郎.jpg" alt="院長 佐藤太郎">
+          </div>
+          <div class="director-greeting__text">
+            <div>こんにちは。佐藤医院の院⾧、佐藤太郎と申します。<br>当院のホームページをご覧いただき、ありがとうございます。<br>佐藤医院では、「地域に根ざした医療」をモットーに、<br>患者様一人ひとりに寄り添った医療を提供することを目指しております。<br>日常的な健康管理から生活習慣病の予防、<br>さらには専門的な診断や治療まで、幅広い内科診療を行い、<br>地域の皆様の健康を支える役割を担っていきたいと考えております。</div>
+            <div>私たちは、患者様の不安を少しでも軽減し、<br>安心して診療を受けていただけるよう、<br>わかりやすい説明と丁寧な対応を心掛けております。<br>また、近隣の医療機関とも連携し、<br>必要に応じて高度医療へのアクセスもサポートいたします。<br>どんな小さな不調でも、どうぞお気軽にご相談ください。</div>
+            <div>これからも、患者様の健康を第一に考え、<br>地域の皆様に信頼される医療機関であり続けるため、<br>スタッフ一同努力してまいります。どうぞよろしくお願いいたします。<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　佐藤医院<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　院長 佐藤太郎</div>
+          </div>
         </div>
       </div>
     </section>
