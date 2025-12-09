@@ -339,18 +339,33 @@
       border-radius: 30px;
       padding: 14px 16px;
       border: 1px solid var(--color-border);
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 10px 14px;
+      display: flex;
       align-items: center;
+      gap: 14px;
       font-size: 13px;
+    }
+
+    .notice-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .notice-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      flex-shrink: 0;
     }
 
     .notice-meta {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 2px;
       align-items: flex-start;
+      min-width: 0;
     }
 
     .badge {
@@ -384,6 +399,35 @@
     .notice-desc {
       color: #4a4f55;
       line-height: 1.6;
+    }
+
+    .notice-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .notice-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      min-width: 56px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .notice-chip--subject {
+      background: #79C4B8;
+    }
+
+    .notice-chip--normal {
+      background: #19C677;
     }
 
     .notice-link {
@@ -661,108 +705,68 @@
         <h2>お知らせ（メニュー①）</h2>
         <ul class="notice-list">
           <li class="notice-item">
-            <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-              <div style="width: 100%; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-                <img style="width: 24px; height: 24px; border-radius: 999px" src="https://placehold.co/24x24" />
-                <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-                  <div style="color: var(--color-CL-Gray-900, #212121); font-size: 16px; font-family: Noto Sans JP; font-weight: 400; line-height: 26px; word-wrap: break-word">日付を入れます</div>
-                  <div style="color: var(--color-CL-Gray-700, #616161); font-size: 14px; font-family: Noto Sans JP; font-weight: 400; line-height: 22px; word-wrap: break-word">インフルエンザ予防接種について</div>
-                </div>
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
               </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">担当科</div>
-                </div>
-              </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">通常系</div>
-                </div>
-              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
             </div>
           </li>
           <li class="notice-item">
-            <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-              <div style="width: 100%; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-                <img style="width: 24px; height: 24px; border-radius: 999px" src="https://placehold.co/24x24" />
-                <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-                  <div style="color: var(--color-CL-Gray-900, #212121); font-size: 16px; font-family: Noto Sans JP; font-weight: 400; line-height: 26px; word-wrap: break-word">日付を入れます</div>
-                  <div style="color: var(--color-CL-Gray-700, #616161); font-size: 14px; font-family: Noto Sans JP; font-weight: 400; line-height: 22px; word-wrap: break-word">インフルエンザ予防接種について</div>
-                </div>
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
               </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">担当科</div>
-                </div>
-              </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">通常系</div>
-                </div>
-              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
             </div>
           </li>
           <li class="notice-item">
-            <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-              <div style="width: 100%; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-                <img style="width: 24px; height: 24px; border-radius: 999px" src="https://placehold.co/24x24" />
-                <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-                  <div style="color: var(--color-CL-Gray-900, #212121); font-size: 16px; font-family: Noto Sans JP; font-weight: 400; line-height: 26px; word-wrap: break-word">日付を入れます</div>
-                  <div style="color: var(--color-CL-Gray-700, #616161); font-size: 14px; font-family: Noto Sans JP; font-weight: 400; line-height: 22px; word-wrap: break-word">インフルエンザ予防接種について</div>
-                </div>
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
               </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">担当科</div>
-                </div>
-              </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">通常系</div>
-                </div>
-              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
             </div>
           </li>
           <li class="notice-item">
-            <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-              <div style="width: 100%; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-                <img style="width: 24px; height: 24px; border-radius: 999px" src="https://placehold.co/24x24" />
-                <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-                  <div style="color: var(--color-CL-Gray-900, #212121); font-size: 16px; font-family: Noto Sans JP; font-weight: 400; line-height: 26px; word-wrap: break-word">日付を入れます</div>
-                  <div style="color: var(--color-CL-Gray-700, #616161); font-size: 14px; font-family: Noto Sans JP; font-weight: 400; line-height: 22px; word-wrap: break-word">インフルエンザ予防接種について</div>
-                </div>
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
               </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">担当科</div>
-                </div>
-              </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">通常系</div>
-                </div>
-              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
             </div>
           </li>
           <li class="notice-item">
-            <div style="align-self: stretch; height: 66px; padding: 10px; position: relative; justify-content: flex-end; align-items: flex-start; display: inline-flex">
-              <div style="width: 100%; min-height: 40px; padding-left: 16px; padding-right: 16px; padding-top: 8px; padding-bottom: 8px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 30px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex">
-                <img style="width: 24px; height: 24px; border-radius: 999px" src="https://placehold.co/24x24" />
-                <div style="flex: 1 1 0; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: inline-flex">
-                  <div style="color: var(--color-CL-Gray-900, #212121); font-size: 16px; font-family: Noto Sans JP; font-weight: 400; line-height: 26px; word-wrap: break-word">日付を入れます</div>
-                  <div style="color: var(--color-CL-Gray-700, #616161); font-size: 14px; font-family: Noto Sans JP; font-weight: 400; line-height: 22px; word-wrap: break-word">インフルエンザ予防接種について</div>
-                </div>
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
               </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--color-CL-Brand-Secondary, #79C4B8); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">担当科</div>
-                </div>
-              </div>
-              <div style="width: 108px; min-width: 56px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div data-プロパティ1="L" style="flex: 1 1 0; height: 26px; min-width: 56px; padding-left: 8px; padding-right: 8px; padding-top: 4px; padding-bottom: 4px; background: var(--佐藤医院, #19C677); border-top-left-radius: 80px; border-top-right-radius: 20px; border-bottom-right-radius: 80px; border-bottom-left-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: flex">
-                  <div style="color: var(--color-CL-White-100, white); font-size: 12px; font-family: Noto Sans JP; font-weight: 400; line-height: 18px; word-wrap: break-word">通常系</div>
-                </div>
-              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
             </div>
           </li>
         </ul>
