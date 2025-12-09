@@ -396,55 +396,11 @@
       border: 1px solid #1c6279;
     }
 
-    .schedule-table .header,
-    .schedule-row {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    .schedule-cell {
-      background: #fff;
-      color: #1f252a;
-      border-radius: 30px;
-      padding: 10px 6px;
-      border: 1px solid var(--color-border);
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .legend {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      border-radius: 30px;
-      border: 1px solid #fff;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .legend .tag1 {
-      background: #b7e4e0;
-      color: #1f252a;
-      border-color: #b7e4e0;
-    }
-
-    .legend .tag2 {
-      background: #fff;
-      color: #1f252a;
-      border-color: #fff;
+    .schedule-table img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
     }
 
     .feature-grid {
@@ -681,40 +637,7 @@
     <section aria-label="診療時間">
       <h2>診療時間（メニュー②）</h2>
       <div class="schedule-table">
-        <div class="header">
-          <div>月</div>
-          <div>火</div>
-          <div>水</div>
-          <div>木</div>
-          <div>金</div>
-          <div>土</div>
-          <div>日</div>
-        </div>
-        <div class="schedule-row">
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">－</div>
-        </div>
-        <div class="schedule-row">
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">－</div>
-          <div class="schedule-cell">●</div>
-          <div class="schedule-cell">－</div>
-          <div class="schedule-cell">－</div>
-        </div>
-        <div class="legend">
-          <span class="tag1">●午前診療</span>
-          <span class="tag2">●午後診療</span>
-          <span>午後は14:00〜17:30</span>
-          <span>休診日/日曜・祝日</span>
-          <span>木曜日と土曜午後休診</span>
-        </div>
+        <img src="schedule.png" alt="診療時間表">
       </div>
     </section>
 
