@@ -1081,30 +1081,130 @@
 
     .footer {
       margin-top: 24px;
-      background: #f5f7f8;
-      border: 1px solid var(--color-border);
+      background: #EFEFEF;
       border-radius: 30px;
-      padding: 18px;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-      align-items: start;
+      padding: 8px 24px 16px;
     }
 
-    .footer .branding {
+    .footer__inner {
+      max-width: 1440px;
+      margin: 0 auto;
       display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer__brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer__brand-card {
+      width: 200px;
+      height: 136px;
+      background: #EFEFEF;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer__logo {
+      max-width: 160px;
+      height: auto;
+      display: block;
+    }
+
+    .footer__copyright {
+      color: #111111;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .footer__main {
+      display: flex;
+      flex-direction: column;
       gap: 8px;
     }
 
-    .footer .cta-row {
-      justify-content: flex-start;
-      margin: 0;
-      gap: 10px;
+    .footer__nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 16px 10px 8px;
     }
 
-    .footer .cta-pill {
-      min-width: 0;
-      padding: 10px 16px;
+    .footer__nav-item {
+      color: #111111;
+      font-size: 16px;
+      line-height: 26px;
+      text-decoration: none;
+    }
+
+    .footer__nav-item:hover {
+      opacity: 0.8;
+    }
+
+    .footer__info-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 4px 24px 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer__info-block {
+      color: #000;
+      font-size: 16px;
+      line-height: 26px;
+      text-align: left;
+    }
+
+    .footer__web-reserve {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      min-width: 200px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #3BA7C9;
+      color: #FFFFFF;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .footer__inner {
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+      }
+
+      .footer__brand {
+        justify-content: center;
+      }
+
+      .footer__nav-row {
+        justify-content: center;
+      }
+
+      .footer__info-row {
+        justify-content: center;
+        padding: 8px 12px;
+      }
+
+      .footer__web-reserve {
+        font-size: 20px;
+        min-width: 180px;
+      }
     }
 
     /* アクセスセクション全体 */
@@ -1644,18 +1744,43 @@
     </section>
 
     <div class="footer" aria-label="フッター情報">
-      <div class="branding">
-        <div class="logo">
-          <img src="image/Logo/Logo.png" alt="佐藤クリニックのロゴ">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-card">
+            <img class="footer__logo" src="image/Logo/Logo.png" alt="佐藤医院のロゴ">
+            <div class="footer__copyright">©2025　佐藤医院</div>
+          </div>
         </div>
-        <div>佐藤クリニック<br>佐賀県鳥栖市蔵上3-139 TEL/FAX 0000-00-00</div>
-      </div>
-      <div>
-        <div class="cta-row">
-          <div class="cta-pill">診療予約（メニュー②）</div>
-          <div class="cta-pill">お問合せ</div>
+
+        <div class="footer__main">
+          <div class="footer__nav-row">
+            <a class="footer__nav-item" href="#">トップページ</a>
+            <a class="footer__nav-item" href="#">おしらせ</a>
+            <a class="footer__nav-item" href="#">診療時間</a>
+            <a class="footer__nav-item" href="#">診療内容</a>
+            <a class="footer__nav-item" href="#">院長挨拶</a>
+            <a class="footer__nav-item" href="#">当院について</a>
+            <a class="footer__nav-item" href="#">スタッフ紹介</a>
+            <a class="footer__nav-item" href="#">アクセス</a>
+            <a class="footer__nav-item" href="#">ご予約・お問合せ</a>
+            <a class="footer__nav-item" href="#">よくあるご質問</a>
+          </div>
+
+          <div class="footer__info-row">
+            <div class="footer__info-block">
+              〒123-4567<br>
+              東京都台東区上野0丁目 ０－０
+            </div>
+            <div class="footer__info-block">
+              電話番号：00-0000-0000<br>
+              ファックス：00-0000-0000
+            </div>
+            <div class="footer__info-block">
+              Eメール：info@sato-clinic-test.jp
+            </div>
+            <a class="footer__web-reserve" href="#">Web予約</a>
+          </div>
         </div>
-        <div class="placeholder-box" style="margin-top: 10px;">佐藤医院のサイトマップ</div>
       </div>
     </div>
   </div>
