@@ -22,6 +22,11 @@
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
     }
 
+    html,
+    body {
+      min-width: 840px;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -29,19 +34,49 @@
       color: #1f252a;
     }
 
-    .page {
-      max-width: 1200px;
+    .layout-inner {
+      width: clamp(840px, calc(100% - 240px), 1200px);
       margin: 0 auto;
-      padding: 16px 20px 48px;
+      padding-inline: clamp(16px, 3vw, 32px);
+    }
+
+    @media (max-width: 1080px) {
+      .layout-inner {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        padding-inline: clamp(16px, 4vw, 24px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      html,
+      body {
+        min-width: 0;
+      }
+
+      .layout-inner {
+        width: 100%;
+        padding-inline: 16px;
+      }
+    }
+
+    .page {
+      width: 100%;
+      padding: 16px 0 48px;
     }
 
     .page-header {
-      max-width: 1440px;
-      padding: 16px 20px 20px;
+      width: 100%;
+      padding: 12px 0 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
       background-color: #EFEFEF;
+    }
+
+    .page-header__inner {
+      display: block;
     }
 
     header {
@@ -532,8 +567,7 @@
     }
 
     .features-section__container {
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
       background: #E0F5EA;
       border-radius: 30px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -937,17 +971,17 @@
     }
 
     .staff-section__inner {
-      max-width: 1200px;
+      width: 100%;
       margin: 0 auto;
       background: #fff;
       border-radius: 30px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       border: 1px solid var(--color-border);
-      padding: 20px 0 24px;
+      padding: 20px clamp(16px, 4vw, 32px) 24px;
     }
 
     .staff-section__header {
-      padding: 10px 160px 0;
+      padding: 10px clamp(24px, 8vw, 160px) 0;
       margin-bottom: 24px;
     }
 
@@ -1082,12 +1116,12 @@
     .footer {
       margin-top: 24px;
       background: #EFEFEF;
-      border-radius: 30px;
-      padding: 8px 24px 16px;
+      padding: 12px 0 20px;
+      width: 100%;
     }
 
     .footer__inner {
-      max-width: 1440px;
+      width: 100%;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -1218,12 +1252,11 @@
 
     /* 背景付きのコンテナ（1200px程度の箱） */
     .access-section__container {
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
       background: #E0F5EA;
       border-radius: 30px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      padding: 36px 32px;
+      padding: 36px clamp(20px, 4vw, 32px);
     }
 
     /* 左右2カラムのレイアウト */
@@ -1356,43 +1389,45 @@
 </head>
 
 <body>
-  <div class="page page-header">
-    <header>
-      <div class="header-shell">
-        <div class="header-top">
-          <div class="header-top-bar">
-            <div class="logo">
-              <img src="image/Logo/Logo.png" alt="佐藤クリニックのロゴ">
-            </div>
-            <nav aria-label="メインメニュー">
-              <div class="nav-item">トップページ</div> <!-- （メニュー①） -->
-              <div class="nav-item">お知らせ</div> <!-- （メニュー②） -->
-              <div class="nav-item">診療時間</div> <!-- （メニュー③） -->
-              <div class="nav-item">診療内容</div> <!-- （メニュー④） -->
-              <div class="nav-item">院長挨拶</div> <!-- （メニュー⑤） -->
-              <div class="nav-item">当院について</div> <!-- （メニュー⑥） -->
-              <div class="nav-item">スタッフ紹介</div> <!-- （メニュー⑦） -->
-              <div class="nav-item">アクセス</div> <!-- （メニュー⑧） -->
-              <div class="nav-item">ご予約・お問合せ</div><!-- （メニュー⑨） -->
-              <div class="nav-item">よくあるご質問</div><!-- （メニュー⑩） -->
-            </nav>
-            <div class="contact-box">
-              <div class="contact-phone">
-                <div>Tel.</div>
-                <div class="contact-info">
-                  <div>00-0000-0000</div>
-                  <small>平日 9:00-17:30</small>
-                </div>
+  <div class="page-header">
+    <div class="layout-inner page-header__inner">
+      <header>
+        <div class="header-shell">
+          <div class="header-top">
+            <div class="header-top-bar">
+              <div class="logo">
+                <img src="image/Logo/Logo.png" alt="佐藤クリニックのロゴ">
               </div>
-              <div class="cta">WEB受付</div>
+              <nav aria-label="メインメニュー">
+                <div class="nav-item">トップページ</div> <!-- （メニュー①） -->
+                <div class="nav-item">お知らせ</div> <!-- （メニュー②） -->
+                <div class="nav-item">診療時間</div> <!-- （メニュー③） -->
+                <div class="nav-item">診療内容</div> <!-- （メニュー④） -->
+                <div class="nav-item">院長挨拶</div> <!-- （メニュー⑤） -->
+                <div class="nav-item">当院について</div> <!-- （メニュー⑥） -->
+                <div class="nav-item">スタッフ紹介</div> <!-- （メニュー⑦） -->
+                <div class="nav-item">アクセス</div> <!-- （メニュー⑧） -->
+                <div class="nav-item">ご予約・お問合せ</div><!-- （メニュー⑨） -->
+                <div class="nav-item">よくあるご質問</div><!-- （メニュー⑩） -->
+              </nav>
+              <div class="contact-box">
+                <div class="contact-phone">
+                  <div>Tel.</div>
+                  <div class="contact-info">
+                    <div>00-0000-0000</div>
+                    <small>平日 9:00-17:30</small>
+                  </div>
+                </div>
+                <div class="cta">WEB受付</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   </div>
 
-  <div class="page">
+  <main class="page layout-inner">
     <div class="hero" aria-label="トップビジュアル">
       <div class="hero-content">
         <div class="hero-visual">
@@ -1742,48 +1777,48 @@
         </div>
       </div>
     </section>
+  </main>
 
-    <div class="footer" aria-label="フッター情報">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <div class="footer__brand-card">
-            <img class="footer__logo" src="image/Logo/Logo.png" alt="佐藤医院のロゴ">
-            <div class="footer__copyright">©2025　佐藤医院</div>
-          </div>
+  <footer class="footer" aria-label="フッター情報">
+    <div class="footer__inner layout-inner">
+      <div class="footer__brand">
+        <div class="footer__brand-card">
+          <img class="footer__logo" src="image/Logo/Logo.png" alt="佐藤医院のロゴ">
+          <div class="footer__copyright">©2025　佐藤医院</div>
+        </div>
+      </div>
+
+      <div class="footer__main">
+        <div class="footer__nav-row">
+          <a class="footer__nav-item" href="#">トップページ</a>
+          <a class="footer__nav-item" href="#">おしらせ</a>
+          <a class="footer__nav-item" href="#">診療時間</a>
+          <a class="footer__nav-item" href="#">診療内容</a>
+          <a class="footer__nav-item" href="#">院長挨拶</a>
+          <a class="footer__nav-item" href="#">当院について</a>
+          <a class="footer__nav-item" href="#">スタッフ紹介</a>
+          <a class="footer__nav-item" href="#">アクセス</a>
+          <a class="footer__nav-item" href="#">ご予約・お問合せ</a>
+          <a class="footer__nav-item" href="#">よくあるご質問</a>
         </div>
 
-        <div class="footer__main">
-          <div class="footer__nav-row">
-            <a class="footer__nav-item" href="#">トップページ</a>
-            <a class="footer__nav-item" href="#">おしらせ</a>
-            <a class="footer__nav-item" href="#">診療時間</a>
-            <a class="footer__nav-item" href="#">診療内容</a>
-            <a class="footer__nav-item" href="#">院長挨拶</a>
-            <a class="footer__nav-item" href="#">当院について</a>
-            <a class="footer__nav-item" href="#">スタッフ紹介</a>
-            <a class="footer__nav-item" href="#">アクセス</a>
-            <a class="footer__nav-item" href="#">ご予約・お問合せ</a>
-            <a class="footer__nav-item" href="#">よくあるご質問</a>
+        <div class="footer__info-row">
+          <div class="footer__info-block">
+            〒123-4567<br>
+            東京都台東区上野0丁目 ０－０
           </div>
-
-          <div class="footer__info-row">
-            <div class="footer__info-block">
-              〒123-4567<br>
-              東京都台東区上野0丁目 ０－０
-            </div>
-            <div class="footer__info-block">
-              電話番号：00-0000-0000<br>
-              ファックス：00-0000-0000
-            </div>
-            <div class="footer__info-block">
-              Eメール：info@sato-clinic-test.jp
-            </div>
-            <a class="footer__web-reserve" href="#">Web予約</a>
+          <div class="footer__info-block">
+            電話番号：00-0000-0000<br>
+            ファックス：00-0000-0000
           </div>
+          <div class="footer__info-block">
+            Eメール：info@sato-clinic-test.jp
+          </div>
+          <a class="footer__web-reserve" href="#">Web予約</a>
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 </body>
 
 </html>
