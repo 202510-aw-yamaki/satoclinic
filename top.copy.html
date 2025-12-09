@@ -1106,6 +1106,152 @@
       min-width: 0;
       padding: 10px 16px;
     }
+
+    /* アクセスセクション全体 */
+    .access-section {
+      border: none;
+      padding: 0;
+      margin-bottom: 22px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    /* 背景付きのコンテナ（1200px程度の箱） */
+    .access-section__container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #E0F5EA;
+      border-radius: 30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      padding: 36px 32px;
+    }
+
+    /* 左右2カラムのレイアウト */
+    .access-section__layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    /* 左カラム：タイトル＋地図 */
+    .access-section__left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .access-section__header {
+      display: flex;
+      justify-content: center;
+      padding: 0 40px;
+    }
+
+    .access-section__title {
+      margin: 0;
+      font-size: 44px;
+      line-height: 44px;
+      font-weight: 900;
+      color: var(--color-CL-Gray-900, #212121);
+      text-align: center;
+    }
+
+    .access-section__map-wrapper {
+      width: 100%;
+    }
+
+    .access-map {
+      width: 100%;
+      border-radius: 30px;
+      outline: 1px solid var(--color-CL-Gray-700, #616161);
+      outline-offset: -1px;
+      overflow: hidden;
+      background: #fff;
+      min-height: 320px;
+    }
+
+    .access-map img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* 右カラム：情報カード＋ボタン */
+    .access-section__right {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .access-info-card {
+      background: #ffffff;
+      border-radius: 14.83px;
+      box-shadow: 0px 4.94px 4.94px rgba(0, 0, 0, 0.25);
+      outline: 1.24px solid var(--color-CL-Gray-300, #E0E0E0);
+      outline-offset: -1.24px;
+      padding: 16px 20px;
+    }
+
+    .access-info-card__body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .access-info-text {
+      margin: 0;
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 400;
+      color: #111111;
+    }
+
+    /* 下部ボタンエリア */
+    .access-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .access-action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      height: 40px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #C97A2A;
+      color: var(--color-CL-White-100, #ffffff);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      text-decoration: none;
+    }
+
+    /* レスポンシブ対応：狭い画面では縦並びに */
+    @media (max-width: 900px) {
+      .access-section__container {
+        padding: 24px 16px;
+      }
+
+      .access-section__layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .access-section__header {
+        padding: 0 16px;
+      }
+
+      .access-actions {
+        gap: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -1450,15 +1596,48 @@
       </div>
     </section>
 
-    <section aria-label="アクセス">
-      <h2>アクセス（メニュー⑧）</h2>
-      <div class="access-grid">
-        <div class="map">地図挿入予定</div>
-        <div class="card">
-          <div>最寄駅から徒歩10分</div>
-          <div>TEL/FAX 0942-54-8500（代表）</div>
-          <div class="cta-row">
-            <div class="cta-pill">お電話はこちら（メニュー⑨）</div>
+    <section aria-label="アクセス" class="access-section">
+      <div class="access-section__container">
+        <div class="access-section__layout">
+          <!-- 左カラム：タイトル＋地図 -->
+          <div class="access-section__left">
+            <div class="access-section__header">
+              <h2 class="access-section__title">アクセス</h2>
+            </div>
+            <div class="access-section__map-wrapper">
+              <div class="access-map">
+                <!-- 将来ここに実際の地図を入れる想定。今はプレースホルダ画像でOK -->
+                <img src="https://placehold.co/762x685" alt="佐藤医院へのアクセス地図">
+              </div>
+            </div>
+          </div>
+
+          <!-- 右カラム：住所・アクセス・お問い合わせ＋ボタン -->
+          <div class="access-section__right">
+            <div class="access-info-card">
+              <div class="access-info-card__body">
+                <p class="access-info-text">
+                  ～住所～<br>
+                  〒123-4567<br>
+                  東京都台東区上野0丁目 0 - 0<br><br>
+                  ～アクセス～<br>
+                  最寄駅: JR上野より徒歩5分<br>
+                  当院専用の無料駐車場10台分あり<br>
+                  ご来院の際は、交通状況にご注意ください。<br>
+                  最寄駅から徒歩5分の距離にあり、<br>
+                  便利な立地です。<br><br>
+                  ～お問い合わせ～<br><br>
+                  電話番号: 00-0000-0000<br>
+                  ファックス: 00-0000-0000<br>
+                  Eメール: info@sato-clinic-test.jp
+                </p>
+              </div>
+            </div>
+
+            <div class="access-actions">
+              <a href="#" class="access-action-button">Web予約</a>
+              <a href="#" class="access-action-button">よくあるご質問</a>
+            </div>
           </div>
         </div>
       </div>
