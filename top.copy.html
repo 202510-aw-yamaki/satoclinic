@@ -283,66 +283,64 @@
     .info-board {
       display: grid;
       grid-template-columns: 1.3fr 1fr;
-      gap: 12px;
+      gap: 16px;
       margin: 24px 0;
+      align-items: start;
     }
 
     .info-card {
-      background: var(--color-primary);
-      color: #fff;
-      border-radius: 30px;
-      padding: 20px;
-      border: 1px solid #1c6279;
-      display: grid;
-      gap: 12px;
-    }
-
-    .info-card.secondary {
-      background: #fff;
+      background: transparent;
       color: #1f252a;
-      border-color: var(--color-primary);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
-    }
-
-    .info-card.secondary .info-image {
-      border: 1px dashed var(--color-border);
       border-radius: 30px;
-      background: #f7fbfc;
-      height: 40%x;
-      margin: 6px 0 12px;
+      padding: 12px 10px;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .info-card.secondary .info-image img {
+    .info-card--primary {
+      align-items: center;
+      gap: 24px;
+    }
+
+    .info-card__header {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 30px;
-      display: block;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
     }
 
-    .info-card h2 {
+    .info-card__title {
       margin: 0;
-      font-size: 20px;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      color: #212121;
+      text-align: center;
     }
 
     .info-card .notice-list {
       margin: 0;
       padding: 0;
       list-style: none;
-      display: grid;
-      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: min(100%, 620px);
     }
 
     .notice-item {
       background: #fff;
-      color: #1f252a;
+      color: #212121;
       border-radius: 30px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border: 1px solid var(--color-border);
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 13px;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+      min-height: 64px;
     }
 
     .notice-main {
@@ -368,44 +366,31 @@
       min-width: 0;
     }
 
-    .badge {
-      background: var(--color-primary-light);
-      color: #1f252a;
-      padding: 4px 10px;
-      border-radius: 30px;
-      border: 1px solid var(--color-border);
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
     .notice-date {
       color: var(--color-gray-500);
       font-weight: 700;
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: 0.01em;
-    }
-
-    .notice-content {
-      display: grid;
-      gap: 6px;
+      line-height: 1.6;
     }
 
     .notice-title {
-      font-weight: 700;
+      font-weight: 400;
       font-size: 14px;
-    }
-
-    .notice-desc {
-      color: #4a4f55;
+      color: #616161;
       line-height: 1.6;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .notice-chips {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 10px;
+      flex-wrap: nowrap;
+      padding-left: 4px;
     }
 
     .notice-chip {
@@ -413,13 +398,14 @@
       align-items: center;
       justify-content: center;
       padding: 4px 10px;
-      border-radius: 999px;
+      border-radius: 80px 20px 80px 20px;
       font-size: 12px;
       font-weight: 600;
       color: #fff;
-      min-width: 56px;
-      line-height: 1.4;
+      min-width: 80px;
+      line-height: 1.5;
       white-space: nowrap;
+      height: 26px;
     }
 
     .notice-chip--subject {
@@ -430,30 +416,77 @@
       background: #19C677;
     }
 
-    .notice-link {
-      color: var(--color-primary);
-      font-weight: 700;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .info-actions {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .pill-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 30px;
+    .info-card.secondary {
+      background: transparent;
+      color: #1f252a;
+      border: none;
+      box-shadow: none;
       padding: 12px 10px;
-      border: 1px solid #1c6279;
-      background: var(--color-primary);
+      gap: 20px;
+      align-items: center;
+    }
+
+    .info-secondary__image {
+      width: min(100%, 600px);
+      border-radius: 30px;
+      border: 1px solid #000;
+      overflow: hidden;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .info-secondary__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .info-secondary__actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .info-secondary__button {
+      background: #C97A2A;
       color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 24px;
+      font-weight: 700;
+      min-width: 210px;
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .info-secondary__title {
+      margin: 0;
+      font-size: 20px;
       font-weight: 700;
       text-align: center;
+      color: #212121;
+    }
+
+    .badge {
+      background: var(--color-primary-light);
+      color: #1f252a;
+      padding: 4px 10px;
+      border-radius: 30px;
+      border: 1px solid var(--color-border);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     section {
@@ -535,6 +568,20 @@
       font-weight: 700;
       line-height: 1.56;
       color: #000;
+    }
+
+    @media (max-width: 900px) {
+      .info-board {
+        grid-template-columns: 1fr;
+      }
+
+      .info-card__title {
+        font-size: 32px;
+      }
+
+      .info-secondary__actions {
+        gap: 20px;
+      }
     }
 
     .features-section__cards {
@@ -908,8 +955,10 @@
     </div>
 
     <div class="info-board" aria-label="お知らせと予約導線">
-      <div class="info-card">
-        <h2>お知らせ（メニュー①）</h2>
+      <div class="info-card info-card--primary">
+        <div class="info-card__header">
+          <h2 class="info-card__title">おしらせ</h2>
+        </div>
         <ul class="notice-list">
           <li class="notice-item">
             <div class="notice-main">
@@ -979,13 +1028,13 @@
         </ul>
       </div>
       <div class="info-card secondary">
-        <h2>診療予約・診療時間（メニュー②）</h2>
-        <div class="info-image">
+        <h2 class="info-secondary__title">診療予約・診療時間（メニュー②）</h2>
+        <div class="info-secondary__image">
           <img src="image/Infomation_Image/受付風景3.jpg" alt="受付風景">
         </div>
-        <div class="info-actions">
-          <div class="pill-button">初めての方（メニュー④）</div>
-          <div class="pill-button">再診の方（メニュー⑤）</div>
+        <div class="info-secondary__actions">
+          <a class="info-secondary__button" href="#">もっと見る</a>
+          <a class="info-secondary__button" href="#">Web予約</a>
         </div>
       </div>
     </div>
