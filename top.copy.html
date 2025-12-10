@@ -22,16 +22,16 @@
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
     }
 
-    html,
-    body {
-      min-width: 840px;
-    }
-
     body {
       margin: 0;
       padding: 0;
       background: #ffffff;
       color: #1f252a;
+    }
+
+    html,
+    body {
+      min-width: 540px;
     }
 
     .layout-inner {
@@ -50,14 +50,28 @@
     }
 
     @media (max-width: 768px) {
-      html,
-      body {
-        min-width: 0;
-      }
-
       .layout-inner {
         width: 100%;
         padding-inline: 16px;
+      }
+    }
+
+    .content-inner {
+      width: 100%;
+      min-width: 540px;
+      padding-inline: 120px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1199px) and (min-width: 800px) {
+      .content-inner {
+        padding-inline: 10vw;
+      }
+    }
+
+    @media (max-width: 799px) {
+      .content-inner {
+        padding-inline: 80px;
       }
     }
 
@@ -623,6 +637,23 @@
       }
     }
 
+    @media (max-width: 760px) {
+      .hero-content,
+      .info-board,
+      .doctor-intro,
+      .access-section__layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-description {
+        grid-column: 1;
+      }
+
+      .about-section__inner {
+        flex-direction: column;
+      }
+    }
+
     .features-section__cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -707,6 +738,14 @@
 
     .features-pill--secondary {
       background: var(--color-CL-Brand-Primary, #3BA7C9);
+    }
+
+    @media (max-width: 640px) {
+      .features-section__cards,
+      .features-section__primary-links,
+      .features-section__secondary-links {
+        grid-template-columns: 1fr;
+      }
     }
 
     .feature-grid {
@@ -1427,37 +1466,38 @@
     </div>
   </div>
 
-  <main class="page layout-inner">
-    <div class="hero" aria-label="トップビジュアル">
-      <div class="hero-content">
-        <div class="hero-visual">
-          <img src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
-        </div>
-        <div class="hero-panel">
-          <div class="callout">
-            <div class="callout-bar"></div>
-            <div class="callout-body">
-              <div class="catch-copy">地域に根ざした医療</div>
-              <div class="hero-actions">
-                <div class="hero-pill">スタッフ紹介を見る</div><!-- スタッフ紹介欄にスクロール -->
-                <div class="hero-pill">所在地を見る</div>      <!-- アクセス欄にスクロール -->
-                <div class="hero-pill">Web予約</div>     <!-- 予約ページに遷移 -->
+  <main class="page">
+    <div class="content-inner">
+      <div class="hero" aria-label="トップビジュアル">
+        <div class="hero-content">
+          <div class="hero-visual">
+            <img src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
+          </div>
+          <div class="hero-panel">
+            <div class="callout">
+              <div class="callout-bar"></div>
+              <div class="callout-body">
+                <div class="catch-copy">地域に根ざした医療</div>
+                <div class="hero-actions">
+                  <div class="hero-pill">スタッフ紹介を見る</div><!-- スタッフ紹介欄にスクロール -->
+                  <div class="hero-pill">所在地を見る</div>      <!-- アクセス欄にスクロール -->
+                  <div class="hero-pill">Web予約</div>     <!-- 予約ページに遷移 -->
+                </div>
+              </div>
+            </div>
+            <div class="schedule-card">
+              <div class="schedule-mini" aria-label="診療時間のミニボックス">
+                <img src="mini_schedule.png" alt="診療時間表">
               </div>
             </div>
           </div>
-          <div class="schedule-card">
-            <div class="schedule-mini" aria-label="診療時間のミニボックス">
-              <img src="mini_schedule.png" alt="診療時間表">
-            </div>
+          <div class="hero-description">
+            <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
+            <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
+
           </div>
         </div>
-        <div class="hero-description">
-          <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
-          <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
-
-        </div>
       </div>
-    </div>
 
     <div class="info-board" aria-label="お知らせと予約導線">
       <div class="info-card info-card--primary">
@@ -1777,6 +1817,7 @@
         </div>
       </div>
     </section>
+    </div>
   </main>
 
   <footer class="footer" aria-label="フッター情報">
