@@ -68,7 +68,7 @@
 
     .page-header {
       width: 100%;
-      padding: 12px 0 20px;
+      padding: 8px 0 12px;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -79,117 +79,122 @@
       display: block;
     }
 
-    header {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 20px;
+    /* ヘッダー本体 */
+    .site-header {
+      width: 100%;
     }
 
-    .header-shell {
-      display: grid;
-      gap: 12px;
-      border: 1px solid var(--color-border);
+    /* 内部バー（角丸グレーの帯） */
+    .site-header__bar {
+      width: 100%;
+      min-height: 60px;
       border-radius: 30px;
-      padding: 12px;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    .header-top {
-      display: grid;
-      gap: 10px;
-      border: 1px solid var(--color-border);
-      border-radius: 30px;
-      padding: 12px 16px;
-      background: #fff;
-    }
-
-    .header-top-bar {
+      background: #EFEFEF;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: nowrap;
+      gap: 2%;
+      padding: 8px 2%;
+      box-sizing: border-box;
     }
 
-    .logo {
-      width: 180px;
-      height: 64px;
-      border: 1px solid var(--color-border);
-      border-radius: 30px;
-      overflow: hidden;
-      /* 枠からはみ出た部分を隠す */
-      background: #fff;
+    /* 左：ロゴエリア（% 指定で縮む） */
+    .site-header__logo {
+      flex: 0 0 12%;
+      max-width: 12%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 700;
+      justify-content: flex-start;
+      overflow: hidden;
     }
 
-    .logo img {
+    .site-header__logo img {
       display: block;
-      max-width: 200%;
-      max-height: 200%;
+      width: 100%;
+      height: auto;
       object-fit: contain;
     }
 
-    .contact-box {
+    /* 中央：ナビゲーション */
+    .site-header__nav {
+      flex: 1 1 auto;
+      min-width: 0;
       display: flex;
-      flex-direction: row;
-      /* 念押しで横方向を指定 */
-      align-items: center;
-      gap: 16px;
-      flex-wrap: nowrap;
-      /* ここで折り返さないようにする */
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
     }
 
-    .contact-phone {
+    .site-header__nav-item {
+      color: #111111;
+      font-size: 16px;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 26px;
+      padding: 8px 6px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    /* 右：連絡先＆Web予約 */
+    .site-header__contact {
+      flex: 0 0 22%;
+      max-width: 22%;
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 10px;
-      /* 幅を親の中でうまく縮められるように */
-      flex: 0 1 auto;
       min-width: 0;
     }
 
-    .contact-info small {
-      display: block;
-      color: var(--color-gray-500);
-      font-weight: 400;
-    }
-
-    .cta {
-      border: 1px solid #1c6279;
-      border-radius: 30px;
-      padding: 12px 18px;
-      background: var(--color-primary);
-      color: #fff;
+    .site-header__phone {
+      color: #111111;
+      font-size: 18px;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
       font-weight: 700;
-      min-width: 140px;
-      text-align: center;
+      line-height: 28px;
+      white-space: nowrap;
     }
 
-    nav {
-      display: flex;
-      flex: 1 1 auto;
-      gap: 8px;
-      border: 1px solid var(--color-border);
-      border-radius: 30px;
-      padding: 10px;
-      background: #f7fbfc;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    /* Web予約ボタン */
+    .site-header__reserve-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: var(--color-CL-Brand-Primary, #3BA7C9);
+      color: var(--color-CL-White-100, #ffffff);
+      font-size: 18px;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-weight: 700;
+      line-height: 28px;
+      text-decoration: none;
+      box-sizing: border-box;
+      white-space: nowrap;
     }
 
-    .nav-item {
-      border: 1px solid var(--color-border);
-      border-radius: 30px;
-      padding: 10px 1px;
-      text-align: center;
-      font-size: 12px;
-      background: var(--color-gray-100);
-      line-height: 1.4;
-      width: fit-content;
+    @media (max-width: 1080px) {
+      .site-header__bar {
+        padding-inline: 3%;
+        gap: 1.5%;
+      }
+
+      .site-header__logo {
+        flex-basis: 15%;
+        max-width: 15%;
+      }
+
+      .site-header__contact {
+        flex-basis: 26%;
+        max-width: 26%;
+      }
+
+      .site-header__nav-item {
+        font-size: 14px;
+        padding-inline: 4px;
+      }
     }
 
     .hero {
@@ -1391,36 +1396,31 @@
 <body>
   <div class="page-header">
     <div class="layout-inner page-header__inner">
-      <header>
-        <div class="header-shell">
-          <div class="header-top">
-            <div class="header-top-bar">
-              <div class="logo">
-                <img src="image/Logo/Logo.png" alt="佐藤クリニックのロゴ">
-              </div>
-              <nav aria-label="メインメニュー">
-                <div class="nav-item">トップページ</div> <!-- （メニュー①） -->
-                <div class="nav-item">お知らせ</div> <!-- （メニュー②） -->
-                <div class="nav-item">診療時間</div> <!-- （メニュー③） -->
-                <div class="nav-item">診療内容</div> <!-- （メニュー④） -->
-                <div class="nav-item">院長挨拶</div> <!-- （メニュー⑤） -->
-                <div class="nav-item">当院について</div> <!-- （メニュー⑥） -->
-                <div class="nav-item">スタッフ紹介</div> <!-- （メニュー⑦） -->
-                <div class="nav-item">アクセス</div> <!-- （メニュー⑧） -->
-                <div class="nav-item">ご予約・お問合せ</div><!-- （メニュー⑨） -->
-                <div class="nav-item">よくあるご質問</div><!-- （メニュー⑩） -->
-              </nav>
-              <div class="contact-box">
-                <div class="contact-phone">
-                  <div>Tel.</div>
-                  <div class="contact-info">
-                    <div>00-0000-0000</div>
-                    <small>平日 9:00-17:30</small>
-                  </div>
-                </div>
-                <div class="cta">WEB受付</div>
-              </div>
-            </div>
+      <header class="site-header" aria-label="サイトヘッダー">
+        <div class="site-header__bar">
+          <!-- 左：ロゴ -->
+          <div class="site-header__logo">
+            <img src="image/Logo/Logo.png" alt="佐藤医院のロゴ">
+          </div>
+
+          <!-- 中央：グローバルナビ -->
+          <nav class="site-header__nav" aria-label="メインメニュー">
+            <a class="site-header__nav-item" href="#">トップページ</a>
+            <a class="site-header__nav-item" href="#">おしらせ</a>
+            <a class="site-header__nav-item" href="#">診療時間</a>
+            <a class="site-header__nav-item" href="#">診療内容</a>
+            <a class="site-header__nav-item" href="#">院長挨拶</a>
+            <a class="site-header__nav-item" href="#">当院について</a>
+            <a class="site-header__nav-item" href="#">スタッフ紹介</a>
+            <a class="site-header__nav-item" href="#">アクセス</a>
+            <a class="site-header__nav-item" href="#">ご予約・お問い合わせ</a>
+            <a class="site-header__nav-item" href="#">よくあるご質問</a>
+          </nav>
+
+          <!-- 右：電話と Web予約ボタン -->
+          <div class="site-header__contact">
+            <div class="site-header__phone">00-0000-0000</div>
+            <a href="#" class="site-header__reserve-button">Web予約</a>
           </div>
         </div>
       </header>
