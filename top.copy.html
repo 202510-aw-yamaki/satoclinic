@@ -34,6 +34,11 @@
       min-width: 540px;
     }
 
+    /* スムーススクロールを全体に適用 */
+    html {
+      scroll-behavior: smooth;
+    }
+
     .layout-inner {
       width: clamp(840px, calc(100% - 240px), 1200px);
       margin: 0 auto;
@@ -91,9 +96,12 @@
 
     .page-header__inner {
       display: block;
+      width: 100%;
+      margin: 0 auto;
+      padding-inline: clamp(16px, 4vw, 32px);
     }
 
-    /* ヘッダー本体 */
+    /* ヘッダーを画面幅いっぱいに広げるレイアウト調整 */
     .site-header {
       width: 100%;
     }
@@ -104,22 +112,22 @@
       min-height: 60px;
       border-radius: 30px;
       background: #EFEFEF;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 2%;
-      padding: 8px 2%;
+      column-gap: 16px;
+      padding: 8px clamp(12px, 2vw, 24px);
       box-sizing: border-box;
     }
 
     /* 左：ロゴエリア（% 指定で縮む） */
     .site-header__logo {
-      flex: 0 0 12%;
-      max-width: 12%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       overflow: hidden;
+      min-width: 0;
+      max-width: 240px;
     }
 
     .site-header__logo img {
@@ -136,29 +144,39 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
+      gap: 8px 12px;
+      width: 100%;
     }
 
     .site-header__nav-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: #111111;
       font-size: 16px;
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
       font-weight: 400;
       line-height: 26px;
-      padding: 8px 6px;
+      padding: 8px 10px;
       text-decoration: none;
       white-space: nowrap;
     }
 
+    @media (min-width: 1200px) {
+      .site-header__nav {
+        flex-wrap: nowrap;
+      }
+    }
+
     /* 右：連絡先＆Web予約 */
     .site-header__contact {
-      flex: 0 0 22%;
-      max-width: 22%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
       gap: 10px;
       min-width: 0;
+      justify-self: end;
+      flex-wrap: wrap;
     }
 
     .site-header__phone {
@@ -189,25 +207,24 @@
       white-space: nowrap;
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1199px) {
       .site-header__bar {
-        padding-inline: 3%;
-        gap: 1.5%;
+        grid-template-columns: 1fr;
+        row-gap: 8px;
       }
 
       .site-header__logo {
-        flex-basis: 15%;
-        max-width: 15%;
+        max-width: none;
+        width: 100%;
       }
 
       .site-header__contact {
-        flex-basis: 26%;
-        max-width: 26%;
+        justify-content: flex-start;
       }
 
       .site-header__nav-item {
         font-size: 14px;
-        padding-inline: 4px;
+        padding-inline: 6px;
       }
     }
 
@@ -1434,7 +1451,7 @@
 
 <body>
   <div class="page-header">
-    <div class="layout-inner page-header__inner">
+    <div class="page-header__inner">
       <header class="site-header" aria-label="サイトヘッダー">
         <div class="site-header__bar">
           <!-- 左：ロゴ -->
@@ -1444,22 +1461,22 @@
 
           <!-- 中央：グローバルナビ -->
           <nav class="site-header__nav" aria-label="メインメニュー">
-            <a class="site-header__nav-item" href="#">トップページ</a>
-            <a class="site-header__nav-item" href="#">おしらせ</a>
-            <a class="site-header__nav-item" href="#">診療時間</a>
-            <a class="site-header__nav-item" href="#">診療内容</a>
-            <a class="site-header__nav-item" href="#">院長挨拶</a>
-            <a class="site-header__nav-item" href="#">当院について</a>
-            <a class="site-header__nav-item" href="#">スタッフ紹介</a>
-            <a class="site-header__nav-item" href="#">アクセス</a>
-            <a class="site-header__nav-item" href="#">ご予約・お問い合わせ</a>
-            <a class="site-header__nav-item" href="#">よくあるご質問</a>
+            <a class="site-header__nav-item" href="#top">トップページ</a>
+            <a class="site-header__nav-item" href="#news">おしらせ</a>
+            <a class="site-header__nav-item" href="#schedule">診療時間</a>
+            <a class="site-header__nav-item" href="#services">診療内容</a>
+            <a class="site-header__nav-item" href="#greeting">院長挨拶</a>
+            <a class="site-header__nav-item" href="#about">当院について</a>
+            <a class="site-header__nav-item" href="#staff">スタッフ紹介</a>
+            <a class="site-header__nav-item" href="#access">アクセス</a>
+            <a class="site-header__nav-item" href="#contact">ご予約・お問い合わせ</a>
+            <a class="site-header__nav-item" href="#faq">よくあるご質問</a>
           </nav>
 
           <!-- 右：電話と Web予約ボタン -->
           <div class="site-header__contact">
             <div class="site-header__phone">00-0000-0000</div>
-            <a href="#" class="site-header__reserve-button">Web予約</a>
+            <a href="#contact" class="site-header__reserve-button">Web予約</a>
           </div>
         </div>
       </header>
@@ -1468,7 +1485,7 @@
 
   <main class="page">
     <div class="content-inner">
-      <div class="hero" aria-label="トップビジュアル">
+      <div class="hero" aria-label="トップビジュアル" id="top">
         <div class="hero-content">
           <div class="hero-visual">
             <img src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
@@ -1479,9 +1496,9 @@
               <div class="callout-body">
                 <div class="catch-copy">地域に根ざした医療</div>
                 <div class="hero-actions">
-                  <div class="hero-pill">スタッフ紹介を見る</div><!-- スタッフ紹介欄にスクロール -->
-                  <div class="hero-pill">所在地を見る</div>      <!-- アクセス欄にスクロール -->
-                  <div class="hero-pill">Web予約</div>     <!-- 予約ページに遷移 -->
+                  <a class="hero-pill" href="#staff">スタッフ紹介を見る</a><!-- スタッフ紹介欄にスクロール -->
+                  <a class="hero-pill" href="#access">所在地を見る</a>      <!-- アクセス欄にスクロール -->
+                  <a class="hero-pill" href="#contact">Web予約</a>     <!-- 予約ページに遷移 -->
                 </div>
               </div>
             </div>
@@ -1499,7 +1516,7 @@
         </div>
       </div>
 
-    <div class="info-board" aria-label="お知らせと予約導線">
+    <div class="info-board" aria-label="お知らせと予約導線" id="news">
       <div class="info-card info-card--primary">
         <div class="info-card__header">
           <h2 class="info-card__title">おしらせ</h2>
@@ -1584,7 +1601,7 @@
       </div>
     </div>
 
-    <section aria-label="診療時間">
+    <section aria-label="診療時間" id="schedule">
       <h2>診療時間（メニュー②）</h2>
       <div class="schedule-table">
         <img src="schedule.png" alt="診療時間表">
@@ -1592,7 +1609,7 @@
       <div class="schedule-note">ここに注意書き</div>
     </section>
 
-    <section aria-label="当院の特徴と診療科目" class="features-section">
+    <section aria-label="当院の特徴と診療科目" class="features-section" id="services">
       <div class="features-section__container">
         <div class="features-section__header">
           <h2 class="features-section__title">診察内容</h2>
@@ -1633,7 +1650,7 @@
       </div>
     </section>
 
-    <section aria-label="院長挨拶">
+    <section aria-label="院長挨拶" id="greeting">
       <div class="director-greeting">
         <div class="director-greeting__header">
           <h2 class="director-greeting__title">院長挨拶</h2>
@@ -1651,7 +1668,7 @@
       </div>
     </section>
 
-    <section aria-label="当院について" class="about-section">
+    <section aria-label="当院について" class="about-section" id="about">
       <div class="about-section__inner">
         <div class="about-section__content">
           <h2 class="about-section__title">当院について</h2>
@@ -1678,7 +1695,7 @@
       </div>
     </section>
 
-    <section aria-label="スタッフ紹介" class="staff-section">
+    <section aria-label="スタッフ紹介" class="staff-section" id="staff">
       <div class="staff-section__inner">
         <div class="staff-section__header">
           <h2 class="staff-section__title">スタッフ紹介</h2>
@@ -1771,7 +1788,7 @@
       </div>
     </section>
 
-    <section aria-label="アクセス" class="access-section">
+    <section aria-label="アクセス" class="access-section" id="access">
       <div class="access-section__container">
         <div class="access-section__layout">
           <!-- 左カラム：タイトル＋地図 -->
@@ -1810,12 +1827,21 @@
             </div>
 
             <div class="access-actions">
-              <a href="#" class="access-action-button">Web予約</a>
-              <a href="#" class="access-action-button">よくあるご質問</a>
+              <a href="#contact" class="access-action-button">Web予約</a>
+              <a href="#faq" class="access-action-button">よくあるご質問</a>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- 予約・FAQのプレースホルダーセクション -->
+    <section id="contact" aria-label="ご予約・お問い合わせ">
+      <!-- TODO: 予約・お問い合わせコンテンツ -->
+    </section>
+
+    <section id="faq" aria-label="よくあるご質問">
+      <!-- TODO: FAQ コンテンツ -->
     </section>
     </div>
   </main>
