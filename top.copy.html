@@ -87,7 +87,7 @@
 
     .page-header {
       width: 100%;
-      padding: 8px 0 12px;
+      padding: 4px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -109,7 +109,6 @@
     /* 内部バー（角丸グレーの帯） */
     .site-header__bar {
       width: 100%;
-      min-height: 60px;
       border-radius: 30px;
       background: #EFEFEF;
       display: grid;
@@ -163,6 +162,30 @@
     }
 
     @media (min-width: 1200px) {
+      .site-header__bar {
+        height: 60px;
+        min-height: 60px;
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
+      }
+
+      .site-header__logo {
+        width: 80px;
+        height: 60px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .site-header__logo img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        object-position: center;
+      }
+
       .site-header__nav {
         flex-wrap: nowrap;
       }
