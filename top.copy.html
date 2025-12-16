@@ -540,10 +540,10 @@
 
     .info-board > .info-card__header h2 {
       margin: 0 0 14px;
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 44px;
+      font-weight: 900;
       color: #212121;
-      text-align: left;
+      text-align: center;
     }
 
     .info-card .notice-list {
@@ -653,11 +653,13 @@
     }
 
     .info-secondary__image {
-      width: min(100%, 600px);
+      width: 100%;
+      max-width: none;
       border-radius: 30px;
       border: 1px solid #000;
       overflow: hidden;
-      padding: 10px;
+      padding: 0;
+      aspect-ratio: 3 / 2;
       display: flex;
       justify-content: center;
     }
@@ -668,6 +670,18 @@
       object-fit: cover;
       border-radius: 20px;
       display: block;
+      transition: opacity 0.8s ease;
+      will-change: opacity;
+    }
+
+    .info-secondary__image img.is-fading {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .info-secondary__image img {
+        transition: none;
+      }
     }
 
     .info-secondary__actions {
@@ -718,7 +732,10 @@
 
     h2 {
       margin: 0 0 14px;
-      font-size: 20px;
+      font-size: 44px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.1;
     }
 
     .schedule-table {
@@ -793,7 +810,7 @@
       }
 
       .info-card__title {
-        font-size: 32px;
+        font-size: 44px;
       }
 
       .info-secondary__actions {
@@ -1170,7 +1187,7 @@
       }
 
       .director-greeting__title {
-        font-size: 32px;
+        font-size: 44px;
       }
     }
 
@@ -1787,7 +1804,7 @@
       </div>
       <div class="info-card secondary">
         <div class="info-secondary__image">
-          <img src="image/Infomation_Image/受付風景3.jpg" alt="受付風景">
+          <img id="infoSecondaryImage" src="image/Infomation_Image/受付風景3.jpg" alt="受付風景">
         </div>
         <div class="info-secondary__actions">
           <a class="info-secondary__button" href="#">もっと見る</a>
@@ -2273,6 +2290,119 @@
 
       if (currentIndex === 0 && heroImageEl.getAttribute('src') !== heroImages[0]) {
         heroImageEl.src = heroImages[0];
+      }
+
+      preloadNext(currentIndex);
+      tick(true);
+      startTimer();
+    })();
+
+    (function () {
+      const infoImageEl = document.getElementById('infoSecondaryImage');
+      if (!infoImageEl) return;
+
+      const infoImages = [
+        'image/Infomation_Image/受付風景1.jpg',
+        'image/Infomation_Image/受付風景２.jpg',
+        'image/Infomation_Image/受付風景3.jpg',
+        'image/Infomation_Image/受付風景4.jpg'
+      ];
+
+      const INTERVAL_MS = 5000;
+
+      let currentIndex = Math.max(
+        infoImages.findIndex((path) => infoImageEl.getAttribute('src') === path),
+        0
+      );
+      let timerId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const preloadImage = (index) => {
+        const img = new Image();
+        img.src = infoImages[index];
+      };
+
+      const preloadNext = (index = currentIndex) => {
+        const nextIndex = (index + 1) % infoImages.length;
+        preloadImage(nextIndex);
+      };
+
+      const applyImage = (index) => {
+        const targetSrc = infoImages[index];
+
+        if (prefersReducedMotion.matches) {
+          infoImageEl.src = targetSrc;
+          currentIndex = index;
+          preloadNext(index);
+          return;
+        }
+
+        const handleTransition = () => {
+          infoImageEl.removeEventListener('transitionend', handleTransition);
+          infoImageEl.src = targetSrc;
+          requestAnimationFrame(() => {
+            infoImageEl.classList.remove('is-fading');
+          });
+          currentIndex = index;
+          preloadNext(index);
+        };
+
+        infoImageEl.addEventListener('transitionend', handleTransition);
+        requestAnimationFrame(() => {
+          infoImageEl.classList.add('is-fading');
+        });
+      };
+
+      const setImageWithPreload = (targetIndex, attempt = 0) => {
+        if (attempt >= infoImages.length) return;
+
+        const candidate = infoImages[targetIndex];
+        const preload = new Image();
+
+        preload.onload = () => applyImage(targetIndex);
+        preload.onerror = () => {
+          const nextIndex = (targetIndex + 1) % infoImages.length;
+          setImageWithPreload(nextIndex, attempt + 1);
+        };
+
+        preload.src = candidate;
+      };
+
+      const tick = (forceChange = false) => {
+        const nextIndex = (currentIndex + 1) % infoImages.length;
+
+        if (!forceChange && nextIndex === currentIndex) return;
+        setImageWithPreload(nextIndex);
+      };
+
+      const stopTimer = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startTimer = () => {
+        stopTimer();
+        timerId = setInterval(() => tick(false), INTERVAL_MS);
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          stopTimer();
+        } else {
+          startTimer();
+          tick(true);
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      prefersReducedMotion.addEventListener('change', () => {
+        infoImageEl.style.transition = prefersReducedMotion.matches ? 'none' : '';
+      });
+
+      if (currentIndex === 0 && infoImageEl.getAttribute('src') !== infoImages[0]) {
+        infoImageEl.src = infoImages[0];
       }
 
       preloadNext(currentIndex);
