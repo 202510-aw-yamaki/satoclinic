@@ -490,6 +490,13 @@
       gap: 16px;
       margin: 24px 0;
       align-items: start;
+
+      /* 追加: 枠・背景・影（他エリアと同系統） */
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 22px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
 
     .info-card {
@@ -515,6 +522,13 @@
       padding: 10px 0;
     }
 
+    .info-board > .info-card__header {
+      grid-column: 1 / -1;
+      width: 100%;
+      justify-content: flex-start;
+      padding: 0;
+    }
+
     .info-card__title {
       margin: 0;
       font-size: 44px;
@@ -522,6 +536,14 @@
       line-height: 1;
       color: #212121;
       text-align: center;
+    }
+
+    .info-board > .info-card__header h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #212121;
+      text-align: left;
     }
 
     .info-card .notice-list {
@@ -672,14 +694,6 @@
       align-items: center;
       cursor: pointer;
       text-decoration: none;
-    }
-
-    .info-secondary__title {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 700;
-      text-align: center;
-      color: #212121;
     }
 
     .badge {
@@ -1698,10 +1712,11 @@
       </div>
 
     <div class="info-board" aria-label="お知らせと予約導線" id="news">
+      <div class="info-card__header">
+        <h2>おしらせ</h2>
+      </div>
+
       <div class="info-card info-card--primary">
-        <div class="info-card__header">
-          <h2 class="info-card__title">おしらせ</h2>
-        </div>
         <ul class="notice-list">
           <li class="notice-item">
             <div class="notice-main">
@@ -1771,7 +1786,6 @@
         </ul>
       </div>
       <div class="info-card secondary">
-        <h2 class="info-secondary__title">診療予約・診療時間（メニュー②）</h2>
         <div class="info-secondary__image">
           <img src="image/Infomation_Image/受付風景3.jpg" alt="受付風景">
         </div>
