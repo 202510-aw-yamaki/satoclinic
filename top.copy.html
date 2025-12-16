@@ -423,6 +423,17 @@
       background: #fff;
       margin-top: 4px;
       display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px 16px;
+    }
+
+    .hero-description__date {
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    .hero-description__text {
+      display: grid;
       gap: 8px;
     }
 
@@ -739,6 +750,7 @@
 
       .hero-description {
         grid-column: 1;
+        grid-template-columns: 1fr;
       }
 
       .about-section__inner {
@@ -1609,6 +1621,11 @@
             <img id="heroVisualImage" src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
           </div>
           <div class="hero-panel">
+            <div class="schedule-card">
+              <div class="schedule-mini" aria-label="診療時間のミニボックス">
+                <img src="mini_schedule.png" alt="診療時間表">
+              </div>
+            </div>
             <div class="callout">
               <div class="callout-bar"></div>
               <div class="callout-body">
@@ -1620,16 +1637,13 @@
                 </div>
               </div>
             </div>
-            <div class="schedule-card">
-              <div class="schedule-mini" aria-label="診療時間のミニボックス">
-                <img src="mini_schedule.png" alt="診療時間表">
-              </div>
-            </div>
           </div>
           <div class="hero-description">
-            <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
-            <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
-
+            <div class="hero-description__date" id="heroTodayDate" aria-label="本日の日付"></div>
+            <div class="hero-description__text">
+              <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
+              <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
+            </div>
           </div>
         </div>
       </div>
@@ -2009,6 +2023,18 @@
     </div>
   </footer>
   <script>
+    const heroTodayDateEl = document.getElementById('heroTodayDate');
+    if (heroTodayDateEl) {
+      const now = new Date();
+      const formatted = new Intl.DateTimeFormat('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'short'
+      }).format(now);
+      heroTodayDateEl.textContent = formatted;
+    }
+
     (function () {
       const heroImageEl = document.getElementById('heroVisualImage');
       if (!heroImageEl) return;
