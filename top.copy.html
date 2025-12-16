@@ -307,6 +307,12 @@
       gap: 16px;
     }
 
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
     .hero-visual {
       background: #e0e0e0;
       border: 1px solid var(--color-gray-300);
@@ -398,12 +404,15 @@
       min-height: 130px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 
+      display: grid;
+      gap: 12px;
+
     }
 
     .schedule-mini {
       display: grid;
       grid-template-columns: 1fr;
-      margin-top: 10px;
+      margin-top: 0;
     }
 
     .schedule-mini img {
@@ -416,20 +425,47 @@
     }
 
     .hero-description {
-      grid-column: 1 / -1;
       border: 1px solid var(--color-border);
       border-radius: 30px;
       padding: 14px 16px;
       background: #fff;
       margin-top: 4px;
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 8px 16px;
+      gap: 8px;
+      align-items: center;
+      justify-items: start;
     }
 
     .hero-description__date {
       white-space: nowrap;
       font-weight: 700;
+    }
+
+    .hero-description__status {
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      width: fit-content;
+      border: 1px solid var(--color-border);
+      background: #fff;
+    }
+
+    .hero-description__status.is-reception {
+      background: #e6f7f2;
+      border-color: #9ad7c1;
+      color: #0f7f63;
+    }
+
+    .hero-description__status.is-consult {
+      background: #eaf2fb;
+      border-color: #a9c5f2;
+      color: #1c4fa0;
+    }
+
+    .hero-description__status.is-closed {
+      background: #f9eded;
+      border-color: #e3b3b3;
+      color: #a12f2f;
     }
 
     .hero-description__text {
@@ -749,8 +785,7 @@
       }
 
       .hero-description {
-        grid-column: 1;
-        grid-template-columns: 1fr;
+        grid-column: auto;
       }
 
       .about-section__inner {
@@ -1617,11 +1652,21 @@
     <div class="content-inner">
       <div class="hero" aria-label="トップビジュアル" id="top">
         <div class="hero-content">
-          <div class="hero-visual">
-            <img id="heroVisualImage" src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
+          <div class="hero-left">
+            <div class="hero-visual">
+              <img id="heroVisualImage" src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
+            </div>
+            <div class="hero-description" aria-label="本日の情報">
+              <div class="hero-description__date" id="heroTodayDate"></div>
+              <div class="hero-description__status" id="heroClinicStatus" aria-live="polite"></div>
+            </div>
           </div>
           <div class="hero-panel">
             <div class="schedule-card">
+              <div class="hero-description__text" aria-label="受付・休診の案内文">
+                <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
+                <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
+              </div>
               <div class="schedule-mini" aria-label="診療時間のミニボックス">
                 <img src="mini_schedule.png" alt="診療時間表">
               </div>
@@ -1636,13 +1681,6 @@
                   <a class="hero-pill" href="#contact">Web予約</a>     <!-- 予約ページに遷移 -->
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="hero-description">
-            <div class="hero-description__date" id="heroTodayDate" aria-label="本日の日付"></div>
-            <div class="hero-description__text">
-              <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
-              <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
             </div>
           </div>
         </div>
@@ -2023,17 +2061,64 @@
     </div>
   </footer>
   <script>
-    const heroTodayDateEl = document.getElementById('heroTodayDate');
-    if (heroTodayDateEl) {
-      const now = new Date();
-      const formatted = new Intl.DateTimeFormat('ja-JP', {
+    (function () {
+      const heroTodayDateEl = document.getElementById('heroTodayDate');
+      const heroClinicStatusEl = document.getElementById('heroClinicStatus');
+
+      if (!heroTodayDateEl && !heroClinicStatusEl) return;
+
+      const formatter = new Intl.DateTimeFormat('ja-JP', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
         weekday: 'short'
-      }).format(now);
-      heroTodayDateEl.textContent = formatted;
-    }
+      });
+
+      const inRange = (startHour, startMinute, endHour, endMinute, currentMinutes) => {
+        const start = startHour * 60 + startMinute;
+        const end = endHour * 60 + endMinute;
+        return currentMinutes >= start && currentMinutes < end;
+      };
+
+      const getClinicStatus = (date) => {
+        const day = date.getDay();
+        const currentMinutes = date.getHours() * 60 + date.getMinutes();
+        const isWorkingMorning = [1, 2, 3, 5, 6].includes(day);
+        const isWorkingAfternoon = [1, 2, 3, 5].includes(day);
+
+        const consulting = (
+          (isWorkingMorning && inRange(9, 0, 12, 0, currentMinutes)) ||
+          (isWorkingAfternoon && inRange(14, 0, 19, 0, currentMinutes))
+        );
+
+        const reception = !consulting && (
+          (isWorkingMorning && inRange(8, 0, 9, 0, currentMinutes)) ||
+          (isWorkingAfternoon && inRange(13, 0, 14, 0, currentMinutes))
+        );
+
+        if (consulting) return { text: '診療中', className: 'is-consult' };
+        if (reception) return { text: '受付中', className: 'is-reception' };
+        return { text: '休診中', className: 'is-closed' };
+      };
+
+      const updateHeroInfo = () => {
+        const now = new Date();
+
+        if (heroTodayDateEl) {
+          heroTodayDateEl.textContent = formatter.format(now);
+        }
+
+        if (heroClinicStatusEl) {
+          const { text, className } = getClinicStatus(now);
+          heroClinicStatusEl.textContent = text;
+          heroClinicStatusEl.classList.remove('is-reception', 'is-consult', 'is-closed');
+          heroClinicStatusEl.classList.add(className);
+        }
+      };
+
+      updateHeroInfo();
+      setInterval(updateHeroInfo, 60000);
+    })();
 
     (function () {
       const heroImageEl = document.getElementById('heroVisualImage');
