@@ -320,6 +320,18 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: opacity 0.8s ease;
+      will-change: opacity;
+    }
+
+    .hero-visual img.is-fading {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual img {
+        transition: none;
+      }
     }
 
     .hero-panel {
@@ -1594,7 +1606,7 @@
       <div class="hero" aria-label="トップビジュアル" id="top">
         <div class="hero-content">
           <div class="hero-visual">
-            <img src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
+            <img id="heroVisualImage" src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
           </div>
           <div class="hero-panel">
             <div class="callout">
@@ -1996,6 +2008,139 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      const heroImageEl = document.getElementById('heroVisualImage');
+      if (!heroImageEl) return;
+
+      // TODO: 画像ファイルを追加・変更した場合はこの配列のパスも更新してください。
+      const heroImages = [
+        'image/Hospital_Exterior/病院の外観.jpg',
+        'image/Hospital_Exterior/病院の中庭.jpg',
+        'image/Hospital_Exterior/病院の内観１.jpg',
+        'image/Hospital_Exterior/病院の内観２.jpg',
+        'image/Hospital_Exterior/病院の内観３.jpg',
+        'image/Hospital_Exterior/病院の内観４.jpg',
+        'image/Hospital_Exterior/病院の内観5.jpg',
+        'image/Hospital_Exterior/病院の内観６.jpg'
+      ];
+
+      const MODE = 'interval'; // 'interval' または 'clock'
+      const INTERVAL_MS = 5000;
+      const CLOCK_RESOLUTION = 'hour'; // 'hour' または 'minute'
+      const CLOCK_CHECK_MS = 60000;
+
+      let currentIndex = Math.max(
+        heroImages.findIndex((path) => heroImageEl.getAttribute('src') === path),
+        0
+      );
+      let timerId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const preloadImage = (index) => {
+        const img = new Image();
+        img.src = heroImages[index];
+      };
+
+      const preloadNext = (index = currentIndex) => {
+        const nextIndex = (index + 1) % heroImages.length;
+        preloadImage(nextIndex);
+      };
+
+      const applyImage = (index) => {
+        const targetSrc = heroImages[index];
+
+        if (prefersReducedMotion.matches) {
+          heroImageEl.src = targetSrc;
+          currentIndex = index;
+          preloadNext(index);
+          return;
+        }
+
+        const handleTransition = () => {
+          heroImageEl.removeEventListener('transitionend', handleTransition);
+          heroImageEl.src = targetSrc;
+          requestAnimationFrame(() => {
+            heroImageEl.classList.remove('is-fading');
+          });
+          currentIndex = index;
+          preloadNext(index);
+        };
+
+        heroImageEl.addEventListener('transitionend', handleTransition);
+        requestAnimationFrame(() => {
+          heroImageEl.classList.add('is-fading');
+        });
+      };
+
+      const setImageWithPreload = (targetIndex, attempt = 0) => {
+        if (attempt >= heroImages.length) return;
+
+        const candidate = heroImages[targetIndex];
+        const preload = new Image();
+
+        preload.onload = () => applyImage(targetIndex);
+        preload.onerror = () => {
+          const nextIndex = (targetIndex + 1) % heroImages.length;
+          setImageWithPreload(nextIndex, attempt + 1);
+        };
+
+        preload.src = candidate;
+      };
+
+      const getClockIndex = () => {
+        const now = new Date();
+        const unit = CLOCK_RESOLUTION === 'minute' ? now.getMinutes() : now.getHours();
+        return unit % heroImages.length;
+      };
+
+      const tick = (forceChange = false) => {
+        const nextIndex = MODE === 'clock'
+          ? getClockIndex()
+          : (currentIndex + 1) % heroImages.length;
+
+        if (!forceChange && nextIndex === currentIndex) return;
+        setImageWithPreload(nextIndex);
+      };
+
+      const stopTimer = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startTimer = () => {
+        stopTimer();
+        timerId = setInterval(
+          () => tick(false),
+          MODE === 'clock' ? CLOCK_CHECK_MS : INTERVAL_MS
+        );
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          stopTimer();
+        } else {
+          startTimer();
+          tick(true);
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      prefersReducedMotion.addEventListener('change', () => {
+        heroImageEl.style.transition = prefersReducedMotion.matches ? 'none' : '';
+      });
+
+      if (currentIndex === 0 && heroImageEl.getAttribute('src') !== heroImages[0]) {
+        heroImageEl.src = heroImages[0];
+      }
+
+      preloadNext(currentIndex);
+      tick(true);
+      startTimer();
+    })();
+  </script>
 </body>
 
 </html>
