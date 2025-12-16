@@ -347,7 +347,7 @@
       border: 1px solid var(--color-border);
       display: flex;
       flex-direction: column;
-      padding: 16px 16px 0;
+
       height: 100%;
     }
 
@@ -380,6 +380,8 @@
     .catch-copy {
       font-weight: 700;
       font-size: 36px;
+  text-align: center;
+
     }
 
     .hero-actions {
@@ -484,6 +486,7 @@
     .hero-description__text {
       display: grid;
       gap: 8px;
+  text-align: center;
     }
 
     .info-board {
@@ -907,7 +910,7 @@
       width: 100%;
       max-width: 220px;
       min-height: 40px;
-      padding: 12px 24px;
+      padding: 12px 6px;
       border-radius: 999px;
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
       background: var(--佐藤医院, #19C677);
@@ -986,10 +989,10 @@
     }
 
     .about-section__inner {
+      width: 100%;
       display: flex;
-      gap: 24px;
-      align-items: stretch;
-      flex-wrap: nowrap;
+      justify-content: center;
+      padding: 10px 0;
     }
 
     .about-section__content {
@@ -1031,7 +1034,7 @@
     .about-section__pill {
       width: 200px;
       min-height: 40px;
-      padding: 12px 24px;
+      padding: 12px 6px;
       background: var(--佐藤医院, #19C677);
       border-radius: 999px;
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
@@ -1711,8 +1714,10 @@
                 <img src="mini_schedule.png" alt="診療時間表">
               </div>
               <div class="hero-description__text" aria-label="受付・休診の案内文">
-                <div>受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日。</div>
-                <div>※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div><!-- インラインで色を変えたい -->
+                <div>受付時間：8時～11時/13時～18時
+<br>※休診日：木曜・土曜午後・日。</div>
+                <div>※祝祭日も診察を行っておりますが、休診日もございますので、
+<br>     事前にご確認ください。</div><!-- インラインで色を変えたい -->
               </div>
             </div>
             <div class="callout">
@@ -1816,11 +1821,15 @@
     </div>
 
     <section aria-label="診療時間" id="schedule">
-      <h2>診療時間（メニュー②）</h2>
+      <h2>診療時間</h2>
       <div class="schedule-table">
         <img src="schedule.png" alt="診療時間表">
       </div>
-      <div class="schedule-note">ここに注意書き</div>
+      <div class="schedule-note">                <div>受付時間：8時～11時/13時～18時
+<br>※休診日：木曜・土曜午後・日。</div>
+                <div>※祝祭日も診察を行っておりますが、休診日もございますので、
+<br>     事前にご確認ください。</div><!-- インラインで色を変えたい -->
+              </div></div>
     </section>
 
     <section aria-label="当院の特徴と診療科目" class="features-section" id="services">
