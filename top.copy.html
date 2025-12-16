@@ -836,7 +836,13 @@
       }
 
       .about-section__inner {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+          "title"
+          "image"
+          "content";
+        align-items: start;
       }
     }
 
@@ -990,25 +996,34 @@
 
     .about-section__inner {
       width: 100%;
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "title title"
+        "content image";
+      gap: 20px;
+      align-items: end;
       padding: 10px 0;
     }
 
-    .about-section__content {
-      flex: 1 1 50%;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      justify-content: flex-start;
-    }
-
     .about-section__title {
+      grid-area: title;
       font-size: 44px;
       font-weight: 900;
       line-height: 44px;
       color: var(--color-CL-Gray-900, #212121);
       margin: 0;
+      text-align: center;
+    }
+
+    .about-section__content {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: flex-end;
+      align-self: end;
     }
 
     .about-section__text {
@@ -1053,10 +1068,11 @@
     }
 
     .about-section__image {
-      flex: 1 1 50%;
+      grid-area: image;
       display: flex;
       justify-content: center;
       align-items: center;
+      align-self: end;
     }
 
     .about-section__image img {
@@ -1068,15 +1084,33 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       object-fit: cover;
       display: block;
+      transition: opacity 0.8s ease;
+      will-change: opacity;
+    }
+
+    .about-section__image img.is-fading {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-section__image img {
+        transition: none;
+      }
     }
 
     @media (max-width: 900px) {
       .about-section__inner {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+          "title"
+          "image"
+          "content";
+        align-items: start;
       }
 
-      .about-section__image {
-        order: -1;
+      .about-section__content {
+        align-self: start;
       }
 
       .about-section__pills {
@@ -1893,8 +1927,8 @@
 
     <section aria-label="当院について" class="about-section" id="about">
       <div class="about-section__inner">
+        <h2 class="about-section__title">当院について</h2>
         <div class="about-section__content">
-          <h2 class="about-section__title">当院について</h2>
           <p class="about-section__text">
             佐藤医院は、地域の皆様の健康を守り、<br>
             より良い生活をサポートすることを使命としています。<br>
@@ -1913,7 +1947,7 @@
           </div>
         </div>
         <div class="about-section__image">
-          <img src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
+          <img id="aboutMedicalImage" src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
         </div>
       </div>
     </section>
@@ -2414,6 +2448,117 @@
 
       if (currentIndex === 0 && infoImageEl.getAttribute('src') !== infoImages[0]) {
         infoImageEl.src = infoImages[0];
+      }
+
+      preloadNext(currentIndex);
+      tick(true);
+      startTimer();
+    })();
+
+    (function () {
+      const aboutImageEl = document.getElementById('aboutMedicalImage');
+      if (!aboutImageEl) return;
+
+      const aboutImages = Array.from(
+        { length: 11 },
+        (_, index) => `image/Medical_Image/診察風景${index + 1}.jpg`
+      );
+
+      const INTERVAL_MS = 5000;
+
+      let currentIndex = Math.max(
+        aboutImages.findIndex((path) => aboutImageEl.getAttribute('src') === path),
+        0
+      );
+      let timerId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const preloadImage = (index) => {
+        const img = new Image();
+        img.src = aboutImages[index];
+      };
+
+      const preloadNext = (index = currentIndex) => {
+        const nextIndex = (index + 1) % aboutImages.length;
+        preloadImage(nextIndex);
+      };
+
+      const applyImage = (index) => {
+        const targetSrc = aboutImages[index];
+
+        if (prefersReducedMotion.matches) {
+          aboutImageEl.src = targetSrc;
+          currentIndex = index;
+          preloadNext(index);
+          return;
+        }
+
+        const handleTransition = () => {
+          aboutImageEl.removeEventListener('transitionend', handleTransition);
+          aboutImageEl.src = targetSrc;
+          requestAnimationFrame(() => {
+            aboutImageEl.classList.remove('is-fading');
+          });
+          currentIndex = index;
+          preloadNext(index);
+        };
+
+        aboutImageEl.addEventListener('transitionend', handleTransition);
+        requestAnimationFrame(() => {
+          aboutImageEl.classList.add('is-fading');
+        });
+      };
+
+      const setImageWithPreload = (targetIndex, attempt = 0) => {
+        if (attempt >= aboutImages.length) return;
+
+        const candidate = aboutImages[targetIndex];
+        const preload = new Image();
+
+        preload.onload = () => applyImage(targetIndex);
+        preload.onerror = () => {
+          const nextIndex = (targetIndex + 1) % aboutImages.length;
+          setImageWithPreload(nextIndex, attempt + 1);
+        };
+
+        preload.src = candidate;
+      };
+
+      const tick = (forceChange = false) => {
+        const nextIndex = (currentIndex + 1) % aboutImages.length;
+
+        if (!forceChange && nextIndex === currentIndex) return;
+        setImageWithPreload(nextIndex);
+      };
+
+      const stopTimer = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startTimer = () => {
+        stopTimer();
+        timerId = setInterval(() => tick(false), INTERVAL_MS);
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          stopTimer();
+        } else {
+          startTimer();
+          tick(true);
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      prefersReducedMotion.addEventListener('change', () => {
+        aboutImageEl.style.transition = prefersReducedMotion.matches ? 'none' : '';
+      });
+
+      if (currentIndex === 0 && aboutImageEl.getAttribute('src') !== aboutImages[0]) {
+        aboutImageEl.src = aboutImages[0];
       }
 
       preloadNext(currentIndex);
