@@ -427,25 +427,30 @@
     .hero-description {
       border: 1px solid var(--color-border);
       border-radius: 30px;
-      padding: 14px 16px;
+      padding: 18px 20px;
       background: #fff;
       margin-top: 4px;
       display: grid;
-      gap: 8px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
       align-items: center;
-      justify-items: start;
+      justify-items: stretch;
     }
 
     .hero-description__date {
-      white-space: nowrap;
       font-weight: 700;
+      font-size: clamp(18px, 2.2vw, 30px);
+      line-height: 1.2;
+      white-space: normal;
     }
 
     .hero-description__status {
       font-weight: 700;
-      padding: 6px 10px;
+      font-size: clamp(18px, 2.2vw, 30px);
+      padding: 10px 12px;
       border-radius: 999px;
-      width: fit-content;
+      width: 100%;
+      text-align: center;
       border: 1px solid var(--color-border);
       background: #fff;
     }
@@ -460,6 +465,12 @@
       background: #eaf2fb;
       border-color: #a9c5f2;
       color: #1c4fa0;
+    }
+
+    .hero-description__status.is-break {
+      background: #fff4e5;
+      border-color: #f0c48a;
+      color: #a35700;
     }
 
     .hero-description__status.is-closed {
@@ -2096,8 +2107,11 @@
           (isWorkingAfternoon && inRange(13, 0, 14, 0, currentMinutes))
         );
 
+        const breakTime = isWorkingAfternoon && inRange(12, 0, 13, 0, currentMinutes);
+
         if (consulting) return { text: '診療中', className: 'is-consult' };
         if (reception) return { text: '受付中', className: 'is-reception' };
+        if (breakTime) return { text: '休憩中', className: 'is-break' };
         return { text: '休診中', className: 'is-closed' };
       };
 
@@ -2111,7 +2125,7 @@
         if (heroClinicStatusEl) {
           const { text, className } = getClinicStatus(now);
           heroClinicStatusEl.textContent = text;
-          heroClinicStatusEl.classList.remove('is-reception', 'is-consult', 'is-closed');
+          heroClinicStatusEl.classList.remove('is-reception', 'is-consult', 'is-closed', 'is-break');
           heroClinicStatusEl.classList.add(className);
         }
       };
