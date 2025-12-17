@@ -256,6 +256,61 @@
       white-space: nowrap;
     }
 
+    .reading-ruler-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+
+    .reading-ruler-toggle input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .reading-ruler-toggle__slider {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--color-gray-300);
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .reading-ruler-toggle__slider::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .reading-ruler-toggle input:checked + .reading-ruler-toggle__slider {
+      background: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(42, 159, 182, 0.35);
+    }
+
+    .reading-ruler-toggle input:checked + .reading-ruler-toggle__slider::after {
+      transform: translateX(20px);
+    }
+
+    .reading-ruler-toggle__label {
+      font-size: 14px;
+      color: #111111;
+      white-space: nowrap;
+    }
+
     @media (max-width: 1199px) {
       .site-header__bar {
         grid-template-columns: 1fr;
@@ -1669,6 +1724,173 @@ text-align: left;
       }
     }
 
+    .reading-ruler {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: rgba(38, 192, 111, 0.16);
+      pointer-events: none;
+      display: none;
+      z-index: 950;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .memo-maker {
+      width: min(720px, calc(100% - 48px));
+      border: none;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+      background: #fff;
+    }
+
+    .memo-maker::backdrop {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(2px);
+    }
+
+    .memo-maker__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .memo-maker__title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .memo-maker__subtitle {
+      font-size: 14px;
+      color: var(--color-gray-500);
+    }
+
+    .memo-maker__close {
+      border: none;
+      background: #f0f0f0;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .memo-maker__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .memo-maker__field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .memo-maker__label {
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .memo-maker__required {
+      color: var(--color-accent);
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(38, 192, 111, 0.12);
+    }
+
+    .memo-maker__field input,
+    .memo-maker__field textarea {
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      width: 100%;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .memo-maker__field textarea {
+      resize: vertical;
+    }
+
+    .memo-maker__option {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 12px;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .memo-maker__option--inline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .memo-maker__checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+
+    .memo-maker__actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .memo-maker__submit,
+    .memo-maker__secondary {
+      border: none;
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    .memo-maker__submit {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .memo-maker__secondary {
+      background: #fff;
+      color: #111111;
+      border: 1px solid var(--color-border);
+    }
+
+    .memo-maker__result {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--color-gray-100);
+      border: 1px solid var(--color-border);
+    }
+
+    .memo-maker__result-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .memo-maker__result-body ul {
+      padding-left: 18px;
+      margin: 8px 0;
+    }
+
     .section-placeholder {
       border: none;
       padding: 0;
@@ -1702,18 +1924,26 @@ text-align: left;
             <a class="site-header__nav-item" href="#staff">スタッフ紹介</a>
             <a class="site-header__nav-item" href="#access">アクセス</a>
             <a class="site-header__nav-item" href="#contact">ご予約・お問い合わせ</a>
-            <a class="site-header__nav-item" href="#faq">よくあるご質問</a>
+            <a class="site-header__nav-item" href="#">スマホ版へ</a><!-- スマホ版へのリンクはここに張り付け -->
           </nav>
 
           <!-- 右：電話と Web予約ボタン -->
           <div class="site-header__contact">
-            <div class="site-header__phone">00-0000-0000</div>
-            <a href="#contact" class="site-header__reserve-button">Web予約</a>
+            <div class="site-header__phone">
+              <label class="reading-ruler-toggle">
+                <input type="checkbox" id="readingRulerToggle" aria-label="読書ルーラーを有効にする">
+                <span class="reading-ruler-toggle__slider" aria-hidden="true"></span>
+                <span class="reading-ruler-toggle__label">読書ルーラー</span>
+              </label>
+            </div>
+            <a href="#contact" class="site-header__reserve-button" data-memo-trigger="header">Web予約</a>
           </div>
         </div>
       </header>
     </div>
   </div>
+
+  <div class="reading-ruler" id="readingRuler" aria-hidden="true"></div>
 
   <main class="page">
     <div class="content-inner">
@@ -1835,7 +2065,7 @@ text-align: left;
         </div>
         <div class="info-secondary__actions">
           <a class="info-secondary__button" href="#">もっと見る</a>
-          <a class="info-secondary__button" href="#">Web予約</a>
+          <a class="info-secondary__button" href="#" data-memo-trigger="info">Web予約</a>
         </div>
       </div>
     </div><!-- /.info-board -->
@@ -2084,6 +2314,69 @@ text-align: left;
     </section>
     </div>
   </main>
+
+  <dialog id="memoDialog" class="memo-maker" aria-label="Web予約ミニ問診">
+    <div class="memo-maker__header">
+      <div>
+        <div class="memo-maker__title">来院メモメーカー</div>
+        <div class="memo-maker__subtitle">受付に伝える内容を簡単にまとめられます</div>
+      </div>
+      <button type="button" class="memo-maker__close" id="memoDialogClose" aria-label="閉じる">×</button>
+    </div>
+    <form id="memoForm" class="memo-maker__form">
+      <label class="memo-maker__field">
+        <span class="memo-maker__label">お名前 <span class="memo-maker__required">必須</span></span>
+        <input type="text" name="name" required>
+      </label>
+      <label class="memo-maker__field">
+        <span class="memo-maker__label">年齢 <span class="memo-maker__required">必須</span></span>
+        <input type="number" name="age" required min="0" inputmode="numeric">
+      </label>
+      <fieldset class="memo-maker__field">
+        <legend class="memo-maker__label">初診／再診 <span class="memo-maker__required">必須</span></legend>
+        <label class="memo-maker__option"><input type="radio" name="visitType" value="初診" required>初診</label>
+        <label class="memo-maker__option"><input type="radio" name="visitType" value="再診" required>再診</label>
+      </fieldset>
+      <fieldset class="memo-maker__field">
+        <legend class="memo-maker__label">主な症状（複数選択可）</legend>
+        <div class="memo-maker__checkboxes">
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="発熱">発熱</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="咳・喉の痛み">咳・喉の痛み</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="腹痛・下痢">腹痛・下痢</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="頭痛">頭痛</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="倦怠感">倦怠感</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="その他">その他</label>
+        </div>
+        <label class="memo-maker__option memo-maker__option--inline">
+          <span>その他の症状</span>
+          <input type="text" name="symptomOther" placeholder="自由入力（任意）">
+        </label>
+      </fieldset>
+      <fieldset class="memo-maker__field">
+        <legend class="memo-maker__label">服薬の有無 <span class="memo-maker__required">必須</span></legend>
+        <label class="memo-maker__option"><input type="radio" name="medication" value="あり" required>あり</label>
+        <label class="memo-maker__option"><input type="radio" name="medication" value="なし" required>なし</label>
+      </fieldset>
+      <label class="memo-maker__field">
+        <span class="memo-maker__label">伝えたいこと</span>
+        <textarea name="notes" rows="3" placeholder="任意"></textarea>
+      </label>
+      <label class="memo-maker__field">
+        <span class="memo-maker__label">メールアドレス</span>
+        <input type="email" name="email" inputmode="email" placeholder="任意">
+      </label>
+
+      <div class="memo-maker__actions">
+        <button type="submit" class="memo-maker__submit">受付に送信</button>
+        <button type="button" class="memo-maker__secondary" id="memoPrint">印刷</button>
+        <button type="button" class="memo-maker__secondary" id="memoClose">閉じる</button>
+      </div>
+    </form>
+    <div class="memo-maker__result" id="memoResult" hidden>
+      <div class="memo-maker__result-title">受付に渡すメモ</div>
+      <div class="memo-maker__result-body" id="memoResultBody"></div>
+    </div>
+  </dialog>
 
   <footer class="footer" aria-label="フッター情報">
     <div class="footer__inner layout-inner">
@@ -2431,6 +2724,142 @@ text-align: left;
       preloadNext(currentIndex);
       tick(true);
       startTimer();
+    })();
+
+    (function () {
+      const dialog = document.getElementById('memoDialog');
+      const form = document.getElementById('memoForm');
+      const memoResult = document.getElementById('memoResult');
+      const memoResultBody = document.getElementById('memoResultBody');
+      const memoClose = document.getElementById('memoClose');
+      const memoDialogClose = document.getElementById('memoDialogClose');
+      const memoPrint = document.getElementById('memoPrint');
+      const firstField = form ? form.querySelector('input[name="name"]') : null;
+
+      if (!dialog || !form || !memoResult || !memoResultBody) return;
+
+      const resetMemo = () => {
+        form.reset();
+        memoResultBody.innerHTML = '<p>送信するとここに内容が表示されます。</p>';
+        memoResult.hidden = true;
+      };
+
+      const openDialog = () => {
+        resetMemo();
+        if (typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        } else {
+          dialog.setAttribute('open', '');
+        }
+        if (firstField) firstField.focus();
+      };
+
+      const closeDialog = () => {
+        if (dialog.open) {
+          dialog.close();
+        } else {
+          dialog.removeAttribute('open');
+        }
+      };
+
+      const buildMemoHtml = (data) => {
+        const name = (data.get('name') || '').trim();
+        const age = (data.get('age') || '').trim();
+        const visitType = data.get('visitType') || '未回答';
+        const medication = data.get('medication') || '未回答';
+        const symptoms = data.getAll('symptoms').filter(Boolean);
+        const otherSymptom = (data.get('symptomOther') || '').trim();
+        const notes = (data.get('notes') || '').trim();
+        const email = (data.get('email') || '').trim();
+
+        if (otherSymptom) {
+          symptoms.push(`その他: ${otherSymptom}`);
+        }
+
+        if (!symptoms.length) {
+          symptoms.push('未回答');
+        }
+
+        const items = [
+          `お名前: ${name}`,
+          `年齢: ${age}歳`,
+          `初診／再診: ${visitType}`,
+          `主な症状: ${symptoms.join('、')}`,
+          `服薬: ${medication}`,
+        ];
+
+        if (notes) {
+          items.push(`伝えたいこと: ${notes}`);
+        }
+
+        if (email) {
+          items.push(`メールアドレス: ${email}`);
+        }
+
+        return `
+          <p>受付でこちらの内容をお伝えください。</p>
+          <ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>
+        `;
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+
+        // TODO: ここで受付送信用APIへPOSTする
+
+        memoResultBody.innerHTML = buildMemoHtml(formData);
+        memoResult.hidden = false;
+      });
+
+      dialog.addEventListener('close', resetMemo);
+      dialog.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        closeDialog();
+      });
+
+      [memoClose, memoDialogClose].forEach((btn) => {
+        if (btn) {
+          btn.addEventListener('click', closeDialog);
+        }
+      });
+
+      if (memoPrint) {
+        memoPrint.addEventListener('click', () => window.print());
+      }
+
+      const memoTriggers = document.querySelectorAll('[data-memo-trigger]');
+      memoTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          openDialog();
+        });
+      });
+    })();
+
+    (function () {
+      const toggle = document.getElementById('readingRulerToggle');
+      const ruler = document.getElementById('readingRuler');
+      if (!toggle || !ruler) return;
+
+      const handleMouseMove = (event) => {
+        const offset = ruler.offsetHeight / 2;
+        const y = Math.max(event.clientY - offset, 0);
+        ruler.style.top = `${y}px`;
+      };
+
+      const updateState = () => {
+        if (toggle.checked) {
+          ruler.style.display = 'block';
+          document.addEventListener('mousemove', handleMouseMove);
+        } else {
+          ruler.style.display = 'none';
+          document.removeEventListener('mousemove', handleMouseMove);
+        }
+      };
+
+      toggle.addEventListener('change', updateState);
+      updateState();
     })();
   </script>
 </body>
