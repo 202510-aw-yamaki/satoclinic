@@ -747,6 +747,9 @@
 
     section#greeting {
       background: #F3F3F3;
+      border: none;
+      box-shadow: none;
+      padding: 22px 0;
     }
 
     h2 {
@@ -849,8 +852,8 @@
         grid-column: auto;
       }
 
-      .about-section__inner {
-        flex-direction: column;
+      .about-section__grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -896,16 +899,17 @@
       line-height: 1.4;
     }
 
-    .features-section__primary-links,
+    .features-card .features-pill {
+      margin-top: auto;
+      align-self: center;
+    }
+
     .features-section__secondary-links {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 24px;
       align-items: center;
       justify-items: center;
-    }
-
-    .features-section__secondary-links {
       margin-top: -4px;
     }
 
@@ -942,7 +946,6 @@
 
     @media (max-width: 640px) {
       .features-section__cards,
-      .features-section__primary-links,
       .features-section__secondary-links {
         grid-template-columns: 1fr;
       }
@@ -1005,18 +1008,16 @@
 
     .about-section__inner {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
+      padding: 24px clamp(20px, 4vw, 32px);
       background: #E0F5EA;
-    }
-
-    .about-section__content {
-      flex: 1 1 50%;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    .about-section__header {
+      width: 100%;
+      text-align: center;
     }
 
     .about-section__title {
@@ -1025,6 +1026,22 @@
       line-height: 44px;
       color: #111111;
       margin: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .about-section__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .about-section__content {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: flex-start;
     }
 
     .about-section__text {
@@ -1069,10 +1086,10 @@
     }
 
     .about-section__image {
-      flex: 1 1 50%;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
 
     .about-section__image img {
@@ -1087,12 +1104,13 @@
     }
 
     @media (max-width: 900px) {
-      .about-section__inner {
-        flex-direction: column;
+      .about-section__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .about-section__image {
-        order: -1;
+        order: 2;
       }
 
       .about-section__pills {
@@ -1514,17 +1532,11 @@
       align-items: flex-start;
     }
 
-    /* 左カラム：タイトル＋地図 */
-    .access-section__left {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
     .access-section__header {
       display: flex;
       justify-content: center;
-      padding: 0 40px;
+      padding: 0 40px 24px;
+      width: 100%;
     }
 
     .access-section__title {
@@ -1534,6 +1546,7 @@
       font-weight: 900;
       color: #111111;
       text-align: center;
+      width: 100%;
     }
 
     .access-section__map-wrapper {
@@ -1590,7 +1603,7 @@
       object-fit: cover;
     }
 
-    /* 右カラム：情報カード＋ボタン */
+    /* 右カラム：情報カード */
     .access-section__right {
       display: flex;
       flex-direction: column;
@@ -1621,31 +1634,6 @@
       color: #111111;
     }
 
-    /* 下部ボタンエリア */
-    .access-actions {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-
-    .access-action-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 160px;
-      height: 40px;
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: #C97A2A;
-      color: var(--color-CL-White-100, #ffffff);
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 22px;
-      text-decoration: none;
-    }
-
     /* レスポンシブ対応：狭い画面では縦並びに */
     @media (max-width: 900px) {
       .access-section__container {
@@ -1658,11 +1646,7 @@
       }
 
       .access-section__header {
-        padding: 0 16px;
-      }
-
-      .access-actions {
-        gap: 20px;
+        padding: 0 16px 20px;
       }
     }
 
@@ -1862,25 +1846,23 @@
           <div class="features-card">
             <div class="features-card__title">一般内科診察</div>
             <div class="features-card__text">風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。</div>
+            <div class="features-pill">一般内科診察へ</div>
           </div>
           <div class="features-card">
             <div class="features-card__title">生活習慣病の診断・治療</div>
             <div class="features-card__text">高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。</div>
+            <div class="features-pill">生活習慣病の診断・治療へ</div>
           </div>
           <div class="features-card">
             <div class="features-card__title">消化器系の診察</div>
             <div class="features-card__text">胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。</div>
+            <div class="features-pill">消化器系の診察へ</div>
           </div>
           <div class="features-card">
             <div class="features-card__title">呼吸器系の診察</div>
             <div class="features-card__text">咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。</div>
+            <div class="features-pill">呼吸器系の診察へ</div>
           </div>
-        </div>
-        <div class="features-section__primary-links">
-          <div class="features-pill">一般内科診察へ</div>
-          <div class="features-pill">生活習慣病の診断・治療へ</div>
-          <div class="features-pill">消化器系の診察へ</div>
-          <div class="features-pill">呼吸器系の診察へ</div>
         </div>
         <div class="features-section__secondary-links">
           <div class="features-section__secondary-label">その他の診察はこちら→</div>
@@ -1911,27 +1893,31 @@
 
     <section aria-label="当院について" class="about-section" id="about">
       <div class="about-section__inner">
-        <div class="about-section__content">
+        <div class="about-section__header">
           <h2 class="about-section__title">当院について</h2>
-          <p class="about-section__text">
-            佐藤医院は、地域の皆様の健康を守り、<br>
-            より良い生活をサポートすることを使命としています。<br>
-            創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、<br>
-            地域密着型の医療を提供してまいりました。<br>
-            今後も、皆様の健康維持と病気予防に貢献するため、<br>
-            より良い医療サービスを提供し続けることをお約束いたします。
-          </p>
-          <div class="about-section__pills">
-            <div class="about-section__pill">診療方針と医療の質</div>
-            <div class="about-section__pill">患者様中心の医療を提供</div>
-            <div class="about-section__pill">地域に根ざした医療</div>
-            <div class="about-section__pill">家族全員をサポート</div>
-            <div class="about-section__pill">最新の医療設備と技術</div>
-            <div class="about-section__pill">おしらせ一覧へ</div>
-          </div>
         </div>
-        <div class="about-section__image">
-          <img src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
+        <div class="about-section__grid">
+          <div class="about-section__content">
+            <p class="about-section__text">
+              佐藤医院は、地域の皆様の健康を守り、<br>
+              より良い生活をサポートすることを使命としています。<br>
+              創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、<br>
+              地域密着型の医療を提供してまいりました。<br>
+              今後も、皆様の健康維持と病気予防に貢献するため、<br>
+              より良い医療サービスを提供し続けることをお約束いたします。
+            </p>
+            <div class="about-section__pills">
+              <div class="about-section__pill">診療方針と医療の質</div>
+              <div class="about-section__pill">患者様中心の医療を提供</div>
+              <div class="about-section__pill">地域に根ざした医療</div>
+              <div class="about-section__pill">家族全員をサポート</div>
+              <div class="about-section__pill">最新の医療設備と技術</div>
+              <div class="about-section__pill">おしらせ一覧へ</div>
+            </div>
+          </div>
+          <div class="about-section__image">
+            <img src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
+          </div>
         </div>
       </div>
     </section>
@@ -2031,25 +2017,21 @@
 
     <section aria-label="アクセス" class="access-section" id="access">
       <div class="access-section__container">
+        <div class="access-section__header">
+          <h2 class="access-section__title">アクセス</h2>
+        </div>
         <div class="access-section__layout">
-          <!-- 左カラム：タイトル＋地図 -->
-          <div class="access-section__left">
-            <div class="access-section__header">
-              <h2 class="access-section__title">アクセス</h2>
-            </div>
-            <div class="access-section__map-wrapper">
-              <div class="access-map">
-                <iframe
-                  src="https://www.google.com/maps?q=%E3%80%92110-0015+%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%9D%B1%E4%B8%8A%E9%87%8E%EF%BC%93%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%95%E2%88%92%EF%BC%95+%E6%9B%BD%E6%88%91%E3%83%93%E3%83%AB+3F&output=embed"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  allowfullscreen
-                ></iframe>
-              </div>
+          <div class="access-section__map-wrapper">
+            <div class="access-map">
+              <iframe
+                src="https://www.google.com/maps?q=%E3%80%92110-0015+%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%9D%B1%E4%B8%8A%E9%87%8E%EF%BC%93%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%95%E2%88%92%EF%BC%95+%E6%9B%BD%E6%88%91%E3%83%93%E3%83%AB+3F&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
 
-          <!-- 右カラム：住所・アクセス・お問い合わせ＋ボタン -->
           <div class="access-section__right">
             <div class="access-info-card">
               <div class="access-info-card__body">
@@ -2069,11 +2051,6 @@
                   Eメール: info@sato-clinic-test.jp
                 </p>
               </div>
-            </div>
-
-            <div class="access-actions">
-              <a href="#contact" class="access-action-button">Web予約</a>
-              <a href="#faq" class="access-action-button">よくあるご質問</a>
             </div>
           </div>
         </div>
