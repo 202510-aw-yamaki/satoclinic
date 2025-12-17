@@ -1038,8 +1038,10 @@
 
     .about-section__grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 24px;
+      /* 左 56%・右 40%、間の 4% は column-gap で確保 */
+      grid-template-columns: 56% 40%;
+      /* row-gap: 24px / column-gap: 4% の指定 */
+      gap: 24px 4%;
       align-items: flex-start;
     }
 
