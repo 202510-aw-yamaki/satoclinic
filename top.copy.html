@@ -859,7 +859,7 @@
 
     .features-section__cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 24px;
       justify-items: center;
     }
@@ -911,6 +911,12 @@
       align-items: center;
       justify-items: center;
       margin-top: -4px;
+    }
+
+    @media (max-width: 1080px) {
+      .features-section__cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .features-section__secondary-label {
@@ -1053,11 +1059,11 @@
     }
 
     .about-section__pills {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px 20px;
       padding: 32px 26px;
-      justify-content: center;
+      justify-items: center;
       align-items: center;
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
       border-radius: 24px;
@@ -1065,7 +1071,8 @@
     }
 
     .about-section__pill {
-      width: 200px;
+      width: 100%;
+      max-width: 220px;
       min-height: 40px;
       padding: 12px 6px;
       background: var(--佐藤医院, #19C677);
@@ -1096,6 +1103,7 @@
       width: 100%;
       max-width: 560px;
       height: auto;
+      aspect-ratio: 5 / 3;
       border-radius: 24px;
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -1115,6 +1123,13 @@
 
       .about-section__pills {
         padding: 24px 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-section__pills {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1288,7 +1303,7 @@ text-align: left;
     }
 
     .staff-card--primary {
-      background: #FAFAFA;
+      background: transparent;
 
     }
 
