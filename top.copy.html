@@ -1830,6 +1830,14 @@ text-align: left;
       font-size: 14px;
     }
 
+    .memo-maker__radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 10px;
+      align-items: center;
+      justify-items: start;
+    }
+
     .memo-maker__option--inline {
       display: flex;
       align-items: center;
@@ -1846,17 +1854,32 @@ text-align: left;
 
     .memo-maker__actions {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 4px;
     }
 
+    .memo-maker__actions-primary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .memo-maker__actions-secondary {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .memo-maker__submit,
-    .memo-maker__secondary {
+    .memo-maker__secondary,
+    .memo-maker__wait {
       border: none;
       border-radius: 12px;
-      padding: 10px 16px;
-      font-size: 14px;
+      padding: 18px 28px;
+      font-size: 16px;
       cursor: pointer;
       font-weight: 700;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
@@ -1867,10 +1890,43 @@ text-align: left;
       color: #fff;
     }
 
+    .memo-maker__wait {
+      background: var(--color-primary-light);
+      color: #0c505d;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .memo-maker__wait-count {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .memo-maker__wait-note {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
     .memo-maker__secondary {
       background: #fff;
       color: #111111;
       border: 1px solid var(--color-border);
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .memo-maker__notice {
+      background: rgba(38, 192, 111, 0.1);
+      border: 1px solid var(--color-accent);
+      color: #0f5c33;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-top: -2px;
+      font-size: 13px;
     }
 
     .memo-maker__result {
@@ -2334,8 +2390,10 @@ text-align: left;
       </label>
       <fieldset class="memo-maker__field">
         <legend class="memo-maker__label">初診／再診 <span class="memo-maker__required">必須</span></legend>
-        <label class="memo-maker__option"><input type="radio" name="visitType" value="初診" required>初診</label>
-        <label class="memo-maker__option"><input type="radio" name="visitType" value="再診" required>再診</label>
+        <div class="memo-maker__radio-grid">
+          <label class="memo-maker__option"><input type="radio" name="visitType" value="初診" required>初診</label>
+          <label class="memo-maker__option"><input type="radio" name="visitType" value="再診" required>再診</label>
+        </div>
       </fieldset>
       <fieldset class="memo-maker__field">
         <legend class="memo-maker__label">主な症状（複数選択可）</legend>
@@ -2354,11 +2412,14 @@ text-align: left;
       </fieldset>
       <fieldset class="memo-maker__field">
         <legend class="memo-maker__label">服薬の有無 <span class="memo-maker__required">必須</span></legend>
-        <label class="memo-maker__option"><input type="radio" name="medication" value="あり" required>あり</label>
-        <label class="memo-maker__option"><input type="radio" name="medication" value="なし" required>なし</label>
+        <div class="memo-maker__radio-grid">
+          <label class="memo-maker__option"><input type="radio" name="medication" value="あり" required>あり</label>
+          <label class="memo-maker__option"><input type="radio" name="medication" value="なし" required>なし</label>
+        </div>
       </fieldset>
       <label class="memo-maker__field">
         <span class="memo-maker__label">伝えたいこと</span>
+        <p class="memo-maker__notice" id="medicationNotice" hidden aria-live="polite">服薬中のお薬の名前を『伝えたいこと』にご記入ください。</p>
         <textarea name="notes" rows="3" placeholder="任意"></textarea>
       </label>
       <label class="memo-maker__field">
@@ -2367,9 +2428,17 @@ text-align: left;
       </label>
 
       <div class="memo-maker__actions">
-        <button type="submit" class="memo-maker__submit">受付に送信</button>
-        <button type="button" class="memo-maker__secondary" id="memoPrint">印刷</button>
-        <button type="button" class="memo-maker__secondary" id="memoClose">閉じる</button>
+        <div class="memo-maker__actions-primary">
+          <button type="submit" class="memo-maker__submit">受付に送信</button>
+          <div class="memo-maker__wait" id="waitInfo" aria-live="polite">
+            <div class="memo-maker__wait-count" id="waitCount">現在の待ち人数：0人</div>
+            <div class="memo-maker__wait-note" id="waitAdvice">10分前にはご来院ください</div>
+          </div>
+        </div>
+        <div class="memo-maker__actions-secondary">
+          <button type="button" class="memo-maker__secondary" id="memoPrint">印刷</button>
+          <button type="button" class="memo-maker__secondary" id="memoClose">閉じる</button>
+        </div>
       </div>
     </form>
     <div class="memo-maker__result" id="memoResult" hidden>
@@ -2727,6 +2796,9 @@ text-align: left;
     })();
 
     (function () {
+      // TODO: ここで待ち人数をAPIから取得して表示する
+      const WAIT_COUNT = 0;
+
       const dialog = document.getElementById('memoDialog');
       const form = document.getElementById('memoForm');
       const memoResult = document.getElementById('memoResult');
@@ -2735,13 +2807,32 @@ text-align: left;
       const memoDialogClose = document.getElementById('memoDialogClose');
       const memoPrint = document.getElementById('memoPrint');
       const firstField = form ? form.querySelector('input[name="name"]') : null;
+      const medicationNotice = document.getElementById('medicationNotice');
+      const medicationRadios = form ? form.querySelectorAll('input[name="medication"]') : [];
+      const waitCountEl = document.getElementById('waitCount');
+      const waitAdviceEl = document.getElementById('waitAdvice');
 
       if (!dialog || !form || !memoResult || !memoResultBody) return;
+
+      const updateMedicationNotice = () => {
+        if (!medicationNotice) return;
+        const selected = form.querySelector('input[name="medication"]:checked');
+        const show = selected && selected.value === 'あり';
+        medicationNotice.hidden = !show;
+      };
+
+      const updateWaitInfo = () => {
+        if (!waitCountEl || !waitAdviceEl) return;
+        const minutesBefore = Math.max(WAIT_COUNT * 10, 10);
+        waitCountEl.textContent = `現在の待ち人数：${WAIT_COUNT}人`;
+        waitAdviceEl.textContent = `${minutesBefore}分前にはご来院ください`;
+      };
 
       const resetMemo = () => {
         form.reset();
         memoResultBody.innerHTML = '<p>送信するとここに内容が表示されます。</p>';
         memoResult.hidden = true;
+        updateMedicationNotice();
       };
 
       const openDialog = () => {
@@ -2835,6 +2926,13 @@ text-align: left;
           openDialog();
         });
       });
+
+      medicationRadios.forEach((radio) => {
+        radio.addEventListener('change', updateMedicationNotice);
+      });
+
+      updateMedicationNotice();
+      updateWaitInfo();
     })();
 
     (function () {
