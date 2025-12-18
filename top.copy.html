@@ -961,11 +961,17 @@
 
     .features-section__secondary-links {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 24px;
       align-items: center;
       justify-items: center;
       margin-top: -4px;
+    }
+
+    @media (max-width: 900px) {
+      .features-section__secondary-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 1080px) {
@@ -980,7 +986,7 @@
       line-height: 1.4;
       text-align: center;
       color: #111111;
-      grid-column: 1 / -1;
+      grid-column: auto;
     }
 
     .features-pill {
@@ -1000,6 +1006,16 @@
       line-height: 1.375;
       text-align: center;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .features-pill,
+    .about-section__pill,
+    .hero-pill,
+    .cta-pill {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
     }
 
     .features-pill--secondary {
@@ -1790,6 +1806,13 @@ text-align: left;
       gap: 16px;
     }
 
+    .memo-maker__field-row--name-age {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 12px;
+      align-items: end;
+    }
+
     .memo-maker__field {
       display: flex;
       flex-direction: column;
@@ -1843,6 +1866,12 @@ text-align: left;
       justify-items: start;
     }
 
+    .memo-maker__radio-grid,
+    .memo-maker__radio-grid .memo-maker__option {
+      writing-mode: horizontal-tb;
+      text-orientation: mixed;
+    }
+
     .memo-maker__option--inline {
       display: flex;
       align-items: center;
@@ -1855,6 +1884,17 @@ text-align: left;
       display: flex;
       flex-wrap: wrap;
       gap: 4px 12px;
+    }
+
+    .memo-maker__option--symptom-split {
+      align-items: center;
+    }
+
+    .memo-maker__symptom-split {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      align-items: center;
+      column-gap: 6px;
     }
 
     .memo-maker__actions {
@@ -2175,7 +2215,7 @@ text-align: left;
           </div>
         </div>
         <div class="features-section__secondary-links">
-          <div class="features-section__secondary-label">その他の診察はこちら→</div>
+          <div class="features-section__secondary-label features-pill features-pill--secondary">その他の診察はこちら→</div>
           <div class="features-pill features-pill--secondary">健康診断・各種検査</div>
           <div class="features-pill features-pill--secondary">予防接種</div>
           <div class="features-pill features-pill--secondary">禁煙外来</div>
@@ -2383,14 +2423,16 @@ text-align: left;
       <button type="button" class="memo-maker__close" id="memoDialogClose" aria-label="閉じる">×</button>
     </div>
     <form id="memoForm" class="memo-maker__form">
-      <label class="memo-maker__field">
-        <span class="memo-maker__label">お名前 <span class="memo-maker__required">必須</span></span>
-        <input type="text" name="name" required>
-      </label>
-      <label class="memo-maker__field">
-        <span class="memo-maker__label">年齢 <span class="memo-maker__required">必須</span></span>
-        <input type="number" name="age" required min="0" inputmode="numeric">
-      </label>
+      <div class="memo-maker__field-row memo-maker__field-row--name-age">
+        <label class="memo-maker__field">
+          <span class="memo-maker__label">お名前 <span class="memo-maker__required">必須</span></span>
+          <input type="text" name="name" required>
+        </label>
+        <label class="memo-maker__field">
+          <span class="memo-maker__label">年齢 <span class="memo-maker__required">必須</span></span>
+          <input type="number" name="age" required min="0" inputmode="numeric">
+        </label>
+      </div>
       <fieldset class="memo-maker__field">
         <legend class="memo-maker__label">初診／再診 <span class="memo-maker__required">必須</span></legend>
         <div class="memo-maker__radio-grid">
@@ -2402,8 +2444,8 @@ text-align: left;
         <legend class="memo-maker__label">主な症状（複数選択可）</legend>
         <div class="memo-maker__checkboxes">
           <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="発熱">発熱</label>
-          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="咳・喉の痛み">咳・喉の痛み</label>
-          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="腹痛・下痢">腹痛・下痢</label>
+          <label class="memo-maker__option memo-maker__option--symptom-split"><input type="checkbox" name="symptoms" value="咳・喉の痛み"><span class="memo-maker__symptom-split"><span>咳・喉</span><span>の</span><span>痛み</span></span></label>
+          <label class="memo-maker__option memo-maker__option--symptom-split"><input type="checkbox" name="symptoms" value="腹痛・下痢"><span class="memo-maker__symptom-split"><span>腹痛</span><span>・</span><span>下痢</span></span></label>
           <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="頭痛">頭痛</label>
           <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="倦怠感">倦怠感</label>
           <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="その他">その他</label>
