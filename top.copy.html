@@ -817,13 +817,65 @@
 
     .schedule-table {
       border-radius: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-size: 14px;
     }
 
-    .schedule-table img {
-      display: block;
+    .schedule-table__frame {
       width: 100%;
-      height: auto;
+      max-width: 1100px;
+      background: #E0F5EA;
       border-radius: 30px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .schedule-table__inner {
+      width: 100%;
+      background: var(--color-CL-Gray-100, #F5F5F5);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .schedule-table__row {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      align-items: center;
+      width: 100%;
+    }
+
+    .schedule-table__row + .schedule-table__row {
+      border-top: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+    }
+
+    .schedule-table__row--body {
+      background: var(--color-CL-Gray-050, #FAFAFA);
+    }
+
+    .schedule-table__cell {
+      padding: 10px 8px;
+      text-align: center;
+      font-weight: 700;
+      color: #111111;
+      border-right: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+    }
+
+    .schedule-table__cell:last-child {
+      border-right: none;
+    }
+
+    .schedule-table__cell--title {
+      background: transparent;
+    }
+
+    .schedule-table__cell--time {
+      font-weight: 700;
     }
 
     .schedule-note {
@@ -987,6 +1039,13 @@
       text-align: center;
       color: #111111;
       grid-column: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 220px;
+      min-height: 40px;
+      white-space: nowrap;
     }
 
     .features-pill {
@@ -1130,7 +1189,7 @@
 
     .about-section__pills {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px 20px;
       padding: 32px 26px;
       justify-items: center;
@@ -1207,7 +1266,7 @@
 
       .about-section__pills {
         padding: 24px 16px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -2174,7 +2233,40 @@ text-align: left;
     <section aria-label="診療時間" id="schedule">
       <h2>診療時間</h2>
       <div class="schedule-table">
-        <img src="schedule.png" alt="診療時間表">
+        <div class="schedule-table__frame">
+          <div class="schedule-table__inner" role="table" aria-label="診療時間表">
+            <div class="schedule-table__row" role="row">
+              <div class="schedule-table__cell schedule-table__cell--title" role="columnheader">診療時間</div>
+              <div class="schedule-table__cell" role="columnheader">月</div>
+              <div class="schedule-table__cell" role="columnheader">火</div>
+              <div class="schedule-table__cell" role="columnheader">水</div>
+              <div class="schedule-table__cell" role="columnheader">木</div>
+              <div class="schedule-table__cell" role="columnheader">金</div>
+              <div class="schedule-table__cell" role="columnheader">土</div>
+              <div class="schedule-table__cell" role="columnheader">日</div>
+            </div>
+            <div class="schedule-table__row schedule-table__row--body" role="row">
+              <div class="schedule-table__cell schedule-table__cell--time" role="cell">9時～12時</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+            </div>
+            <div class="schedule-table__row schedule-table__row--body" role="row">
+              <div class="schedule-table__cell schedule-table__cell--time" role="cell">14時～19時</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="schedule-note">
         <div>受付時間：8時～11時/13時～18時
@@ -2215,7 +2307,7 @@ text-align: left;
           </div>
         </div>
         <div class="features-section__secondary-links">
-          <div class="features-section__secondary-label features-pill features-pill--secondary">その他の診察はこちら→</div>
+          <div class="features-section__secondary-label">その他の診察はこちら→</div>
           <div class="features-pill features-pill--secondary">健康診断・各種検査</div>
           <div class="features-pill features-pill--secondary">予防接種</div>
           <div class="features-pill features-pill--secondary">禁煙外来</div>
