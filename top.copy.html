@@ -494,7 +494,7 @@
 
     .schedule-mini__row {
       display: grid;
-      grid-template-columns: repeat(8, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 2fr) repeat(7, minmax(0, 1fr));
       align-items: center;
     }
 
@@ -893,7 +893,7 @@
 
     .schedule-table__row {
       display: grid;
-      grid-template-columns: repeat(8, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 2fr) repeat(7, minmax(0, 1fr));
       align-items: center;
       width: 100%;
     }
@@ -1516,26 +1516,37 @@ text-align: left;
     }
 
     .staff-card__body {
-      display: flex;
-      align-items: center;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas: "text photo";
       gap: 10px;
       padding: 0 10px 10px;
-    }
-
-    .staff-card__photo img {
-      width: 120px;
-      height: 150px;
-      border-radius: 30px;
-      object-fit: cover;
-      display: block;
+      align-items: start;
     }
 
     .staff-card__text {
-      flex: 1 1 0;
+      grid-area: text;
+      min-width: 0;
       font-size: 16px;
       line-height: 20px;
       letter-spacing: 0.25px;
       color: #111111;
+    }
+
+    .staff-card__photo {
+      grid-area: photo;
+      min-width: 0;
+      display: flex;
+    }
+
+    .staff-card__photo img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      max-height: 220px;
+      border-radius: 30px;
+      object-fit: cover;
+      display: block;
     }
 
     @media (max-width: 900px) {
@@ -1554,8 +1565,10 @@ text-align: left;
       }
 
       .staff-card__body {
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "text";
       }
 
       .staff-card__name {
