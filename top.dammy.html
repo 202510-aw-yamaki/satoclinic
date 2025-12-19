@@ -1,0 +1,3317 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>佐藤医院ワイヤーフレーム</title>
+  <style>
+    :root {
+      --color-primary: #2a9fb6;
+      --color-primary-light: #6bc6b9;
+      --color-accent: #26c06f;
+      --color-accent-2: #f08f2d;
+      --color-gray-100: #f5f7f8;
+      --color-gray-300: #e3e7e9;
+      --color-gray-500: #7a7f85;
+      --color-border: #d0d6da;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #FAFAFA;
+      color: #111111;
+    }
+
+    html,
+    body {
+      min-width: 540px;
+    }
+
+    /* スムーススクロールを全体に適用 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .layout-inner {
+      width: clamp(840px, calc(100% - 240px), 1200px);
+      margin: 0 auto;
+      padding-inline: clamp(16px, 3vw, 32px);
+    }
+
+    @media (max-width: 1080px) {
+      .layout-inner {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        padding-inline: clamp(16px, 4vw, 24px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .layout-inner {
+        width: 100%;
+        padding-inline: 16px;
+      }
+    }
+
+    .content-inner {
+      width: 100%;
+      min-width: 540px;
+      padding-inline: 120px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1199px) and (min-width: 800px) {
+      .content-inner {
+        padding-inline: 10vw;
+      }
+    }
+
+    @media (max-width: 799px) {
+      .content-inner {
+        padding-inline: 80px;
+      }
+    }
+
+    .page {
+      width: 100%;
+      padding: 16px 0 48px;
+    }
+
+    .page-header {
+      width: 100%;
+      padding: 4px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #EFEFEF;
+    }
+
+    .page-header__inner {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      padding-inline: clamp(16px, 4vw, 32px);
+    }
+
+    /* ヘッダーを画面幅いっぱいに広げるレイアウト調整 */
+    .site-header {
+      width: 100%;
+    }
+
+    /* 内部バー（角丸グレーの帯） */
+    .site-header__bar {
+      width: 100%;
+      border-radius: 30px;
+      background: #EFEFEF;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      column-gap: 16px;
+      padding: 8px clamp(12px, 2vw, 24px);
+      box-sizing: border-box;
+    }
+
+    /* 左：ロゴエリア（% 指定で縮む） */
+    .site-header__logo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      min-width: 0;
+      width: 80px;
+      height: 60px;
+      max-width: 80px;
+      flex-shrink: 0;
+    }
+
+    .site-header__logo img {
+      display: block;
+      width: 80px;
+      height: 80px;
+      max-width: 80px;
+      max-height: 80px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    /* 中央：ナビゲーション */
+    .site-header__nav {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 12px;
+      width: 100%;
+    }
+
+    .site-header__nav-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #111111;
+      font-size: 14px;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 26px;
+      padding: 8px 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-header__logo,
+    .site-header__contact {
+      flex-shrink: 0;
+    }
+
+    .site-header__nav {
+      min-width: 0;
+    }
+
+    @media (min-width: 1200px) {
+      .site-header__bar {
+        min-height: 60px;
+        height: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
+      }
+
+      .site-header__logo {
+        width: 80px;
+        height: 60px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .site-header__logo img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .site-header__nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 1400px) and (min-width: 1200px) {
+      .site-header__nav {
+        gap: 4px 8px;
+      }
+
+      .site-header__nav-item {
+        font-size: 14px;
+        padding: 6px 8px;
+      }
+    }
+
+    /* 右：連絡先＆Web予約 */
+    .site-header__contact {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      min-width: 0;
+      justify-self: end;
+      flex-wrap: wrap;
+    }
+
+    .site-header__phone {
+      color: #111111;
+      font-size: 18px;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-weight: 700;
+      line-height: 28px;
+      white-space: nowrap;
+    }
+
+    /* Web予約ボタン */
+    .site-header__reserve-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #19C677;
+      color: #FAFAFA;
+      font-size: 18px;
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-weight: 700;
+      line-height: 28px;
+      text-decoration: none;
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+
+    .reading-ruler-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+
+    .reading-ruler-toggle input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .reading-ruler-toggle__slider {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--color-gray-300);
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .reading-ruler-toggle__slider::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .reading-ruler-toggle input:checked + .reading-ruler-toggle__slider {
+      background: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(42, 159, 182, 0.35);
+    }
+
+    .reading-ruler-toggle input:checked + .reading-ruler-toggle__slider::after {
+      transform: translateX(20px);
+    }
+
+    .reading-ruler-toggle__label {
+      font-size: 14px;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1199px) {
+      .site-header__bar {
+        grid-template-columns: 1fr;
+        row-gap: 8px;
+        align-items: center;
+      }
+
+      .site-header__logo {
+        width: 80px;
+        height: 60px;
+        max-width: 80px;
+        justify-self: start;
+      }
+
+      .site-header__logo img {
+        width: 80px;
+        height: 80px;
+        max-width: 80px;
+        max-height: 80px;
+      }
+
+      .site-header__contact {
+        justify-content: flex-start;
+      }
+
+      .site-header__nav {
+        gap: 4px 8px;
+      }
+
+      .site-header__nav-item {
+        font-size: 14px;
+        padding: 4px 6px;
+      }
+    }
+
+    .hero {
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-visual {
+      background: #e0e0e0;
+      border: 1px solid var(--color-gray-300);
+      border-radius: 30px;
+      min-height: 460px;
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.8s ease;
+      will-change: opacity;
+    }
+
+    .hero-visual img.is-fading {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual img {
+        transition: none;
+      }
+    }
+
+    .hero-panel {
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+
+      height: 100%;
+    }
+
+    .callout {
+      background: #19c677;
+      border-radius: 30px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      color: #FAFAFA;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
+      border: 1px solid #17b26c;
+      margin-top: auto;
+    }
+
+    .callout-bar {
+      height: 6px;
+      border-bottom: 1px solid #12a45f;
+      border-radius: 30px 30px 0 0;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .callout-body {
+      padding: 16px 20px 24px;
+      display: grid;
+      gap: 16px;
+
+    }
+
+    .catch-copy {
+      font-weight: 700;
+      font-size: 36px;
+  text-align: center;
+
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-pill {
+      border-radius: 30px;
+      padding: 12px 24px;
+      border: 4px solid #eeeeee;
+      background: #19c677;
+      color: #FAFAFA;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    .schedule-card {
+      background: #fff;
+      border-radius: 30px;
+      border: 1px solid var(--color-border);
+      min-height: 130px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+      display: grid;
+      gap: 12px;
+
+    }
+
+    .schedule-mini {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 0;
+      font-size: 12px;
+    }
+
+    .schedule-mini__frame {
+      width: 100%;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background: #e0f5ea;
+    }
+
+    .schedule-mini__inner {
+      width: 100%;
+      background: #f5f5f5;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+    }
+
+    .schedule-mini__row {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) repeat(7, minmax(0, 1fr));
+      align-items: center;
+    }
+
+    .schedule-mini__row + .schedule-mini__row {
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .schedule-mini__row--head {
+      background: #eef7f3;
+    }
+
+    .schedule-mini__row--body {
+      background: #fafafa;
+    }
+
+    .schedule-mini__cell {
+      padding: 6px 4px;
+      text-align: center;
+      font-weight: 700;
+      line-height: 1.3;
+      border-right: 1px solid #e0e0e0;
+      word-break: keep-all;
+    }
+
+    .schedule-mini__cell:last-child {
+      border-right: none;
+    }
+
+    .schedule-mini__cell--title {
+      background: #d7efe5;
+    }
+
+    .schedule-mini__cell--time {
+      padding: 5px 4px;
+      letter-spacing: -0.1px;
+    }
+
+    .hero-description {
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 18px 20px;
+      background: #fff;
+      margin-top: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+      justify-items: stretch;
+    }
+
+    .hero-description__date {
+      font-weight: 700;
+      font-size: clamp(18px, 2.2vw, 30px);
+      line-height: 1.2;
+      white-space: normal;
+    }
+
+    .hero-description__status {
+      font-weight: 700;
+      font-size: clamp(18px, 2.2vw, 30px);
+      padding: 10px 12px;
+      border-radius: 999px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--color-border);
+      background: #fff;
+    }
+
+    .hero-description__status.is-reception {
+      background: #e6f7f2;
+      border-color: #9ad7c1;
+      color: #0f7f63;
+    }
+
+    .hero-description__status.is-consult {
+      background: #eaf2fb;
+      border-color: #a9c5f2;
+      color: #1c4fa0;
+    }
+
+    .hero-description__status.is-break {
+      background: #fff4e5;
+      border-color: #f0c48a;
+      color: #a35700;
+    }
+
+    .hero-description__status.is-closed {
+      background: #f9eded;
+      border-color: #e3b3b3;
+      color: #a12f2f;
+    }
+
+    .hero-description__text {
+      display: grid;
+      gap: 8px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .info-board {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+      align-items: start;
+
+      /* 追加: 枠・背景・影（他エリアと同系統） */
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 22px;
+      background: #E0F5EA;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-card {
+      background: transparent;
+      color: #111111;
+      border-radius: 30px;
+      padding: 12px 10px;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-card--primary {
+      align-items: center;
+      gap: 24px;
+    }
+
+    .info-card__header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    .info-board > .info-card__header {
+      grid-column: 1 / -1;
+      width: 100%;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .info-card__title {
+      margin: 0;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      color: #111111;
+      text-align: center;
+    }
+
+    .info-board > .info-card__header h2 {
+      margin: 0 0 14px;
+      font-size: 44px;
+      font-weight: 900;
+      color: #111111;
+      text-align: center;
+    }
+
+    .info-card .notice-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: min(100%, 620px);
+    }
+
+    .notice-item {
+      background: #fff;
+      color: #111111;
+      border-radius: 30px;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+      min-height: 64px;
+    }
+
+    .notice-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .notice-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    .notice-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .notice-date {
+      color: #111111;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+
+    .notice-title {
+      font-weight: 400;
+      font-size: 16px;
+      color: #111111;
+      line-height: 1.6;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .notice-chips {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      padding-left: 4px;
+    }
+
+    .notice-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 80px 20px 80px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      min-width: 80px;
+      line-height: 1.5;
+      white-space: nowrap;
+      height: 26px;
+    }
+
+    .notice-chip--subject {
+      background: #79C4B8;
+    }
+
+    .notice-chip--normal {
+      background: #19C677;
+    }
+
+    .info-card.secondary {
+      background: transparent;
+      color: #111111;
+      border: none;
+      box-shadow: none;
+      padding: 12px 10px;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .info-secondary__image {
+      width: 100%;
+      max-width: none;
+      border-radius: 30px;
+      border: 1px solid #111111;
+      overflow: hidden;
+      padding: 0;
+      aspect-ratio: 3 / 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    .info-secondary__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+      transition: opacity 0.8s ease;
+      will-change: opacity;
+    }
+
+    .info-secondary__image img.is-fading {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .info-secondary__image img {
+        transition: none;
+      }
+    }
+
+    .info-secondary__actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .info-secondary__button {
+      background: #C97A2A;
+      color: #FAFAFA;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      min-width: 210px;
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .badge {
+      background: var(--color-primary-light);
+      color: #111111;
+      padding: 4px 10px;
+      border-radius: 30px;
+      border: 1px solid var(--color-border);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    section {
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 22px;
+      margin-bottom: 22px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #news.info-board {
+      background: #E0F5EA;
+    }
+
+    section#schedule {
+      background: #F3F3F3;
+    }
+
+    section#greeting {
+      background: #F3F3F3;
+      border: none;
+      box-shadow: none;
+      padding: 22px 0;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 44px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .schedule-table {
+      border-radius: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .schedule-table__frame {
+      width: 100%;
+      max-width: 1100px;
+      background: #E0F5EA;
+      border-radius: 30px;
+
+      display: flex;
+      justify-content: center;
+    }
+
+    .schedule-table__inner {
+      width: 100%;
+      background: var(--color-CL-Gray-100, #F5F5F5);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .schedule-table__row {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) repeat(7, minmax(0, 1fr));
+      align-items: center;
+      width: 100%;
+    }
+
+    .schedule-table__row + .schedule-table__row {
+      border-top: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+    }
+
+    .schedule-table__row--body {
+      background: var(--color-CL-Gray-050, #FAFAFA);
+    }
+
+    .schedule-table__cell {
+      padding: 10px 8px;
+      text-align: center;
+      font-weight: 700;
+      color: #111111;
+      border-right: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+    }
+
+    .schedule-table__cell:last-child {
+      border-right: none;
+    }
+
+    .schedule-table__cell--title {
+      background: transparent;
+    }
+
+    .schedule-table__cell--time {
+      font-weight: 700;
+    }
+
+    .schedule-note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      background: var(--color-gray-100);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    section.features-section {
+      border: none;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .features-section__container {
+      width: 100%;
+      background: #E0F5EA;
+      border-radius: 30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      padding: 30px 20px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      overflow: hidden;
+    }
+
+    .features-section__header {
+      display: flex;
+      justify-content: center;
+    }
+
+    .features-section__title {
+      margin: 0;
+      color: #111111;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .features-section__lead {
+      background: #fff;
+      padding: 10px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.56;
+      color: #111111;
+    }
+
+    @media (max-width: 900px) {
+      .info-board {
+        grid-template-columns: 1fr;
+      }
+
+      .info-card__title {
+        font-size: 44px;
+      }
+
+      .info-secondary__actions {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero-content,
+      .info-board,
+      .doctor-intro,
+      .access-section__layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-description {
+        grid-column: auto;
+      }
+
+      .about-section__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .features-section__cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .features-card {
+      width: 100%;
+      max-width: 268px;
+      min-height: 220px;
+      padding: 0px 20px;
+      background: var(--color-CL-White-100, #fff);
+      border-radius: 12px;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      outline: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      outline-offset: -1px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .features-card__title {
+      width: 100%;
+      text-align: center;
+      color: #111111;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.4;
+      text-shadow: 0px 4px 4px rgba(25, 198, 119, 1);
+    }
+
+    .features-card__text {
+      width: 100%;
+      color: #111111;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .features-card .features-pill {
+      margin-top: auto;
+      align-self: center;
+    }
+
+    .features-section__secondary-links {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      align-items: center;
+      justify-items: center;
+      margin-top: -4px;
+    }
+
+    @media (max-width: 900px) {
+      .features-section__secondary-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .features-section__cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .features-section__secondary-label {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      color: #111111;
+      grid-column: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 220px;
+      min-height: 40px;
+      white-space: nowrap;
+    }
+
+    .features-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 220px;
+      min-height: 40px;
+      padding: 12px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      background: var(--佐藤医院, #19C677);
+      color: #FAFAFA;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.375;
+      text-align: center;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .features-pill,
+    .about-section__pill,
+    .hero-pill,
+    .cta-pill {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    .features-pill--secondary {
+      background: var(--color-CL-Brand-Primary, #3BA7C9);
+    }
+
+    @media (max-width: 640px) {
+      .features-section__cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    @media (min-width: 1080px) {
+      .feature-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .feature-card {
+      background: var(--color-gray-100);
+      border-radius: 30px;
+      border: 1px dashed var(--color-border);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 200px;
+    }
+
+    .placeholder-box {
+      border: 1px dashed #a0a7ad;
+      border-radius: 30px;
+      background: #fff;
+      padding: 14px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 12px 0 4px;
+    }
+
+    .cta-pill {
+      padding: 12px 24px;
+      border-radius: 30px;
+      border: 1px solid var(--color-accent);
+      background: #fff;
+      color: var(--color-accent);
+      font-weight: 700;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .about-section {
+      overflow: hidden;
+      background: #E0F5EA;
+    }
+
+    .about-section__inner {
+      width: 100%;
+      padding: 24px clamp(20px, 4vw, 32px);
+      background: #E0F5EA;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .about-section__header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .about-section__title {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 44px;
+      color: #111111;
+      margin: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .about-section__grid {
+      display: grid;
+      /* 左 56%・右 40%、間の 4% は column-gap で確保 */
+      grid-template-columns: 56% 40%;
+      /* row-gap: 24px / column-gap: 4% の指定 */
+      gap: 24px 4%;
+      align-items: flex-start;
+      grid-template-areas:
+        "text image"
+        "pills pills";
+    }
+
+    .about-section__text {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 28px;
+      color: #111111;
+      margin: 0;
+      grid-area: text;
+    }
+
+    .about-section__pills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px 20px;
+      padding: 32px 26px;
+      justify-items: center;
+      align-items: center;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      border-radius: 24px;
+      background: #f8fcf8;
+      grid-area: pills;
+    }
+
+    .about-section__pill {
+      width: 100%;
+      max-width: 220px;
+      min-height: 40px;
+      padding: 12px 6px;
+      background: var(--佐藤医院, #19C677);
+      border-radius: 999px;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      outline: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      outline-offset: -1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      color: var(--color-CL-Gray-050, #FAFAFA);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-section__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      grid-area: image;
+    }
+
+    .about-section__image img {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      aspect-ratio: 5 / 3;
+      border-radius: 24px;
+      border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.8s ease;
+      will-change: opacity;
+    }
+
+    .about-section__image img.is-fading {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-section__image img {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about-section__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        grid-template-areas:
+          "text"
+          "image"
+          "pills";
+      }
+
+      .about-section__pills {
+        padding: 24px 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .cta-pill.dummy {
+      border-style: dashed;
+      color: var(--color-gray-500);
+      background: #fff;
+    }
+
+    .cards-row {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 30px;
+      border: 1px solid var(--color-border);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+      min-height: 220px;
+    }
+
+    .doctor-intro {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+    }
+
+    .director-greeting {
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--color-border);
+      padding: 10px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .director-greeting__header {
+      text-align: center;
+    }
+
+    .director-greeting__title {
+      font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+      margin: 0;
+      color: #111111;
+    }
+
+    .director-greeting__body {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .director-greeting__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .director-greeting__image img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 24px;
+      padding: 12px;
+      border: 1px solid #111111;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .director-greeting__text {
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 700;
+      color: #111111;
+      display: grid;
+      gap: 8px;
+text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .director-greeting__body {
+        grid-template-columns: 1fr;
+      }
+
+      .director-greeting {
+        padding: 6px;
+      }
+
+      .director-greeting__image img {
+        max-width: 100%;
+      }
+
+      .director-greeting__title {
+        font-size: 44px;
+      }
+    }
+
+    .staff-section {
+      padding: 10px 0;
+      background: #F3F3F3;
+    }
+
+    .staff-section__inner {
+      width: 100%;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--color-border);
+      padding: 20px clamp(16px, 4vw, 32px) 24px;
+    }
+
+    .staff-section__header {
+      padding: 10px clamp(24px, 8vw, 160px) 0;
+      margin-bottom: 24px;
+    }
+
+    .staff-section__title {
+      font-size: 44px;
+      line-height: 44px;
+      font-weight: 900;
+      margin: 0;
+      color: #111111;
+    }
+
+    .staff-section__cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .staff-card {
+      border-radius: 30px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .staff-card__surface {
+      width: 100%;
+      min-height: 220px;
+
+      border-radius: 12px;
+      background: #FFFFFF;
+      outline: 1px var(--color-CL-Gray-300, #E0E0E0) solid;
+      outline-offset: -1px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .staff-card--primary {
+      background: transparent;
+
+    }
+
+    .staff-card--primary .staff-card__surface {
+      background: #FAFAFA;
+    }
+
+    .staff-card--accent .staff-card__surface {
+      background: #FFEEF9;
+    }
+
+    .staff-card__header {
+      padding: 10px 30px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .staff-card__name {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 28px;
+      color: #111111;
+      max-width: 234px;
+    }
+
+    .staff-card__body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas: "text photo";
+      gap: 10px;
+      padding: 0 10px 10px;
+      align-items: start;
+    }
+
+    .staff-card__text {
+      grid-area: text;
+      min-width: 0;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: #111111;
+    }
+
+    .staff-card__photo {
+      grid-area: photo;
+      min-width: 0;
+      display: flex;
+    }
+
+    .staff-card__photo img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      max-height: 220px;
+      border-radius: 30px;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .staff-section__header {
+        padding: 10px 24px 0;
+      }
+
+      .staff-section__title {
+        font-size: 32px;
+        line-height: 36px;
+      }
+
+      .staff-section__cards {
+        grid-template-columns: 1fr;
+        padding: 0 12px;
+      }
+
+      .staff-card__body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "text";
+      }
+
+      .staff-card__name {
+        max-width: none;
+      }
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 14px;
+    }
+
+    .map {
+      background: #fff;
+      border: 1px dashed var(--color-border);
+      border-radius: 30px;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 24px;
+      background: #EFEFEF;
+      padding: 12px 0 20px;
+      width: 100%;
+    }
+
+    .footer__inner {
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .footer__brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer__brand-card {
+      width: 200px;
+      height: 136px;
+      background: #EFEFEF;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer__logo {
+      max-width: 160px;
+      height: auto;
+      display: block;
+    }
+
+    .footer__copyright {
+      color: #111111;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer__main {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer__nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 16px 10px 8px;
+    }
+
+    .footer__nav-item {
+      color: #111111;
+      font-size: 14px;
+      line-height: 26px;
+      text-decoration: none;
+    }
+
+    .footer__nav-item:hover {
+      opacity: 0.8;
+    }
+
+    .footer__info-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 4px 24px 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer__info-block {
+      color: #111111;
+      font-size: 14px;
+      line-height: 26px;
+      text-align: left;
+    }
+
+    .footer__web-reserve {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      min-width: 200px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #19C677;
+      color: #FAFAFA;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 34px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .footer__inner {
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+      }
+
+      .footer__brand {
+        justify-content: center;
+      }
+
+      .footer__nav-row {
+        justify-content: center;
+      }
+
+      .footer__info-row {
+        justify-content: center;
+        padding: 8px 12px;
+      }
+
+      .footer__web-reserve {
+        font-size: 20px;
+        min-width: 180px;
+      }
+    }
+
+    /* アクセスセクション全体 */
+    .access-section {
+      border: none;
+      padding: 0;
+      margin-bottom: 22px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    /* 背景付きのコンテナ（1200px程度の箱） */
+    .access-section__container {
+      width: 100%;
+      background: #E0F5EA;
+      border-radius: 30px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      padding: 36px clamp(20px, 4vw, 32px);
+    }
+
+    /* 左右2カラムのレイアウト */
+    .access-section__layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .access-section__header {
+      display: flex;
+      justify-content: center;
+      padding: 0 40px 24px;
+      width: 100%;
+    }
+
+    .access-section__title {
+      margin: 0;
+      font-size: 44px;
+      line-height: 44px;
+      font-weight: 900;
+      color: #111111;
+      text-align: center;
+      width: 100%;
+    }
+
+    .access-section__map-wrapper {
+      width: 100%;
+    }
+
+    .access-map {
+      width: 100%;
+      border-radius: 30px;
+      outline: 1px solid #111111;
+      outline-offset: -1px;
+      overflow: hidden;
+      background: #fff;
+      height: 500px;
+      min-height: 500px;
+    }
+
+    .access-map iframe {
+      width: 100%;
+      height: 500px;
+      min-height: 500px;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 1199px) {
+      .access-map {
+        height: 420px;
+        min-height: 420px;
+      }
+
+      .access-map iframe {
+        height: 420px;
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 899px) {
+      .access-map {
+        height: 300px;
+        min-height: 300px;
+      }
+
+      .access-map iframe {
+        height: 300px;
+        min-height: 300px;
+      }
+    }
+
+    .access-map img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* 右カラム：情報カード */
+    .access-section__right {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .access-info-card {
+      background: #ffffff;
+      border-radius: 14.83px;
+      box-shadow: 0px 4.94px 4.94px rgba(0, 0, 0, 0.25);
+      outline: 1.24px solid var(--color-CL-Gray-300, #E0E0E0);
+      outline-offset: -1.24px;
+      padding: 16px 20px;
+    }
+
+    .access-info-card__body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .access-info-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 400;
+      color: #111111;
+    }
+
+    /* レスポンシブ対応：狭い画面では縦並びに */
+    @media (max-width: 900px) {
+      .access-section__container {
+        padding: 24px 16px;
+      }
+
+      .access-section__layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .access-section__header {
+        padding: 0 16px 20px;
+      }
+    }
+
+    .reading-ruler {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background: rgba(38, 192, 111, 0.16);
+      pointer-events: none;
+      display: none;
+      z-index: 950;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .memo-maker {
+      width: min(720px, calc(100% - 48px));
+      border: none;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+      background: #fff;
+    }
+
+    .memo-maker::backdrop {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(2px);
+    }
+
+    .memo-maker__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .memo-maker__title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .memo-maker__subtitle {
+      font-size: 14px;
+      color: var(--color-gray-500);
+    }
+
+    .memo-maker__close {
+      border: none;
+      background: #f0f0f0;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .memo-maker__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .memo-maker__field-row--name-age {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .memo-maker__field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    .memo-maker__label {
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .memo-maker__required {
+      color: var(--color-accent);
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(38, 192, 111, 0.12);
+    }
+
+    .memo-maker__field input,
+    .memo-maker__field textarea {
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      width: 100%;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .memo-maker__field textarea {
+      resize: vertical;
+    }
+
+    .memo-maker__option {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 12px;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .memo-maker__radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 10px;
+      align-items: center;
+      justify-items: start;
+    }
+
+    .memo-maker__radio-grid,
+    .memo-maker__radio-grid .memo-maker__option {
+      writing-mode: horizontal-tb;
+      text-orientation: mixed;
+    }
+
+    .memo-maker__option--inline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .memo-maker__checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+
+    .memo-maker__option--symptom-split {
+      align-items: center;
+    }
+
+    .memo-maker__symptom-split {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      align-items: center;
+      column-gap: 6px;
+    }
+
+    .memo-maker__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .memo-maker__actions-primary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .memo-maker__actions-secondary {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .memo-maker__submit,
+    .memo-maker__secondary,
+    .memo-maker__wait {
+      border: none;
+      border-radius: 12px;
+      padding: 18px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    .memo-maker__submit {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .memo-maker__wait {
+      background: var(--color-primary-light);
+      color: #0c505d;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .memo-maker__wait-count {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .memo-maker__wait-note {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .memo-maker__secondary {
+      background: #fff;
+      color: #111111;
+      border: 1px solid var(--color-border);
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .memo-maker__notice {
+      background: rgba(38, 192, 111, 0.1);
+      border: 1px solid var(--color-accent);
+      color: #0f5c33;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-top: -2px;
+      font-size: 13px;
+    }
+
+    .memo-maker__result {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--color-gray-100);
+      border: 1px solid var(--color-border);
+    }
+
+    .memo-maker__result-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .memo-maker__result-body ul {
+      padding-left: 18px;
+      margin: 8px 0;
+    }
+
+    .section-placeholder {
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      box-shadow: none;
+      min-height: 0;
+      height: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-header">
+    <div class="page-header__inner">
+      <header class="site-header" aria-label="サイトヘッダー">
+        <div class="site-header__bar">
+          <!-- 左：ロゴ -->
+          <div class="site-header__logo">
+            <img src="image/Logo/Logo.png" alt="佐藤医院のロゴ">
+          </div>
+
+          <!-- 中央：グローバルナビ -->
+          <nav class="site-header__nav" aria-label="メインメニュー">
+            <a class="site-header__nav-item" href="#top">トップページ</a>
+            <a class="site-header__nav-item" href="#news">おしらせ</a>
+            <a class="site-header__nav-item" href="#schedule">診療時間</a>
+            <a class="site-header__nav-item" href="#services">診療内容</a>
+            <a class="site-header__nav-item" href="#greeting">院長挨拶</a>
+            <a class="site-header__nav-item" href="#about">当院について</a>
+            <a class="site-header__nav-item" href="#staff">スタッフ紹介</a>
+            <a class="site-header__nav-item" href="#access">アクセス</a>
+            <a class="site-header__nav-item" href="#contact">ご予約・お問い合わせ</a>
+            <a class="site-header__nav-item" href="#">スマホ版へ</a><!-- スマホ版へのリンクはここに張り付け -->
+          </nav>
+
+          <!-- 右：電話と Web予約ボタン -->
+          <div class="site-header__contact">
+            <div class="site-header__phone">
+              <label class="reading-ruler-toggle">
+                <input type="checkbox" id="readingRulerToggle" aria-label="読書ルーラーを有効にする">
+                <span class="reading-ruler-toggle__slider" aria-hidden="true"></span>
+                <span class="reading-ruler-toggle__label">読書ルーラー</span>
+              </label>
+            </div>
+            <a href="#contact" class="site-header__reserve-button" data-memo-trigger="header">Web予約</a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="reading-ruler" id="readingRuler" aria-hidden="true"></div>
+
+  <main class="page">
+    <div class="content-inner">
+      <div class="hero" aria-label="トップビジュアル" id="top">
+        <div class="hero-content">
+          <div class="hero-left">
+            <div class="hero-visual">
+              <img id="heroVisualImage" src="image/Hospital_Exterior/病院の外観.jpg" alt="病院の外観の写真">
+            </div>
+            <div class="hero-description" aria-label="本日の情報">
+              <div class="hero-description__date" id="heroTodayDate"></div>
+              <div class="hero-description__status" id="heroClinicStatus" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="hero-panel">
+            <div class="schedule-card">
+              <div class="schedule-mini" aria-label="診療時間のミニボックス">
+                <div class="schedule-mini__frame">
+                  <div class="schedule-mini__inner" role="table" aria-label="診療時間表（簡易）">
+                    <div class="schedule-mini__row schedule-mini__row--head" role="row">
+                      <div class="schedule-mini__cell schedule-mini__cell--title" role="columnheader">診療時間</div>
+                      <div class="schedule-mini__cell" role="columnheader">月</div>
+                      <div class="schedule-mini__cell" role="columnheader">火</div>
+                      <div class="schedule-mini__cell" role="columnheader">水</div>
+                      <div class="schedule-mini__cell" role="columnheader">木</div>
+                      <div class="schedule-mini__cell" role="columnheader">金</div>
+                      <div class="schedule-mini__cell" role="columnheader">土</div>
+                      <div class="schedule-mini__cell" role="columnheader">日</div>
+                    </div>
+                    <div class="schedule-mini__row schedule-mini__row--body" role="row">
+                      <div class="schedule-mini__cell schedule-mini__cell--time" role="cell">9時～12時</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">／</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">／</div>
+                    </div>
+                    <div class="schedule-mini__row schedule-mini__row--body" role="row">
+                      <div class="schedule-mini__cell schedule-mini__cell--time" role="cell">14時～19時</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">／</div>
+                      <div class="schedule-mini__cell" role="cell">●</div>
+                      <div class="schedule-mini__cell" role="cell">／</div>
+                      <div class="schedule-mini__cell" role="cell">／</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-description__text" aria-label="受付・休診の案内文">
+                <div>受付時間：8時～11時/13時～18時
+<br>※休診日：木曜・土曜午後・日。</div>
+                <div>※祝祭日も診察を行っておりますが、休診日もございますので、
+<br>     事前にご確認ください。</div><!-- インラインで色を変えたい -->
+              </div>
+            </div>
+            <div class="callout">
+
+              <div class="callout-body">
+                <div class="catch-copy">地域に根ざした医療</div>
+                <div class="hero-actions">
+                  <a class="hero-pill" href="#staff">スタッフ紹介を見る</a><!-- スタッフ紹介欄にスクロール -->
+                  <a class="hero-pill" href="#access">所在地を見る</a>      <!-- アクセス欄にスクロール -->
+                  <a class="hero-pill" href="#contact">Web予約</a>     <!-- 予約ページに遷移 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="info-board" aria-label="お知らせと予約導線" id="news">
+      <div class="info-card__header">
+        <h2>おしらせ</h2>
+      </div>
+
+      <div class="info-card info-card--primary">
+        <ul class="notice-list">
+          <li class="notice-item">
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
+              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
+            </div>
+          </li>
+          <li class="notice-item">
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
+              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
+            </div>
+          </li>
+          <li class="notice-item">
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
+              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
+            </div>
+          </li>
+          <li class="notice-item">
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
+              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
+            </div>
+          </li>
+          <li class="notice-item">
+            <div class="notice-main">
+              <img class="notice-avatar" src="https://placehold.co/24x24" alt="" />
+              <div class="notice-meta">
+                <div class="notice-date">日付を入れます</div>
+                <div class="notice-title">インフルエンザ予防接種について</div>
+              </div>
+            </div>
+            <div class="notice-chips">
+              <span class="notice-chip notice-chip--subject">担当科</span>
+              <span class="notice-chip notice-chip--normal">通常系</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="info-card secondary">
+        <div class="info-secondary__image">
+          <img id="infoSecondaryImage" src="image/Infomation_Image/受付風景3.jpg" alt="受付風景">
+        </div>
+        <div class="info-secondary__actions">
+          <a class="info-secondary__button" href="#">もっと見る</a>
+          <a class="info-secondary__button" href="#" data-memo-trigger="info">Web予約</a>
+        </div>
+      </div>
+    </div><!-- /.info-board -->
+
+    <section aria-label="診療時間" id="schedule">
+      <h2>診療時間</h2>
+      <div class="schedule-table">
+        <div class="schedule-table__frame">
+          <div class="schedule-table__inner" role="table" aria-label="診療時間表">
+            <div class="schedule-table__row" role="row">
+              <div class="schedule-table__cell schedule-table__cell--title" role="columnheader">診療時間</div>
+              <div class="schedule-table__cell" role="columnheader">月</div>
+              <div class="schedule-table__cell" role="columnheader">火</div>
+              <div class="schedule-table__cell" role="columnheader">水</div>
+              <div class="schedule-table__cell" role="columnheader">木</div>
+              <div class="schedule-table__cell" role="columnheader">金</div>
+              <div class="schedule-table__cell" role="columnheader">土</div>
+              <div class="schedule-table__cell" role="columnheader">日</div>
+            </div>
+            <div class="schedule-table__row schedule-table__row--body" role="row">
+              <div class="schedule-table__cell schedule-table__cell--time" role="cell">9時～12時</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+            </div>
+            <div class="schedule-table__row schedule-table__row--body" role="row">
+              <div class="schedule-table__cell schedule-table__cell--time" role="cell">14時～19時</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+              <div class="schedule-table__cell" role="cell">●</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+              <div class="schedule-table__cell" role="cell">／</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-note">
+        <div>受付時間：8時～11時/13時～18時
+<br>※休診日：木曜・土曜午後・日。</div>
+        <div>※祝祭日も診察を行っておりますが、休診日もございますので、
+<br>     事前にご確認ください。</div><!-- インラインで色を変えたい -->
+      </div>
+    </section>
+
+    <section aria-label="当院の特徴と診療科目" class="features-section" id="services">
+      <div class="features-section__container">
+        <div class="features-section__header">
+          <h2 class="features-section__title">診察内容</h2>
+        </div>
+        <div class="features-section__lead">
+          当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。<br>日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。
+        </div>
+        <div class="features-section__cards">
+          <div class="features-card">
+            <div class="features-card__title">一般内科診察</div>
+            <div class="features-card__text">風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。また、原因不明の不調や軽い症状であっても、早期診断に努めております。</div>
+            <div class="features-pill">一般内科診察へ</div>
+          </div>
+          <div class="features-card">
+            <div class="features-card__title">生活習慣病の診断・治療</div>
+            <div class="features-card__text">高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。</div>
+            <div class="features-pill">生活習慣病の診断・治療へ</div>
+          </div>
+          <div class="features-card">
+            <div class="features-card__title">消化器系の診察</div>
+            <div class="features-card__text">胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。</div>
+            <div class="features-pill">消化器系の診察へ</div>
+          </div>
+          <div class="features-card">
+            <div class="features-card__title">呼吸器系の診察</div>
+            <div class="features-card__text">咳、息切れ、胸の痛みなど、呼吸器系の症状について診察を行っています。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防をサポートします。</div>
+            <div class="features-pill">呼吸器系の診察へ</div>
+          </div>
+        </div>
+        <div class="features-section__secondary-links">
+          <div class="features-section__secondary-label">その他の診察はこちら→</div>
+          <div class="features-pill features-pill--secondary">健康診断・各種検査</div>
+          <div class="features-pill features-pill--secondary">予防接種</div>
+          <div class="features-pill features-pill--secondary">禁煙外来</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="院長挨拶" id="greeting">
+
+        <div class="director-greeting__header">
+          <h2 class="director-greeting__title">院長挨拶</h2>
+
+        <div class="director-greeting__body">
+          <div class="director-greeting__image">
+            <img src="image/Doctor_Image/院長：佐藤太郎.jpg" alt="院長 佐藤太郎">
+          </div>
+          <div class="director-greeting__text">
+            <div>こんにちは。佐藤医院の院⾧、佐藤太郎と申します。<br>当院のホームページをご覧いただき、ありがとうございます。<br>佐藤医院では、「地域に根ざした医療」をモットーに、<br>患者様一人ひとりに寄り添った医療を提供することを目指しております。<br>日常的な健康管理から生活習慣病の予防、<br>さらには専門的な診断や治療まで、幅広い内科診療を行い、<br>地域の皆様の健康を支える役割を担っていきたいと考えております。</div>
+            <div>私たちは、患者様の不安を少しでも軽減し、<br>安心して診療を受けていただけるよう、<br>わかりやすい説明と丁寧な対応を心掛けております。<br>また、近隣の医療機関とも連携し、<br>必要に応じて高度医療へのアクセスもサポートいたします。<br>どんな小さな不調でも、どうぞお気軽にご相談ください。</div>
+            <div>これからも、患者様の健康を第一に考え、<br>地域の皆様に信頼される医療機関であり続けるため、<br>スタッフ一同努力してまいります。どうぞよろしくお願いいたします。<br>　　　　　　　　　　　　　　　　　　　　　　　佐藤医院<br>　　　　　　　　　　　　　　　　　　　　　　　院長 佐藤太郎</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="当院について" class="about-section" id="about">
+      <div class="about-section__inner">
+        <div class="about-section__header">
+          <h2 class="about-section__title">当院について</h2>
+        </div>
+        <div class="about-section__grid">
+          <p class="about-section__text">
+            佐藤医院は、地域の皆様の健康を守り、<br>
+            より良い生活をサポートすることを使命としています。<br>
+            創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、<br>
+            地域密着型の医療を提供してまいりました。<br>
+            今後も、皆様の健康維持と病気予防に貢献するため、<br>
+            より良い医療サービスを提供し続けることをお約束いたします。
+          </p>
+          <div class="about-section__image">
+            <img id="aboutMedicalImage" src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
+          </div>
+          <div class="about-section__pills">
+            <div class="about-section__pill">診療方針と医療の質</div>
+            <div class="about-section__pill">患者様中心の医療を提供</div>
+            <div class="about-section__pill">地域に根ざした医療</div>
+            <div class="about-section__pill">家族全員をサポート</div>
+            <div class="about-section__pill">最新の医療設備と技術</div>
+            <div class="about-section__pill">おしらせ一覧へ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="スタッフ紹介" class="staff-section" id="staff">
+        <div class="staff-section__header">
+          <h2 class="staff-section__title">スタッフ紹介</h2>
+        </div>
+        <div class="staff-section__cards">
+          <article class="staff-card staff-card--primary">
+            <div class="staff-card__surface">
+              <header class="staff-card__header">
+                <h3 class="staff-card__name">院長：佐藤　太郎</h3>
+              </header>
+              <div class="staff-card__body">
+                <div class="staff-card__photo">
+                  <img src="image/Doctor_Image/院長：佐藤太郎.jpg" alt="院長 佐藤太郎">
+                </div>
+                <div class="staff-card__text">
+                  経歴　　：光明大学医学部卒業後、瑞穂中央総合病院で<br>
+                  　　　　　内科医として10年間勤務。<br>
+                  　　　　　その後、地域医療への貢献を目指し、<br>
+                  　　　　　佐藤内科医院を開院。<br>
+                  専門分野：生活習慣病、呼吸器疾患、内科全般<br>
+                  コメント：患者様にとって気軽に相談できる<br>
+                  　　　　　「かかりつけ医」を目指しています。<br>
+                  　　　　　どんな小さな不安でも、まずはご相談ください。
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="staff-card staff-card--accent">
+            <div class="staff-card__surface">
+              <header class="staff-card__header">
+                <h3 class="staff-card__name">看護師長：鈴木 真理</h3>
+              </header>
+              <div class="staff-card__body">
+                <div class="staff-card__photo">
+                  <img src="image/Doctor_Image/看護師長：鈴木 真理.jpg" alt="看護師長 鈴木真理">
+                </div>
+                <div class="staff-card__text">
+                  経歴　　：白桜大学看護学部卒業後、緑が丘大学病院で10年勤務。<br>
+                  　　　　　地域医療に携わりたい思いから、佐藤医院に入職。<br>
+                  得意分野：親身な対応、注射・採血技術、健康管理指導<br><br>
+                  コメント：安心して治療を受けていただけるよう、<br>
+                  　　　　　いつも笑顔でお待ちしています。<br>
+                  　　　　　些細なことでもお気軽にご相談ください。
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="staff-card staff-card--accent">
+            <div class="staff-card__surface">
+              <header class="staff-card__header">
+                <h3 class="staff-card__name">臨床検査技師：高橋 由美</h3>
+              </header>
+              <div class="staff-card__body">
+                <div class="staff-card__photo">
+                  <img src="image/Doctor_Image/臨床検査技師：高橋 由美.jpg" alt="臨床検査技師 高橋由美">
+                </div>
+                <div class="staff-card__text">
+                  経歴　　：藤花医療大学臨床検査学科卒業後、南風総合病院に勤務。<br>
+                  　　　　　血液・生化学検査を中心に担当。<br>
+                  専門分野：血液検査、心電図、超音波検査<br><br>
+                  コメント：正確で迅速な検査結果で診療をサポートします。<br>
+                  　　　　　検査への不安やご質問があればお気軽にお声がけください。
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="staff-card staff-card--accent">
+            <div class="staff-card__surface">
+              <header class="staff-card__header">
+                <h3 class="staff-card__name">医療事務：山本 花</h3>
+              </header>
+              <div class="staff-card__body">
+                <div class="staff-card__photo">
+                  <img src="image/Doctor_Image/医療事務：山本 花.jpg" alt="医療事務 山本花">
+                </div>
+                <div class="staff-card__text">
+                  経歴　　：医療事務専門学校卒業後、地域クリニックで受付を担当。<br>
+                  　　　　　保険事務と会計業務を経験。<br>
+                  得意分野：丁寧な受付対応、保険請求処理、予約サポート<br><br>
+                  コメント：安心してご来院いただけるよう、笑顔でお迎えします。<br>
+                  　　　　　お困りのことがあれば遠慮なくお知らせください。
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+    </section>
+
+    <section aria-label="アクセス" class="access-section" id="access">
+      <div class="access-section__container">
+        <div class="access-section__header">
+          <h2 class="access-section__title">アクセス</h2>
+        </div>
+        <div class="access-section__layout">
+          <div class="access-section__map-wrapper">
+            <div class="access-map">
+              <iframe
+                src="https://www.google.com/maps?q=%E3%80%92110-0015+%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%9D%B1%E4%B8%8A%E9%87%8E%EF%BC%93%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%95%E2%88%92%EF%BC%95+%E6%9B%BD%E6%88%91%E3%83%93%E3%83%AB+3F&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="access-section__right">
+            <div class="access-info-card">
+              <div class="access-info-card__body">
+                <p class="access-info-text">
+                  ～住所～<br>
+                  〒123-4567<br>
+                  東京都台東区上野0丁目 0 - 0<br><br>
+                  ～アクセス～<br>
+                  最寄駅: JR上野より徒歩5分<br>
+                  当院専用の無料駐車場10台分あり<br>
+                  ご来院の際は、交通状況にご注意ください。<br>
+                  最寄駅から徒歩5分の距離にあり、<br>
+                  便利な立地です。<br><br>
+                  ～お問い合わせ～<br><br>
+                  電話番号: 00-0000-0000<br>
+                  ファックス: 00-0000-0000<br>
+                  Eメール: info@sato-clinic-test.jp
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 予約・FAQのプレースホルダーセクション（将来別ページ化予定） -->
+    <section id="contact" aria-label="ご予約・お問い合わせ" class="section-placeholder">
+      <!-- 将来ここに別ページへの導線やアンカーを実装予定。現状は高さゼロで表示しない -->
+    </section>
+
+    <section id="faq" aria-label="よくあるご質問" class="section-placeholder">
+      <!-- 将来ここに別ページへの導線やアンカーを実装予定。現状は高さゼロで表示しない -->
+    </section>
+    </div>
+  </main>
+
+  <dialog id="memoDialog" class="memo-maker" aria-label="Web予約ミニ問診">
+    <div class="memo-maker__header">
+      <div>
+        <div class="memo-maker__title">来院メモメーカー</div>
+        <div class="memo-maker__subtitle">受付に伝える内容を簡単にまとめられます</div>
+      </div>
+      <button type="button" class="memo-maker__close" id="memoDialogClose" aria-label="閉じる">×</button>
+    </div>
+    <form id="memoForm" class="memo-maker__form">
+      <div class="memo-maker__field-row memo-maker__field-row--name-age">
+        <label class="memo-maker__field">
+          <span class="memo-maker__label">お名前 <span class="memo-maker__required">必須</span></span>
+          <input type="text" name="name" required>
+        </label>
+        <label class="memo-maker__field">
+          <span class="memo-maker__label">年齢 <span class="memo-maker__required">必須</span></span>
+          <input type="number" name="age" required min="0" inputmode="numeric">
+        </label>
+      </div>
+      <fieldset class="memo-maker__field">
+        <legend class="memo-maker__label">初診／再診 <span class="memo-maker__required">必須</span></legend>
+        <div class="memo-maker__radio-grid">
+          <label class="memo-maker__option"><input type="radio" name="visitType" value="初診" required>初診</label>
+          <label class="memo-maker__option"><input type="radio" name="visitType" value="再診" required>再診</label>
+        </div>
+      </fieldset>
+      <fieldset class="memo-maker__field">
+        <legend class="memo-maker__label">主な症状（複数選択可）</legend>
+        <div class="memo-maker__checkboxes">
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="発熱">発熱</label>
+          <label class="memo-maker__option memo-maker__option--symptom-split"><input type="checkbox" name="symptoms" value="咳・喉の痛み"><span class="memo-maker__symptom-split"><span>咳・喉</span><span>の</span><span>痛み</span></span></label>
+          <label class="memo-maker__option memo-maker__option--symptom-split"><input type="checkbox" name="symptoms" value="腹痛・下痢"><span class="memo-maker__symptom-split"><span>腹痛</span><span>・</span><span>下痢</span></span></label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="頭痛">頭痛</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="倦怠感">倦怠感</label>
+          <label class="memo-maker__option"><input type="checkbox" name="symptoms" value="その他">その他</label>
+        </div>
+        <label class="memo-maker__option memo-maker__option--inline">
+          <span>その他の症状</span>
+          <input type="text" name="symptomOther" placeholder="自由入力（任意）">
+        </label>
+      </fieldset>
+      <fieldset class="memo-maker__field">
+        <legend class="memo-maker__label">服薬の有無 <span class="memo-maker__required">必須</span></legend>
+        <div class="memo-maker__radio-grid">
+          <label class="memo-maker__option"><input type="radio" name="medication" value="あり" required>あり</label>
+          <label class="memo-maker__option"><input type="radio" name="medication" value="なし" required>なし</label>
+        </div>
+      </fieldset>
+      <label class="memo-maker__field">
+        <span class="memo-maker__label">伝えたいこと</span>
+        <p class="memo-maker__notice" id="medicationNotice" hidden aria-live="polite">服薬中のお薬の名前を『伝えたいこと』にご記入ください。</p>
+        <textarea name="notes" rows="3" placeholder="任意"></textarea>
+      </label>
+      <label class="memo-maker__field">
+        <span class="memo-maker__label">メールアドレス</span>
+        <input type="email" name="email" inputmode="email" placeholder="任意">
+      </label>
+
+      <div class="memo-maker__actions">
+        <div class="memo-maker__actions-primary">
+          <button type="submit" class="memo-maker__submit">受付に送信</button>
+          <div class="memo-maker__wait" id="waitInfo" aria-live="polite">
+            <div class="memo-maker__wait-count" id="waitCount">現在の待ち人数：0人</div>
+            <div class="memo-maker__wait-note" id="waitAdvice">10分前にはご来院ください</div>
+          </div>
+        </div>
+        <div class="memo-maker__actions-secondary">
+          <button type="button" class="memo-maker__secondary" id="memoPrint">印刷</button>
+          <button type="button" class="memo-maker__secondary" id="memoClose">閉じる</button>
+        </div>
+      </div>
+    </form>
+    <div class="memo-maker__result" id="memoResult" hidden>
+      <div class="memo-maker__result-title">受付に渡すメモ</div>
+      <div class="memo-maker__result-body" id="memoResultBody"></div>
+    </div>
+  </dialog>
+
+  <footer class="footer" aria-label="フッター情報">
+    <div class="footer__inner layout-inner">
+      <div class="footer__brand">
+        <div class="footer__brand-card">
+          <img class="footer__logo" src="image/Logo/Logo.png" alt="佐藤医院のロゴ">
+          <div class="footer__copyright">©2025　佐藤医院</div>
+        </div>
+      </div>
+
+      <div class="footer__main">
+        <div class="footer__nav-row">
+          <a class="footer__nav-item" href="#">トップページ</a>
+          <a class="footer__nav-item" href="#">おしらせ</a>
+          <a class="footer__nav-item" href="#">診療時間</a>
+          <a class="footer__nav-item" href="#">診療内容</a>
+          <a class="footer__nav-item" href="#">院長挨拶</a>
+          <a class="footer__nav-item" href="#">当院について</a>
+          <a class="footer__nav-item" href="#">スタッフ紹介</a>
+          <a class="footer__nav-item" href="#">アクセス</a>
+          <a class="footer__nav-item" href="#">ご予約・お問合せ</a>
+          <a class="footer__nav-item" href="#">よくあるご質問</a>
+        </div>
+
+        <div class="footer__info-row">
+          <div class="footer__info-block">
+            〒123-4567<br>
+            東京都台東区上野0丁目 ０－０
+          </div>
+          <div class="footer__info-block">
+            電話番号：00-0000-0000<br>
+            ファックス：00-0000-0000
+          </div>
+          <div class="footer__info-block">
+            Eメール：info@sato-clinic-test.jp
+          </div>
+          <a class="footer__web-reserve" href="#">Web予約</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      const heroTodayDateEl = document.getElementById('heroTodayDate');
+      const heroClinicStatusEl = document.getElementById('heroClinicStatus');
+
+      if (!heroTodayDateEl && !heroClinicStatusEl) return;
+
+      const formatter = new Intl.DateTimeFormat('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'short'
+      });
+
+      const inRange = (startHour, startMinute, endHour, endMinute, currentMinutes) => {
+        const start = startHour * 60 + startMinute;
+        const end = endHour * 60 + endMinute;
+        return currentMinutes >= start && currentMinutes < end;
+      };
+
+      const getClinicStatus = (date) => {
+        const day = date.getDay();
+        const currentMinutes = date.getHours() * 60 + date.getMinutes();
+        const isWorkingMorning = [1, 2, 3, 5, 6].includes(day);
+        const isWorkingAfternoon = [1, 2, 3, 5].includes(day);
+
+        const consulting = (
+          (isWorkingMorning && inRange(9, 0, 12, 0, currentMinutes)) ||
+          (isWorkingAfternoon && inRange(14, 0, 19, 0, currentMinutes))
+        );
+
+        const reception = !consulting && (
+          (isWorkingMorning && inRange(8, 0, 9, 0, currentMinutes)) ||
+          (isWorkingAfternoon && inRange(13, 0, 14, 0, currentMinutes))
+        );
+
+        const breakTime = isWorkingAfternoon && inRange(12, 0, 13, 0, currentMinutes);
+
+        if (consulting) return { text: '診療中', className: 'is-consult' };
+        if (reception) return { text: '受付中', className: 'is-reception' };
+        if (breakTime) return { text: '休憩中', className: 'is-break' };
+        return { text: '休診中', className: 'is-closed' };
+      };
+
+      const updateHeroInfo = () => {
+        const now = new Date();
+
+        if (heroTodayDateEl) {
+          heroTodayDateEl.textContent = formatter.format(now);
+        }
+
+        if (heroClinicStatusEl) {
+          const { text, className } = getClinicStatus(now);
+          heroClinicStatusEl.textContent = text;
+          heroClinicStatusEl.classList.remove('is-reception', 'is-consult', 'is-closed', 'is-break');
+          heroClinicStatusEl.classList.add(className);
+        }
+      };
+
+      updateHeroInfo();
+      setInterval(updateHeroInfo, 60000);
+    })();
+
+    (function () {
+      const heroImageEl = document.getElementById('heroVisualImage');
+      if (!heroImageEl) return;
+
+      // TODO: 画像ファイルを追加・変更した場合はこの配列のパスも更新してください。
+      const heroImages = [
+        'image/Hospital_Exterior/病院の外観.jpg',
+        'image/Hospital_Exterior/病院の中庭.jpg',
+        'image/Hospital_Exterior/病院の内観１.jpg',
+        'image/Hospital_Exterior/病院の内観２.jpg',
+        'image/Hospital_Exterior/病院の内観３.jpg',
+        'image/Hospital_Exterior/病院の内観４.jpg',
+        'image/Hospital_Exterior/病院の内観5.jpg',
+        'image/Hospital_Exterior/病院の内観６.jpg'
+      ];
+
+      const MODE = 'interval'; // 'interval' または 'clock'
+      const INTERVAL_MS = 5000;
+      const CLOCK_RESOLUTION = 'hour'; // 'hour' または 'minute'
+      const CLOCK_CHECK_MS = 60000;
+
+      let currentIndex = Math.max(
+        heroImages.findIndex((path) => heroImageEl.getAttribute('src') === path),
+        0
+      );
+      let timerId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const preloadImage = (index) => {
+        const img = new Image();
+        img.src = heroImages[index];
+      };
+
+      const preloadNext = (index = currentIndex) => {
+        const nextIndex = (index + 1) % heroImages.length;
+        preloadImage(nextIndex);
+      };
+
+      const applyImage = (index) => {
+        const targetSrc = heroImages[index];
+
+        if (prefersReducedMotion.matches) {
+          heroImageEl.src = targetSrc;
+          currentIndex = index;
+          preloadNext(index);
+          return;
+        }
+
+        const handleTransition = () => {
+          heroImageEl.removeEventListener('transitionend', handleTransition);
+          heroImageEl.src = targetSrc;
+          requestAnimationFrame(() => {
+            heroImageEl.classList.remove('is-fading');
+          });
+          currentIndex = index;
+          preloadNext(index);
+        };
+
+        heroImageEl.addEventListener('transitionend', handleTransition);
+        requestAnimationFrame(() => {
+          heroImageEl.classList.add('is-fading');
+        });
+      };
+
+      const setImageWithPreload = (targetIndex, attempt = 0) => {
+        if (attempt >= heroImages.length) return;
+
+        const candidate = heroImages[targetIndex];
+        const preload = new Image();
+
+        preload.onload = () => applyImage(targetIndex);
+        preload.onerror = () => {
+          const nextIndex = (targetIndex + 1) % heroImages.length;
+          setImageWithPreload(nextIndex, attempt + 1);
+        };
+
+        preload.src = candidate;
+      };
+
+      const getClockIndex = () => {
+        const now = new Date();
+        const unit = CLOCK_RESOLUTION === 'minute' ? now.getMinutes() : now.getHours();
+        return unit % heroImages.length;
+      };
+
+      const tick = (forceChange = false) => {
+        const nextIndex = MODE === 'clock'
+          ? getClockIndex()
+          : (currentIndex + 1) % heroImages.length;
+
+        if (!forceChange && nextIndex === currentIndex) return;
+        setImageWithPreload(nextIndex);
+      };
+
+      const stopTimer = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startTimer = () => {
+        stopTimer();
+        timerId = setInterval(
+          () => tick(false),
+          MODE === 'clock' ? CLOCK_CHECK_MS : INTERVAL_MS
+        );
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          stopTimer();
+        } else {
+          startTimer();
+          tick(true);
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      prefersReducedMotion.addEventListener('change', () => {
+        heroImageEl.style.transition = prefersReducedMotion.matches ? 'none' : '';
+      });
+
+      if (currentIndex === 0 && heroImageEl.getAttribute('src') !== heroImages[0]) {
+        heroImageEl.src = heroImages[0];
+      }
+
+      preloadNext(currentIndex);
+      tick(true);
+      startTimer();
+    })();
+
+    (function () {
+      const aboutImageEl = document.getElementById('aboutMedicalImage');
+      if (!aboutImageEl) return;
+
+      // TODO: ./image/Medical_Image 配下の実ファイル名に合わせて配列を修正する
+      const medicalImages = [
+        'image/Medical_Image/診察風景1.jpg',
+        'image/Medical_Image/診察風景2.jpg',
+        'image/Medical_Image/診察風景3.jpg',
+        'image/Medical_Image/診察風景4.jpg',
+        'image/Medical_Image/診察風景5.jpg',
+        'image/Medical_Image/診察風景6.jpg',
+        'image/Medical_Image/診察風景7.jpg',
+        'image/Medical_Image/診察風景8.jpg',
+        'image/Medical_Image/診察風景9.jpg',
+        'image/Medical_Image/診察風景10.jpg',
+        'image/Medical_Image/診察風景11.jpg'
+      ];
+
+      const INTERVAL_MS = 5000;
+
+      let currentIndex = Math.max(
+        medicalImages.findIndex((path) => aboutImageEl.getAttribute('src') === path),
+        0
+      );
+      let timerId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const preloadImage = (index) => {
+        const img = new Image();
+        img.src = medicalImages[index];
+      };
+
+      const preloadNext = (index = currentIndex) => {
+        const nextIndex = (index + 1) % medicalImages.length;
+        preloadImage(nextIndex);
+      };
+
+      const applyImage = (index) => {
+        const targetSrc = medicalImages[index];
+
+        if (prefersReducedMotion.matches) {
+          aboutImageEl.src = targetSrc;
+          currentIndex = index;
+          preloadNext(index);
+          return;
+        }
+
+        const handleTransition = () => {
+          aboutImageEl.removeEventListener('transitionend', handleTransition);
+          aboutImageEl.src = targetSrc;
+          requestAnimationFrame(() => {
+            aboutImageEl.classList.remove('is-fading');
+          });
+          currentIndex = index;
+          preloadNext(index);
+        };
+
+        aboutImageEl.addEventListener('transitionend', handleTransition);
+        requestAnimationFrame(() => {
+          aboutImageEl.classList.add('is-fading');
+        });
+      };
+
+      const setImageWithPreload = (targetIndex, attempt = 0) => {
+        if (attempt >= medicalImages.length) return;
+
+        const candidate = medicalImages[targetIndex];
+        const preload = new Image();
+
+        preload.onload = () => applyImage(targetIndex);
+        preload.onerror = () => {
+          const nextIndex = (targetIndex + 1) % medicalImages.length;
+          setImageWithPreload(nextIndex, attempt + 1);
+        };
+
+        preload.src = candidate;
+      };
+
+      const tick = (forceChange = false) => {
+        const nextIndex = (currentIndex + 1) % medicalImages.length;
+
+        if (!forceChange && nextIndex === currentIndex) return;
+        setImageWithPreload(nextIndex);
+      };
+
+      const stopTimer = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startTimer = () => {
+        stopTimer();
+        timerId = setInterval(() => tick(false), INTERVAL_MS);
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          stopTimer();
+        } else {
+          startTimer();
+          tick(true);
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      prefersReducedMotion.addEventListener('change', () => {
+        aboutImageEl.style.transition = prefersReducedMotion.matches ? 'none' : '';
+      });
+
+      if (currentIndex === 0 && aboutImageEl.getAttribute('src') !== medicalImages[0]) {
+        aboutImageEl.src = medicalImages[0];
+      }
+
+      preloadNext(currentIndex);
+      tick(true);
+      startTimer();
+    })();
+
+    (function () {
+      const infoImageEl = document.getElementById('infoSecondaryImage');
+      if (!infoImageEl) return;
+
+      const infoImages = [
+        'image/Infomation_Image/受付風景1.jpg',
+        'image/Infomation_Image/受付風景２.jpg',
+        'image/Infomation_Image/受付風景3.jpg',
+        'image/Infomation_Image/受付風景4.jpg'
+      ];
+
+      const INTERVAL_MS = 5000;
+
+      let currentIndex = Math.max(
+        infoImages.findIndex((path) => infoImageEl.getAttribute('src') === path),
+        0
+      );
+      let timerId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const preloadImage = (index) => {
+        const img = new Image();
+        img.src = infoImages[index];
+      };
+
+      const preloadNext = (index = currentIndex) => {
+        const nextIndex = (index + 1) % infoImages.length;
+        preloadImage(nextIndex);
+      };
+
+      const applyImage = (index) => {
+        const targetSrc = infoImages[index];
+
+        if (prefersReducedMotion.matches) {
+          infoImageEl.src = targetSrc;
+          currentIndex = index;
+          preloadNext(index);
+          return;
+        }
+
+        const handleTransition = () => {
+          infoImageEl.removeEventListener('transitionend', handleTransition);
+          infoImageEl.src = targetSrc;
+          requestAnimationFrame(() => {
+            infoImageEl.classList.remove('is-fading');
+          });
+          currentIndex = index;
+          preloadNext(index);
+        };
+
+        infoImageEl.addEventListener('transitionend', handleTransition);
+        requestAnimationFrame(() => {
+          infoImageEl.classList.add('is-fading');
+        });
+      };
+
+      const setImageWithPreload = (targetIndex, attempt = 0) => {
+        if (attempt >= infoImages.length) return;
+
+        const candidate = infoImages[targetIndex];
+        const preload = new Image();
+
+        preload.onload = () => applyImage(targetIndex);
+        preload.onerror = () => {
+          const nextIndex = (targetIndex + 1) % infoImages.length;
+          setImageWithPreload(nextIndex, attempt + 1);
+        };
+
+        preload.src = candidate;
+      };
+
+      const tick = (forceChange = false) => {
+        const nextIndex = (currentIndex + 1) % infoImages.length;
+
+        if (!forceChange && nextIndex === currentIndex) return;
+        setImageWithPreload(nextIndex);
+      };
+
+      const stopTimer = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startTimer = () => {
+        stopTimer();
+        timerId = setInterval(() => tick(false), INTERVAL_MS);
+      };
+
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          stopTimer();
+        } else {
+          startTimer();
+          tick(true);
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      prefersReducedMotion.addEventListener('change', () => {
+        infoImageEl.style.transition = prefersReducedMotion.matches ? 'none' : '';
+      });
+
+      if (currentIndex === 0 && infoImageEl.getAttribute('src') !== infoImages[0]) {
+        infoImageEl.src = infoImages[0];
+      }
+
+      preloadNext(currentIndex);
+      tick(true);
+      startTimer();
+    })();
+
+    (function () {
+      // TODO: ここで待ち人数をAPIから取得して表示する
+      const WAIT_COUNT = 0;
+
+      const dialog = document.getElementById('memoDialog');
+      const form = document.getElementById('memoForm');
+      const memoResult = document.getElementById('memoResult');
+      const memoResultBody = document.getElementById('memoResultBody');
+      const memoClose = document.getElementById('memoClose');
+      const memoDialogClose = document.getElementById('memoDialogClose');
+      const memoPrint = document.getElementById('memoPrint');
+      const firstField = form ? form.querySelector('input[name="name"]') : null;
+      const medicationNotice = document.getElementById('medicationNotice');
+      const medicationRadios = form ? form.querySelectorAll('input[name="medication"]') : [];
+      const waitCountEl = document.getElementById('waitCount');
+      const waitAdviceEl = document.getElementById('waitAdvice');
+
+      if (!dialog || !form || !memoResult || !memoResultBody) return;
+
+      const updateMedicationNotice = () => {
+        if (!medicationNotice) return;
+        const selected = form.querySelector('input[name="medication"]:checked');
+        const show = selected && selected.value === 'あり';
+        medicationNotice.hidden = !show;
+      };
+
+      const updateWaitInfo = () => {
+        if (!waitCountEl || !waitAdviceEl) return;
+        const minutesBefore = Math.max(WAIT_COUNT * 10, 10);
+        waitCountEl.textContent = `現在の待ち人数：${WAIT_COUNT}人`;
+        waitAdviceEl.textContent = `${minutesBefore}分前にはご来院ください`;
+      };
+
+      const resetMemo = () => {
+        form.reset();
+        memoResultBody.innerHTML = '<p>送信するとここに内容が表示されます。</p>';
+        memoResult.hidden = true;
+        updateMedicationNotice();
+      };
+
+      const openDialog = () => {
+        resetMemo();
+        if (typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        } else {
+          dialog.setAttribute('open', '');
+        }
+        if (firstField) firstField.focus();
+      };
+
+      const closeDialog = () => {
+        if (dialog.open) {
+          dialog.close();
+        } else {
+          dialog.removeAttribute('open');
+        }
+      };
+
+      const buildMemoHtml = (data) => {
+        const name = (data.get('name') || '').trim();
+        const age = (data.get('age') || '').trim();
+        const visitType = data.get('visitType') || '未回答';
+        const medication = data.get('medication') || '未回答';
+        const symptoms = data.getAll('symptoms').filter(Boolean);
+        const otherSymptom = (data.get('symptomOther') || '').trim();
+        const notes = (data.get('notes') || '').trim();
+        const email = (data.get('email') || '').trim();
+
+        if (otherSymptom) {
+          symptoms.push(`その他: ${otherSymptom}`);
+        }
+
+        if (!symptoms.length) {
+          symptoms.push('未回答');
+        }
+
+        const items = [
+          `お名前: ${name}`,
+          `年齢: ${age}歳`,
+          `初診／再診: ${visitType}`,
+          `主な症状: ${symptoms.join('、')}`,
+          `服薬: ${medication}`,
+        ];
+
+        if (notes) {
+          items.push(`伝えたいこと: ${notes}`);
+        }
+
+        if (email) {
+          items.push(`メールアドレス: ${email}`);
+        }
+
+        return `
+          <p>受付でこちらの内容をお伝えください。</p>
+          <ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul>
+        `;
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+
+        // TODO: ここで受付送信用APIへPOSTする
+
+        memoResultBody.innerHTML = buildMemoHtml(formData);
+        memoResult.hidden = false;
+      });
+
+      dialog.addEventListener('close', resetMemo);
+      dialog.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        closeDialog();
+      });
+
+      [memoClose, memoDialogClose].forEach((btn) => {
+        if (btn) {
+          btn.addEventListener('click', closeDialog);
+        }
+      });
+
+      if (memoPrint) {
+        memoPrint.addEventListener('click', () => window.print());
+      }
+
+      const memoTriggers = document.querySelectorAll('[data-memo-trigger]');
+      memoTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          openDialog();
+        });
+      });
+
+      medicationRadios.forEach((radio) => {
+        radio.addEventListener('change', updateMedicationNotice);
+      });
+
+      updateMedicationNotice();
+      updateWaitInfo();
+    })();
+
+    (function () {
+      const toggle = document.getElementById('readingRulerToggle');
+      const ruler = document.getElementById('readingRuler');
+      if (!toggle || !ruler) return;
+
+      const handleMouseMove = (event) => {
+        const offset = ruler.offsetHeight / 2;
+        const y = Math.max(event.clientY - offset, 0);
+        ruler.style.top = `${y}px`;
+      };
+
+      const updateState = () => {
+        if (toggle.checked) {
+          ruler.style.display = 'block';
+          document.addEventListener('mousemove', handleMouseMove);
+        } else {
+          ruler.style.display = 'none';
+          document.removeEventListener('mousemove', handleMouseMove);
+        }
+      };
+
+      toggle.addEventListener('change', updateState);
+      updateState();
+    })();
+  </script>
+</body>
+
+</html>
