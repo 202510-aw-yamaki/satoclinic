@@ -27,6 +27,7 @@
       padding: 0;
       background: #FAFAFA;
       color: #111111;
+      container-type: inline-size;
     }
 
     html,
@@ -64,8 +65,9 @@
     .content-inner {
       width: 100%;
       min-width: 540px;
+      max-width: 1440px;
       padding-inline: 120px;
-      margin: 0 auto;
+      margin-inline: auto;
     }
 
     @media (max-width: 1199px) and (min-width: 800px) {
@@ -158,7 +160,7 @@
       align-items: center;
       justify-content: center;
       color: #111111;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
       font-weight: 400;
       line-height: 26px;
@@ -212,7 +214,7 @@
       }
 
       .site-header__nav-item {
-        font-size: 14px;
+        font-size: max(14px, 1.2963cqw);
         padding: 6px 8px;
       }
     }
@@ -230,7 +232,7 @@
 
     .site-header__phone {
       color: #111111;
-      font-size: 18px;
+      font-size: max(18px, 1.6667cqw);
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
       font-weight: 700;
       line-height: 28px;
@@ -247,7 +249,7 @@
       border-radius: 999px;
       background: #19C677;
       color: #FAFAFA;
-      font-size: 18px;
+      font-size: max(18px, 1.6667cqw);
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
       font-weight: 700;
       line-height: 28px;
@@ -306,7 +308,7 @@
     }
 
     .reading-ruler-toggle__label {
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       color: #111111;
       white-space: nowrap;
     }
@@ -341,7 +343,7 @@
       }
 
       .site-header__nav-item {
-        font-size: 14px;
+        font-size: max(14px, 1.2963cqw);
         padding: 4px 6px;
       }
     }
@@ -434,7 +436,7 @@
 
     .catch-copy {
       font-weight: 700;
-      font-size: 36px;
+      font-size: max(36px, 3.3333cqw);
   text-align: center;
 
     }
@@ -450,7 +452,7 @@
       border: 4px solid #eeeeee;
       background: #19c677;
       color: #FAFAFA;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       text-align: center;
       width: 100%;
@@ -473,7 +475,7 @@
       display: grid;
       grid-template-columns: 1fr;
       margin-top: 0;
-      font-size: 12px;
+      font-size: max(12px, 1.1111cqw);
     }
 
     .schedule-mini__frame {
@@ -547,14 +549,14 @@
 
     .hero-description__date {
       font-weight: 700;
-      font-size: clamp(18px, 2.2vw, 30px);
+      font-size: clamp(18px, 2.2cqw, 30px);
       line-height: 1.2;
       white-space: normal;
     }
 
     .hero-description__status {
       font-weight: 700;
-      font-size: clamp(18px, 2.2vw, 30px);
+      font-size: clamp(18px, 2.2cqw, 30px);
       padding: 10px 12px;
       border-radius: 999px;
       width: 100%;
@@ -591,7 +593,7 @@
       display: grid;
       gap: 8px;
       text-align: center;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
     }
 
     .info-board {
@@ -641,7 +643,7 @@
 
     .info-card__title {
       margin: 0;
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       font-weight: 900;
       line-height: 1;
       color: #111111;
@@ -650,7 +652,7 @@
 
     .info-board > .info-card__header h2 {
       margin: 0 0 14px;
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       font-weight: 900;
       color: #111111;
       text-align: center;
@@ -705,14 +707,14 @@
     .notice-date {
       color: #111111;
       font-weight: 700;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       letter-spacing: 0.01em;
       line-height: 1.6;
     }
 
     .notice-title {
       font-weight: 400;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       color: #111111;
       line-height: 1.6;
       white-space: nowrap;
@@ -735,7 +737,7 @@
       justify-content: center;
       padding: 4px 10px;
       border-radius: 80px 20px 80px 20px;
-      font-size: 12px;
+      font-size: max(12px, 1.1111cqw);
       font-weight: 600;
       color: #fff;
       min-width: 80px;
@@ -809,7 +811,7 @@
       border: none;
       border-radius: 999px;
       padding: 12px 24px;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       min-width: 210px;
       text-align: center;
@@ -826,7 +828,7 @@
       padding: 4px 10px;
       border-radius: 30px;
       border: 1px solid var(--color-border);
-      font-size: 12px;
+      font-size: max(12px, 1.1111cqw);
       font-weight: 700;
       white-space: nowrap;
     }
@@ -857,7 +859,7 @@
 
     h2 {
       margin: 0 0 14px;
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       font-weight: 900;
       text-align: center;
       line-height: 1.1;
@@ -868,7 +870,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
     }
 
     .schedule-table__frame {
@@ -963,7 +965,7 @@
     .features-section__title {
       margin: 0;
       color: #111111;
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       font-weight: 900;
       line-height: 1;
       text-align: center;
@@ -975,7 +977,7 @@
       border-radius: 12px;
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       line-height: 1.56;
       color: #111111;
@@ -987,7 +989,7 @@
       }
 
       .info-card__title {
-        font-size: 44px;
+        font-size: max(44px, 4.0741cqw);
       }
 
       .info-secondary__actions {
@@ -1040,7 +1042,7 @@
       width: 100%;
       text-align: center;
       color: #111111;
-      font-size: 18px;
+      font-size: max(18px, 1.6667cqw);
       font-weight: 500;
       line-height: 1.4;
       text-shadow: 0px 4px 4px rgba(25, 198, 119, 1);
@@ -1049,7 +1051,7 @@
     .features-card__text {
       width: 100%;
       color: #111111;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 500;
       line-height: 1.4;
     }
@@ -1081,7 +1083,7 @@
     }
 
     .features-section__secondary-label {
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       line-height: 1.4;
       text-align: center;
@@ -1108,7 +1110,7 @@
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
       background: var(--佐藤医院, #19C677);
       color: #FAFAFA;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       line-height: 1.375;
       text-align: center;
@@ -1205,7 +1207,7 @@
     }
 
     .about-section__title {
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       font-weight: 900;
       line-height: 44px;
       color: #111111;
@@ -1227,7 +1229,7 @@
     }
 
     .about-section__text {
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       line-height: 28px;
       color: #111111;
@@ -1264,7 +1266,7 @@
       text-align: center;
       gap: 10px;
       color: var(--color-CL-Gray-050, #FAFAFA);
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
       line-height: 22px;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
@@ -1371,7 +1373,7 @@
 
     .director-greeting__title {
       font-family: "Noto Sans JP", "Hiragino Sans", Arial, sans-serif;
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       font-weight: 900;
       margin: 0;
       color: #111111;
@@ -1404,7 +1406,7 @@
     }
 
     .director-greeting__text {
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       line-height: 28px;
       font-weight: 700;
       color: #111111;
@@ -1427,7 +1429,7 @@ text-align: left;
       }
 
       .director-greeting__title {
-        font-size: 44px;
+        font-size: max(44px, 4.0741cqw);
       }
     }
 
@@ -1452,7 +1454,7 @@ text-align: left;
     }
 
     .staff-section__title {
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       line-height: 44px;
       font-weight: 900;
       margin: 0;
@@ -1508,7 +1510,7 @@ text-align: left;
 
     .staff-card__name {
       margin: 0;
-      font-size: 20px;
+      font-size: max(20px, 1.8519cqw);
       font-weight: 500;
       line-height: 28px;
       color: #111111;
@@ -1527,7 +1529,7 @@ text-align: left;
     .staff-card__text {
       grid-area: text;
       min-width: 0;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       line-height: 20px;
       letter-spacing: 0.25px;
       color: #111111;
@@ -1555,7 +1557,7 @@ text-align: left;
       }
 
       .staff-section__title {
-        font-size: 32px;
+        font-size: max(32px, 2.9630cqw);
         line-height: 36px;
       }
 
@@ -1635,7 +1637,7 @@ text-align: left;
 
     .footer__copyright {
       color: #111111;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       line-height: 1.5;
     }
 
@@ -1655,7 +1657,7 @@ text-align: left;
 
     .footer__nav-item {
       color: #111111;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       line-height: 26px;
       text-decoration: none;
     }
@@ -1675,7 +1677,7 @@ text-align: left;
 
     .footer__info-block {
       color: #111111;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       line-height: 26px;
       text-align: left;
     }
@@ -1690,7 +1692,7 @@ text-align: left;
       border-radius: 999px;
       background: #19C677;
       color: #FAFAFA;
-      font-size: 24px;
+      font-size: max(24px, 2.2222cqw);
       font-weight: 700;
       line-height: 34px;
       text-decoration: none;
@@ -1716,7 +1718,7 @@ text-align: left;
       }
 
       .footer__web-reserve {
-        font-size: 20px;
+        font-size: max(20px, 1.8519cqw);
         min-width: 180px;
       }
     }
@@ -1756,7 +1758,7 @@ text-align: left;
 
     .access-section__title {
       margin: 0;
-      font-size: 44px;
+      font-size: max(44px, 4.0741cqw);
       line-height: 44px;
       font-weight: 900;
       color: #111111;
@@ -1843,7 +1845,7 @@ text-align: left;
 
     .access-info-text {
       margin: 0;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       line-height: 28px;
       font-weight: 400;
       color: #111111;
@@ -1900,12 +1902,12 @@ text-align: left;
     }
 
     .memo-maker__title {
-      font-size: 20px;
+      font-size: max(20px, 1.8519cqw);
       font-weight: 700;
     }
 
     .memo-maker__subtitle {
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       color: var(--color-gray-500);
     }
 
@@ -1915,7 +1917,7 @@ text-align: left;
       border-radius: 50%;
       width: 36px;
       height: 36px;
-      font-size: 18px;
+      font-size: max(18px, 1.6667cqw);
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     }
@@ -1937,7 +1939,7 @@ text-align: left;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
     }
 
     .memo-maker__label {
@@ -1949,7 +1951,7 @@ text-align: left;
 
     .memo-maker__required {
       color: var(--color-accent);
-      font-size: 12px;
+      font-size: max(12px, 1.1111cqw);
       padding: 2px 8px;
       border-radius: 999px;
       background: rgba(38, 192, 111, 0.12);
@@ -1960,7 +1962,7 @@ text-align: left;
       border: 1px solid var(--color-border);
       border-radius: 10px;
       padding: 10px 12px;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
       width: 100%;
       box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
     }
@@ -1975,7 +1977,7 @@ text-align: left;
       gap: 6px;
       margin-right: 12px;
       margin-top: 6px;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
     }
 
     .memo-maker__radio-grid {
@@ -2044,7 +2046,7 @@ text-align: left;
       border: none;
       border-radius: 12px;
       padding: 18px 28px;
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       cursor: pointer;
       font-weight: 700;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
@@ -2067,12 +2069,12 @@ text-align: left;
     }
 
     .memo-maker__wait-count {
-      font-size: 16px;
+      font-size: max(16px, 1.4815cqw);
       font-weight: 700;
     }
 
     .memo-maker__wait-note {
-      font-size: 12px;
+      font-size: max(12px, 1.1111cqw);
       line-height: 1.4;
     }
 
@@ -2081,7 +2083,7 @@ text-align: left;
       color: #111111;
       border: 1px solid var(--color-border);
       padding: 10px 16px;
-      font-size: 14px;
+      font-size: max(14px, 1.2963cqw);
     }
 
     .memo-maker__notice {
@@ -2091,7 +2093,7 @@ text-align: left;
       border-radius: 10px;
       padding: 8px 10px;
       margin-top: -2px;
-      font-size: 13px;
+      font-size: max(13px, 1.2037cqw);
     }
 
     .memo-maker__result {
