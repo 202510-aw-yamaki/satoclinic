@@ -31,7 +31,7 @@
 
     html,
     body {
-      min-width: 960px;
+      min-width: 1200px;
     }
 
     /* スムーススクロールを全体に適用 */
@@ -44,9 +44,9 @@
     .content-inner {
       width: 100%;
       max-width: 1440px;
-      min-width: 960px;
+      min-width: 1200px;
       margin: 0 auto;
-      padding-inline: clamp(0px, calc((100vw - 960px) / 2), 120px);
+      padding-inline: clamp(0px, calc((100vw - 1200px) / 2), 120px);
     }
 
     .page {
@@ -281,7 +281,7 @@
       white-space: nowrap;
     }
 
-    @media (max-width: 1199px) {
+    @media (max-width: 1199px) and (min-width: 1200px) {
       .site-header__bar {
         grid-template-columns: auto 1fr;
         grid-template-areas:
@@ -954,7 +954,7 @@
       color: #111111;
     }
 
-    @media (max-width: 900px) and (min-width: 960px) {
+    @media (max-width: 900px) and (min-width: 1200px) {
       .info-board {
         grid-template-columns: 1fr;
       }
@@ -968,7 +968,7 @@
       }
     }
 
-    @media (max-width: 760px) and (min-width: 960px) {
+    @media (max-width: 760px) and (min-width: 1200px) {
       .hero-content,
       .info-board,
       .doctor-intro,
@@ -1041,13 +1041,13 @@
       margin-top: -4px;
     }
 
-    @media (max-width: 900px) and (min-width: 960px) {
+    @media (max-width: 900px) and (min-width: 1200px) {
       .features-section__secondary-links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1080px) and (min-width: 1200px) {
       .features-section__cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1102,7 +1102,7 @@
       background: var(--color-CL-Brand-Primary, #3BA7C9);
     }
 
-    @media (max-width: 640px) and (min-width: 960px) {
+    @media (max-width: 640px) and (min-width: 1200px) {
       .features-section__cards {
         grid-template-columns: 1fr;
       }
@@ -1158,6 +1158,18 @@
       text-align: center;
     }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .about-section {
       overflow: hidden;
       background: #E0F5EA;
@@ -1194,9 +1206,13 @@
       /* row-gap: 24px / column-gap: 4% の指定 */
       gap: 24px 4%;
       align-items: flex-start;
-      grid-template-areas:
-        "text image"
-        "pills pills";
+    }
+
+    .about-section__left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
     }
 
     .about-section__text {
@@ -1205,7 +1221,6 @@
       line-height: 28px;
       color: #111111;
       margin: 0;
-      grid-area: text;
     }
 
     .about-section__pills {
@@ -1218,7 +1233,6 @@
       border: 1px solid var(--color-CL-Gray-300, #E0E0E0);
       border-radius: 24px;
       background: #f8fcf8;
-      grid-area: pills;
     }
 
     .about-section__pill {
@@ -1275,7 +1289,7 @@
       }
     }
 
-    @media (max-width: 900px) and (min-width: 960px) {
+    @media (max-width: 900px) and (min-width: 1200px) {
       .about-section__grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1293,11 +1307,16 @@
 
     .cta-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px 20px;
-      justify-items: center;
+      justify-items: start;
       align-items: center;
       margin: 12px 0 4px;
+    }
+
+    .cta-grid .cta-pill {
+      width: 100%;
+      min-width: 0;
     }
 
     .cta-pill.dummy {
@@ -1388,7 +1407,7 @@
 text-align: left;
     }
 
-    @media (max-width: 768px) and (min-width: 960px) {
+    @media (max-width: 768px) and (min-width: 1200px) {
       .director-greeting__body {
         grid-template-columns: 1fr;
       }
@@ -1524,7 +1543,7 @@ text-align: left;
       display: block;
     }
 
-    @media (max-width: 900px) and (min-width: 960px) {
+    @media (max-width: 900px) and (min-width: 1200px) {
       .staff-section__header {
         padding: 10px 24px 0;
       }
@@ -1671,7 +1690,7 @@ text-align: left;
       text-decoration: none;
     }
 
-    @media (max-width: 900px) and (min-width: 960px) {
+    @media (max-width: 900px) and (min-width: 1200px) {
       .footer__inner {
         grid-template-columns: 1fr;
         row-gap: 12px;
@@ -1762,7 +1781,7 @@ text-align: left;
       display: block;
     }
 
-    @media (max-width: 1199px) {
+    @media (max-width: 1199px) and (min-width: 1200px) {
       .access-map {
         height: 420px;
         min-height: 420px;
@@ -1774,7 +1793,7 @@ text-align: left;
       }
     }
 
-    @media (max-width: 899px) and (min-width: 960px) {
+    @media (max-width: 899px) and (min-width: 1200px) {
       .access-map {
         height: 300px;
         min-height: 300px;
@@ -1825,7 +1844,7 @@ text-align: left;
     }
 
     /* レスポンシブ対応：狭い画面では縦並びに */
-    @media (max-width: 900px) and (min-width: 960px) {
+    @media (max-width: 900px) and (min-width: 1200px) {
       .access-section__container {
         padding: 24px 16px;
       }
@@ -2385,22 +2404,38 @@ text-align: left;
         <div class="about-section__header">
           <h2 class="about-section__title">当院について</h2>
         </div>
-        <div class="about-section__grid">
-          <p class="about-section__text">
-            佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った医療」を大切にし、安心して相談できる環境づくりに努めてまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
-          </p>
-          <div class="about-section__image">
-            <img id="aboutMedicalImage" src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
+          <div class="about-section__grid">
+            <div class="about-section__left">
+              <p class="about-section__text">
+                佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った医療」を大切にし、安心して相談できる環境づくりに努めてまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
+              </p>
+
+              <div class="cta-grid" aria-label="当院についてのリンク">
+                <a class="cta-pill dummy" href="#" aria-disabled="true" data-link-placeholder="true" title="リンク先準備中">
+                  診療方針と医療の質<span class="visually-hidden">（準備中）</span>
+                </a>
+                <a class="cta-pill dummy" href="#" aria-disabled="true" data-link-placeholder="true" title="リンク先準備中">
+                  患者様中心の医療を提供<span class="visually-hidden">（準備中）</span>
+                </a>
+                <a class="cta-pill dummy" href="#" aria-disabled="true" data-link-placeholder="true" title="リンク先準備中">
+                  地域に根ざした医療<span class="visually-hidden">（準備中）</span>
+                </a>
+                <a class="cta-pill dummy" href="#" aria-disabled="true" data-link-placeholder="true" title="リンク先準備中">
+                  家族全員をサポート<span class="visually-hidden">（準備中）</span>
+                </a>
+                <a class="cta-pill dummy" href="#" aria-disabled="true" data-link-placeholder="true" title="リンク先準備中">
+                  最新の医療設備と技術<span class="visually-hidden">（準備中）</span>
+                </a>
+                <a class="cta-pill dummy" href="#" aria-disabled="true" data-link-placeholder="true" title="リンク先準備中">
+                  おしらせ一覧へ<span class="visually-hidden">（準備中）</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="about-section__image">
+              <img id="aboutMedicalImage" src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
+            </div>
           </div>
-        </div>
-        <div class="cta-grid" aria-label="当院についてのリンク">
-          <a class="cta-pill dummy" href="#" data-link-placeholder="true">診療方針と医療の質（準備中）</a>
-          <a class="cta-pill dummy" href="#" data-link-placeholder="true">患者様中心の医療を提供（準備中）</a>
-          <a class="cta-pill dummy" href="#" data-link-placeholder="true">地域に根ざした医療（準備中）</a>
-          <a class="cta-pill dummy" href="#" data-link-placeholder="true">家族全員をサポート（準備中）</a>
-          <a class="cta-pill dummy" href="#" data-link-placeholder="true">最新の医療設備と技術（準備中）</a>
-          <a class="cta-pill dummy" href="#" data-link-placeholder="true">おしらせ一覧へ（準備中）</a>
-        </div>
       </div>
     </section>
 
