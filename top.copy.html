@@ -31,7 +31,7 @@
 
     html,
     body {
-      min-width: 540px;
+      min-width: 960px;
     }
 
     /* スムーススクロールを全体に適用 */
@@ -39,46 +39,14 @@
       scroll-behavior: smooth;
     }
 
-    .layout-inner {
-      width: clamp(840px, calc(100% - 240px), 1200px);
-      margin: 0 auto;
-      padding-inline: clamp(16px, 3vw, 32px);
-    }
-
-    @media (max-width: 1080px) {
-      .layout-inner {
-        width: 100%;
-        max-width: none;
-        min-width: 0;
-        padding-inline: clamp(16px, 4vw, 24px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .layout-inner {
-        width: 100%;
-        padding-inline: 16px;
-      }
-    }
-
+    .layout-inner,
+    .page-header__inner,
     .content-inner {
       width: 100%;
       max-width: 1440px;
-      min-width: 540px;
-      padding-inline: 120px;
+      min-width: 960px;
       margin: 0 auto;
-    }
-
-    @media (max-width: 1199px) and (min-width: 800px) {
-      .content-inner {
-        padding-inline: 10vw;
-      }
-    }
-
-    @media (max-width: 799px) {
-      .content-inner {
-        padding-inline: 80px;
-      }
+      padding-inline: clamp(0px, calc((100vw - 960px) / 2), 120px);
     }
 
     .page {
@@ -97,9 +65,6 @@
 
     .page-header__inner {
       display: block;
-      width: 100%;
-      margin: 0 auto;
-      padding-inline: clamp(16px, 4vw, 32px);
     }
 
     /* ヘッダーを画面幅いっぱいに広げるレイアウト調整 */
@@ -114,6 +79,7 @@
       background: #EFEFEF;
       display: grid;
       grid-template-columns: auto 1fr auto;
+      grid-template-areas: "logo nav contact";
       align-items: center;
       column-gap: 16px;
       padding: 8px clamp(12px, 2vw, 24px);
@@ -122,6 +88,7 @@
 
     /* 左：ロゴエリア（% 指定で縮む） */
     .site-header__logo {
+      grid-area: logo;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -145,6 +112,7 @@
 
     /* 中央：ナビゲーション */
     .site-header__nav {
+      grid-area: nav;
       flex: 1 1 auto;
       min-width: 0;
       display: flex;
@@ -220,6 +188,7 @@
 
     /* 右：連絡先＆Web予約 */
     .site-header__contact {
+      grid-area: contact;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -314,9 +283,11 @@
 
     @media (max-width: 1199px) {
       .site-header__bar {
-        grid-template-columns: 1fr;
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+          "logo contact"
+          "nav nav";
         row-gap: 8px;
-        align-items: center;
       }
 
       .site-header__logo {
@@ -334,11 +305,12 @@
       }
 
       .site-header__contact {
-        justify-content: flex-start;
+        justify-content: flex-end;
       }
 
       .site-header__nav {
         gap: 4px 8px;
+        justify-content: center;
       }
 
       .site-header__nav-item {
@@ -982,7 +954,7 @@
       color: #111111;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 960px) {
       .info-board {
         grid-template-columns: 1fr;
       }
@@ -996,7 +968,7 @@
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 760px) and (min-width: 960px) {
       .hero-content,
       .info-board,
       .doctor-intro,
@@ -1069,7 +1041,7 @@
       margin-top: -4px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 960px) {
       .features-section__secondary-links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1130,7 +1102,7 @@
       background: var(--color-CL-Brand-Primary, #3BA7C9);
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 640px) and (min-width: 960px) {
       .features-section__cards {
         grid-template-columns: 1fr;
       }
@@ -1303,7 +1275,7 @@
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 960px) {
       .about-section__grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1321,9 +1293,11 @@
 
     .cta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px 20px;
+      justify-items: center;
+      align-items: center;
+      margin: 12px 0 4px;
     }
 
     .cta-pill.dummy {
@@ -1414,7 +1388,7 @@
 text-align: left;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 768px) and (min-width: 960px) {
       .director-greeting__body {
         grid-template-columns: 1fr;
       }
@@ -1550,7 +1524,7 @@ text-align: left;
       display: block;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 960px) {
       .staff-section__header {
         padding: 10px 24px 0;
       }
@@ -1697,7 +1671,7 @@ text-align: left;
       text-decoration: none;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 960px) {
       .footer__inner {
         grid-template-columns: 1fr;
         row-gap: 12px;
@@ -1800,7 +1774,7 @@ text-align: left;
       }
     }
 
-    @media (max-width: 899px) {
+    @media (max-width: 899px) and (min-width: 960px) {
       .access-map {
         height: 300px;
         min-height: 300px;
@@ -1851,7 +1825,7 @@ text-align: left;
     }
 
     /* レスポンシブ対応：狭い画面では縦並びに */
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (min-width: 960px) {
       .access-section__container {
         padding: 24px 16px;
       }
@@ -2399,7 +2373,9 @@ text-align: left;
         </div>
         <div class="features-section__secondary-links">
           <div class="features-section__secondary-label">その他の診察はこちら→</div>
-          <a class="features-pill features-pill--secondary" href="services.html">診察内容の残りはこちら→</a>
+          <a class="features-pill features-pill--secondary" href="services.html">健康診断・各種検査</a>
+          <a class="features-pill features-pill--secondary" href="services.html">予防接種</a>
+          <a class="features-pill features-pill--secondary" href="services.html">禁煙外来</a>
         </div>
       </div>
     </section>
@@ -2417,8 +2393,13 @@ text-align: left;
             <img id="aboutMedicalImage" src="image/Medical_Image/診察風景10.jpg" alt="診察風景">
           </div>
         </div>
-        <div class="cta-row">
-          <a class="cta-pill" href="about.html">もっと詳しく</a>
+        <div class="cta-grid" aria-label="当院についてのリンク">
+          <a class="cta-pill dummy" href="#" data-link-placeholder="true">診療方針と医療の質（準備中）</a>
+          <a class="cta-pill dummy" href="#" data-link-placeholder="true">患者様中心の医療を提供（準備中）</a>
+          <a class="cta-pill dummy" href="#" data-link-placeholder="true">地域に根ざした医療（準備中）</a>
+          <a class="cta-pill dummy" href="#" data-link-placeholder="true">家族全員をサポート（準備中）</a>
+          <a class="cta-pill dummy" href="#" data-link-placeholder="true">最新の医療設備と技術（準備中）</a>
+          <a class="cta-pill dummy" href="#" data-link-placeholder="true">おしらせ一覧へ（準備中）</a>
         </div>
       </div>
     </section>
