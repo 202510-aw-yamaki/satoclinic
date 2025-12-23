@@ -440,6 +440,9 @@
       display: grid;
       gap: 12px;
 
+      margin-top: 12px;
+      margin-bottom: 12px;
+
     }
 
     .schedule-mini {
@@ -1206,6 +1209,7 @@
       /* row-gap: 24px / column-gap: 4% の指定 */
       gap: 24px 4%;
       align-items: flex-start;
+      grid-template-areas: "text image";
     }
 
     .about-section__left {
@@ -1213,6 +1217,7 @@
       flex-direction: column;
       gap: 16px;
       min-width: 0;
+      grid-area: text;
     }
 
     .about-section__text {
