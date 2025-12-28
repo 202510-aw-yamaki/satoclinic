@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>佐藤医院（仮）</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#FAFAFA;
+      --white:#fff;
+      --text:#111111;
+
+      --gray050:#FAFAFA;
+      --gray100:#F5F5F5;
+      --gray300:#E0E0E0;
+      --gray700:#616161;
+      --gray900:#212121;
+
+      --brandP:#3BA7C9;
+      --brandS:#79C4B8;
+      --clinic:#19C677;
+      --mint:#E0F5EA;
+      --orange:#C97A2A;
+
+      --shadow:0 4px 4px rgba(0,0,0,.25);
+      --r30:30px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    img{ display:block; max-width:100%; height:auto; }
+
+    .page{
+      width:1440px;
+      margin:0 auto;
+      background:var(--bg);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:30px;
+      padding:0;
+    }
+
+    .section{
+      width:1200px;
+      border-radius:var(--r30);
+      overflow:hidden;
+    }
+    .section.white{ background:var(--white); }
+    .section.mint{ background:var(--mint); box-shadow:var(--shadow); }
+    .section.teal{ background:var(--brandS); box-shadow:var(--shadow); }
+    .section.shadow-white{ background:var(--white); box-shadow:var(--shadow); }
+
+    .header{
+      width:100%;
+      height:60px;
+      background:#EFEFEF;
+      border-radius:var(--r30);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:0 20px;
+    }
+    .logo{
+      width:120px;
+      height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      border-radius:var(--r30);
+      overflow:hidden;
+    }
+    .logo img{
+      width:136px;
+      height:127px;
+      padding:10px;
+      object-fit:cover;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:24px 10px;
+      height:58px;
+      white-space:nowrap;
+    }
+    .nav a{
+      text-decoration:none;
+      color:var(--text);
+      font-size:16px;
+      font-weight:400;
+      line-height:26px;
+      padding:8px 0;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .header-cta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:0 10px;
+    }
+    .tel{
+      font-size:18px;
+      font-weight:700;
+      line-height:28px;
+      color:var(--text);
+      white-space:nowrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .btn.primary{ background:var(--brandP); color:var(--white); }
+    .btn.orange{ background:var(--orange); color:var(--white); }
+    .btn.clinic-outline{
+      background:var(--clinic);
+      color:var(--gray050);
+      outline:4px solid #EEEEEE;
+      outline-offset:-4px;
+      font-size:16px;
+      line-height:22px;
+      padding:12px 24px;
+      width:200px;
+      height:40px;
+    }
+    .btn.lg{
+      width:180px;
+      height:40px;
+      padding:12px 24px;
+      font-size:24px;
+      line-height:34px;
+    }
+    .btn.md{
+      width:160px;
+      height:40px;
+      padding:12px 24px;
+      font-size:16px;
+      line-height:22px;
+    }
+    .btn.w200{ width:200px; }
+    .btn.w210{ width:210px; }
+    .btn.w220{ width:220px; }
+    .btn.w180{ width:180px; }
+
+    .tag{
+      min-width:56px;
+      height:26px;
+      padding:4px 8px;
+      border-radius:80px 20px 80px 20px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--white);
+      font-size:12px;
+      font-weight:400;
+      line-height:18px;
+      white-space:nowrap;
+    }
+    .tag.brandS{ background:var(--brandS); }
+    .tag.clinic{ background:var(--clinic); }
+    .tag.primary{ background:var(--brandP); }
+    .tag.orange{ background:var(--orange); }
+    .tag.urgent{ background:rgba(243.56,35.52,38.99,.77); }
+
+    .hero{
+      height:555px;
+      position:relative;
+      background:var(--white);
+      border-radius:var(--r30);
+      overflow:hidden;
+    }
+    .hero .hero-img{
+      position:absolute;
+      left:35px;
+      top:20px;
+      width:624px;
+      height:475px;
+      border-radius:36.22px;
+      border:1.21px solid var(--gray700);
+      box-shadow:inset 0 4.82963px 4.82963px rgba(0,0,0,.25);
+      object-fit:cover;
+    }
+    .hero .cta{
+      position:absolute;
+      left:679px;
+      top:20px;
+      width:486px;
+      height:318px;
+      background:var(--clinic);
+      border-radius:var(--r30);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding-top:25px;
+      gap:25px;
+    }
+    .hero .cta h1{
+      margin:0;
+      padding:10px;
+      text-align:center;
+      color:var(--white);
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+    }
+    .hero .cta .cta-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+      margin-top:4px;
+    }
+
+    .scheduleWrap{
+      position:absolute;
+      left:498px;
+      top:338px;
+      width:677px;
+      padding:30px 10px 0;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:9.23px;
+    }
+    .scheduleBox{
+      width:486px;
+      border-radius:36.46px;
+      overflow:hidden;
+      border:0.92px solid var(--gray300);
+      background:var(--gray050);
+    }
+    .scheduleBox table{
+      width:100%;
+      border-collapse:collapse;
+      table-layout:fixed;
+    }
+    .scheduleBox th, .scheduleBox td{
+      text-align:center;
+      color:var(--gray900);
+      border-bottom:0.92px solid var(--gray300);
+      padding:11.08px 14.77px;
+      font-size:16.62px;
+      line-height:25.85px;
+    }
+    .scheduleBox th{
+      background:var(--gray100);
+      font-weight:700;
+    }
+    .scheduleBox td{
+      background:var(--gray050);
+      font-size:14.77px;
+      line-height:24px;
+      font-weight:400;
+    }
+    .scheduleBox tr:last-child td{ border-bottom:none; }
+    .scheduleNote{
+      width:677px;
+      padding:0 20px;
+      font-size:16.62px;
+      font-weight:400;
+      line-height:25.85px;
+      color:#000;
+      text-align:right;
+    }
+    .scheduleWarn{
+      width:664px;
+      color:var(--orange);
+      font-size:16.62px;
+      font-weight:700;
+      line-height:25.85px;
+      text-align:right;
+    }
+
+    .noticeWrap{
+      display:flex;
+      height:600px;
+      position:relative;
+    }
+    .noticeLeft{
+      width:600px;
+      padding-top:32px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+    }
+    .noticeTitle{
+      width:100%;
+      padding:10px;
+      display:flex;
+      justify-content:center;
+    }
+    .noticeTitle h2{
+      margin:0;
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+      color:var(--gray900);
+    }
+    .noticeList{
+      width:557px;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+      padding:0 10px;
+    }
+    .noticeItem{
+      background:var(--white);
+      border-radius:30px;
+      padding:8px 16px;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .noticeItem img{
+      width:24px;
+      height:24px;
+      border-radius:999px;
+      object-fit:cover;
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+    .noticeText{
+      flex:1 1 auto;
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .noticeDate{
+      color:var(--gray900);
+      font-size:16px;
+      font-weight:400;
+      line-height:26px;
+    }
+    .noticeHeadline{
+      color:var(--gray700);
+      font-size:14px;
+      font-weight:400;
+      line-height:22px;
+    }
+    .noticeTags{
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      margin-left:auto;
+      padding-left:8px;
+    }
+
+    .noticeRight{
+      width:580px;
+      padding-top:102px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:20px;
+    }
+    .noticeImg{
+      width:560px;
+      height:354px;
+      padding:10px;
+      border-radius:var(--r30);
+      border:1px solid #000;
+      object-fit:cover;
+      background:transparent;
+    }
+    .noticeBtns{
+      width:560px;
+      height:66px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:40px;
+    }
+
+    .hours{
+      padding:10px 0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .hours h2{
+      margin:0;
+      padding:8.14px 160px;
+      font-size:44.75px;
+      font-weight:900;
+      line-height:44.75px;
+      color:#000;
+    }
+    .hoursInner{
+      padding:0 45px;
+      position:relative;
+    }
+    .hoursTable{
+      width:1100px;
+      border-radius:25.82px;
+      overflow:hidden;
+      border:0.86px solid var(--gray300);
+      background:var(--gray050);
+    }
+    .hoursTable table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+    .hoursTable th, .hoursTable td{
+      text-align:center;
+      color:var(--gray900);
+      border-bottom:0.86px solid var(--gray300);
+      padding:10.33px 13.77px;
+    }
+    .hoursTable th{
+      background:var(--gray100);
+      font-weight:700;
+      font-size:15.49px;
+      line-height:24.10px;
+    }
+    .hoursTable td{
+      background:var(--gray050);
+      font-weight:400;
+      font-size:13.77px;
+      line-height:22.38px;
+    }
+    .hoursTable tr:last-child td{ border-bottom:none; }
+    .hoursNote{
+      width:1110px;
+      padding-top:10px;
+      font-size:18.31px;
+      font-weight:400;
+      line-height:28.47px;
+      color:#000;
+      text-align:center;
+    }
+    .hoursWarn{
+      position:absolute;
+      left:234px;
+      top:152.73px;
+      width:731.19px;
+      color:var(--orange);
+      font-size:18.31px;
+      font-weight:700;
+      line-height:28.47px;
+    }
+
+    .treatments{
+      height:773px;
+      position:relative;
+    }
+    .treatments h2{
+      margin:0;
+      position:absolute;
+      top:30px;
+      left:0;
+      width:100%;
+      padding:0 160px;
+      text-align:center;
+      color:var(--gray900);
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+    }
+    .treatIntro{
+      position:absolute;
+      left:28px;
+      top:104px;
+      width:1144px;
+      background:var(--white);
+      padding:10px 24px;
+    }
+    .treatIntro p{
+      margin:0;
+      font-size:18px;
+      font-weight:700;
+      line-height:28px;
+      color:#000;
+    }
+    .treatGrid{
+      position:absolute;
+      top:216px;
+      left:0;
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      padding:0 10px;
+    }
+    .treatCard{
+      width:268px;
+      min-height:220px;
+      background:var(--white);
+      border-radius:12px;
+      border:1px solid var(--gray300);
+      box-shadow:var(--shadow);
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      justify-content:center;
+      align-items:center;
+    }
+    .treatCard h3{
+      margin:0;
+      width:100%;
+      text-align:center;
+      color:var(--gray900);
+      font-size:20px;
+      font-weight:500;
+      line-height:28px;
+      text-shadow:0 4px 4px rgba(25,198,119,1);
+    }
+    .treatCard p{
+      margin:0;
+      width:100%;
+      color:#000;
+      font-size:20px;
+      font-weight:500;
+      line-height:28px;
+    }
+    .treatBtns1{
+      position:absolute;
+      left:10px;
+      top:618px;
+      width:1180px;
+      height:40px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:78px;
+    }
+    .treatBtns2{
+      position:absolute;
+      left:10px;
+      top:688px;
+      width:1180px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:78px;
+      background:var(--mint);
+      padding:0;
+    }
+    .treatHint{
+      width:220px;
+      text-align:center;
+      font-size:16px;
+      font-weight:700;
+      line-height:22px;
+      color:#000;
+    }
+
+    .greeting{
+      padding-top:20px;
+      background:var(--white);
+      box-shadow:var(--shadow);
+      border-radius:var(--r30);
+      overflow:hidden;
+      width:1200px;
+    }
+    .greeting h2{
+      margin:0;
+      padding:0 160px;
+      text-align:center;
+      color:var(--gray900);
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+    }
+    .greetingInner{
+      padding:13px 22px;
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+    .greetingInner img{
+      width:450px;
+      height:450px;
+      padding:10px;
+      border-radius:var(--r30);
+      border:1px solid #000;
+      object-fit:cover;
+      flex:0 0 auto;
+    }
+    .greetingText{
+      width:674px;
+      height:506px;
+      padding:0 40px;
+      overflow:hidden;
+      display:flex;
+      align-items:flex-start;
+    }
+    .greetingText p{
+      margin:0;
+      color:var(--gray700);
+      font-size:18px;
+      font-weight:700;
+      line-height:28px;
+    }
+
+    .about{
+      height:560px;
+      position:relative;
+      background:var(--mint);
+      box-shadow:var(--shadow);
+      border-radius:var(--r30);
+      overflow:hidden;
+      width:1200px;
+    }
+    .aboutLeft{
+      position:absolute;
+      left:40px;
+      top:20px;
+      width:594px;
+      height:500px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .aboutLeft h2{
+      margin:0;
+      padding:0 120px;
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+      color:var(--gray900);
+      text-align:center;
+      height:81px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .aboutLeft p{
+      margin:0;
+      color:var(--gray700);
+      font-size:18px;
+      font-weight:700;
+      line-height:28px;
+    }
+    .aboutImg{
+      position:absolute;
+      left:680px;
+      top:40px;
+      width:480px;
+      height:480px;
+      padding:12.64px;
+      border-radius:37.91px;
+      border:1.26px solid #000;
+      object-fit:cover;
+      background:transparent;
+    }
+    .aboutPills{
+      position:absolute;
+      left:40px;
+      top:306px;
+      width:589px;
+      height:214px;
+      padding:50px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:55px;
+      align-content:center;
+      justify-content:center;
+    }
+    .pill{
+      width:200px;
+      height:40px;
+      padding:12px 24px;
+      border-radius:999px;
+      background:var(--clinic);
+      border:1px solid var(--gray300);
+      color:var(--gray050);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      font-weight:700;
+      line-height:22px;
+      text-align:center;
+      white-space:nowrap;
+    }
+
+    .staff{
+      width:1200px;
+      height:575px;
+      background:var(--white);
+      box-shadow:var(--shadow);
+      border-radius:var(--r30);
+      overflow:hidden;
+      padding:10px;
+    }
+    .staff h2{
+      margin:0;
+      padding:0 160px;
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+      color:var(--gray900);
+      height:53px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .staffGrid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+    .staffCard{
+      width:580px;
+      min-height:220px;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid var(--gray300);
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+    .staffCard.green{ background:#EDFFF5; }
+    .staffCard.pink{ background:#FFEEF9; }
+    .staffName{
+      width:100%;
+      padding:10px 30px;
+      font-size:20px;
+      font-weight:500;
+      line-height:28px;
+      color:var(--gray900);
+    }
+    .staffRow{
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:0 10px 10px;
+    }
+    .staffRow img{
+      width:120px;
+      height:150px;
+      object-fit:cover;
+      flex:0 0 auto;
+    }
+    .staffBio{
+      font-family:Roboto, system-ui, sans-serif;
+      font-size:14px;
+      font-weight:400;
+      line-height:20px;
+      letter-spacing:.25px;
+      color:#000;
+      white-space:pre-wrap;
+    }
+
+    .access{
+      width:1200px;
+      background:var(--mint);
+      box-shadow:var(--shadow);
+      border-radius:var(--r30);
+      overflow:hidden;
+      padding:36px 50px;
+      display:flex;
+      align-items:flex-start;
+      gap:48px;
+    }
+    .accessLeft{
+      width:613px;
+      display:flex;
+      flex-direction:column;
+      gap:57px;
+    }
+    .accessLeft h2{
+      margin:0;
+      padding:0 160px;
+      text-align:center;
+      font-size:44px;
+      font-weight:900;
+      line-height:44px;
+      color:var(--gray900);
+    }
+    .mapBox{
+      width:618.68px;
+      height:618.68px;
+      border-radius:var(--r30);
+      border:1.08px solid var(--gray700);
+      overflow:hidden;
+      position:relative;
+      background:transparent;
+    }
+    .mapBox img{
+      position:absolute;
+      left:0;
+      top:3.23px;
+      width:762.22px;
+      height:685.39px;
+      object-fit:cover;
+    }
+    .accessRight{
+      width:435px;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+      padding-top:0;
+    }
+    .infoCard{
+      width:100%;
+      background:var(--white);
+      border-radius:14.83px;
+      border:1.24px solid var(--gray300);
+      box-shadow:0 4.94389px 4.94389px rgba(0,0,0,.25);
+      padding:10px;
+    }
+    .infoCard p{
+      margin:0;
+      font-size:18px;
+      font-weight:400;
+      line-height:28px;
+      color:var(--text);
+      white-space:pre-wrap;
+    }
+    .accessBtns{
+      display:flex;
+      justify-content:center;
+      gap:60px;
+    }
+
+    .contactOuter{
+      width:1200px;
+      padding:10px 20px;
+      background:var(--white);
+      box-shadow:var(--shadow);
+      border-radius:var(--r30);
+      overflow:hidden;
+    }
+    .contactInner{
+      width:1180px;
+      padding:20px;
+      background:var(--clinic);
+      border-radius:var(--r30);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    .contactLeft{
+      width:600px;
+      height:450px;
+      padding:20px 0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+    }
+    .contactLeft h2{
+      margin:0;
+      color:var(--gray050);
+      font-size:32px;
+      font-weight:700;
+      line-height:44px;
+      text-align:center;
+      width:540px;
+    }
+    .contactLeft p{
+      margin:0;
+      color:var(--gray050);
+      font-size:18px;
+      font-weight:700;
+      line-height:28px;
+      width:540px;
+    }
+
+    .miniSchedule{
+      width:600px;
+      position:relative;
+    }
+    .miniSchedule .scheduleBox{
+      width:600px;
+      border-radius:22.5px;
+      border:0.75px solid var(--gray300);
+      overflow:hidden;
+      background:var(--white);
+    }
+    .miniSchedule .scheduleBox th, .miniSchedule .scheduleBox td{
+      padding:9px 12px;
+      font-size:13.5px;
+      line-height:21px;
+      border-bottom:0.75px solid var(--gray300);
+    }
+    .miniSchedule .scheduleBox td{
+      font-size:12px;
+      line-height:19.5px;
+      background:var(--white);
+    }
+    .miniSchedule .note{
+      margin-top:10px;
+      font-size:13.5px;
+      font-weight:400;
+      line-height:21px;
+      color:#000;
+      width:600px;
+      text-align:left;
+    }
+    .miniSchedule .warn{
+      margin-top:4px;
+      font-size:14.46px;
+      font-weight:400;
+      line-height:22.5px;
+      color:#000;
+      width:600px;
+      text-align:left;
+    }
+
+    .contactActions{
+      width:600px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:40px;
+      margin-top:10px;
+    }
+    .telBadge{
+      padding:0 30px;
+      background:var(--orange);
+      color:var(--white);
+      border-radius:20px 80px 20px 80px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:400;
+      line-height:28px;
+      white-space:nowrap;
+    }
+
+    .contactRight{
+      width:568px;
+      height:451px;
+      padding:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .contactImgBox{
+      width:488px;
+      height:370px;
+      background:var(--clinic);
+      border-radius:var(--r30);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .contactImgBox img{
+      width:560px;
+      height:370px;
+      border-radius:16px;
+      border:1px solid var(--clinic);
+      object-fit:cover;
+    }
+
+    .footer{
+      width:100%;
+      background:#EFEFEF;
+      border-radius:var(--r30);
+      padding:0 10px;
+      display:flex;
+      justify-content:center;
+      gap:100px;
+      overflow:hidden;
+    }
+    .footerLeft{
+      width:200px;
+      height:140px;
+      background:var(--white);
+      border-radius:var(--r30);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .footerLeftInner{
+      width:100%;
+      height:100%;
+      background:#EFEFEF;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .footerLeftInner img{
+      width:220.26px;
+      height:205.68px;
+      padding:27.31px;
+      object-fit:cover;
+    }
+    .footerLeftInner small{
+      font-family:Roboto, system-ui, sans-serif;
+      font-size:19.13px;
+      font-weight:400;
+      line-height:25.5px;
+      letter-spacing:.64px;
+      color:var(--text);
+      margin-top:-10px;
+    }
+
+    .footerRight{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      padding:0;
+    }
+    .footerNav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:24px 10px;
+      height:58px;
+      white-space:nowrap;
+    }
+    .footerNav a{
+      text-decoration:none;
+      color:var(--text);
+      font-size:16px;
+      font-weight:400;
+      line-height:26px;
+      padding:8px 0;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .footerInfo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      padding:0 24px 16px;
+    }
+    .footerInfo div{
+      font-size:16px;
+      font-weight:400;
+      line-height:26px;
+      color:#000;
+      white-space:nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="header">
+      <div class="logo">
+        <img src="画像予定" alt="ロゴ" />
+      </div>
+
+      <nav class="nav" aria-label="グローバルナビゲーション">
+        <a href="#">トップページ</a>
+        <a href="#">おしらせ</a>
+        <a href="#">診療時間</a>
+        <a href="#">診療内容</a>
+        <a href="#">院長挨拶</a>
+        <a href="#">当院について</a>
+        <a href="#">スタッフ紹介</a>
+        <a href="#">アクセス</a>
+        <a href="#">ご予約・お問い合わせ</a>
+        <a href="#">よくあるご質問</a>
+      </nav>
+
+      <div class="header-cta">
+        <div class="tel">00-0000-0000</div>
+        <a class="btn primary lg w180" href="#">Web予約</a>
+      </div>
+    </div>
+
+    <section class="section white hero" aria-label="ヒーロー">
+      <img class="hero-img" src="画像予定" alt="メイン画像" />
+
+      <div class="cta">
+        <h1>地域に根ざした医療</h1>
+        <div class="cta-buttons">
+          <a class="btn clinic-outline" href="#">スタッフ紹介を見る</a>
+          <a class="btn clinic-outline" href="#">所在地を見る</a>
+          <a class="btn clinic-outline" href="#">Web予約</a>
+        </div>
+      </div>
+
+      <div class="scheduleWrap" aria-label="診療時間（抜粋）">
+        <div class="scheduleBox">
+          <table>
+            <tr>
+              <th style="width:147.71px;">診療時間</th>
+              <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+            </tr>
+            <tr>
+              <td>9時～12時</td>
+              <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>●</td><td>／</td>
+            </tr>
+            <tr>
+              <td>14時～19時</td>
+              <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>／</td><td>／</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="scheduleNote">受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日曜</div>
+        <div class="scheduleWarn">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div>
+      </div>
+    </section>
+
+    <section class="section teal noticeWrap" aria-label="おしらせ">
+      <div class="noticeLeft">
+        <div class="noticeTitle">
+          <h2>おしらせ</h2>
+        </div>
+
+        <div class="noticeList">
+          <div class="noticeItem">
+            <img src="画像予定" alt="" />
+            <div class="noticeText">
+              <div class="noticeDate">日付を入れます</div>
+              <div class="noticeHeadline">インフルエンザ予防接種について</div>
+            </div>
+            <div class="noticeTags">
+              <span class="tag brandS">担当科</span>
+              <span class="tag clinic">通常系</span>
+            </div>
+          </div>
+
+          <div class="noticeItem">
+            <img src="画像予定" alt="" />
+            <div class="noticeText">
+              <div class="noticeDate">日付を入れます</div>
+              <div class="noticeHeadline">年末年始の休診について</div>
+            </div>
+            <div class="noticeTags">
+              <span class="tag brandS">担当科</span>
+              <span class="tag urgent">緊急系</span>
+            </div>
+          </div>
+
+          <div class="noticeItem">
+            <img src="画像予定" alt="" />
+            <div class="noticeText">
+              <div class="noticeDate">日付を入れます</div>
+              <div class="noticeHeadline">健康診断のご案内</div>
+            </div>
+            <div class="noticeTags">
+              <span class="tag brandS">担当科</span>
+              <span class="tag primary">健康情報系</span>
+            </div>
+          </div>
+
+          <div class="noticeItem">
+            <img src="画像予定" alt="" />
+            <div class="noticeText">
+              <div class="noticeDate">日付を入れます</div>
+              <div class="noticeHeadline">新型コロナウイルス対策について</div>
+            </div>
+            <div class="noticeTags">
+              <span class="tag brandS">担当科</span>
+              <span class="tag orange">準緊急系</span>
+            </div>
+          </div>
+
+          <div class="noticeItem" style="background:var(--gray050);">
+            <img src="画像予定" alt="" />
+            <div class="noticeText">
+              <div class="noticeDate">日付を入れます</div>
+              <div class="noticeHeadline">オンライン診療の導入について</div>
+            </div>
+            <div class="noticeTags">
+              <span class="tag brandS">担当科</span>
+              <span class="tag clinic">通常系</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="noticeRight">
+        <img class="noticeImg" src="画像予定" alt="おしらせ画像" />
+        <div class="noticeBtns">
+          <a class="btn orange lg w210" href="#">もっと見る</a>
+          <a class="btn orange lg w210" href="#">Web予約</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shadow-white hours" aria-label="診療時間">
+      <h2>診療時間</h2>
+
+      <div class="hoursInner">
+        <div class="hoursTable">
+          <table>
+            <tr>
+              <th>診療時間</th>
+              <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+            </tr>
+            <tr>
+              <td>9時～12時</td>
+              <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>●</td><td>／</td>
+            </tr>
+            <tr>
+              <td>14時～19時</td>
+              <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>／</td><td>／</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="hoursNote">受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日曜</div>
+        <div class="hoursWarn">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div>
+      </div>
+    </section>
+
+    <section class="section mint treatments" aria-label="診察内容">
+      <h2>診察内容</h2>
+
+      <div class="treatIntro">
+        <p>
+          当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。<br />
+          日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。
+        </p>
+      </div>
+
+      <div class="treatGrid">
+        <div class="treatCard">
+          <h3>一般内科診察</h3>
+          <p>
+            風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な<br />
+            体調不良の診療を<br />
+            行っています。<br />
+            また、<br />
+            原因不明の不調や<br />
+            軽い症状であっても、<br />
+            早期診断に<br />
+            努めております。
+          </p>
+        </div>
+
+        <div class="treatCard">
+          <h3>生活習慣病の診断・治療</h3>
+          <p>
+            高血圧症、糖尿病、<br />
+            脂質異常症（高コレステロール血症）、<br />
+            メタボリック症候群<br />
+            など、生活習慣病の診断と治療を行います。<br />
+            病気の進行を予防し、<br />
+            健康維持のための<br />
+            生活指導や薬物療法を<br />
+            行います。
+          </p>
+        </div>
+
+        <div class="treatCard">
+          <h3>消化器系の診察</h3>
+          <p>
+            胃痛、胃もたれ、<br />
+            胸やけ、便秘、<br />
+            下痢などの<br />
+            消化器系の不調に<br />
+            対応しています。<br />
+            必要に応じて<br />
+            胃カメラや超音波検査<br />
+            などを実施し、<br />
+            胃腸の健康を<br />
+            サポートします。
+          </p>
+        </div>
+
+        <div class="treatCard">
+          <h3>呼吸器系の診察</h3>
+          <p>
+            咳、息切れ、<br />
+            胸の痛みなど、<br />
+            呼吸器系の症状について診察を行っています。<br />
+            季節性の喘息や<br />
+            アレルギー性鼻炎、<br />
+            慢性閉塞性肺疾患（COPD）などにも<br />
+            対応し、適切な治療と<br />
+            予防をサポートします。
+          </p>
+        </div>
+      </div>
+
+      <div class="treatBtns1">
+        <a class="pill" href="#">一般内科診察へ</a>
+        <a class="pill" href="#">生活習慣病の診断・治療へ</a>
+        <a class="pill" href="#">消化器系の診察へ</a>
+        <a class="pill" href="#">呼吸器系の診察へ</a>
+      </div>
+
+      <div class="treatBtns2">
+        <div class="treatHint">その他の診察はこちら→</div>
+        <a class="btn primary md w220" href="#">健康診断・各種検査</a>
+        <a class="btn primary md w220" href="#">予防接種</a>
+        <a class="btn primary md w220" href="#">禁煙外来</a>
+      </div>
+    </section>
+
+    <section class="greeting" aria-label="院長挨拶">
+      <h2>院⾧挨拶</h2>
+
+      <div class="greetingInner">
+        <img src="画像予定" alt="院長写真" />
+        <div class="greetingText">
+          <p>
+            こんにちは。佐藤医院の院⾧、佐藤太郎と申します。<br />
+            当院のホームページを<br />
+            ご覧いただき、ありがとうございます。<br />
+            佐藤医院では、「地域に根ざした医療」をモットーに、<br />
+            患者様一人ひとりに寄り添った医療を提供することを目指しております。<br />
+            日常的な健康管理から生活習慣病の予防、<br />
+            さらには専門的な診断や治療まで、幅広い内科診療を行い、<br />
+            地域の皆様の健康を支える役割を担っていきたいと考えております。<br />
+            私たちは、患者様の不安を少しでも軽減し、<br />
+            安心して診療を受けていただけるよう、<br />
+            わかりやすい説明と丁寧な対応を心掛けております。<br />
+            また、近隣の医療機関とも連携し、<br />
+            必要に応じて高度医療へのアクセスもサポートいたします。<br />
+            どんな小さな不調でも、どうぞお気軽にご相談ください。<br />
+            これからも、患者様の健康を第一に考え、<br />
+            地域の皆様に信頼される医療機関であり続けるため、<br />
+            スタッフ一同努力してまいります。どうぞよろしくお願いいたします。　<br />
+            　　　　　　　　　　　　　　　　　　　　　　　　　　　　佐藤医院<br />
+            　　　　　　　　　　　　　　　　　　　　　　　　　　　　院長 佐藤太郎
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" aria-label="当院について">
+      <div class="aboutLeft">
+        <h2>当院について</h2>
+        <p>
+          佐藤医院は、地域の皆様の健康を守り、<br />
+          より良い生活をサポートすることを使命としています。<br />
+          創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、<br />
+          地域密着型の医療を提供してまいりました。<br />
+          今後も、皆様の健康維持と病気予防に貢献するため、<br />
+          より良い医療サービスを提供し続けることをお約束いたします。
+        </p>
+      </div>
+
+      <img class="aboutImg" src="画像予定" alt="当院について画像" />
+
+      <div class="aboutPills" aria-label="当院についてのリンク">
+        <a class="pill" href="#">診療方針と医療の質</a>
+        <a class="pill" href="#">患者様中心の医療を提供</a>
+        <a class="pill" href="#">地域に根ざした医療</a>
+        <a class="pill" href="#">家族全員をサポート</a>
+        <a class="pill" href="#">最新の医療設備と技術</a>
+        <a class="pill" href="#">おしらせ一覧へ</a>
+      </div>
+    </section>
+
+    <section class="staff" aria-label="スタッフ紹介">
+      <h2>スタッフ紹介</h2>
+
+      <div class="staffGrid">
+        <div class="staffCard green">
+          <div class="staffName">院長：佐藤　太郎</div>
+          <div class="staffRow">
+            <img src="画像予定" alt="院長" />
+            <div class="staffBio">経歴　　：光明大学医学部卒業後、瑞穂中央総合病院で
+　　　　　内科医として10年間勤務。
+　　　　　その後、地域医療への貢献を目指し、
+　　　　　佐藤内科医院を開院。
+専門分野：生活習慣病、呼吸器疾患、内科全般
+          コメント：患者様にとって気軽に相談できる
+　　　　　「かかりつけ医」を目指しています。
+　　　　　どんな小さな不安でも、まずはご相談ください。</div>
+          </div>
+        </div>
+
+        <div class="staffCard pink">
+          <div class="staffName">看護師長：鈴木 真理</div>
+          <div class="staffRow">
+            <img src="画像予定" alt="看護師長" />
+            <div class="staffBio">経歴　　：白桜大学看護学部卒業後、緑が丘大学病院で10年勤務。
+　　　　　地域医療に携わりたい思いから、佐藤医院に入職。
+          
+得意分野：親身な対応、注射・採血技術、健康管理指導
+
+          コメント：安心して治療を受けていただけるよう、
+　　　　　いつも笑顔でお待ちしています。
+　　　　　些細なことでもお気軽にご相談ください。</div>
+          </div>
+        </div>
+
+        <div class="staffCard pink">
+          <div class="staffName">臨床検査技師：高橋 由美</div>
+          <div class="staffRow">
+            <img src="画像予定" alt="臨床検査技師" />
+            <div class="staffBio">経歴　　：東都臨床検査技術専門学校を卒業後、
+　　　　　武蔵中央医療センターにて
+　　　　　15年間の臨床検査技師としての経験を積む。
+
+          得意分野：血液検査、心電図検査、超音波検査
+          コメント：検査は不安が伴うこともありますが、
+　　　　　できるだけリラックスしていただけるよう、
+　　　　　優しく丁寧な対応を心がけています。</div>
+          </div>
+        </div>
+
+        <div class="staffCard pink">
+          <div class="staffName">医療事務：山本 花</div>
+          <div class="staffRow">
+            <img src="画像予定" alt="医療事務" />
+            <div class="staffBio">経歴　　：希望医療カレッジ卒業後、
+　　　　　さくら診療所にて受付業務を担当。
+　　　　　現在は佐藤医院で患者様対応を担当。
+
+          得意分野：受付業務、カルテ管理、医療費計算
+          コメント：皆様に気持ちよくご利用いただけるよう、
+　　　　　笑顔と真心を大切にしております。
+　　　　　初めての方もどうぞ安心してお越しください。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="access" aria-label="アクセス">
+      <div class="accessLeft">
+        <h2>アクセス</h2>
+        <div class="mapBox" aria-label="地図">
+          <img src="画像予定" alt="地図画像" />
+        </div>
+      </div>
+
+      <div class="accessRight">
+        <div class="infoCard">
+          <p>～住所～
+〒123-4567
+東京都台東区上野0丁目 0 - 0
+
+～アクセス～
+最寄駅: 	JR上野より徒歩5分
+当院専用の無料駐車場10台分あり
+ご来院の際は、交通状況にご注意ください。
+最寄駅から徒歩5分の距離にあり、
+便利な立地です。
+
+～お問い合わせ～
+
+電話番号: 00-0000-0000
+ファックス: 00-0000-0000
+ Eメール: info@sato-clinic-test.jp</p>
+        </div>
+
+        <div class="accessBtns">
+          <a class="btn orange md w160" href="#" style="width:160px;">Web予約</a>
+          <a class="btn orange md w160" href="#" style="width:160px;">よくあるご質問</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contactOuter" aria-label="ご予約・お問い合わせ">
+      <div class="contactInner">
+        <div class="contactLeft">
+          <h2>ご予約・お問い合わせ</h2>
+          <p>
+            一般診療は予約なしでも受け付けていますが、<br />
+            予約優先制となっております。予防接種や健康診断など<br />
+            は完全予約制です。お電話またはWeb予約をご利用ください。
+          </p>
+
+          <div class="miniSchedule" aria-label="診療時間（ミニ）">
+            <div class="scheduleBox">
+              <table>
+                <tr>
+                  <th>診療時間</th>
+                  <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+                </tr>
+                <tr>
+                  <td>9時～12時</td>
+                  <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>●</td><td>／</td>
+                </tr>
+                <tr>
+                  <td>14時～19時</td>
+                  <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>／</td><td>／</td>
+                </tr>
+              </table>
+            </div>
+            <div class="note">受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日曜</div>
+            <div class="warn">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div>
+          </div>
+
+          <div class="contactActions">
+            <div class="telBadge">TEL:　00-0000-0000</div>
+            <a class="btn orange md w200" href="#" style="width:200px;">Web予約</a>
+          </div>
+        </div>
+
+        <div class="contactRight">
+          <div class="contactImgBox">
+            <img src="画像予定" alt="予約画像" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" aria-label="フッター">
+      <div class="footerLeft">
+        <div class="footerLeftInner">
+          <img src="画像予定" alt="フッターロゴ" />
+          <small>©2025　佐藤医院</small>
+        </div>
+      </div>
+
+      <div class="footerRight">
+        <nav class="footerNav" aria-label="フッターナビゲーション">
+          <a href="#">トップページ</a>
+          <a href="#">おしらせ</a>
+          <a href="#">診療時間</a>
+          <a href="#">診療内容</a>
+          <a href="#">院長挨拶</a>
+          <a href="#">当院について</a>
+          <a href="#">スタッフ紹介</a>
+          <a href="#">アクセス</a>
+          <a href="#">ご予約・お問い合わせ</a>
+          <a href="#">よくあるご質問</a>
+        </nav>
+
+        <div class="footerInfo">
+          <div>〒123-4567<br />東京都台東区上野0丁目 ０－０</div>
+          <div>電話番号：00-0000-0000<br />ファックス：00-0000-0000</div>
+          <div>Eメール：info@sato-clinic-test.jp</div>
+          <a class="btn primary lg w200" href="#" style="width:200px;">Web予約</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
