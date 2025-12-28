@@ -29,6 +29,7 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
+      padding-top: 60px;
       background: var(--bg);
       color: var(--text);
       font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -106,13 +107,15 @@
     .btn-w220 { width: 220px; }
 
     .tag {
-      min-width: 56px;
+      width: 76px;
+      min-width: 76px;
       height: 26px;
-      padding: 4px 8px;
+      padding: 0;
       border-radius: 80px 20px 80px 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       color: var(--white);
       font-size: 12px;
       font-weight: 400;
@@ -125,12 +128,23 @@
     .tag-orange { background: var(--orange); }
     .tag-urgent { background: rgba(243, 36, 39, .77); }
 
-    /* header */
+        /* header */
     .header-bar {
       width: 100%;
       height: 60px;
       background: #EFEFEF;
-      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      height: 60px;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -138,8 +152,7 @@
     .header-logo { width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; }
     .header-logo img { width: 120px; height: 120px; object-fit: cover; }
     .header-nav {
-      flex: 1 1 auto;
-      height: 60px;
+    height: 60px;
       padding: 0 10px;
       display: flex;
       align-items: center;
@@ -177,11 +190,11 @@
       gap: 25px;
     }
     .hero-cta-box h1 { margin: 0; color: var(--white); font-size: 44px; font-weight: 900; line-height: 44px; text-align: center; }
-    .hero-cta-actions { display: flex; flex-direction: column; gap: 16px; }
+    .hero-cta-actions { display: flex; flex-direction: column; gap: 16px; margin-top: 30px; }
 
     .hero-schedule {
       position: absolute;
-      right: 0;
+      right: max(0px, calc(100% - 1150px));
       bottom: 10px;
       width: 680px;
       padding: 0 0 0 10px;
@@ -210,10 +223,11 @@
     .notice-panel { padding: 32px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
     .notice-left { display: flex; flex-direction: column; gap: 16px; }
     .notice-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
-    .notice-item { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: stretch; }
+    .notice-item { display: block; }
     .notice-card { background: var(--white); border-radius: var(--radius); padding: 8px 16px; display: flex; gap: 12px; align-items: flex-start; }
     .notice-card img { width: 24px; height: 24px; border-radius: 999px; object-fit: cover; margin-top: 2px; }
     .notice-text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px; }
+    .notice-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; margin-left: auto; }
     .notice-date { font-size: 16px; font-weight: 400; line-height: 26px; color: var(--gray900); }
     .notice-headline { font-size: 14px; font-weight: 400; line-height: 22px; color: var(--gray700); }
     .notice-right { display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center; }
@@ -250,10 +264,19 @@
     .greeting-photo { width: 450px; height: 450px; border-radius: var(--radius); border: 1px solid #000; object-fit: cover; }
     .greeting-text { padding: 0 20px; font-size: 18px; font-weight: 700; line-height: 28px; color: var(--gray700); }
 
+    .greeting-text p { margin: 0; }
     /* about */
     .about-panel { box-shadow: var(--shadow); padding: 30px 24px 36px; }
-    .about-layout { display: grid; grid-template-columns: 1fr 480px; gap: 32px; align-items: center; }
-    .about-text { color: var(--gray700); font-size: 18px; font-weight: 700; line-height: 28px; margin: 0 0 20px; }
+    .about-layout { display: grid; grid-template-columns: 1fr 480px; gap: 32px; align-items: stretch; }
+    .about-left {
+      height: 480px;
+      display: grid;
+      grid-template-rows: 1fr auto 1fr auto 1fr;
+      align-items: start;
+    }
+    .about-left .about-text { grid-row: 2; }
+    .about-left .pill-list { grid-row: 4; }
+    .about-text { color: var(--gray700); font-size: 18px; font-weight: 700; line-height: 28px; margin: 0; }
     .pill-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 40px; justify-items: center; align-content: center; justify-content: center; }
     .pill { width: 260px; height: 54px; padding: 0 16px; border-radius: 999px; background: var(--clinic); border: 1px solid var(--gray300); color: var(--gray050); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; line-height: 22px; text-align: center; }
     .about-media { display: flex; justify-content: flex-end; }
@@ -273,11 +296,27 @@
     .bio-text { flex: 1 1 auto; }
 
     /* access */
-    .access-panel { box-shadow: var(--shadow); padding: 36px 32px; display: grid; grid-template-columns: 620px 1fr; gap: 32px; align-items: stretch; }
-    .map-box { width: 100%; height: 618px; border-radius: var(--radius); border: 1px solid var(--gray700); overflow: hidden; background: transparent; }
+    .access-panel {
+      box-shadow: var(--shadow);
+      padding: 36px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "access-header ."
+        "map-box access-right";
+      column-gap: 32px;
+      row-gap: 0;
+      align-items: start;
+    }
+    .access-panel .section-header { grid-area: access-header; }
+    .access-panel .map-box { grid-area: map-box; }
+    .access-panel .access-right { grid-area: access-right; }
+
+    .map-box { width: 100%; height: 500px; border-radius: var(--radius); border: 1px solid var(--gray700); overflow: hidden; background: transparent; }
     .map-box iframe { width: 100%; height: 100%; border: 0; }
-    .access-right { display: flex; flex-direction: column; gap: 20px; height: 618px; }
-    .info-card { background: var(--white); border-radius: 15px; border: 1px solid var(--gray300); box-shadow: var(--shadow); padding: 14px; flex: 1 1 auto; }
+    .access-right { display: flex; flex-direction: column; gap: 20px; height: 400px; }
+    .info-card { background: var(--white); border-radius: 15px; border: 1px solid var(--gray300); box-shadow: var(--shadow); padding: 14px; display: flex; flex-direction: column; gap: 20px; }
     .info-card p { margin: 0; font-size: 18px; font-weight: 400; line-height: 28px; color: var(--text); white-space: pre-wrap; }
     .access-actions { display: flex; justify-content: center; gap: 24px; }
 
@@ -302,22 +341,28 @@
     .contact-img-box img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--clinic); }
 
     /* footer */
-    .footer { width: 100%; background: #EFEFEF; border-radius: var(--radius); padding: 0 10px; display: flex; justify-content: center; gap: 100px; }
-    .footer-left { width: 200px; height: 140px; background: var(--white); border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .footer-left-inner { width: 100%; height: 100%; background: #EFEFEF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-    .footer-left-inner img { width: 220px; height: 205px; padding: 27px; object-fit: cover; }
-    .footer-left-inner small { font-size: 19px; font-weight: 400; line-height: 26px; color: var(--text); margin-top: -10px; }
-    .footer-right { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .footer-nav { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 24px 10px; height: 58px; white-space: nowrap; }
+    .footer { width: 100%; background: #EFEFEF; display: flex; justify-content: center; }
+    .footer-inner {
+      width: 1440px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 24px 0;
+    }
+    .footer-left { width: 200px; display: flex; align-items: flex-start; justify-content: center; }
+    .footer-left img { width: 200px; height: auto; object-fit: cover; }
+    .footer-center { width: 1000px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .footer-nav { width: 1000px; display: flex; align-items: center; justify-content: center; gap: 10px; height: 58px; white-space: nowrap; }
     .footer-nav a { text-decoration: none; color: var(--text); font-size: 16px; font-weight: 400; line-height: 26px; padding: 8px 0; }
-    .footer-info { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 0 24px 16px; }
-    .footer-info div { font-size: 16px; font-weight: 400; line-height: 26px; color: #000; white-space: nowrap; }
+    .footer-boxes { width: 1000px; display: flex; justify-content: space-evenly; align-items: flex-start; }
+    .footer-box { width: 300px; font-size: 16px; font-weight: 400; line-height: 26px; color: #000; text-align: left; white-space: nowrap; }
+    .footer-right { width: 220px; display: flex; justify-content: center; align-self: center; }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header class="header-bar">
-      <div class="header-logo">
+  <header class="header-bar">
+    <div class="header-inner">
+<div class="header-logo">
         <img src="./image/Logo/Logo.png" alt="ロゴ" />
       </div>
       <nav class="header-nav" aria-label="グローバルナビゲーション">
@@ -336,9 +381,11 @@
         <div class="header-tel">00-0000-0000</div>
         <a class="btn btn-primary btn-lg" href="#">Web予約</a>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section class="section-block" aria-label="ヒーロー">
+  <div class="page">
+<section class="section-block" aria-label="ヒーロー">
       <div class="panel white hero-panel">
         <div class="hero-visual">
           <img id="hero-img" src="./image/Hospital_Exterior/病院の外観.jpg" alt="メイン画像" />
@@ -386,9 +433,12 @@
                   <div class="notice-date">日付を入れます</div>
                   <div class="notice-headline">インフルエンザ予防接種について</div>
                 </div>
-              </div>
-              <span class="tag tag-secondary">担当科</span>
-              <span class="tag tag-clinic">通常系</span>
+              
+                <div class="notice-tags">
+                  <span class="tag tag-secondary">担当科</span>
+                  <span class="tag tag-clinic">通常系</span>
+                </div>
+</div>
             </li>
             <li class="notice-item">
               <div class="notice-card">
@@ -397,9 +447,12 @@
                   <div class="notice-date">日付を入れます</div>
                   <div class="notice-headline">年末年始の休診について</div>
                 </div>
-              </div>
-              <span class="tag tag-secondary">担当科</span>
-              <span class="tag tag-urgent">緊急系</span>
+              
+                <div class="notice-tags">
+                  <span class="tag tag-secondary">担当科</span>
+                  <span class="tag tag-urgent">緊急系</span>
+                </div>
+</div>
             </li>
             <li class="notice-item">
               <div class="notice-card">
@@ -408,9 +461,12 @@
                   <div class="notice-date">日付を入れます</div>
                   <div class="notice-headline">健康診断のご案内</div>
                 </div>
-              </div>
-              <span class="tag tag-secondary">担当科</span>
-              <span class="tag tag-primary">健康情報系</span>
+              
+                <div class="notice-tags">
+                  <span class="tag tag-secondary">担当科</span>
+                  <span class="tag tag-primary">健康情報系</span>
+                </div>
+</div>
             </li>
             <li class="notice-item">
               <div class="notice-card">
@@ -419,9 +475,12 @@
                   <div class="notice-date">日付を入れます</div>
                   <div class="notice-headline">新型コロナウイルス対策について</div>
                 </div>
-              </div>
-              <span class="tag tag-secondary">担当科</span>
-              <span class="tag tag-orange">準緊急系</span>
+              
+                <div class="notice-tags">
+                  <span class="tag tag-secondary">担当科</span>
+                  <span class="tag tag-orange">準緊急系</span>
+                </div>
+</div>
             </li>
             <li class="notice-item">
               <div class="notice-card">
@@ -430,9 +489,12 @@
                   <div class="notice-date">日付を入れます</div>
                   <div class="notice-headline">オンライン診療の導入について</div>
                 </div>
-              </div>
-              <span class="tag tag-secondary">担当科</span>
-              <span class="tag tag-clinic">通常系</span>
+              
+                <div class="notice-tags">
+                  <span class="tag tag-secondary">担当科</span>
+                  <span class="tag tag-clinic">通常系</span>
+                </div>
+</div>
             </li>
           </ul>
         </div>
@@ -524,7 +586,7 @@
       <div class="panel mint about-panel">
         <div class="section-header"><h2 class="section-title">当院について</h2></div>
         <div class="about-layout">
-          <div>
+          <div class="about-left">
             <p class="about-text">佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。</p>
             <div class="pill-list">
               <div class="pill">診療方針と医療の質</div>
@@ -551,7 +613,7 @@
             <div class="staff-row">
               <img src="./image/Doctor_Image/院長：佐藤太郎.jpg" alt="院長" />
               <div class="staff-bio">
-                <div class="bio-line"><span class="bio-label">経歴：</span><span class="bio-text">光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年間勤務。その後、地域医療への貢献を目指し、佐藤内科医院を開院。</span></div>
+                <div class="bio-line"><span class="bio-label">経歴　　：</span><span class="bio-text">光明大学医学部卒業後、瑞穂中央総合病院で内科医として10年間勤務。その後、地域医療への貢献を目指し、佐藤内科医院を開院。</span></div>
                 <div class="bio-line"><span class="bio-label">専門分野：</span><span class="bio-text">生活習慣病、呼吸器疾患、内科全般</span></div>
                 <div class="bio-line"><span class="bio-label">コメント：</span><span class="bio-text">患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。</span></div>
               </div>
@@ -563,7 +625,7 @@
             <div class="staff-row">
               <img src="./image/Doctor_Image/看護師長：鈴木 真理.jpg" alt="看護師長" />
               <div class="staff-bio">
-                <div class="bio-line"><span class="bio-label">経歴：</span><span class="bio-text">白桜大学看護学部卒業後、緑が丘大学病院で10年勤務。地域医療に携わりたい思いから、佐藤医院に入職。</span></div>
+                <div class="bio-line"><span class="bio-label">経歴　　：</span><span class="bio-text">白桜大学看護学部卒業後、緑が丘大学病院で10年勤務。地域医療に携わりたい思いから、佐藤医院に入職。</span></div>
                 <div class="bio-line"><span class="bio-label">得意分野：</span><span class="bio-text">親身な対応、注射・採血技術、健康管理指導</span></div>
                 <div class="bio-line"><span class="bio-label">コメント：</span><span class="bio-text">安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。</span></div>
               </div>
@@ -575,7 +637,7 @@
             <div class="staff-row">
               <img src="./image/Doctor_Image/臨床検査技師：高橋 由美.jpg" alt="臨床検査技師" />
               <div class="staff-bio">
-                <div class="bio-line"><span class="bio-label">経歴：</span><span class="bio-text">東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。</span></div>
+                <div class="bio-line"><span class="bio-label">経歴　　：</span><span class="bio-text">東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15年間の臨床検査技師としての経験を積む。</span></div>
                 <div class="bio-line"><span class="bio-label">得意分野：</span><span class="bio-text">血液検査、心電図検査、超音波検査</span></div>
                 <div class="bio-line"><span class="bio-label">コメント：</span><span class="bio-text">検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。</span></div>
               </div>
@@ -587,7 +649,7 @@
             <div class="staff-row">
               <img src="./image/Doctor_Image/医療事務：山本 花.jpg" alt="医療事務" />
               <div class="staff-bio">
-                <div class="bio-line"><span class="bio-label">経歴：</span><span class="bio-text">希望医療カレッジ卒業後、さくら診療所で受付業務を担当。現在は佐藤医院で患者様対応を担当。</span></div>
+                <div class="bio-line"><span class="bio-label">経歴　　：</span><span class="bio-text">希望医療カレッジ卒業後、さくら診療所で受付業務を担当。現在は佐藤医院で患者様対応を担当。</span></div>
                 <div class="bio-line"><span class="bio-label">得意分野：</span><span class="bio-text">受付業務、カルテ管理、医療費計算</span></div>
                 <div class="bio-line"><span class="bio-label">コメント：</span><span class="bio-text">皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。</span></div>
               </div>
@@ -599,12 +661,10 @@
 
     <section class="section-block" aria-label="アクセス">
       <div class="panel mint access-panel">
-        <div>
-          <div class="section-header"><h2 class="section-title">アクセス</h2></div>
-          <div class="map-box" aria-label="地図">
+        <div class="section-header"><h2 class="section-title">アクセス</h2></div>
+        <div class="map-box" aria-label="地図">
             <iframe src="https://www.google.com/maps?output=embed&q=%E3%80%92110-0015%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%9D%B1%E4%B8%8A%E9%87%8E%EF%BC%93%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%95%E2%88%92%EF%BC%95%20%E6%9B%BD%E6%88%91%E3%83%93%E3%83%AB%203F" loading="lazy" allowfullscreen title="佐藤医院所在地"></iframe>
           </div>
-        </div>
         <div class="access-right">
           <div class="info-card">
             <p>～住所～
@@ -621,10 +681,10 @@
 電話番号: 00-0000-0000
 ファックス: 00-0000-0000
 Eメール: info@sato-clinic-test.jp</p>
-          </div>
-          <div class="access-actions">
-            <a class="btn btn-orange btn-md" href="#">Web予約</a>
+            <div class="access-actions">
+              <a class="btn btn-orange btn-md" href="#">Web予約</a>
             <a class="btn btn-orange btn-md" href="#">よくあるご質問</a>
+            </div>
           </div>
         </div>
       </div>
@@ -669,14 +729,19 @@ Eメール: info@sato-clinic-test.jp</p>
       </div>
     </section>
 
-    <footer class="footer" aria-label="フッター">
+  </div>
+
+  <footer class="footer" aria-label="フッター">
+    <div class="footer-inner">
       <div class="footer-left">
-        <div class="footer-left-inner">
-          <img src="./image/Logo/Logo.png" alt="フッターロゴ" />
-          <small>©2025　佐藤医院</small>
+        
+        <div data-layer="ロゴ・医院名" style="height: 86px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
+          <img data-layer="ロゴ" style="width: 200px; height: 56px; position: relative" src="./image/Logo/Logo.png" alt="フッターロゴ"/>
+          <div data-layer="©2025　佐藤医院" class="2025" style="width: 160px; height: 26px; text-align: center; color: #111111; font-size: 16px; font-family: Roboto; font-weight: 400; line-height: 25.50px; letter-spacing: 0.64px; word-wrap: break-word">©2025　佐藤医院</div>
         </div>
+      
       </div>
-      <div class="footer-right">
+      <div class="footer-center">
         <nav class="footer-nav" aria-label="フッターナビゲーション">
           <a href="#">トップページ</a>
           <a href="#">おしらせ</a>
@@ -689,15 +754,18 @@ Eメール: info@sato-clinic-test.jp</p>
           <a href="#">ご予約・お問い合わせ</a>
           <a href="#">よくあるご質問</a>
         </nav>
-        <div class="footer-info">
-          <div>〒123-4567<br />東京都台東区上野0丁目 ０－０</div>
-          <div>電話番号：00-0000-0000<br />ファックス：00-0000-0000</div>
-          <div>Eメール：info@sato-clinic-test.jp</div>
-          <a class="btn btn-primary btn-lg btn-wide" href="#">Web予約</a>
+        <div class="footer-boxes">
+          <div class="footer-box">〒123-4567<br />東京都台東区上野0丁目 ０－０</div>
+          <div class="footer-box">電話番号：00-0000-0000<br />ファックス：00-0000-0000</div>
+          <div class="footer-box"><br />Eメール：info@sato-clinic-test.jp</div>
         </div>
       </div>
-    </footer>
-  </div>
+      <div class="footer-right">
+        <a class="btn btn-primary btn-lg btn-w220" href="#">Web予約</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
     (function(){
       var heroImg=document.getElementById("hero-img");
