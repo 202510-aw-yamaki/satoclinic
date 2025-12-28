@@ -69,30 +69,39 @@
       border-radius:var(--r30);
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
       gap:20px;
-      padding:0 20px;
+      padding:0 200px 0 150px;
+      position:relative;
     }
     .logo{
-      width:120px;
+      width:136px;
       height:60px;
       display:flex;
       align-items:center;
-      justify-content:flex-start;
-      border-radius:var(--r30);
-      overflow:hidden;
+      justify-content:center;
+      padding:10px;
+      position:absolute;
+      left:0;
+      top:0;
     }
     .logo img{
-      width:136px;
-      height:127px;
-      padding:10px;
-      object-fit:cover;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+    .header-nav-wrap{
+      height:58px;
+      padding:0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
     .nav{
       display:flex;
       align-items:center;
       gap:10px;
-      padding:24px 10px;
+      padding:24px 0;
       height:58px;
       white-space:nowrap;
     }
@@ -112,6 +121,9 @@
       align-items:center;
       gap:10px;
       padding:0 10px;
+      position:absolute;
+      right:10px;
+      top:10px;
     }
     .tel{
       font-size:18px;
@@ -1072,18 +1084,20 @@
         <img src="./image/Logo/Logo.png" alt="ロゴ" />
       </div>
 
-      <nav class="nav" aria-label="グローバルナビゲーション">
-        <a href="#">トップページ</a>
-        <a href="#">おしらせ</a>
-        <a href="#">診療時間</a>
-        <a href="#">診療内容</a>
-        <a href="#">院長挨拶</a>
-        <a href="#">当院について</a>
-        <a href="#">スタッフ紹介</a>
-        <a href="#">アクセス</a>
-        <a href="#">ご予約・お問い合わせ</a>
-        <a href="#">よくあるご質問</a>
-      </nav>
+      <div class="header-nav-wrap">
+        <nav class="nav" aria-label="グローバルナビゲーション">
+          <a href="#">トップページ</a>
+          <a href="#">おしらせ</a>
+          <a href="#">診療時間</a>
+          <a href="#">診療内容</a>
+          <a href="#">院長挨拶</a>
+          <a href="#">当院について</a>
+          <a href="#">スタッフ紹介</a>
+          <a href="#">アクセス</a>
+          <a href="#">ご予約・お問い合わせ</a>
+          <a href="#">よくあるご質問</a>
+        </nav>
+      </div>
 
       <div class="header-cta">
         <div class="tel">00-0000-0000</div>
@@ -1196,7 +1210,8 @@
       </div>
 
       <div class="noticeRight">
-        <img class="noticeImg" src="画像予定" alt="おしらせ画像" />
+        <!-- 画像差し替え：おしらせ -->
+        <img id="notice-image" class="noticeImg" src="./image/Infomation_Image/受付風景3.jpg" alt="おしらせ画像" />
         <div class="noticeBtns">
           <a class="btn orange lg w210" href="#">もっと見る</a>
           <a class="btn orange lg w210" href="#">Web予約</a>
@@ -1319,7 +1334,8 @@
       <h2>院⾧挨拶</h2>
 
       <div class="greetingInner">
-        <img src="画像予定" alt="院長写真" />
+        <!-- 画像差し替え：院長写真 -->
+        <img src="./image/Doctor_Image/院長：佐藤太郎.jpg" alt="院長写真" />
         <div class="greetingText">
           <p>
             こんにちは。佐藤医院の院⾧、佐藤太郎と申します。<br />
@@ -1359,7 +1375,8 @@
         </p>
       </div>
 
-      <img class="aboutImg" src="画像予定" alt="当院について画像" />
+      <!-- 画像差し替え：当院について -->
+      <img id="about-image" class="aboutImg" src="./image/Medical_Image/診察風景10.jpg" alt="当院について画像" />
 
       <div class="aboutPills" aria-label="当院についてのリンク">
         <a class="pill" href="#">診療方針と医療の質</a>
@@ -1378,7 +1395,8 @@
         <div class="staffCard green">
           <div class="staffName">院長：佐藤　太郎</div>
           <div class="staffRow">
-            <img src="画像予定" alt="院長" />
+            <!-- 画像差し替え：院長 -->
+            <img src="./image/Doctor_Image/院長：佐藤太郎.jpg" alt="院長" />
             <div class="staffBio">経歴　　：光明大学医学部卒業後、瑞穂中央総合病院で
 　　　　　内科医として10年間勤務。
 　　　　　その後、地域医療への貢献を目指し、
@@ -1393,7 +1411,8 @@
         <div class="staffCard pink">
           <div class="staffName">看護師長：鈴木 真理</div>
           <div class="staffRow">
-            <img src="画像予定" alt="看護師長" />
+            <!-- 画像差し替え：看護師長 -->
+            <img src="./image/Doctor_Image/看護師長：鈴木 真理.jpg" alt="看護師長" />
             <div class="staffBio">経歴　　：白桜大学看護学部卒業後、緑が丘大学病院で10年勤務。
 　　　　　地域医療に携わりたい思いから、佐藤医院に入職。
           
@@ -1408,7 +1427,8 @@
         <div class="staffCard pink">
           <div class="staffName">臨床検査技師：高橋 由美</div>
           <div class="staffRow">
-            <img src="画像予定" alt="臨床検査技師" />
+            <!-- 画像差し替え：臨床検査技師 -->
+            <img src="./image/Doctor_Image/臨床検査技師：高橋 由美.jpg" alt="臨床検査技師" />
             <div class="staffBio">経歴　　：東都臨床検査技術専門学校を卒業後、
 　　　　　武蔵中央医療センターにて
 　　　　　15年間の臨床検査技師としての経験を積む。
@@ -1423,7 +1443,8 @@
         <div class="staffCard pink">
           <div class="staffName">医療事務：山本 花</div>
           <div class="staffRow">
-            <img src="画像予定" alt="医療事務" />
+            <!-- 画像差し替え：医療事務 -->
+            <img src="./image/Doctor_Image/医療事務：山本 花.jpg" alt="医療事務" />
             <div class="staffBio">経歴　　：希望医療カレッジ卒業後、
 　　　　　さくら診療所にて受付業務を担当。
 　　　　　現在は佐藤医院で患者様対応を担当。
@@ -1520,7 +1541,8 @@
     <footer class="footer" aria-label="フッター">
       <div class="footerLeft">
         <div class="footerLeftInner">
-          <img src="画像予定" alt="フッターロゴ" />
+          <!-- 画像差し替え：フッターロゴ -->
+          <img src="./image/Logo/Logo.png" alt="フッターロゴ" />
           <small>©2025　佐藤医院</small>
         </div>
       </div>
@@ -1568,6 +1590,49 @@
       setInterval(function(){
         index=(index+1)%heroImages.length;
         heroImg.src=heroImages[index];
+      },60000);
+    })();
+
+    (function(){
+      var noticeImg=document.getElementById("notice-image");
+      if(!noticeImg)return;
+      // noticeImg rotate
+      var noticeImages=[
+        "./image/Infomation_Image/受付風景3.jpg",
+        "./image/Infomation_Image/受付風景1.jpg",
+        "./image/Infomation_Image/受付風景4.jpg",
+        "./image/Infomation_Image/受付風景２.jpg"
+      ];
+      var noticeIndex=0;
+      noticeImg.src=noticeImages[0];
+      setInterval(function(){
+        noticeIndex=(noticeIndex+1)%noticeImages.length;
+        noticeImg.src=noticeImages[noticeIndex];
+      },60000);
+    })();
+
+    (function(){
+      var aboutImg=document.getElementById("about-image");
+      if(!aboutImg)return;
+      // aboutImg rotate
+      var aboutImages=[
+        "./image/Medical_Image/診察風景10.jpg",
+        "./image/Medical_Image/診察風景1.jpg",
+        "./image/Medical_Image/診察風景2.jpg",
+        "./image/Medical_Image/診察風景3.jpg",
+        "./image/Medical_Image/診察風景4.jpg",
+        "./image/Medical_Image/診察風景5.jpg",
+        "./image/Medical_Image/診察風景6.jpg",
+        "./image/Medical_Image/診察風景7.jpg",
+        "./image/Medical_Image/診察風景8.jpg",
+        "./image/Medical_Image/診察風景9.jpg",
+        "./image/Medical_Image/診察風景11.jpg"
+      ];
+      var aboutIndex=0;
+      aboutImg.src=aboutImages[0];
+      setInterval(function(){
+        aboutIndex=(aboutIndex+1)%aboutImages.length;
+        aboutImg.src=aboutImages[aboutIndex];
       },60000);
     })();
   </script>
