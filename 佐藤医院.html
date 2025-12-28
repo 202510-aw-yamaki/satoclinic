@@ -62,74 +62,72 @@
     .section.teal{ background:var(--brandS); box-shadow:var(--shadow); }
     .section.shadow-white{ background:var(--white); box-shadow:var(--shadow); }
 
-    .header{
-      width:100%;
+    /* header layout updated */
+    .headerBar{
+      width:1440px;
       height:60px;
       background:#EFEFEF;
       border-radius:var(--r30);
       display:flex;
       align-items:center;
-      justify-content:center;
-      gap:20px;
-      padding:0 200px 0 150px;
-      position:relative;
+      justify-content:flex-start;
+      overflow:hidden;
     }
-    .logo{
-      width:136px;
+    .headerLogo{
+      width:120px;
       height:60px;
+      flex:0 0 120px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:10px;
-      position:absolute;
-      left:0;
-      top:0;
+      overflow:hidden;
     }
-    .logo img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
+    .headerLogoImg{
+      width:500px;
+      height:500px;
+      display:block;
+      object-fit:none;
+      object-position:center;
     }
-    .header-nav-wrap{
-      height:58px;
-      padding:0 10px;
+    .headerNav{
+      width:990px;
+      height:60px;
+      flex:0 0 990px;
+      padding-left:10px;
+      padding-right:10px;
       display:flex;
       align-items:center;
       justify-content:center;
-    }
-    .nav{
-      display:flex;
-      align-items:center;
       gap:10px;
-      padding:24px 0;
-      height:58px;
+      overflow:hidden;
       white-space:nowrap;
     }
-    .nav a{
+    .headerNav a{
       text-decoration:none;
       color:var(--text);
       font-size:16px;
       font-weight:400;
       line-height:26px;
-      padding:8px 0;
       display:inline-flex;
       align-items:center;
       justify-content:center;
     }
-    .header-cta{
+    .headerCta{
+      width:330px;
+      height:60px;
+      flex:0 0 330px;
+      padding-left:10px;
+      padding-right:10px;
       display:flex;
       align-items:center;
+      justify-content:center;
       gap:10px;
-      padding:0 10px;
-      position:absolute;
-      right:10px;
-      top:10px;
     }
-    .tel{
+    .headerTel{
+      color:var(--text);
       font-size:18px;
       font-weight:700;
       line-height:28px;
-      color:var(--text);
       white-space:nowrap;
     }
 
@@ -985,6 +983,13 @@
       border:1px solid var(--clinic);
       object-fit:cover;
     }
+    /* padding reset for key images */
+    .noticeImg,
+    .greetingInner img,
+    .aboutImg,
+    .contactImgBox img{
+      padding:0 !important;
+    }
 
     .footer{
       width:100%;
@@ -1079,29 +1084,30 @@
 <body>
   <div class="page">
 
-    <div class="header">
-      <div class="logo">
-        <img src="./image/Logo/Logo.png" alt="ロゴ" />
+    <div class="headerBar" style="width:1440px; height:60px; background:#EFEFEF; border-radius:30px; display:flex; align-items:center; justify-content:flex-start; overflow:hidden;">
+      <!-- header layout updated -->
+      <div class="headerLogo" style="width:120px; height:60px; flex:0 0 120px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <img class="headerLogoImg" src="./image/Logo/Logo.png" alt="ロゴ" style="width:500px; height:500px; display:block; object-fit:none; object-position:center;" />
       </div>
 
-      <div class="header-nav-wrap">
-        <nav class="nav" aria-label="グローバルナビゲーション">
-          <a href="#">トップページ</a>
-          <a href="#">おしらせ</a>
-          <a href="#">診療時間</a>
-          <a href="#">診療内容</a>
-          <a href="#">院長挨拶</a>
-          <a href="#">当院について</a>
-          <a href="#">スタッフ紹介</a>
-          <a href="#">アクセス</a>
-          <a href="#">ご予約・お問い合わせ</a>
-          <a href="#">よくあるご質問</a>
-        </nav>
-      </div>
+      <nav class="headerNav" aria-label="グローバルナビゲーション" style="width:990px; height:60px; flex:0 0 990px; padding-left:10px; padding-right:10px; display:flex; align-items:center; justify-content:center; gap:10px; overflow:hidden; white-space:nowrap;">
+        <a href="#">トップページ</a>
+        <a href="#">おしらせ</a>
+        <a href="#">診療時間</a>
+        <a href="#">診療内容</a>
+        <a href="#">院長挨拶</a>
+        <a href="#">当院について</a>
+        <a href="#">スタッフ紹介</a>
+        <a href="#">アクセス</a>
+        <a href="#">ご予約・お問い合わせ</a>
+        <a href="#">よくあるご質問</a>
+      </nav>
 
-      <div class="header-cta">
-        <div class="tel">00-0000-0000</div>
-        <a class="btn primary lg w180" href="#">Web予約</a>
+      <div class="headerCta" style="width:330px; height:60px; flex:0 0 330px; padding-left:10px; padding-right:10px; display:flex; align-items:center; justify-content:center; gap:10px;">
+        <div class="headerTel" style="color:#111111; font-size:18px; font-family:'Noto Sans JP', sans-serif; font-weight:700; line-height:28px;">00-0000-0000</div>
+        <a class="headerWebReserve" href="#" style="width:180px; height:40px; display:flex; align-items:center; justify-content:center; background:var(--color-CL-Brand-Primary, #3BA7C9); border-radius:999px; text-decoration:none;">
+          <div style="color:var(--color-CL-White-100, #ffffff); font-size:24px; font-family:'Noto Sans JP', sans-serif; font-weight:700; line-height:34px;">Web予約</div>
+        </a>
       </div>
     </div>
 
@@ -1219,31 +1225,102 @@
       </div>
     </section>
 
-    <section class="section shadow-white hours" aria-label="診療時間">
-      <h2>診療時間</h2>
-
-      <div class="hoursInner">
-        <div class="hoursTable">
-          <table>
-            <tr>
-              <th>診療時間</th>
-              <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
-            </tr>
-            <tr>
-              <td>9時～12時</td>
-              <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>●</td><td>／</td>
-            </tr>
-            <tr>
-              <td>14時～19時</td>
-              <td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>／</td><td>／</td>
-            </tr>
-          </table>
-        </div>
-
-        <div class="hoursNote">受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日曜</div>
-        <div class="hoursWarn">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div>
+    <!-- hours section replaced -->
+    <div style="padding-top: 9px; padding-bottom: 9px; background: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; border-radius: 30px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+      <div style="height: 62px; padding-left: 160px; padding-right: 160px; padding-top: 10px; padding-bottom: 10px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+        <div style="color: black; font-size: 44.75px; font-family: Noto Sans JP; font-weight: 900; line-height: 44.75px; word-wrap: break-word">診療時間</div>
       </div>
-    </section>
+      <div style="height: 182px; padding-left: 45px; padding-right: 45px; position: relative; flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+        <div style="border-radius: 30px; flex-direction: column; justify-content: center; align-items: center; display: flex">
+          <div style="width: 1100px; background: #E0F5EA; border-top-left-radius: 25.82px; border-top-right-radius: 25.82px; justify-content: center; align-items: flex-start; display: inline-flex">
+            <div style="width: 1099px; height: 42px; background: var(--color-CL-Gray-100, #F5F5F5); border-top-left-radius: 25.82px; border-top-right-radius: 25.82px; outline: 0.86px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -0.86px; justify-content: flex-start; align-items: center; display: flex">
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">診療時間</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">月</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">火</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">水</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">木</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">金</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">土</div>
+              </div>
+              <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+                <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 15.49px; font-family: Noto Sans JP; font-weight: 700; line-height: 24.10px; word-wrap: break-word">日</div>
+              </div>
+            </div>
+          </div>
+          <div style="width: 1100px; height: 41px; background: var(--color-CL-Gray-050, #FAFAFA); outline: 0.86px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -0.86px; justify-content: flex-start; align-items: center; display: inline-flex">
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">9時～12時</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">／</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">／</div>
+            </div>
+          </div>
+          <div style="width: 1100px; height: 41px; background: var(--color-CL-Gray-050, #FAFAFA); border-bottom-right-radius: 25.82px; border-bottom-left-radius: 25.82px; outline: 0.86px var(--color-CL-Gray-300, #E0E0E0) solid; outline-offset: -0.86px; justify-content: flex-start; align-items: center; display: inline-flex">
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">14時～19時</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">／</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">●</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">／</div>
+            </div>
+            <div style="width: 137.71px; height: 41.31px; padding-left: 13.77px; padding-right: 13.77px; padding-top: 10.33px; padding-bottom: 10.33px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8.61px; display: inline-flex">
+              <div style="text-align: center; color: var(--color-CL-Gray-900, #212121); font-size: 13.77px; font-family: Noto Sans JP; font-weight: 400; line-height: 22.38px; word-wrap: break-word">／</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding-left: 260px; padding-right: 260px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+          <div style="color: black; font-size: 18.31px; font-family: Noto Sans JP; font-weight: 400; line-height: 28.47px; word-wrap: break-word">受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日曜</div>
+        </div>
+        <div style="left: 235px; top: 152.73px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+          <div style="width: 731.19px; color: #C97A2A; font-size: 18.31px; font-family: Noto Sans JP; font-weight: 700; line-height: 28.47px; word-wrap: break-word">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div>
+        </div>
+      </div>
+    </div>
 
     <section class="section mint treatments" aria-label="診察内容">
       <h2>診察内容</h2>
@@ -1532,7 +1609,8 @@
 
         <div class="contactRight">
           <div class="contactImgBox">
-            <img src="画像予定" alt="予約画像" />
+            <!-- contact image rotation target -->
+            <img id="contactImgEl" src="./image/Infomation_Image/受付風景4.jpg" alt="予約画像" />
           </div>
         </div>
       </div>
@@ -1633,6 +1711,24 @@
       setInterval(function(){
         aboutIndex=(aboutIndex+1)%aboutImages.length;
         aboutImg.src=aboutImages[aboutIndex];
+      },60000);
+    })();
+
+    (function(){
+      var contactImg=document.getElementById("contactImgEl");
+      if(!contactImg)return;
+      // rotate contact images
+      var contactImages=[
+        "./image/Infomation_Image/受付風景4.jpg",
+        "./image/Infomation_Image/受付風景1.jpg",
+        "./image/Infomation_Image/受付風景3.jpg",
+        "./image/Infomation_Image/受付風景２.jpg"
+      ];
+      var contactIndex=0;
+      contactImg.src=contactImages[0];
+      setInterval(function(){
+        contactIndex=(contactIndex+1)%contactImages.length;
+        contactImg.src=contactImages[contactIndex];
       },60000);
     })();
   </script>
