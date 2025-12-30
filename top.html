@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-<title>佐藤医院（仮）</title>
+  <title>佐藤医院</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -127,7 +127,7 @@
     .tag-orange { background: var(--orange); }
     .tag-urgent { background: rgba(243, 36, 39, .77); }
 
-        /* header */
+    /* header */
     .header-bar {
       width: 100%;
       height: 60px;
@@ -151,13 +151,14 @@
     .header-logo { width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; }
     .header-logo img { width: 120px; height: 120px; object-fit: cover; }
     .header-nav {
-    height: 60px;
+      height: 60px;
       padding: 0 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       white-space: nowrap;
+      flex: 1;
     }
     .header-nav a {
       text-decoration: none;
@@ -166,7 +167,7 @@
       font-weight: 400;
       line-height: 26px;
     }
-    .header-cta { width: 330px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 10px; }
+    .header-cta { width: 380px; display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 10px; margin-left: auto; }
     .header-tel { color: var(--text); font-size: 18px; font-weight: 700; line-height: 28px; }
 
     /* hero */
@@ -218,25 +219,24 @@
     .schedule-note { width: 100%; text-align: right; font-size: 16px; font-weight: 400; line-height: 26px; color: #000; white-space: nowrap; }
     .schedule-warn { width: 100%; text-align: right; color: var(--orange); font-size: 16px; font-weight: 700; line-height: 26px; }
 
-    /* notice */
-    .notice-panel { padding: 32px 20px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 32px; }
-    
-    .notice-section-header { grid-column: 1 / -1; }
-.notice-left { display: flex; flex-direction: column; gap: 16px; }
-    .notice-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
-    .notice-item { display: block; }
-    .notice-link { display: block; text-decoration: none; color: inherit; }
+    /* info */
+    .info-panel { padding: 32px 20px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 32px; }
+    .info-section-header { grid-column: 1 / -1; }
+    .info-left { display: flex; flex-direction: column; gap: 16px; }
+    .info-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+    .info-item { display: block; }
+    .info-link { display: block; text-decoration: none; color: inherit; }
 
-    .notice-card { background: var(--white); border-radius: var(--radius); padding: 8px 16px; display: flex; gap: 12px; align-items: flex-start; }
-    .notice-card img { width: 24px; height: 24px; border-radius: 999px; object-fit: cover; margin-top: 2px; }
-    .notice-text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px; }
-    .notice-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; margin-left: auto; }
-    .notice-date { font-size: 16px; font-weight: 400; line-height: 26px; color: var(--gray900); }
-    .notice-headline { font-size: 14px; font-weight: 400; line-height: 22px; color: var(--gray700); }
-    .notice-right { display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: space-between; height: 100%; padding: 0; }
-    .notice-visual { padding: 0; }
-    .notice-img { width: 560px; height: 354px; border-radius: var(--radius); border: 1px solid #000; object-fit: cover; }
-    .notice-actions { display: flex; gap: 24px; justify-content: center; }
+    .info-card { background: var(--white); border-radius: var(--radius); padding: 8px 16px; display: flex; gap: 12px; align-items: flex-start; }
+    .info-card img { width: 24px; height: 24px; border-radius: 999px; object-fit: cover; margin-top: 2px; }
+    .info-text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px; }
+    .info-tags { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; margin-left: auto; }
+    .info-date { font-size: 16px; font-weight: 400; line-height: 26px; color: var(--gray900); }
+    .info-headline { font-size: 14px; font-weight: 400; line-height: 22px; color: var(--gray700); }
+    .info-right { display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: space-between; height: 100%; padding: 0; }
+    .info-visual { padding: 0; }
+    .info-img { width: 560px; height: 354px; border-radius: var(--radius); border: 1px solid #000; object-fit: cover; }
+    .info-actions { display: flex; gap: 24px; justify-content: center; }
 
     /* hours */
     .hours-panel { padding: 16px 0 30px; box-shadow: var(--shadow); }
@@ -251,23 +251,23 @@
     .hours-note { width: 100%; padding-top: 10px; text-align: center; font-size: 18px; font-weight: 400; line-height: 28px; color: #000; white-space: nowrap; }
     .hours-warn { width: 100%; text-align: center; color: var(--orange); font-size: 18px; font-weight: 700; line-height: 28px; }
 
-    /* treatments */
-    .treat-panel { padding: 30px 24px 36px; box-shadow: var(--shadow); }
-    .treat-lead { background: var(--white); border-radius: var(--radius); padding: 10px 24px; font-size: 18px; font-weight: 700; line-height: 28px; color: #000; }
-    .treat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 20px 0; }
-    .treat-card { background: var(--white); border-radius: 12px; border: 1px solid var(--gray300); box-shadow: var(--shadow); padding: 24px; display: flex; flex-direction: column; gap: 12px; justify-content: flex-start; align-items: center; min-height: 220px; }
-    .treat-card h3 { margin: 0; font-size: 20px; font-weight: 500; line-height: 28px; color: var(--gray900); text-align: center; text-shadow: 0 4px 4px rgba(25, 198, 119, 1); }
-    .treat-card p { margin: 0; font-size: 18px; font-weight: 500; line-height: 28px; color: #000; text-align: left; }
-    .treat-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; justify-items: center; padding: 10px 0; }
-    .treat-hint { text-align: center; font-size: 16px; font-weight: 700; line-height: 22px; color: #000; }
+    /* details */
+    .details-panel { padding: 30px 24px 36px; box-shadow: var(--shadow); }
+    .details-lead { background: var(--white); border-radius: var(--radius); padding: 10px 24px; font-size: 18px; font-weight: 700; line-height: 28px; color: #000; }
+    .details-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 20px 0; }
+    .details-card { background: var(--white); border-radius: 12px; border: 1px solid var(--gray300); box-shadow: var(--shadow); padding: 24px; display: flex; flex-direction: column; gap: 12px; justify-content: flex-start; align-items: center; min-height: 220px; }
+    .details-card h3 { margin: 0; font-size: 20px; font-weight: 500; line-height: 28px; color: var(--gray900); text-align: center; text-shadow: 0 4px 4px rgba(25, 198, 119, 1); }
+    .details-card p { margin: 0; font-size: 18px; font-weight: 500; line-height: 28px; color: #000; text-align: left; }
+    .details-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; justify-items: center; padding: 10px 0; }
+    .details-hint { text-align: center; font-size: 16px; font-weight: 700; line-height: 22px; color: #000; }
 
     /* greeting */
     .greeting-panel { box-shadow: var(--shadow); padding-bottom: 20px; }
     .greeting-body { padding: 10px 22px 22px; display: grid; grid-template-columns: 450px 1fr; gap: 20px; align-items: start; }
     .greeting-photo { width: 450px; height: 450px; border-radius: var(--radius); border: 1px solid #000; object-fit: cover; }
     .greeting-text { padding: 0 20px; font-size: 18px; font-weight: 700; line-height: 28px; color: var(--gray700); }
-
     .greeting-text p { margin: 0; }
+
     /* about */
     .about-panel { box-shadow: var(--shadow); padding: 30px 24px 36px; }
     .about-layout { display: grid; grid-template-columns: 1fr 480px; gap: 32px; align-items: stretch; }
@@ -306,6 +306,7 @@
     .access-panel {
       box-shadow: var(--shadow);
       padding: 36px 32px;
+      position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto 1fr;
@@ -317,22 +318,16 @@
       align-items: start;
     }
     .access-panel .section-header { grid-area: access-header; }
+    .access-panel .access-button-box { position: absolute; top: 36px; right: 32px; width: calc((100% - 32px) / 2); }
     .access-panel .map-box { grid-area: map-box; }
     .access-panel .access-right { grid-area: access-right; }
 
     .map-box { width: 100%; height: 500px; border-radius: var(--radius); border: 1px solid var(--gray700); overflow: hidden; background: transparent; }
     .map-box iframe { width: 100%; height: 100%; border: 0; }
-    .access-right { display: flex; flex-direction: column; gap: 20px; height: 400px; }
-    .info-card { background: var(--white); border-radius: 15px; border: 1px solid var(--gray300); box-shadow: var(--shadow); padding: 14px; height: 500px; display: flex; flex-direction: column; gap: 20px; }
-    .info-card p { margin: 0; font-size: 18px; font-weight: 400; line-height: 28px; color: var(--text); white-space: pre-wrap; }
+    .access-right { display: flex; flex-direction: column; gap: 20px; }
+    .access-card { background: var(--white); border-radius: 15px; border: 1px solid var(--gray300); box-shadow: var(--shadow); padding: 14px; display: flex; flex-direction: column; gap: 20px; }
+    .access-card p { margin: 0; font-size: 18px; font-weight: 400; line-height: 28px; color: var(--text); white-space: pre-wrap; }
     .access-actions { display: flex; justify-content: center; gap: 24px; }
-
-    /* contact */
-    .contact-panel { box-shadow: var(--shadow); padding: 30px; background: var(--brand-secondary); }
-    .contact-layout { display: grid; grid-template-columns: 1fr 520px; gap: 24px; align-items: center; }
-    .contact-copy { color: var(--gray050); display: flex; flex-direction: column; gap: 16px; }
-    .contact-copy h2 { margin: 0; font-size: 32px; font-weight: 700; line-height: 44px; text-align: center; }
-    .contact-copy p { margin: 0; font-size: 18px; font-weight: 700; line-height: 28px; }
     .contact-schedule { background: var(--white); border-radius: 30px; padding: 16px; display: flex; flex-direction: column; gap: 10px; align-items: center; }
     .mini-schedule { width: 100%; max-width: 600px; }
     .mini-schedule .schedule-box { width: 100%; border-radius: 22px; border: 1px solid var(--gray300); background: var(--white); }
@@ -341,11 +336,6 @@
     .mini-schedule td { font-size: 12px; }
     .mini-schedule .note { font-size: 13px; font-weight: 400; line-height: 21px; color: #000; width: 100%; text-align: left; white-space: nowrap; }
     .mini-schedule .warn { font-size: 14px; font-weight: 400; line-height: 22px; color: #000; width: 100%; text-align: left; }
-    .contact-actions { display: flex; justify-content: center; gap: 24px; align-items: center; margin-top: 8px; }
-    .tel-badge { padding: 0 30px; background: var(--orange); color: var(--white); border-radius: 20px 80px 20px 80px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 400; line-height: 28px; white-space: nowrap; }
-    .contact-visual { width: 100%; max-width: 520px; height: 451px; display: flex; align-items: center; justify-content: center; }
-    .contact-img-box { width: 100%; height: 100%; border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; justify-content: center; background: transparent; }
-    .contact-img-box img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--clinic); }
 
     /* footer */
     .footer { width: 100%; background: #EFEFEF; display: flex; justify-content: center; }
@@ -364,6 +354,7 @@
     .footer-boxes { width: 1000px; display: flex; justify-content: space-evenly; align-items: flex-start; }
     .footer-box { width: 300px; font-size: 16px; font-weight: 400; line-height: 26px; color: #000; text-align: left; white-space: nowrap; }
     .footer-right { width: 220px; display: flex; justify-content: center; align-self: center; }
+
     /* 来院メモメーカー */
     .memo-modal {
       position: fixed;
@@ -376,7 +367,7 @@
       padding: 24px;
     }
     .memo-modal.is-open { display: flex; }
-        .memo-dialog {
+    .memo-dialog {
       width: 720px;
       height: 700px;
       min-width: 720px;
@@ -410,10 +401,9 @@
       cursor: pointer;
     }
     .memo-title { margin: 0; font-size: 28px; font-weight: 900; line-height: 1.2; color: #000; }
-        .memo-subtitle { margin: 0; font-size: 14px; font-weight: 400; line-height: 22px; color: var(--gray700); }
+    .memo-subtitle { margin: 0; font-size: 14px; font-weight: 400; line-height: 22px; color: var(--gray700); }
     .memo-subtitle-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin: 6px 0 18px; }
     .memo-subnote { font-size: 12px; font-weight: 400; line-height: 18px; color: var(--gray700); text-align: left; }
-
     .memo-subnote-line { white-space: nowrap; }
     .memo-row-nameage { grid-template-columns: 1fr 360px; }
     .memo-nameage-right { display: flex; gap: 12px; align-items: flex-start; }
@@ -523,30 +513,29 @@
 <body>
   <header class="header-bar">
     <div class="header-inner">
-<div class="header-logo">
+      <div class="header-logo">
         <img src="./image/Logo/Logo.png" alt="ロゴ" />
       </div>
       <nav class="header-nav" aria-label="グローバルナビゲーション">
         <a href="#top">トップページ</a>
-        <a href="#notice">おしらせ</a>
-        <a href="#hours">診療時間</a>
-        <a href="#treatments">診療内容</a>
+        <a href="#hours">診察時間</a>
+        <a href="#info">おしらせ</a>
         <a href="#greeting">院長挨拶</a>
+        <a href="#details">診察内容</a>
         <a href="#about">当院について</a>
         <a href="#staff">スタッフ紹介</a>
         <a href="#access">アクセス</a>
-        <a href="#contact">ご予約・お問い合わせ</a>
         <a href="faq.html">よくあるご質問</a><!-- よくあるご質問ページ（未作成）のため、将来的にfaq.htmlへ遷移予定 -->
       </nav>
       <div class="header-cta">
         <div class="header-tel">00-0000-0000</div>
-        <a class="btn btn-primary btn-lg js-web-reserve" href="#">Web予約</a>
+        <a class="btn btn-primary btn-lg btn-w220 js-web-reserve" href="#">Web予約</a>
       </div>
     </div>
   </header>
 
   <div class="page">
-<section id="top" class="section-block" aria-label="ヒーロー">
+    <section id="top" class="section-block" aria-label="ヒーロー">
       <div class="panel white hero-panel">
         <div class="hero-visual">
           <img id="hero-img" src="./image/Hospital_Exterior/病院の外観.jpg" alt="メイン画像" />
@@ -559,11 +548,11 @@
             <a class="btn btn-outline-light js-web-reserve" href="#">Web予約</a>
           </div>
         </div>
-        <div class="hero-schedule" aria-label="診療時間（抜粋）">
+        <div class="hero-schedule" aria-label="診察時間（抜粋）">
           <div class="schedule-box">
             <table>
               <tr>
-                <th style="width:147px;">診療時間</th>
+                <th style="width:147px;">診察時間</th>
                 <th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
               </tr>
               <tr>
@@ -582,121 +571,14 @@
       </div>
     </section>
 
-    <section id="notice" class="section-block" aria-label="おしらせ">
-      <div class="panel teal notice-panel">
-        <div class="section-header notice-section-header"><h2 class="section-title">おしらせ</h2></div>
-        <div class="notice-left">
-          <!-- おしらせページ（未作成）へ遷移予定 -->
-          <!-- 各notice-itemはおしらせページ内の対応項目へ遷移予定：
-               1) インフルエンザ予防接種について -> notice.html#notice-01
-               2) 年末年始の休診について -> notice.html#notice-02
-               3) 健康診断のご案内 -> notice.html#notice-03
-               4) 新型コロナウイルス対策について -> notice.html#notice-04
-               5) オンライン診療の導入について -> notice.html#notice-05
-          -->
-          <ul class="notice-list">
-            <li class="notice-item">
-              <a class="notice-link" href="notice.html#notice-01">
-              <div class="notice-card">
-                <img src="./image/dc-sample_02.jpg" alt="" />
-                <div class="notice-text">
-                  <div class="notice-date">日付を入れます</div>
-                  <div class="notice-headline">インフルエンザ予防接種について</div>
-                </div>
-              
-                <div class="notice-tags">
-                  <span class="tag tag-secondary">担当科</span>
-                  <span class="tag tag-clinic">通常系</span>
-                </div>
-</div>
-            </a>
-            </li>
-            <li class="notice-item">
-              <a class="notice-link" href="notice.html#notice-02">
-              <div class="notice-card">
-                <img src="./image/dc-sample_02.jpg" alt="" />
-                <div class="notice-text">
-                  <div class="notice-date">日付を入れます</div>
-                  <div class="notice-headline">年末年始の休診について</div>
-                </div>
-              
-                <div class="notice-tags">
-                  <span class="tag tag-secondary">担当科</span>
-                  <span class="tag tag-urgent">緊急系</span>
-                </div>
-</div>
-            </a>
-            </li>
-            <li class="notice-item">
-              <a class="notice-link" href="notice.html#notice-03">
-              <div class="notice-card">
-                <img src="./image/dc-sample_02.jpg" alt="" />
-                <div class="notice-text">
-                  <div class="notice-date">日付を入れます</div>
-                  <div class="notice-headline">健康診断のご案内</div>
-                </div>
-              
-                <div class="notice-tags">
-                  <span class="tag tag-secondary">担当科</span>
-                  <span class="tag tag-primary">健康情報系</span>
-                </div>
-</div>
-            </a>
-            </li>
-            <li class="notice-item">
-              <a class="notice-link" href="notice.html#notice-04">
-              <div class="notice-card">
-                <img src="./image/dc-sample_02.jpg" alt="" />
-                <div class="notice-text">
-                  <div class="notice-date">日付を入れます</div>
-                  <div class="notice-headline">新型コロナウイルス対策について</div>
-                </div>
-              
-                <div class="notice-tags">
-                  <span class="tag tag-secondary">担当科</span>
-                  <span class="tag tag-orange">準緊急系</span>
-                </div>
-</div>
-            </a>
-            </li>
-            <li class="notice-item">
-              <a class="notice-link" href="notice.html#notice-05">
-              <div class="notice-card">
-                <img src="./image/dc-sample_02.jpg" alt="" />
-                <div class="notice-text">
-                  <div class="notice-date">日付を入れます</div>
-                  <div class="notice-headline">オンライン診療の導入について</div>
-                </div>
-              
-                <div class="notice-tags">
-                  <span class="tag tag-secondary">担当科</span>
-                  <span class="tag tag-clinic">通常系</span>
-                </div>
-</div>
-            </a>
-            </li>
-          </ul>
-        </div>
-        <div class="notice-right">
-          <div class="notice-visual">
-            <img id="notice-image" class="notice-img" src="./image/Infomation_Image/受付風景3.jpg" alt="おしらせ画像" />
-          </div>
-          <div class="notice-actions">
-            <a class="btn btn-orange btn-lg btn-w210" href="notice.html">もっと見る</a><!-- おしらせページ（未作成）のため、将来的にnotice.htmlへ遷移予定 -->
-            <a class="btn btn-orange btn-lg btn-w210 js-web-reserve" href="#">Web予約</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="hours" class="section-block" aria-label="診療時間">
+    <section id="hours" class="section-block" aria-label="診察時間">
       <div class="panel white hours-panel">
-        <div class="section-header"><h2 class="section-title">診療時間</h2></div>
+        <div class="section-header"><h2 class="section-title">診察時間</h2></div>
         <div class="hours-inner">
           <div class="hours-table">
             <table>
               <tr>
-                <th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+                <th>診察時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
               </tr>
               <tr>
                 <td>9時～12時</td><td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>●</td><td>／</td>
@@ -712,49 +594,104 @@
       </div>
     </section>
 
-    <section id="treatments" class="section-block" aria-label="診察内容">
-      <div class="panel mint treat-panel">
-        <div class="section-header"><h2 class="section-title">診察内容</h2></div>
-        <div class="treat-lead">当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。<br>日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。</div>
-        <div class="treat-grid">
-          <div class="treat-card">
-            <h3>一般内科診察</h3>
-            <p>風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。原因不明の不調や軽い症状であっても、早期診断に努めております。</p>
-          </div>
-          <div class="treat-card">
-            <h3>生活習慣病の診断・治療</h3>
-            <p>高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。健康維持のための生活指導や薬物療法を提供します。</p>
-          </div>
-          <div class="treat-card">
-            <h3>消化器系の診察</h3>
-            <p>胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。</p>
-          </div>
-          <div class="treat-card">
-            <h3>呼吸器系の診察</h3>
-            <p>咳、息切れ、胸の痛みなどの呼吸器系の症状を診察します。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防を支援します。</p>
-          </div>
+    <section id="info" class="section-block" aria-label="おしらせ">
+      <div class="panel teal info-panel">
+        <div class="section-header info-section-header"><h2 class="section-title">おしらせ</h2></div>
+        <div class="info-left">
+          <!-- おしらせページ（未作成）へ遷移予定 -->
+          <!-- 各info-itemはおしらせページ内の対応項目へ遷移予定：
+               1) インフルエンザ予防接種について -> info.html#info-01
+               2) 年末年始の休診について -> info.html#info-02
+               3) 健康診断のご案内 -> info.html#info-03
+               4) 新型コロナウイルス対策について -> info.html#info-04
+               5) オンライン診療の導入について -> info.html#info-05
+          -->
+          <ul class="info-list">
+            <li class="info-item">
+              <a class="info-link" href="info.html#info-01">
+                <div class="info-card">
+                  <img src="./image/dc-sample_02.jpg" alt="" />
+                  <div class="info-text">
+                    <div class="info-date">日付を入れます</div>
+                    <div class="info-headline">インフルエンザ予防接種について</div>
+                  </div>
+                  <div class="info-tags">
+                    <span class="tag tag-secondary">担当科</span>
+                    <span class="tag tag-clinic">通常系</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="info-item">
+              <a class="info-link" href="info.html#info-02">
+                <div class="info-card">
+                  <img src="./image/dc-sample_02.jpg" alt="" />
+                  <div class="info-text">
+                    <div class="info-date">日付を入れます</div>
+                    <div class="info-headline">年末年始の休診について</div>
+                  </div>
+                  <div class="info-tags">
+                    <span class="tag tag-secondary">担当科</span>
+                    <span class="tag tag-urgent">緊急系</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="info-item">
+              <a class="info-link" href="info.html#info-03">
+                <div class="info-card">
+                  <img src="./image/dc-sample_02.jpg" alt="" />
+                  <div class="info-text">
+                    <div class="info-date">日付を入れます</div>
+                    <div class="info-headline">健康診断のご案内</div>
+                  </div>
+                  <div class="info-tags">
+                    <span class="tag tag-secondary">担当科</span>
+                    <span class="tag tag-primary">健康情報系</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="info-item">
+              <a class="info-link" href="info.html#info-04">
+                <div class="info-card">
+                  <img src="./image/dc-sample_02.jpg" alt="" />
+                  <div class="info-text">
+                    <div class="info-date">日付を入れます</div>
+                    <div class="info-headline">新型コロナウイルス対策について</div>
+                  </div>
+                  <div class="info-tags">
+                    <span class="tag tag-secondary">担当科</span>
+                    <span class="tag tag-orange">準緊急系</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="info-item">
+              <a class="info-link" href="info.html#info-05">
+                <div class="info-card">
+                  <img src="./image/dc-sample_02.jpg" alt="" />
+                  <div class="info-text">
+                    <div class="info-date">日付を入れます</div>
+                    <div class="info-headline">オンライン診療の導入について</div>
+                  </div>
+                  <div class="info-tags">
+                    <span class="tag tag-secondary">担当科</span>
+                    <span class="tag tag-clinic">通常系</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
-        <!-- 診察内容ページ（未作成）へ遷移予定 -->
-        <!-- 各ボタンは診察内容ページ内の対応項目へ遷移予定：
-             1) 一般内科診察 -> treatments.html#treat-01
-             2) 生活習慣病の診断・治療 -> treatments.html#treat-02
-             3) 消化器系の診察 -> treatments.html#treat-03
-             4) 呼吸器系の診察 -> treatments.html#treat-04
-             5) 健康診断・各種検査 -> treatments.html#treat-05
-             6) 予防接種 -> treatments.html#treat-06
-             7) 禁煙外来 -> treatments.html#treat-07
-        -->
-        <div class="treat-actions">
-          <a class="btn btn-clinic btn-md btn-w220" href="treatments.html#treat-01">一般内科診察へ</a>
-          <a class="btn btn-clinic btn-md btn-w220" href="treatments.html#treat-02">生活習慣病の診断・治療へ</a>
-          <a class="btn btn-clinic btn-md btn-w220" href="treatments.html#treat-03">消化器系の診察へ</a>
-          <a class="btn btn-clinic btn-md btn-w220" href="treatments.html#treat-04">呼吸器系の診察へ</a>
-        </div>
-        <div class="treat-actions">
-          <div class="treat-hint">その他の診察はこちら→</div>
-          <a class="btn btn-primary btn-md btn-w220" href="treatments.html#treat-05">健康診断・各種検査</a>
-          <a class="btn btn-primary btn-md btn-w220" href="treatments.html#treat-06">予防接種</a>
-          <a class="btn btn-primary btn-md btn-w220" href="treatments.html#treat-07">禁煙外来</a>
+        <div class="info-right">
+          <div class="info-visual">
+            <img id="info-image" class="info-img" src="./image/Infomation_Image/受付風景3.jpg" alt="おしらせ画像" />
+          </div>
+          <div class="info-actions">
+            <a class="btn btn-orange btn-lg btn-w210" href="info.html">もっと見る</a><!-- おしらせページ（未作成）へ遷移予定 -->
+            <a class="btn btn-orange btn-lg btn-w210 js-web-reserve" href="#">Web予約</a>
+          </div>
         </div>
       </div>
     </section>
@@ -767,6 +704,53 @@
           <div class="greeting-text">
             <p>こんにちは。佐藤医院の院⾧、佐藤太郎と申します。<br />当院のホームページをご覧いただき、ありがとうございます。<br />佐藤医院では、「地域に根ざした医療」をモットーに、<br>患者様一人ひとりに寄り添った医療を提供することを目指しております。<br />日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、<br>地域の皆様の健康を支える役割を担っていきたいと考えております。<br />私たちは、患者様の不安を少しでも軽減し、<br>安心して診療を受けていただけるよう、<br>わかりやすい説明と丁寧な対応を心掛けております。<br />また、近隣の医療機関とも連携し、<br>必要に応じて高度医療へのアクセスもサポートいたします。<br />どんな小さな不調でも、どうぞお気軽にご相談ください。<br />これからも、患者様の健康を第一に考え、<br>地域の皆様に信頼される医療機関であり続けるため、<br>スタッフ一同努力してまいります。どうぞよろしくお願いいたします。<br />　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　佐藤医院<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　院長 佐藤太郎</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="details" class="section-block" aria-label="診察内容">
+      <div class="panel mint details-panel">
+        <div class="section-header"><h2 class="section-title">診察内容</h2></div>
+        <div class="details-lead">当院では、地域の皆様の健康を支えるため、幅広い内科診療を行っております。<br>日常的な体調管理から、各種の検査や治療に至るまで、どんなお悩みもお気軽にご相談ください。</div>
+        <div class="details-grid">
+          <div class="details-card">
+            <h3>一般内科診療</h3>
+            <p>風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。原因不明の不調や軽い症状であっても、早期診断に努めております。</p>
+          </div>
+          <div class="details-card">
+            <h3>生活習慣病の診断・治療</h3>
+            <p>高血圧症、糖尿病、脂質異常症（高コレステロール血症）、メタボリック症候群など、生活習慣病の診断と治療を行います。健康維持のための生活指導や薬物療法を提供します。</p>
+          </div>
+          <div class="details-card">
+            <h3>消化器系の診察</h3>
+            <p>胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。</p>
+          </div>
+          <div class="details-card">
+            <h3>呼吸器系の診察</h3>
+            <p>咳、息切れ、胸の痛みなどの呼吸器系の症状を診察します。季節性の喘息やアレルギー性鼻炎、慢性閉塞性肺疾患（COPD）などにも対応し、適切な治療と予防を支援します。</p>
+          </div>
+        </div>
+        <!-- 診察内容ページ（未作成）へ遷移予定 -->
+        <!-- 各ボタンは診察内容ページ内の対応項目へ遷移予定：
+             1) 一般内科診察 -> details.html#details-01
+             2) 生活習慣病の診断・治療 -> details.html#details-02
+             3) 消化器系の診察 -> details.html#details-03
+             4) 呼吸器系の診察 -> details.html#details-04
+             5) 健康診断・各種検査 -> details.html#details-05
+             6) 予防接種 -> details.html#details-06
+             7) 禁煙外来 -> details.html#details-07
+        -->
+        <div class="details-actions">
+          <a class="btn btn-clinic btn-md btn-w220" href="details.html">一般内科診察へ</a>
+          <a class="btn btn-clinic btn-md btn-w220" href="details.html">生活習慣病の診断・治療へ</a>
+          <a class="btn btn-clinic btn-md btn-w220" href="details.html">消化器系の診察へ</a>
+          <a class="btn btn-clinic btn-md btn-w220" href="details.html">呼吸器系の診察へ</a>
+        </div>
+        <div class="details-actions">
+          <div class="details-hint">その他の診察はこちら→</div>
+          <a class="btn btn-primary btn-md btn-w220" href="details.html">健康診断・各種検査</a>
+          <a class="btn btn-primary btn-md btn-w220" href="details.html">予防接種</a>
+          <a class="btn btn-primary btn-md btn-w220" href="details.html">禁煙外来</a>
         </div>
       </div>
     </section>
@@ -784,15 +768,15 @@
                  3) 地域に根ざした医療 -> about.html#about-03
                  4) 家族全員をサポート -> about.html#about-04
                  5) 最新の医療設備と技術 -> about.html#about-05
-                 6) おしらせ一覧へ -> about.html#about-06
+                 6) 医院の理念・方針  -> about.html#about-06
             -->
             <div class="pill-list">
-              <a class="pill" href="about.html#about-01">診療方針と医療の質</a>
-              <a class="pill" href="about.html#about-02">患者様中心の医療を提供</a>
-              <a class="pill" href="about.html#about-03">地域に根ざした医療</a>
-              <a class="pill" href="about.html#about-04">家族全員をサポート</a>
-              <a class="pill" href="about.html#about-05">最新の医療設備と技術</a>
-              <a class="pill" href="about.html#about-06">おしらせ一覧へ</a>
+              <a class="pill" href="about.html">診療方針と医療の質</a>
+              <a class="pill" href="about.html">患者様中心の医療を提供</a>
+              <a class="pill" href="about.html">地域に根ざした医療</a>
+              <a class="pill" href="about.html">家族全員をサポート</a>
+              <a class="pill" href="about.html">最新の医療設備と技術</a>
+              <a class="pill" href="info.html">医院の理念・方針 </a>
             </div>
           </div>
           <div class="about-media">
@@ -860,11 +844,17 @@
     <section id="access" class="section-block" aria-label="アクセス">
       <div class="panel mint access-panel">
         <div class="section-header"><h2 class="section-title">アクセス</h2></div>
-        <div class="map-box" aria-label="地図">
-            <iframe src="https://www.google.com/maps?output=embed&q=%E3%80%92110-0015%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%9D%B1%E4%B8%8A%E9%87%8E%EF%BC%93%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%95%E2%88%92%EF%BC%95%20%E6%9B%BD%E6%88%91%E3%83%93%E3%83%AB%203F" loading="lazy" allowfullscreen title="佐藤医院所在地"></iframe>
+        <div class="access-button-box">
+          <div class="access-actions">
+            <a class="btn btn-orange btn-wide" href="FAQ.html">よくあるご質問</a>
+            <a class="btn btn-orange btn-wide js-web-reserve" href="#">Web予約</a>
           </div>
+        </div>
+        <div class="map-box" aria-label="地図">
+          <iframe src="https://www.google.com/maps?output=embed&q=%E3%80%92110-0015%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8F%B0%E6%9D%B1%E5%8C%BA%E6%9D%B1%E4%B8%8A%E9%87%8E%EF%BC%93%E4%B8%81%E7%9B%AE%EF%BC%91%EF%BC%95%E2%88%92%EF%BC%95%20%E6%9B%BD%E6%88%91%E3%83%93%E3%83%AB%203F" loading="lazy" allowfullscreen title="佐藤医院所在地"></iframe>
+        </div>
         <div class="access-right">
-          <div class="info-card">
+          <div class="access-card">
             <p>～住所～
 〒123-4567
 東京都台東区上野0丁目 0 - 0
@@ -873,33 +863,14 @@
 最寄駅: JR上野より徒歩5分
 当院専用の無料駐車場10台分あり
 ご来院の際は、交通状況にご注意ください。
-最寄駅から徒歩5分の距離にあり、便利な立地です。
+最寄駅から徒歩5分の距離にあり、便利な立地です。</p>
 
-～お問い合わせ～
-電話番号: 00-0000-0000
-ファックス: 00-0000-0000
-Eメール: info@sato-clinic-test.jp</p>
-            <div class="access-actions">
-              <a class="btn btn-orange btn-md js-web-reserve" href="#">Web予約</a>
-            <a class="btn btn-orange btn-md" href="faq.html">よくあるご質問</a><!-- よくあるご質問ページ（未作成）のため、将来的にfaq.htmlへ遷移予定 -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section-block" aria-label="ご予約・お問い合わせ">
-      <div class="panel contact-panel">
-        <div class="contact-layout">
-          <div class="contact-copy">
-            <h2>ご予約・お問い合わせ</h2>
-            <p>一般診療は予約なしでも受け付けていますが、予約優先制となっております。予防接種や健康診断などは完全予約制です。お電話またはWeb予約をご利用ください。</p>
             <div class="contact-schedule">
               <div class="mini-schedule">
                 <div class="schedule-box">
                   <table>
                     <tr>
-                      <th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
+                      <th>診察時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日</th>
                     </tr>
                     <tr>
                       <td>9時～12時</td><td>●</td><td>●</td><td>●</td><td>／</td><td>●</td><td>●</td><td>／</td>
@@ -912,16 +883,8 @@ Eメール: info@sato-clinic-test.jp</p>
                 <div class="note">受付時間：8時～11時/13時～18時　　※休診日：木曜・土曜午後・日曜</div>
                 <div class="warn">※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。</div>
               </div>
-              <div class="contact-actions">
-                <span class="tel-badge">TEL:　00-0000-0000</span>
-                <a class="btn btn-orange btn-wide js-web-reserve" href="#">Web予約</a>
-              </div>
             </div>
-          </div>
-          <div class="contact-visual">
-            <div class="contact-img-box">
-              <img id="contactImgEl" src="./image/Infomation_Image/受付風景4.jpg" alt="予約画像" />
-            </div>
+
           </div>
         </div>
       </div>
@@ -933,11 +896,17 @@ Eメール: info@sato-clinic-test.jp</p>
 
   <div id="memoModal" class="memo-modal" aria-hidden="true">
     <div class="memo-dialog" role="dialog" aria-modal="true" aria-labelledby="memoTitle">
-      <div class="memo-top-actions"><button type="button" class="memo-reset" id="memoResetBtn">リセット</button><button type="button" class="memo-close" id="memoCloseBtn">閉じる</button></div>
+      <div class="memo-top-actions">
+        <button type="button" class="memo-reset" id="memoResetBtn">リセット</button>
+        <button type="button" class="memo-close" id="memoCloseBtn">閉じる</button>
+      </div>
       <h2 class="memo-title memo-title-row" id="memoTitle">来院メモ</h2>
       <div class="memo-subtitle-row">
         <div class="memo-subtitle">受付に伝える内容を<br>簡単にまとめられます</div>
-        <div class="memo-subnote"><div class="memo-subnote-line">※待ち時間は目安となります</div><div class="memo-subnote-line">※年齢は受診者様の年齢を入力してください。<br>　保護者様同伴の場合は「伝えたいこと」に加えてください</div></div>
+        <div class="memo-subnote">
+          <div class="memo-subnote-line">※待ち時間は目安となります</div>
+          <div class="memo-subnote-line">※年齢は受診者様の年齢を入力してください。<br>　保護者様同伴の場合は「伝えたいこと」に加えてください</div>
+        </div>
       </div>
 
       <form class="memo-form" id="memoForm" action="#" method="post">
@@ -1020,28 +989,24 @@ Eメール: info@sato-clinic-test.jp</p>
     </div>
   </div>
 
-
   <footer class="footer" aria-label="フッター">
     <div class="footer-inner">
       <div class="footer-left">
-        
         <div data-layer="ロゴ・医院名" style="height: 86px; flex-direction: column; justify-content: center; align-items: center; display: inline-flex">
           <img data-layer="ロゴ" style="width: 200px; height: 56px; position: relative" src="./image/Logo/Logo.png" alt="フッターロゴ"/>
           <div data-layer="©2025　佐藤医院" class="2025" style="width: 160px; height: 26px; text-align: center; color: #111111; font-size: 16px; font-family: Roboto; font-weight: 400; line-height: 25.50px; letter-spacing: 0.64px; word-wrap: break-word">©2025　佐藤医院</div>
         </div>
-      
       </div>
       <div class="footer-center">
         <nav class="footer-nav" aria-label="フッターナビゲーション">
           <a href="#top">トップページ</a>
-          <a href="#notice">おしらせ</a>
-          <a href="#hours">診療時間</a>
-          <a href="#treatments">診療内容</a>
+          <a href="#hours">診察時間</a>
+          <a href="#info">おしらせ</a>
           <a href="#greeting">院長挨拶</a>
+          <a href="#details">診察内容</a>
           <a href="#about">当院について</a>
           <a href="#staff">スタッフ紹介</a>
           <a href="#access">アクセス</a>
-          <a href="#contact">ご予約・お問い合わせ</a>
           <a href="faq.html">よくあるご質問</a><!-- よくあるご質問ページ（未作成）のため、将来的にfaq.htmlへ遷移予定 -->
         </nav>
         <div class="footer-boxes">
@@ -1079,19 +1044,19 @@ Eメール: info@sato-clinic-test.jp</p>
     })();
 
     (function(){
-      var noticeImg=document.getElementById("notice-image");
-      if(!noticeImg)return;
-      var noticeImages=[
+      var infoImg=document.getElementById("info-image");
+      if(!infoImg)return;
+      var infoImages=[
         "./image/Infomation_Image/受付風景3.jpg",
         "./image/Infomation_Image/受付風景1.jpg",
         "./image/Infomation_Image/受付風景4.jpg",
         "./image/Infomation_Image/受付風景２.jpg"
       ];
-      var noticeIndex=0;
-      noticeImg.src=noticeImages[0];
+      var infoIndex=0;
+      infoImg.src=infoImages[0];
       setInterval(function(){
-        noticeIndex=(noticeIndex+1)%noticeImages.length;
-        noticeImg.src=noticeImages[noticeIndex];
+        infoIndex=(infoIndex+1)%infoImages.length;
+        infoImg.src=infoImages[infoIndex];
       },60000);
     })();
 
@@ -1153,7 +1118,7 @@ Eメール: info@sato-clinic-test.jp</p>
       });
     })();
 
-        (function(){
+    (function(){
       var modal=document.getElementById("memoModal");
       if(!modal) return;
 
@@ -1212,8 +1177,6 @@ Eメール: info@sato-clinic-test.jp</p>
         closeBtn.addEventListener("click", function(){ closeModal(); });
       }
 
-      
-
       if(resetBtn){
         resetBtn.addEventListener("click", function(){
           if(formEl) formEl.reset();
@@ -1223,7 +1186,7 @@ Eメール: info@sato-clinic-test.jp</p>
           updateSymptoms();
         });
       }
-modal.addEventListener("click", function(e){
+      modal.addEventListener("click", function(e){
         if(e.target === modal) closeModal();
       });
 
@@ -1357,8 +1320,7 @@ modal.addEventListener("click", function(e){
           clearError();
         });
       }
-    })();;
-
+    })();
   </script>
 </body>
 </html>
